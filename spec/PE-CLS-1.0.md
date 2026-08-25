@@ -179,6 +179,63 @@ a claim that a quantizer degraded under long generation, withdrawn after
 re-validation attributed the effect to arm-label contamination, where the
 *opposite* claim (the effect belongs to a different codebook) proved true.
 
+### 4.3 Retrospective classification — bringing a legacy corpus into a ledger
+
+Every programme that adopts this specification has a body of work that predates
+it. Converting that work is the common case, not the exception, and it is where
+the specification is most likely to be abused. The abuse is obvious and
+tempting: a claim that was argued for, illustrated, and believed gets entered as
+`demonstrated` because it *feels* established.
+
+**A claim MUST NOT be assigned a class its history cannot support.** Concretely:
+
+- A claim whose supporting data was seen **before** the claim was fixed is
+  **`retrospective`** and MUST carry `retrospective: true`.
+- A `retrospective` claim MUST NOT be classed `predicted`. Priority is the one
+  property that cannot be reconstructed: either the registration precedes the
+  measurement in the record or it does not, and no amount of later rigor
+  changes that. **P1 is not retroactively satisfiable.**
+- A `retrospective` claim MAY be classed `proved` if and only if it meets
+  §4's full deductive bar — a complete proof plus independent verification.
+  Mathematics is indifferent to when it was written down; empirical priority is
+  not.
+- A `retrospective` empirical claim is capped at **`exploratory`** unless it
+  additionally carries a *post-hoc registered replication* on data not used to
+  form it, in which case the replication (not the original) may hold
+  `demonstrated` or `replicated`, and the original remains `exploratory` with a
+  `corroborates` edge to it.
+
+**The honest default for a legacy corpus is `exploratory` everywhere except the
+theorems.** That is not a demotion of the work; it is an accurate statement of
+what kind of support it has, and it is what makes the *next* claim's `predicted`
+label mean something.
+
+**The conversion procedure.**
+
+1. **Inventory before classifying.** Enumerate the corpus's substantive claims
+   first, using the authors' own epistemic markings where they exist. A
+   programme that already tags claims (definition / conditional theorem /
+   empirical / speculation) has done most of this work and its tags SHOULD be
+   carried over rather than re-derived.
+2. **Classify by history, not by confidence.** For each claim ask only: what
+   kind of support exists, and did the claim precede its evidence?
+3. **Declare the dependency graph.** This is the step that pays for the
+   exercise. Legacy corpora carry their dependencies in prose, so a refutation
+   already absorbed by the text has never had its blast radius computed.
+4. **Propagate the corpus's own corrections.** A programme honest enough to
+   record its falsifications will usually find that the correction was applied
+   *locally* — in the section where it was discovered — and not to everything
+   downstream. §6.3 makes that gap visible.
+5. **Mint the forward exposure.** Conversion ends by identifying which
+   retrospective claims can be put at risk prospectively, and registering at
+   least one. A corpus converted to all-`exploratory` with no new registration
+   has been *described*, not *reformed*.
+
+**Reporting.** A converted ledger MUST state, in its accounting, how many rows
+are retrospective. A reader's first question about any ledger is what fraction
+of it was at risk before measurement, and that number MUST be available without
+reading the rows.
+
 ## 5. Lifecycle *(normative)*
 
 ```

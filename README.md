@@ -126,9 +126,29 @@ becomes a property of a finite list that anyone can check in seconds.
 
 ## Repository layout
 
+### Greenfield and brownfield
+
+Almost nobody adopting this starts from zero. The realistic case is a corpus
+built over years under ordinary scholarly norms, whose author now wants it
+governed — **brownfield**, and it is the discipline's main entrance rather than
+a special case. [PE-BRW-1.0](spec/PE-BRW-1.0.md) specifies the conversion:
+characterization classification, the strangler-fig pattern for claims, the
+`corroborates` edge as the seam, and the debt ratio as the metric that matters.
+
+Its governing definition, after Feathers: **a legacy claim is simply a claim
+without a registration.** Not wrong, not weak — *unfalsified*, which is a
+different and recoverable condition. Conversion is descriptive first and
+reformative second, because **you cannot rewrite your way to a registration**:
+priority is the one property no amount of later rigor reconstructs.
+
+Brownfield is a *mode* of the inquiry arm, not a third arm. Judgment vs inquiry
+is about the subject governed; greenfield vs brownfield is about the state of
+that subject when the discipline arrives. Both axes apply to both arms.
+
 | Path | Contents |
 |---|---|
 | [`spec/PE-CLS-1.0.md`](spec/PE-CLS-1.0.md) | **The Claim Ledger Specification** — normative. Objects, classes, lifecycle, dependency semantics, the four properties, conformance levels |
+| [`spec/PE-BRW-1.0.md`](spec/PE-BRW-1.0.md) | **Brownfield Conversion** — bringing an existing corpus into a ledger without laundering it |
 | [`spec/schema/`](spec/schema/) | JSON Schemas for the claim, registration, and verification objects |
 | [`tools/pe_lint.py`](tools/pe_lint.py) | Reference validator. Checks P1–P4 against a real ledger; computes blast radius |
 | [`PRIOR-ART.md`](PRIOR-ART.md) | Honest positioning: what exists, what is borrowed, what is added |

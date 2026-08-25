@@ -66,6 +66,7 @@ class Claim:
     cls: str = "exploratory"
     scope: str = ""
     status: str = "classified"
+    retrospective: bool = False
     uses: list[str] = field(default_factory=list)
     corroborates: list[str] = field(default_factory=list)
     cites: list[str] = field(default_factory=list)
@@ -227,6 +228,7 @@ def parse_native_ledger(root: str) -> dict[str, Claim]:
                 id=obj["id"], statement=obj.get("statement", ""),
                 cls=obj.get("class", "exploratory"), scope=obj.get("scope", ""),
                 status=obj.get("status", "classified"),
+                retrospective=bool(obj.get("retrospective", False)),
                 uses=list(dep.get("uses", []) or []),
                 corroborates=list(dep.get("corroborates", []) or []),
                 cites=list(dep.get("cites", []) or []),
@@ -345,6 +347,36 @@ def check_p4(claims: dict[str, Claim]) -> tuple[list[Finding], dict]:
     return out, {"claims": len(claims), "cap_violations": capped}
 
 
+def check_p1_retro(claims: dict[str, Claim]) -> tuple[list[Finding], dict]:
+    """Section 4.3: priority is not retroactively satisfiable.
+
+    A retrospective claim (data seen before the claim was fixed) may never be
+    `predicted`, and an empirical retrospective claim is capped at
+    `exploratory` unless a separately-registered replication carries the
+    stronger class.
+    """
+    out: list[Finding] = []
+    retro = [c for c in claims.values() if c.retrospective]
+    for c in retro:
+        if c.cls == "predicted":
+            out.append(Finding("P1", "ERROR", c.id,
+                               "retrospective claim classed 'predicted' -- "
+                               "priority cannot be reconstructed (s4.3)"))
+        elif c.cls in {"demonstrated", "replicated"}:
+            # legitimate only if a registered replication corroborates it
+            backed = any(d in claims and not claims[d].retrospective
+                         for d in c.corroborates)
+            if not backed:
+                out.append(Finding(
+                    "P1", "ERROR", c.id,
+                    f"retrospective empirical claim classed '{c.cls}' with no "
+                    f"prospectively-registered corroboration -- cap is "
+                    f"'exploratory' (s4.3)"))
+    return out, {"retrospective": len(retro), "total": len(claims),
+                 "retro_fraction": (round(len(retro) / len(claims), 3)
+                                    if claims else 0.0)}
+
+
 def check_p3(root: str, claims: dict[str, Claim],
              policy: set[str]) -> tuple[list[Finding], dict]:
     """Authority: prose must not cite a claim above the citing policy."""
@@ -445,6 +477,9 @@ def main() -> int:
         f, s = check_p2(registry); findings += f; stats["P2"] = s
     if "P1" in props:
         f, s = check_p1(root, registry); findings += f; stats["P1"] = s
+        fr, sr = check_p1_retro(claims)
+        findings += fr
+        stats["P1"] = {**s, **sr}
     if "P4" in props:
         f, s = check_p4(claims); findings += f; stats["P4"] = s
     if "P3" in props:
