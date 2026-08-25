@@ -345,6 +345,44 @@ absorb silently. Here the defect is not dishonesty but ordinary version-control
 hygiene, and the check found it in a programme whose written record was already
 accurate.
 
+#### 7.1.2 Anchoring: what ancestry proves, and what it does not *(normative)*
+
+Ancestry proves **order**. It does not prove **wall-clock time** to a party who
+does not already trust the repository owner, because the owner controls the
+entire history: a determined author could construct a DAG in which a seal
+appears to precede a result it did not precede. P1 is therefore *tamper-evident
+against revision*, not *non-repudiable against fabrication*, and a conforming
+ledger MUST NOT describe it as the latter.
+
+Programmes SHOULD close the remaining gap by anchoring the seal's **content
+hash** — not the file, not the commit — to a party with no stake in the
+results. Three mechanisms, in increasing order of independence:
+
+| Mechanism | Trust model | Cost | Granularity |
+|---|---|---|---|
+| **Archival deposit** (Zenodo/DOI, institutional repository) | the archive | free | per release |
+| **RFC 3161 timestamp** | the Time-Stamp Authority's key | free | per seal |
+| **OpenTimestamps** (Merkle root committed to an existing public chain) | none — no authority at all | free | per seal |
+
+**A programme MUST NOT operate a blockchain of its own for this purpose.**
+Consensus among mutually distrusting writers solves a problem a claim ledger
+does not have: there is exactly one writer, and the property required is a
+timestamp, not agreement about shared state. Running a chain would add
+governance, key management, and availability obligations while providing no
+guarantee that the three mechanisms above do not already provide. Using an
+*existing* chain as a public clock (OpenTimestamps) is a different matter and is
+the strongest option in the table, precisely because it removes the authority
+rather than adding one.
+
+Anchor the **seal hash**, because it survives what commit identifiers do not:
+rebases, renames, re-serialization, and repository migration. An anchor is
+therefore the durable form of the P1 evidence, and §7.1.1's failure mode cannot
+touch it.
+
+*Reference implementation:* `scripts/anchor_seal.py` in the reference
+deployment (RFC 3161 by default, OpenTimestamps with `--method ots`); the
+programme already holds per-release archival anchors via its DOI deposit.
+
 ### 7.2 P2 — Completeness (no file drawer)
 
 *The norm:* every result is reported, whatever its sign.

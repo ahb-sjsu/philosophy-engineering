@@ -135,15 +135,36 @@ share the author's working context.
 including null findings and the scope of the search, rather than an event that
 either happens privately or produces an unpublished referee report.
 
-## 7. Blockchain-adjacent proposals — a deliberate non-adoption
+## 7. Blockchains: run none, borrow one
 
-Various proposals exist for anchoring scientific records in distributed ledgers.
-PE-CLS-1.0 **does not use, and does not need, a blockchain.** The security
-property required is *tamper-evidence with public verifiability*, and a git
-commit graph plus content hashes already provides it at zero cost and zero
-governance overhead. Calling a git-backed claim registry a "cryptographic ledger"
-overstates the guarantee; §7.1 states the actual guarantee and its limits
-explicitly, and §7.1.1 states where it breaks.
+Various proposals exist for putting scientific records on distributed ledgers.
+The distinction PE-CLS-1.0 draws (§7.1.2) is between **operating a chain** and
+**anchoring in one that already exists**, and it goes in opposite directions.
+
+**Operating a chain: rejected.** A blockchain solves consensus among mutually
+distrusting writers over shared state. A claim ledger has exactly one writer and
+needs a timestamp. Running a chain would add key management, governance, and
+availability obligations while providing nothing the alternatives below do not,
+and describing a git-backed registry as a "cryptographic ledger" overstates what
+it guarantees.
+
+**Anchoring in one: endorsed, and it is the strongest option.**
+[OpenTimestamps](https://opentimestamps.org) (Todd) aggregates a hash into a
+Merkle tree and commits the root to Bitcoin — you run nothing, hold nothing, pay
+nothing, and the resulting proof depends on *no authority at all*. That is a
+better trust model than an RFC 3161 Time-Stamp Authority, which is in turn
+better than an archival deposit, which is what most programmes have.
+
+The honest framing is that these are **timestamping** technologies, and the
+literature on them long predates blockchains: Haber & Stornetta's 1991 "How to
+time-stamp a digital document" is the origin of both the Merkle-chain
+construction and, by a well-known lineage, of Bitcoin's own design.
+Certificate Transparency (Laurie et al., RFC 6962) and
+[Sigstore/Rekor](https://www.sigstore.dev) are the modern software-supply-chain
+descendants and are equally usable here.
+
+So: the gap ancestry leaves open (§7.1.2 — order but not wall-clock time) is
+real, and closing it is cheap. It just is not a job for a chain of one's own.
 
 ## 8. The residue
 

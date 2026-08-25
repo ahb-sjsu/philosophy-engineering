@@ -5,24 +5,13 @@ ledger: C:\source\geometric-observation
   claims parsed: 78   registry rows: 91
 
   P2 Completeness  PASS         {'checked': 91, 'range': '001-091', 'gaps': 0, 'void': 4}
-  P1 Priority      FAIL (1)     {'checked': 32, 'ancestor_ok': 20, 'unknown': 11}
+  P1 Priority      FAIL (1)     {'checked': 32, 'ancestor_ok': 31, 'unknown': 0}
   [ERROR] P1 068: seal 50a1ffe is NOT an ancestor of result commit 0a8bdc9 -- priority unproven
-  [WARN ] P1 076: seal a843fb7a or result commit unknown to repo
-  [WARN ] P1 077: seal 79a731c9 or result commit unknown to repo
-  [WARN ] P1 078: seal 728f59fd or result commit unknown to repo
-  [WARN ] P1 079: seal 0d763980 or result commit unknown to repo
-  [WARN ] P1 080: seal b73e6214 or result commit unknown to repo
-  [WARN ] P1 081: seal a823acee or result commit unknown to repo
-  [WARN ] P1 082: seal e0783012 or result commit unknown to repo
-  [WARN ] P1 083: seal 2073ad2a or result commit unknown to repo
-  [WARN ] P1 084: seal 927a5373 or result commit unknown to repo
-  [WARN ] P1 085: seal 6135c495 or result commit unknown to repo
-  [WARN ] P1 086: seal bb075c24 or result commit unknown to repo
   P4 Coherence     PASS         {'claims': 78, 'cap_violations': 0}
   P3 Authority     PASS         {'documents_scanned': 3}
   [WARN ] P3 GO-3: ch11_the_recognizer.md cites registration 014 of class 'demonstrated', outside the declared citation policy ['predicted', 'proved', 'replicated']
   [WARN ] P3 VI-8 (consumer-relative Landauer): OBSERVATION.md cites registration 042 of class 'exploratory', outside the declared citation policy ['predicted', 'proved', 'replicated']
 
 ==========================================================================
-NON-CONFORMING at L3: 1 error(s), 13 warning(s)
+NON-CONFORMING at L3: 1 error(s), 2 warning(s)
 ==========================================================================

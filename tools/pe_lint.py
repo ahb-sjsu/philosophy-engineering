@@ -125,6 +125,9 @@ ID_IN_ROW = re.compile(r"^\|\s*\**\s*(\d{3})\s*\**\s*\|")
 CLASS_TOKEN = re.compile(r"`\[(" + "|".join(CLASSES) + r")\]`|\[(" +
                          "|".join(CLASSES) + r")\]")
 SEAL_HASH = re.compile(r"\b(?:sealed|seal)\s+`?([0-9a-f]{7,40})`?", re.I)
+# A re-anchored row (PE-CLS-1.0 s7.1.1) records both the historical hash and
+# the current commit identity. The current one is the checkable evidence.
+CURRENT_HASH = re.compile(r"current commit\s+`?([0-9a-f]{7,40})`?", re.I)
 
 
 def parse_markdown_ledger(root: str) -> tuple[dict[str, Claim], dict, list[str]]:
@@ -142,11 +145,14 @@ def parse_markdown_ledger(root: str) -> tuple[dict[str, Claim], dict, list[str]]
                 rid = m.group(1)
                 cells = [c.strip() for c in line.strip().strip("|").split("|")]
                 disp = cells[2] if len(cells) > 2 else ""
+                cur = CURRENT_HASH.search(line)
                 seal = SEAL_HASH.search(line)
                 registry[rid] = {
                     "disposition": disp,
                     "row": line.strip(),
-                    "seal": seal.group(1) if seal else None,
+                    "seal": (cur.group(1) if cur
+                             else (seal.group(1) if seal else None)),
+                    "reanchored": bool(cur),
                     "void": bool(re.search(r"never-run|void|reserved-unsealed",
                                            line, re.I)),
                 }
