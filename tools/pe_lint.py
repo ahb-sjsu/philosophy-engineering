@@ -454,6 +454,74 @@ LEVEL_PROPS = {"L1": ["P2"], "L2": ["P2", "P1"],
                "L3": ["P2", "P1", "P4", "P3"], "L4": ["P2", "P1", "P4", "P3"]}
 
 
+DEFAULT_BASELINE = "CONFORMANCE-BASELINE.json"
+
+
+def load_baseline(root: str, explicit: str | None) -> tuple[list[dict], str | None]:
+    """Load acknowledged findings (PE-BRW-1.0 s5.6, the ratchet).
+
+    A baseline records conformance failures that are REAL, KNOWN, and blocked on
+    a decision only a named person can make. It never hides them: acknowledged
+    findings are printed in full on every run and counted separately. It exists
+    so that a brownfield ledger with inherited contradictions can still gate
+    against NEW failures -- which is the whole value of a gate.
+    """
+    path = explicit or os.path.join(root, DEFAULT_BASELINE)
+    if not os.path.isfile(path):
+        if explicit:
+            # A baseline named on the command line and silently ignored would
+            # report a filtered verdict from an unfiltered run -- the exact
+            # failure mode this tool exists to prevent.
+            raise SystemExit(f"--baseline: no such file: {path}")
+        return [], None
+    with open(path, encoding="utf-8") as fh:
+        data = json.load(fh)
+    return data.get("acknowledged", []), path
+
+
+def apply_baseline(findings: list[Finding],
+                   acked: list[dict]) -> tuple[list[Finding], list[Finding], list[Finding]]:
+    """Split findings into (unacked, acknowledged, ratchet-violations).
+
+    Matching is on the exact (prop, claim, message) triple. If a claim's class
+    changes, its message changes and the entry STOPS matching -- so a baseline
+    cannot silently cover a claim that has been promoted. That is the ratchet.
+    """
+    violations: list[Finding] = []
+    index: dict[tuple[str, str, str], dict] = {}
+    for e in acked:
+        missing = [k for k in ("prop", "claim", "message", "owner",
+                               "resolution_required") if not e.get(k)]
+        if missing:
+            violations.append(Finding(
+                "BASE", "ERROR", e.get("claim", "?"),
+                f"baseline entry missing required field(s) {missing} -- an "
+                f"acknowledged failure must name who owes the decision and what "
+                f"would resolve it, or it is laundering, not accounting"))
+            continue
+        index[(e["prop"], e["claim"], e["message"])] = e
+
+    unacked, matched = [], set()
+    for f in findings:
+        key = (f.prop, f.claim, f.message)
+        if f.severity == "ERROR" and key in index:
+            matched.add(key)
+        else:
+            unacked.append(f)
+
+    ack_findings = [
+        Finding(k[0], "ACKED", k[1], index[k]["message"]) for k in sorted(matched)
+    ]
+    for key, e in index.items():
+        if key not in matched:
+            violations.append(Finding(
+                "BASE", "ERROR", e["claim"],
+                f"STALE baseline entry: this finding no longer fires. Either it "
+                f"was resolved (remove the entry) or the claim changed shape "
+                f"(re-examine it). A baseline may only shrink."))
+    return unacked, ack_findings, violations
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description="PE-CLS-1.0 ledger validator")
     ap.add_argument("--ledger", required=True)
@@ -461,6 +529,11 @@ def main() -> int:
     ap.add_argument("--blast-radius", metavar="CLAIM_ID")
     ap.add_argument("--policy", default="proved,replicated,predicted",
                     help="citation policy for P3")
+    ap.add_argument("--baseline", metavar="FILE",
+                    help=f"acknowledged-findings file (default: "
+                         f"<ledger>/{DEFAULT_BASELINE} if present)")
+    ap.add_argument("--no-baseline", action="store_true",
+                    help="ignore any baseline; report true unfiltered state")
     ap.add_argument("--json", action="store_true")
     args = ap.parse_args()
 
@@ -496,6 +569,15 @@ def main() -> int:
         f, s = check_p3(root, claims, set(args.policy.split(","))); findings += f
         stats["P3"] = s
 
+    acked_entries, baseline_path = ([], None) if args.no_baseline else \
+        load_baseline(root, args.baseline)
+    ack_findings: list[Finding] = []
+    if acked_entries or baseline_path:
+        findings, ack_findings, ratchet = apply_baseline(findings, acked_entries)
+        findings += ratchet
+        notes.append(f"baseline: {baseline_path} "
+                     f"({len(ack_findings)} acknowledged, still open)")
+
     errors = [f for f in findings if f.severity == "ERROR"]
     warns = [f for f in findings if f.severity == "WARN"]
 
@@ -504,7 +586,9 @@ def main() -> int:
             "ledger": root, "level": args.level, "stats": stats,
             "notes": notes,
             "findings": [f.__dict__ for f in findings],
+            "acknowledged": [f.__dict__ for f in ack_findings],
             "conforming": not errors,
+            "conforming_unfiltered": not errors and not ack_findings,
         }, indent=2))
         return 0 if not errors else 1
 
@@ -522,17 +606,44 @@ def main() -> int:
         errs = sum(1 for f in pf if f.severity == "ERROR")
         label = {"P1": "Priority", "P2": "Completeness", "P3": "Authority",
                  "P4": "Coherence"}[prop]
-        verdict = "PASS" if errs == 0 else f"FAIL ({errs})"
+        nack = sum(1 for f in ack_findings if f.prop == prop)
+        if errs:
+            verdict = f"FAIL ({errs})"
+        elif nack:
+            verdict = f"PASS/{nack} ACKED"
+        else:
+            verdict = "PASS"
         print(f"  {prop} {label:13s} {verdict:12s} {s}")
         for f in pf[:12]:
             print(f)
         if len(pf) > 12:
             print(f"         ... and {len(pf) - 12} more")
+    base = [f for f in findings if f.prop == "BASE"]
+    if base:
+        print()
+        print(f"  BASELINE INTEGRITY ({len(base)}) -- the acknowledged-findings "
+              f"file is itself invalid:")
+        for f in base:
+            print(f)
+
+    if ack_findings:
+        print()
+        print(f"  ACKNOWLEDGED ({len(ack_findings)}) -- real, open, and blocked "
+              f"on a named decision. Acknowledging is not resolving.")
+        for f in ack_findings:
+            print(f)
+
     print()
     print("=" * 74)
     if errors:
         print(f"NON-CONFORMING at {args.level}: {len(errors)} error(s), "
               f"{len(warns)} warning(s)")
+    elif ack_findings:
+        print(f"CONFORMING at {args.level} AGAINST BASELINE: "
+              f"0 new error(s), {len(ack_findings)} acknowledged, "
+              f"{len(warns)} warning(s)")
+        print(f"  NOT unconditionally conforming. Run --no-baseline for the "
+              f"unfiltered state.")
     else:
         print(f"CONFORMING at {args.level}"
               + (f" ({len(warns)} warning(s))" if warns else ""))

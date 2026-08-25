@@ -161,6 +161,22 @@ the author can say which. **These are the ledger's four surviving P4 errors, and
 they should stay red until resolved** — that is what a conformance failure is
 for.
 
+They also forced a specification change. §3 forbids the converter from
+resolving them, but a gate that fails permanently gates nothing — the next real
+regression would land in a report that was already red. **PE-BRW-1.0 §5.6 (the
+ratchet)** resolves the tension: the four are *acknowledged*, each naming its
+owner and what would settle it, and the gate now blocks anything *new*. The
+mechanism is built to be unusable as a laundering channel — entries match on the
+exact finding text, so a promoted claim stops matching; a stale entry fails the
+run; a missing `owner` fails the run; and no run with a non-empty baseline may
+report unconditional conformance. **A baseline may only shrink.**
+
+The baseline is a second debt metric, and it means something different from the
+debt ratio: the ratio measures how much of a corpus was written before its
+evidence, the baseline measures **how much of a corpus contradicts itself in
+ways only its author can settle**. The first shrinks by doing new work; the
+second shrinks by making decisions.
+
 ## 3. Classification, and one specification change
 
 Mapping the book's five statuses required a distinction the specification did
@@ -228,6 +244,35 @@ written as falsifiable predictions with thresholds:
 Each is a `corroborates` edge waiting to be attached to a high-load
 `exploratory` row — the strangler fig, applied where the corpus is already
 load-bearing.
+
+### 6.1 One is now sealed — and the reread is the point
+
+`GE-P-2026-006` (Prediction 20.6) was drafted, **reread cold in a later
+session**, and **rewritten rather than sealed**. The programme's rate-limit rule
+— seal only after a reread in a session other than the drafting one — caught a
+defect that would otherwise have been permanent:
+
+> The draft named the **Moral Machine aggregated AMCE matrix** as one of three
+> corpora. That dataset carries **nine attribute dimensions by design**, so no
+> factor solution on it can exceed k = 9 — and the published clause's *"more than
+> eleven"* branch was **unreachable by construction.** Half the falsification
+> condition could not fire.
+
+Two related defects followed from the same blind spot: an instrument gate of 20
+items, *below the 33 needed to identify 11 factors*, and an unnamed third corpus
+inside a document whose entire purpose is eliminating unnamed choices. All three
+were fixed before sealing, and the reread is recorded **inside the sealed
+document** rather than quietly corrected.
+
+This is the strongest single argument in the case study for the rate-limit rule,
+and it is worth stating in its general form: **a one-directional test reported as
+a two-directional one is not a weak result, it is a wrong one** — and it is
+invisible in prose, because the prose said "three public corpora," which sounds
+like more rigour rather than less.
+
+Sealed `sha256:11c168e5…`, with the pre-rebase hook installed *before* the seal
+so the priority evidence cannot be lost the way the sibling programme lost
+eleven anchors (PE-CLS-1.0 §7.1.1).
 
 **Phase 2 found these already written.** Six chapter predictions carry
 pre-written falsification clauses and have never been tested; they are entered

@@ -121,6 +121,48 @@ prospective claim. A corpus converted to all-`exploratory` with no new
 registration has been *described*, not *reformed*, and a ledger whose debt ratio
 is 1.0 forever is a filing system.
 
+**5.6 Acknowledge what only the author can resolve — the ratchet.**
+*(normative)*
+
+A conversion will surface contradictions internal to the legacy corpus that
+**§3 forbids the converter from resolving**: a row graded as needing no modeling
+assumptions while its own dependency list names them, a status and a proof that
+disagree. These are not conversion defects. They are findings, and the correct
+disposition is neither to fix them (that is re-derivation) nor to leave the gate
+permanently red (a gate that always fails gates nothing).
+
+A converted ledger MAY therefore carry a **baseline** of acknowledged findings,
+subject to all of the following. Each is a defence against the baseline becoming
+the laundering channel this specification exists to close:
+
+1. **Named ownership.** Every entry MUST record `owner` and
+   `resolution_required` — who can settle it, and what settling it looks like.
+   An entry missing either is invalid and fails the run. *You may not
+   acknowledge a failure without saying whose decision it waits on.*
+2. **Full visibility.** Acknowledged findings MUST be printed in full on every
+   run, under a heading that says they remain open. They are never suppressed,
+   only *separated*.
+3. **No unconditional pass.** A run with a non-empty baseline MUST NOT report
+   plain conformance. It reports *conformance against baseline*, and MUST offer
+   an unfiltered mode that reports the true state.
+4. **Exact matching.** An entry matches only the exact `(property, claim,
+   message)` triple. If a claim is promoted, its finding text changes and the
+   entry stops matching — **so a baseline can never cover a claim that has been
+   strengthened since it was written.** This is the mechanism that makes the
+   ratchet one-directional.
+5. **Monotone decrease.** An entry matching no current finding is STALE and
+   fails the run: it was either resolved (remove it) or the claim changed shape
+   (re-examine it). **A baseline may only shrink.**
+6. **Fail loudly on absence.** A baseline named but not found MUST abort, never
+   be silently skipped — otherwise a filtered verdict gets reported from an
+   unfiltered run, which is the precise failure this whole apparatus prevents.
+
+The baseline count is a second debt metric alongside the debt ratio, and it
+carries a different meaning: the debt ratio measures how much of a corpus was
+written before its evidence, while **the baseline measures how much of a corpus
+contradicts itself in ways only its author can settle.** The first shrinks by
+doing new work. The second shrinks by making decisions.
+
 ## 6. Anti-patterns *(informative)*
 
 1. **Retroactive laundering.** Entering legacy claims at `demonstrated` because
