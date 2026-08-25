@@ -43,6 +43,9 @@ CLASSES = {
     "predicted":     {"support": 2, "priority": 3},
     "demonstrated":  {"support": 2, "priority": 2},
     "exploratory":   {"support": 0, "priority": 0},
+    # s4.4: a stipulation asserts nothing about the world, so it can never cap
+    # a claim that uses it. Ranked above everything for the support-cap check.
+    "definition":    {"support": 99, "priority": 99},
     "refuted":       {"support": -1, "priority": -1},
     "withdrawn":     {"support": -1, "priority": -1},
     "suspended":     {"support": -1, "priority": -1},
@@ -338,6 +341,13 @@ def check_p4(claims: dict[str, Claim]) -> tuple[list[Finding], dict]:
                 out.append(Finding("P4", "ERROR", c.id,
                                    f"load-bearing dependency '{dep}' is "
                                    f"{d.cls}; claim must be suspended"))
+            elif c.cls == "definition" and d.cls != "definition":
+                # s4.4(2): a stipulation cannot be weakened, but one that RESTS
+                # on a substantive claim is a modeling axiom in disguise.
+                out.append(Finding("P4", "WARN", c.id,
+                                   f"definition depends on '{dep}' ({d.cls}), "
+                                   f"a substantive claim -- may be a modeling "
+                                   f"axiom in disguise (s4.4(2))"))
             elif not dominates(d.cls, c.cls):
                 capped += 1
                 out.append(Finding("P4", "ERROR", c.id,

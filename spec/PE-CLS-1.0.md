@@ -140,6 +140,7 @@ author believes it.
 | `replicated` | multiple independent settings | registered | ≥2 independent settings (models, datasets, source families) each meeting its own registered bar |
 | `demonstrated` | one setting | registered | Registration predating the run; committed result; instrument re-runnable |
 | `predicted` | out-of-sample | registered in advance | Registered before the data existed or before unblinding; blinded where feasible |
+| `definition` | none — stipulated | n/a | A construction or naming convention asserting nothing about the world. See §4.4 |
 | `exploratory` | suggestive | none | Labeled as such in every context; MUST NOT support a claim of any higher class |
 | `refuted` | evidence against | — | The registered prediction failed against **valid** evidence |
 | `withdrawn` | evidence invalid | — | The supporting evidence is defective; the claim reverts to unknown (§4.2) |
@@ -178,6 +179,33 @@ the two cases, so the distinction is not merely descriptive.
 a claim that a quantizer degraded under long generation, withdrawn after
 re-validation attributed the effect to arm-label contamination, where the
 *opposite* claim (the effect belongs to a different codebook) proved true.
+
+### 4.4 Definitions are stipulations, not claims *(normative)*
+
+A `definition` row records a construction, notation, or naming convention that
+**asserts nothing about the world** and therefore cannot be right or wrong —
+only useful or useless. Definitions are exempt from §3.1's falsifiability
+requirement, and, critically, they are **exempt from the support-cap rule of
+§6.2**: a `proved` theorem does not become weaker because it uses the
+definition of a manifold.
+
+Two obligations follow, and they are what keep the exemption from being a
+loophole:
+
+1. A `definition` row MUST NOT smuggle an empirical assertion. "The moral
+   manifold is the configuration space of ethically relevant states" is a
+   definition; "moral evaluation *occurs on* a manifold" is a modeling claim
+   and MUST be a separate row of an ordinary class. When a corpus blurs these,
+   splitting them is the conversion's job.
+2. A definition that a programme *treats* as substantive — one whose adequacy
+   is argued for, or whose failure would damage results — is not a definition
+   for ledger purposes. **The test is whether anything downstream would change
+   if the definition were replaced by an equally coherent alternative.** If yes,
+   it is a modeling axiom wearing a definition's clothes.
+
+*Provenance:* this class was added after a brownfield conversion in which
+mathematical definitions, entered as ordinary claims, spuriously capped the
+theorems that used them — the specification had no object for a stipulation.
 
 ### 4.3 Retrospective classification — bringing a legacy corpus into a ledger
 
