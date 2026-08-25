@@ -68,6 +68,56 @@ blast radius of the D4-as-measured claim
 
 Five claims, not the book. That is the difference between pruning and burning.
 
+### 2.1a The correction that erased its own evidence
+
+**The sharpest finding in the conversion, and it was very nearly missed.** It
+does not appear in the manuscript at all. It was found only by inspecting a
+merged branch that the converter had wrongly assumed was unmerged.
+
+In June 2026 the author performed an honesty pass on the book's Chapter 12
+thesis. The corpus had committed to **"Conservation of Harm"** — a chapter
+title, a table-of-contents entry, figure titles, cross-references in Ch15 and
+Ch17 — and the author retreated to **"invariance of harm accounting"**, giving
+the reason in the commit message:
+
+> *"the book had committed to 'Conservation of Harm' as a thesis … a stronger
+> claim than is established. The defensible claim is representation-invariance
+> of harm accounting, not a conservation law."*
+
+The work was careful: 87 occurrences rewritten, text nodes only, with all 2,126
+equations verified identical before and after. And it was *completely*
+propagated — v1.24 contains **zero** occurrences of the old phrasing and 47 of
+the new.
+
+That completeness is the problem. **The published book now reads as though the
+stronger claim was never made.** A reader cannot discover that a thesis was
+retired, because every trace of it was correctly removed. The only surviving
+record of the retreat is a git commit message.
+
+This is a *different* failure from §2.1. There, corrections were recorded in
+prose but not propagated through the graph. Here propagation was flawless and
+the **record** was lost — and the two are easy to confuse, because both leave
+the ledger silent. Entered as `GE-HARM-CONSERVATION`, class **`withdrawn`**
+(not `refuted`: no evidence said no, the author judged the claim overreached),
+with the three carrier rows annotated and **not** suspended, since each now
+correctly asserts the weaker claim.
+
+```
+blast radius of the withdrawn conservation claim
+  suspended (0):   nothing -- every dependent passage was already rewritten
+  untouched (234): the entire rest of the ledger
+```
+
+**A blast radius of zero is the finding, not the absence of one.** It is the
+formal statement that this correction was propagated perfectly and recorded
+nowhere. A programme that only counts suspensions would score this as a
+non-event.
+
+The general lesson is uncomfortable for prose-based scholarship: **a retraction
+thorough enough to be invisible is indistinguishable from never having erred.**
+Only an append-only record can hold both the claim and its withdrawal at once,
+which is why the discipline deprecates rows and never deletes them.
+
 ### 2.2 The corpus tells the D₄ story two ways
 
 The sharpest live inconsistency, and it is genuinely subtle because **the
