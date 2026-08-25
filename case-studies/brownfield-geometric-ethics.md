@@ -3,7 +3,11 @@
 **Subject:** *Geometric Ethics* (book v1.24, ~35k lines) + six foundation papers
 + the ErisML keystone paper.
 **Converted:** 2026-08-25, per [PE-BRW-1.0](../spec/PE-BRW-1.0.md).
-**Result:** 141 claim objects · **debt ratio 0.986** · L3 with 4 findings.
+**Result:** **234 claim objects** · debt ratio **0.962** · L3 with 5 findings ·
+**6 registrable predictions identified**.
+
+*Converted in two phases: Appendix F's tagged registry (141 rows), then the
+untagged domain chapters 20–28 and the foundation papers (93 rows).*
 
 This is the discipline's first brownfield conversion, and the corpus was chosen
 because it is the hard case: a large, expansive, philosophically ambitious body
@@ -122,6 +126,41 @@ converter logged 29 such rows. **A dependency you cannot resolve is not a
 dependency you can rely on**, and P4 makes that visible where a citation does
 not.
 
+### 2.5 Phase 2: the dark matter, and a registry that contradicts itself
+
+Chapters 20–28 contain **81 numbered theorems, propositions, corollaries and
+lemmas that carry no epistemic tag and appear in no registry** — roughly a third
+of the corpus's formal content, invisible to its own accounting. Domain claims
+about economics, clinical ethics, law, finance, theology, environment, AI,
+bioethics and military ethics, several of them strong (*"QALY discrimination
+against the elderly and disabled is not an implementation failure. It is
+mathematical"*).
+
+All 81 are entered `exploratory`/`retrospective` by characterization, and 49
+were wired to the three roots the inventory identified — the nine-dimensional
+basis, BIP, and Scalar Irrecoverability — which the domain chapters invoke
+constantly and cite almost never. **Thm 15.1 (Scalar Irrecoverability) is itself
+absent from Appendix F**, despite four domain theorems being explicit
+instantiations of it; it had to be added as a root.
+
+Phase 2 also exposed an internal contradiction in the source registry. Three
+rows are graded **`Proved`** — which Appendix F defines as *"a result that
+follows from standard mathematics alone, **without ethical modeling
+assumptions**"* — while their own Dependencies column lists modeling
+constructs:
+
+| Row | Name | Declared dependency |
+|---|---|---|
+| Prop 11.3 | Satisfaction as Directional Derivative | Def 6.1, Prop 11.1 |
+| Prop 11.4 | A* Optimality on Stratified Spaces | Def 11.2 |
+| Prop 6.2 | Decomposition of Disagreement | Def 6.4 |
+
+A row cannot be both "no ethical modeling assumptions" and dependent on ethical
+modeling constructs. Either the status or the dependency list is wrong, and only
+the author can say which. **These are the ledger's four surviving P4 errors, and
+they should stay red until resolved** — that is what a conformance failure is
+for.
+
 ## 3. Classification, and one specification change
 
 Mapping the book's five statuses required a distinction the specification did
@@ -189,6 +228,23 @@ written as falsifiable predictions with thresholds:
 Each is a `corroborates` edge waiting to be attached to a high-load
 `exploratory` row — the strangler fig, applied where the corpus is already
 load-bearing.
+
+**Phase 2 found these already written.** Six chapter predictions carry
+pre-written falsification clauses and have never been tested; they are entered
+with status **`registrable`** and are the only non-retrospective rows in the
+ledger besides the refutations. Examples, verbatim from the source:
+
+> *Prediction 6 (Manifold Dimensionality): Factor analysis of economic
+> behavioral data should recover approximately nine dimensions. **Falsified if**
+> fewer than seven or more than eleven.*
+
+> *Prediction 5 (Heuristic Admissibility): moral heuristics should satisfy
+> h(n) ≤ h\*(n).*
+
+A pre-stated interval, on public data, written by the author years ago and never
+run. **The corpus's route out of 0.962 debt is not new theory — it is executing
+predictions it already published.** That is the most encouraging thing this
+conversion found.
 
 ---
 
