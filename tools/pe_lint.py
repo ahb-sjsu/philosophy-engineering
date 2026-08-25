@@ -556,6 +556,15 @@ def main() -> int:
     findings: list[Finding] = []
     stats: dict[str, dict] = {}
     props = LEVEL_PROPS[args.level]
+
+    if not claims and not registry:
+        # A ledger with nothing in it passes every check vacuously. Reporting
+        # that as CONFORMING lets a mistyped path go green in CI, which is
+        # indistinguishable from a healthy ledger in the exit code.
+        findings.append(Finding(
+            "P0", "ERROR", "(ledger)",
+            f"no claims and no registry rows found under {root} -- refusing to "
+            f"report conformance for an empty ledger. Check the --ledger path."))
     if "P2" in props:
         f, s = check_p2(registry); findings += f; stats["P2"] = s
     if "P1" in props:
@@ -618,6 +627,9 @@ def main() -> int:
             print(f)
         if len(pf) > 12:
             print(f"         ... and {len(pf) - 12} more")
+    for f in (f for f in findings if f.prop == "P0"):
+        print(f)
+
     base = [f for f in findings if f.prop == "BASE"]
     if base:
         print()
