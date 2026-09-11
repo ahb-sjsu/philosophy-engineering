@@ -50,8 +50,15 @@ CLASSES = {
     "withdrawn":     {"support": -1, "priority": -1},
     "suspended":     {"support": -1, "priority": -1},
     "void":          {"support": -1, "priority": -1},
+    # PE-DSC-1.0 s5.2-5.3: two RECORD classes. They carry no evidence grade of
+    # their own, so they rank with exploratory on both axes and can never lift
+    # a claim that cites them. They are not terminal: a witness row records
+    # what broke a claim, it does not retract the claim.
+    "witness":       {"support": 0, "priority": 0},
+    "revised":       {"support": 0, "priority": 0},
 }
 TERMINAL = {"refuted", "withdrawn", "suspended", "void"}
+RECORD_CLASSES = {"witness", "revised"}
 
 
 def dominates(a: str, b: str) -> bool:
@@ -453,6 +460,225 @@ def blast_radius(claims: dict[str, Claim], target: str) -> dict:
 LEVEL_PROPS = {"L1": ["P2"], "L2": ["P2", "P1"],
                "L3": ["P2", "P1", "P4", "P3"], "L4": ["P2", "P1", "P4", "P3"]}
 
+# --------------------------------------------------------------------------
+# discovery arm: transformation registries (PE-DSC-1.0)
+# --------------------------------------------------------------------------
+
+DSC_LEVEL_PROPS = {"D-L1": ["D1", "D4"],
+                   "D-L2": ["D1", "D4", "D2"],
+                   "D-L3": ["D1", "D4", "D2", "D3"]}
+
+# PE-DSC-1.0 s3.4. Closed on purpose: a failure that absorbs into nothing on
+# this list has been described rather than reduced.
+ABSORBERS = {"representation", "metric", "constraint", "budget", "dynamics",
+             "equivalence", "declaration", "measurement"}
+OUTCOMES = {"survived", "failed", "boundary", "predicted", "proved"}
+NEEDS_WITNESS = {"failed", "boundary"}
+HEADER_FIELDS = ("x", "y", "equivalence", "complexity_ordering")
+
+
+def parse_registries(root: str) -> tuple[dict[str, dict], list[str]]:
+    """Parse every claims/transformations/*.toml under root."""
+    import tomllib
+
+    regs: dict[str, dict] = {}
+    notes: list[str] = []
+    tdir = os.path.join(root, "claims", "transformations")
+    if not os.path.isdir(tdir):
+        return regs, [f"no claims/transformations/ under {root}"]
+    for name in sorted(os.listdir(tdir)):
+        if not name.endswith(".toml"):
+            continue
+        path = os.path.join(tdir, name)
+        try:
+            with open(path, "rb") as fh:
+                regs[name] = tomllib.load(fh)
+        except Exception as exc:                       # malformed TOML is a finding,
+            notes.append(f"{name}: unparsable ({exc})")  # not a crash
+    return regs, notes
+
+
+def check_d1(regs: dict[str, dict]) -> tuple[list[Finding], dict]:
+    """D1 Declaration: every test names a family declared in the same registry."""
+    findings, tested, undeclared = [], 0, 0
+    for name, reg in regs.items():
+        declared = {t.get("id") for t in reg.get("transformation", [])}
+        for test in reg.get("test", []):
+            tested += 1
+            tid = test.get("transformation")
+            if not tid:
+                undeclared += 1
+                findings.append(Finding("D1", "ERROR", name,
+                    f"test '{_snip(test.get('claim'))}' names no transformation"))
+            elif tid not in declared:
+                undeclared += 1
+                findings.append(Finding("D1", "ERROR", name,
+                    f"test cites undeclared transformation '{tid}' -- a family "
+                    f"entered after the result is a family chosen to fit it"))
+    return findings, {"tests": tested, "undeclared": undeclared}
+
+
+def check_d2(regs: dict[str, dict]) -> tuple[list[Finding], dict]:
+    """D2 Reduction: failed and boundary tests carry a witness and an absorber."""
+    findings, need, reduced = [], 0, 0
+    for name, reg in regs.items():
+        for test in reg.get("test", []):
+            outcome = (test.get("outcome") or "").strip()
+            if outcome and outcome not in OUTCOMES:
+                findings.append(Finding("D2", "ERROR", name,
+                    f"outcome '{outcome}' is not one of {sorted(OUTCOMES)}"))
+            if outcome not in NEEDS_WITNESS:
+                continue
+            need += 1
+            claim = _snip(test.get("claim"))
+            if not (test.get("witness") or "").strip():
+                findings.append(Finding("D2", "ERROR", name,
+                    f"{outcome} test '{claim}' carries no witness -- record the "
+                    f"reduction, or what stopped it"))
+                continue
+            absorber = (test.get("absorbed_by") or "").strip()
+            if absorber not in ABSORBERS:
+                findings.append(Finding("D2", "ERROR", name,
+                    f"{outcome} test '{claim}' absorbed_by '{absorber}' is not "
+                    f"in the closed list of s3.4"))
+                continue
+            reduced += 1
+    return findings, {"failed_or_boundary": need, "reduced": reduced}
+
+
+def check_d3(regs: dict[str, dict]) -> tuple[list[Finding], dict]:
+    """D3 Revision: failed and boundary tests say what was revised, or that
+    nothing was and why. Silence is the failure mode this catches."""
+    findings, need, stated = [], 0, 0
+    for name, reg in regs.items():
+        for test in reg.get("test", []):
+            if (test.get("outcome") or "").strip() not in NEEDS_WITNESS:
+                continue
+            need += 1
+            rev = (test.get("revision") or "").strip()
+            if not rev:
+                findings.append(Finding("D3", "ERROR", name,
+                    f"{_snip(test.get('claim'))}: no revision field -- cite the "
+                    f"revised commitment, or state that none is registered and why"))
+            elif rev.lower() in {"none", "n/a", "-"}:
+                # A bare "none" satisfies nothing. s5.3 wants the reason.
+                findings.append(Finding("D3", "WARN", name,
+                    f"{_snip(test.get('claim'))}: revision is a bare '{rev}' "
+                    f"with no reason given"))
+                stated += 1
+            else:
+                stated += 1
+    return findings, {"failed_or_boundary": need, "stated": stated}
+
+
+def check_d4(regs: dict[str, dict]) -> tuple[list[Finding], dict]:
+    """D4 Envelope: the header tuple is fixed, ranks exist, ids are unique."""
+    findings, seen, nfam = [], {}, 0
+    for name, reg in regs.items():
+        header = reg.get("registry", {})
+        for field_name in HEADER_FIELDS:
+            if not (header.get(field_name) or "").strip():
+                findings.append(Finding("D4", "ERROR", name,
+                    f"registry header has no '{field_name}'" +
+                    (" -- no minimality claim is possible without it"
+                     if field_name == "complexity_ordering" else "")))
+        for fam in reg.get("transformation", []):
+            nfam += 1
+            fid = fam.get("id")
+            if not fid:
+                findings.append(Finding("D4", "ERROR", name,
+                                        "transformation has no id"))
+                continue
+            if fid in seen:
+                findings.append(Finding("D4", "ERROR", name,
+                    f"id '{fid}' already declared in {seen[fid]}"))
+            seen[fid] = name
+            if not isinstance(fam.get("rank"), int):
+                findings.append(Finding("D4", "ERROR", name,
+                    f"'{fid}' has no integer rank -- a witness cannot be "
+                    f"minimal under an ordering the registry does not give"))
+        ranks = [f.get("rank") for f in reg.get("transformation", [])]
+        if ranks and all(r == 1 for r in ranks) and len(ranks) > 2:
+            findings.append(Finding("D4", "WARN", name,
+                f"all {len(ranks)} families are rank 1 -- s8, a registry whose "
+                f"families are all simplest has declared no ordering"))
+    return findings, {"registries": len(regs), "transformations": nfam,
+                      "unique_ids": len(seen)}
+
+
+def _snip(text: str | None, n: int = 52) -> str:
+    text = " ".join((text or "(no claim)").split())
+    return text if len(text) <= n else text[:n - 1] + "…"
+
+
+def report_registries(root: str, level: str, as_json: bool) -> int:
+    """The --registry front end. Mirrors the ledger report."""
+    regs, notes = parse_registries(root)
+    findings: list[Finding] = []
+    stats: dict[str, dict] = {}
+    props = DSC_LEVEL_PROPS[level]
+
+    if not regs:
+        findings.append(Finding(
+            "D0", "ERROR", "(registry)",
+            f"no transformation registries found under {root} -- refusing to "
+            f"report conformance for an empty registry set."))
+    runner = {"D1": check_d1, "D2": check_d2, "D3": check_d3, "D4": check_d4}
+    for prop in props:
+        f, s = runner[prop](regs)
+        findings += f
+        stats[prop] = s
+
+    # predicted rows that never became anything else (s4)
+    npred = sum(1 for r in regs.values() for t in r.get("test", [])
+                if (t.get("outcome") or "").strip() == "predicted")
+    if npred:
+        notes.append(f"{npred} test(s) still 'predicted' (sealed and unrun)")
+
+    errors = [f for f in findings if f.severity == "ERROR"]
+    warns = [f for f in findings if f.severity == "WARN"]
+
+    if as_json:
+        print(json.dumps({
+            "root": root, "level": level, "stats": stats, "notes": notes,
+            "findings": [f.__dict__ for f in findings],
+            "conforming": not errors,
+        }, indent=2))
+        return 0 if not errors else 1
+
+    print("=" * 74)
+    print(f"PE-DSC-1.0 conformance report -- level {level}")
+    print(f"registries: {root}")
+    print("=" * 74)
+    for n in notes:
+        print(f"  note: {n}")
+    print(f"  registries parsed: {len(regs)}   "
+          f"tests: {sum(len(r.get('test', [])) for r in regs.values())}")
+    print()
+    labels = {"D1": "Declaration", "D2": "Reduction",
+              "D3": "Revision", "D4": "Envelope"}
+    for prop in props:
+        pf = [f for f in findings if f.prop == prop]
+        errs = sum(1 for f in pf if f.severity == "ERROR")
+        verdict = f"FAIL ({errs})" if errs else "PASS"
+        print(f"  {prop} {labels[prop]:13s} {verdict:12s} {stats.get(prop, {})}")
+        for f in pf[:12]:
+            print(f)
+        if len(pf) > 12:
+            print(f"         ... and {len(pf) - 12} more")
+    for f in (f for f in findings if f.prop == "D0"):
+        print(f)
+    print()
+    print("=" * 74)
+    if errors:
+        print(f"NON-CONFORMING at {level}: {len(errors)} error(s), "
+              f"{len(warns)} warning(s)")
+    else:
+        print(f"CONFORMING at {level}"
+              + (f" ({len(warns)} warning(s))" if warns else ""))
+    print("=" * 74)
+    return 0 if not errors else 1
+
 
 DEFAULT_BASELINE = "CONFORMANCE-BASELINE.json"
 
@@ -523,9 +749,14 @@ def apply_baseline(findings: list[Finding],
 
 
 def main() -> int:
-    ap = argparse.ArgumentParser(description="PE-CLS-1.0 ledger validator")
-    ap.add_argument("--ledger", required=True)
-    ap.add_argument("--level", default="L3", choices=list(LEVEL_PROPS))
+    ap = argparse.ArgumentParser(
+        description="PE-CLS-1.0 ledger and PE-DSC-1.0 registry validator")
+    ap.add_argument("--ledger")
+    ap.add_argument("--registry", metavar="ROOT",
+                    help="check transformation registries (PE-DSC-1.0) under "
+                         "ROOT/claims/transformations/ instead of a ledger")
+    ap.add_argument("--level", default="L3",
+                    choices=list(LEVEL_PROPS) + list(DSC_LEVEL_PROPS))
     ap.add_argument("--blast-radius", metavar="CLAIM_ID")
     ap.add_argument("--policy", default="proved,replicated,predicted",
                     help="citation policy for P3")
@@ -536,6 +767,23 @@ def main() -> int:
                     help="ignore any baseline; report true unfiltered state")
     ap.add_argument("--json", action="store_true")
     args = ap.parse_args()
+
+    if bool(args.ledger) == bool(args.registry):
+        print("give exactly one of --ledger or --registry", file=sys.stderr)
+        return 2
+
+    if args.registry:
+        root = os.path.abspath(args.registry)
+        if not os.path.isdir(root):
+            print(f"not a directory: {root}", file=sys.stderr)
+            return 2
+        level = args.level if args.level in DSC_LEVEL_PROPS else "D-L3"
+        return report_registries(root, level, args.json)
+
+    if args.level not in LEVEL_PROPS:
+        print(f"--level {args.level} is a discovery-arm level; it needs "
+              f"--registry, not --ledger", file=sys.stderr)
+        return 2
 
     root = os.path.abspath(args.ledger)
     if not os.path.isdir(root):

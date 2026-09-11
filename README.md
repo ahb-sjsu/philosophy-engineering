@@ -14,12 +14,13 @@ are testable, not aspirational), **localizable** (a failure produces a minimal
 witness transformation), and **non-trivial** (passing by collapsing to a
 constant output is detected and rejected).
 
-The discipline has two arms. They are the same idea applied at two levels.
+The discipline has three arms. They are the same idea applied at three levels.
 
 | Arm | Governs | Core artifact | Status |
 |---|---|---|---|
 | **[Judgment](spec/)** — the original programme | what an autonomous system asserts | the per-judgment **audit artifact** | [Foundation v1.0](foundation/) (March 2026) — EIP, BIP, 16 knowledge areas |
-| **[Inquiry](spec/PE-CLS-1.0.md)** — this repository's new work | what a *research programme* asserts | the per-claim **ledger row** | **PE-CLS-1.0** (this repo) |
+| **[Inquiry](spec/PE-CLS-1.0.md)** — what a programme may claim | what a *research programme* asserts | the per-claim **ledger row** | **PE-CLS-1.0** (this repo) |
+| **[Discovery](spec/PE-DSC-1.0.md)** — what a programme may claim *survives* | which transformations a claim was tested against, and what broke it | the per-entry **invariance envelope** | **PE-DSC-1.0** (this repo) |
 
 The second arm is the reflexive move. Philosophy Engineering says: take an
 epistemic norm and make it mechanically checkable. Apply that to science's own
@@ -124,6 +125,30 @@ identifier assignment contiguous and require every identifier — including the
 abandoned, the void, and the never-run — to carry a disposition, and the claim
 becomes a property of a finite list that anyone can check in seconds.
 
+### The discovery arm adds four more
+
+PE-CLS-1.0 governs what a programme may claim. It says nothing about the step
+where a claimed invariance **fails**, and that step is where a discovery
+programme learns most. PE-DSC-1.0 adds four properties over a **transformation
+registry**, the versioned declaration of the transformations a claim was tested
+against:
+
+| Property | The norm | The predicate |
+|---|---|---|
+| **D1 Declaration** | "we did not pick the class after seeing the result" | every test's family is **declared in the registry**, dated before the seal |
+| **D2 Reduction** | "we reduced the failure" | every `failed` or `boundary` test carries a **witness** and an absorbing component from a closed list |
+| **D3 Revision** | "we recorded what we changed our minds about" | every such test **cites the revised commitment**, or states that none is registered and why |
+| **D4 Envelope** | "the invariance claim cites a record, not a sentence" | the registry fixes its tuple and ranks its families, so each entry's **envelope is generated** rather than written |
+
+D3 is the one with no analogue in the other two arms. Without it a programme can
+revise a commitment in response to evidence and leave no trace that it did, which
+in the accounting is indistinguishable from never having been wrong.
+
+The methodology these records serve is stated in
+[Discovery Philosophy Engineering](https://github.com/ahb-sjsu/discovery-philosophy-engineering),
+whose Definitions 1 to 4 correspond to the registry test, the envelope,
+comparative fundamentality, and the witness respectively.
+
 ## Repository layout
 
 ### Greenfield and brownfield
@@ -164,10 +189,28 @@ fresh-context verification, CI-rerun harnesses, and machine-checked cores in Lea
 4. `tools/pe_lint.py` is developed against that ledger and its conformance report
 is committed in [`case-studies/`](case-studies/).
 
+The discovery arm is descriptive of the same programme's transformation
+registries, in
+[observation-theory-campaigns](https://github.com/ahb-sjsu/observation-theory-campaigns)
+under `claims/transformations/`, three registries and 47 tests as of
+2026-09-11. Checking them:
+
+```
+tools/pe_lint.py --registry path/to/observation-theory-campaigns --level D-L3
+```
+
+That run is **not** currently clean, and the first finding is the one D1 exists
+for. Ten tests in the OD registry cite three transformation families the
+registry never declared, entered when the D5, D6, and D7 gates were recorded on
+2026-09-10. The families were declared in those gates' own sealed registrations.
+They were not mirrored into the registry, which is exactly the bookkeeping gap a
+mechanical check catches and a reading does not.
+
 ## Status
 
-PE-CLS-1.0 is a **draft specification**. It describes practice that exists and
-formalizes it; it is not a proposal for practice nobody has tried. Sections
+PE-CLS-1.0 and PE-DSC-1.0 are **draft specifications**. They describe practice
+that exists and formalize it; they are not proposals for practice nobody has
+tried. Sections
 marked *normative* carry MUST/SHOULD in the RFC 2119 sense; sections marked
 *informative* do not. Breaking changes will increment the major version.
 

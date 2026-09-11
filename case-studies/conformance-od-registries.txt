@@ -1,0 +1,27 @@
+==========================================================================
+PE-DSC-1.0 conformance report -- level D-L3
+registries: observation-theory-campaigns (at commit 9daaf8e, read 2026-09-11)
+==========================================================================
+  registries parsed: 3   tests: 47
+
+  D1 Declaration   FAIL (10)    {'tests': 47, 'undeclared': 10}
+  [ERROR] D1 OD.toml: test cites undeclared transformation 'OD:observer-choice' -- a family entered after the result is a family chosen to fit it
+  [ERROR] D1 OD.toml: test cites undeclared transformation 'OD:singular-transition' -- a family entered after the result is a family chosen to fit it
+  [ERROR] D1 OD.toml: test cites undeclared transformation 'OD:closure-geometry' -- a family entered after the result is a family chosen to fit it
+  [ERROR] D1 OD.toml: test cites undeclared transformation 'OD:singular-transition' -- a family entered after the result is a family chosen to fit it
+  [ERROR] D1 OD.toml: test cites undeclared transformation 'OD:closure-geometry' -- a family entered after the result is a family chosen to fit it
+  [ERROR] D1 OD.toml: test cites undeclared transformation 'OD:observer-choice' -- a family entered after the result is a family chosen to fit it
+  [ERROR] D1 OD.toml: test cites undeclared transformation 'OD:singular-transition' -- a family entered after the result is a family chosen to fit it
+  [ERROR] D1 OD.toml: test cites undeclared transformation 'OD:closure-geometry' -- a family entered after the result is a family chosen to fit it
+  [ERROR] D1 OD.toml: test cites undeclared transformation 'OD:observer-choice' -- a family entered after the result is a family chosen to fit it
+  [ERROR] D1 OD.toml: test cites undeclared transformation 'OD:singular-transition' -- a family entered after the result is a family chosen to fit it
+  D4 Envelope      PASS         {'registries': 3, 'transformations': 13, 'unique_ids': 13}
+  D2 Reduction     FAIL (1)     {'failed_or_boundary': 27, 'reduced': 26}
+  [ERROR] D2 OD.toml: failed test 'the hubness law frozen on Gaussian clouds, skew = -…' absorbed_by 'none' is not in the closed list of s3.4
+  D3 Revision      PASS         {'failed_or_boundary': 27, 'stated': 27}
+  [WARN ] D3 OD.toml: the cross-observer hubness matrix has effective ran…: revision is a bare 'none' with no reason given
+  [WARN ] D3 OD.toml: coarsening the observer's resolution changes hub po…: revision is a bare 'none' with no reason given
+
+==========================================================================
+NON-CONFORMING at D-L3: 11 error(s), 2 warning(s)
+==========================================================================
