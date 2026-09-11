@@ -144,10 +144,11 @@ D3 is the one with no analogue in the other two arms. Without it a programme can
 revise a commitment in response to evidence and leave no trace that it did, which
 in the accounting is indistinguishable from never having been wrong.
 
-The methodology these records serve is stated in
-[Discovery Philosophy Engineering](https://github.com/ahb-sjsu/discovery-philosophy-engineering),
-whose Definitions 1 to 4 correspond to the registry test, the envelope,
-comparative fundamentality, and the witness respectively.
+The methodology these records serve is stated in *Discovery Philosophy
+Engineering* (Bond, draft September 2026), whose Definitions 1 to 4 correspond
+to the registry test, the envelope, comparative fundamentality, and the witness
+respectively. That manuscript is not yet public and this specification does not
+depend on it.
 
 ## Repository layout
 
@@ -190,21 +191,20 @@ fresh-context verification, CI-rerun harnesses, and machine-checked cores in Lea
 is committed in [`case-studies/`](case-studies/).
 
 The discovery arm is descriptive of the same programme's transformation
-registries, in
-[observation-theory-campaigns](https://github.com/ahb-sjsu/observation-theory-campaigns)
-under `claims/transformations/`, three registries and 47 tests as of
-2026-09-11. Checking them:
+registries, which are not yet public. Checking a registry set:
 
 ```
-tools/pe_lint.py --registry path/to/observation-theory-campaigns --level D-L3
+tools/pe_lint.py --registry path/to/programme --level D-L3
 ```
 
-That run is **not** currently clean, and the first finding is the one D1 exists
-for. Ten tests in the OD registry cite three transformation families the
-registry never declared, entered when the D5, D6, and D7 gates were recorded on
-2026-09-10. The families were declared in those gates' own sealed registrations.
-They were not mirrored into the registry, which is exactly the bookkeeping gap a
-mechanical check catches and a reading does not.
+Run against that programme the checks are **not** currently clean, and the
+first finding is the one D1 exists for. Ten tests in one registry cite three
+transformation families the registry never declares. The families were declared
+in those gates' own sealed registrations and were not mirrored into the
+registry, which is exactly the bookkeeping slip a mechanical check catches and a
+reading does not. It is left unrepaired, because backfilling a registry after
+the runs is the thing D1 forbids and the right declaration date is the
+programme's call.
 
 ## Status
 
