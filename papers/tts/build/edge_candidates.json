@@ -1,0 +1,290 @@
+{
+ "OT-10": [
+  {
+   "target_token": "OT-3",
+   "context": "uantity held — and the test dies on an authoring defect: a contrast sub-bar contradicting OT-3's own committed affinities. Bars-never-adjusted binds; theory support downgraded to explo"
+  }
+ ],
+ "OT-9": [
+  {
+   "target_token": "OT-2",
+   "context": "  OT-9   Forward transfer of readings across measures via the OT-2 law, graded on real heads.   **`[refuted-as-sealed]`** ⚠   **FAIL** ([json](../results/OT"
+  }
+ ],
+ "GO-2 (pos. half: consumer-projected covariance *controls*)": [
+  {
+   "target_token": "NEG-10",
+   "context": "12, recon blind (0.40). Two representations, two consumers, one mechanism. Regime bound = NEG-10 (needs recon-matched arms). Path: 007 miss→008 substance+gate-bug→009 clean. Priors: NEG-"
+  },
+  {
+   "target_token": "NEG-5",
+   "context": "G-10 (needs recon-matched arms). Path: 007 miss→008 substance+gate-bug→009 clean. Priors: NEG-5…10  "
+  }
+ ],
+ "GO-5": [
+  {
+   "target_token": "NEG-11",
+   "context": "the density-nuisance-removal mechanism is absent. Per sealed prereg, a miss → refuted → **NEG-11**. Retained positive: α=1 is the optimal diffusion exponent, non-spectrally  "
+  }
+ ],
+ "GO-6": [
+  {
+   "target_token": "I",
+   "context": "ve gap (b−a)/(c−a) shrinks **0.41→0.005** as rate grows (Thm B3). Isotropic control ($P_C=I$) collapses the three coders. Operational net for Thms B2/B3; closes the last promised re"
+  }
+ ],
+ "GO-7": [
+  {
+   "target_token": "VI-8",
+   "context": "-consumer-landauer-region.md) `verify_consumer_landauer.py` ALL PASS (CI); R-IND-5 pass = VI-8  "
+  }
+ ],
+ "GO-9": [
+  {
+   "target_token": "GO-8",
+   "context": "96 = 0.56× the asymptotic gap, both records)   **2 source families**   ⚠ **Same caveat as GO-8** — 054's verdict rests on the same post-hoc control-statistic bug fix; as executed it re"
+  }
+ ],
+ "GO-10": [
+  {
+   "target_token": "VI-10",
+   "context": "loors never violated on 8000 channels; exactness switches exactly at the regime incl. the VI-10 obtuse regression; discount identity to 4.3e-11) · ✅ **PASS 6/6** (058: GAP\\_op **0.266/0"
+  },
+  {
+   "target_token": "GO-9",
+   "context": "6/0.094 bits** at $s^2$=0.2/0.5 = **0.57×/0.37× of asymptotic** — the strong side matches GO-9's 0.56× — vs shuffled nulls ±0.003; coordinated-split allocation tilts bin bits to the S-"
+  },
+  {
+   "target_token": "I",
+   "context": "arries $\\kappa_S=\\det(B^{\\mathsf T}\\Sigma_{X\\mid S}B)$; the two floors differ by exactly $I(u^{\\mathsf T}X,v^{\\mathsf T}X;S)$; and the measured rate-tax/work-tax gap on materialized"
+  }
+ ],
+ "GO-11": [
+  {
+   "target_token": "GO-10",
+   "context": "ignment degeneracy); the $m{=}2$ region is a nine-parameter matrix program from which the GO-10 tax-gap formula is \\emph{derived}; and the work floor is attained iff the context is $X$-"
+  }
+ ],
+ "GO-12": [
+  {
+   "target_token": "GO-11",
+   "context": "-exact, $O(1/n)$ edge leakage on finite windows); with time-local slice access the tax is GO-11's static quadratic with the substitution set by the \\emph{encoder's} access — single-lett"
+  },
+  {
+   "target_token": "GO-8",
+   "context": "53$ bits) — both strictly increasing in $\\Delta$ with common limit $\\tfrac12\\log_2(1/D)$. GO-8's age-dependence is the slice regime's operational face. **Theorem 1 (the conditional-var"
+  }
+ ],
+ "GO-2/GO-12/GO-13 operational (KV serving, 077)": [
+  {
+   "target_token": "GO-13",
+   "context": "  GO-2/GO-12/GO-13 operational (KV serving, 077)   **Consumer-relative access width measured on a production"
+  },
+  {
+   "target_token": "GO-12",
+   "context": "  GO-2/GO-12/GO-13 operational (KV serving, 077)   **Consumer-relative access width measured on a prod"
+  }
+ ],
+ "GO-16": [
+  {
+   "target_token": "I",
+   "context": "r $K = F^\\top N^{-1}F$; the minimal value cost of achieving $K$ is exactly $\\mathrm{tr}(S(I-K)S^\\top)$, attained by shrink-and-dither ($F = SK$, $\\Sigma_w = SK(I-K)S^\\top$); the gam"
+  }
+ ],
+ "NEG-16** (KV serving, end-task)": [
+  {
+   "target_token": "GO-2",
+   "context": " claim, with the behavioural co-primary `[demonstrated]`   Honest Negatives · operational GO-2   [GO-P-2026-056](../prereg/GO-P-2026-056-kv-serving-flip.md) sealed `2d5794a` · **4 of 6"
+  }
+ ],
+ "NEG-1": [
+  {
+   "target_token": "I",
+   "context": "m-in-m bi-Lipschitz for the commute filter.   `[refuted]`   Honest Negatives / 10   Paper I (Prop. weyl)   scale-dependent; the uniform bound fails  "
+  }
+ ],
+ "NEG-3": [
+  {
+   "target_token": "I",
+   "context": "-taper reversal on BGE-M3.   `[refuted]` (pending confirm)   Honest Negatives / 4   Paper I   pending C2.1 confirmations  "
+  }
+ ],
+ "NEG-5": [
+  {
+   "target_token": "GO-2",
+   "context": "e Lloyd arm stored an uncounted per-block codebook, ~+25% bits) — refutes the *test*, not GO-2; a re-registered bit-matched design is required  "
+  }
+ ],
+ "NEG-7": [
+  {
+   "target_token": "GO-2",
+   "context": " consumer) **pair**, not the compressor — a direct GO-1 instance and the sharpest form of GO-2's negative half  "
+  },
+  {
+   "target_token": "GO-1",
+   "context": "ation is a property of the (compressor, consumer) **pair**, not the compressor — a direct GO-1 instance and the sharpest form of GO-2's negative half  "
+  }
+ ],
+ "NEG-11": [
+  {
+   "target_token": "GO-5",
+   "context": "  NEG-11   **(GO-5, prospective ×4)** The α=1 density/hubness quotient decisively and density-specifically r"
+  }
+ ],
+ "NEG-12": [
+  {
+   "target_token": "NEG-10",
+   "context": "supported → theory bounded to synthetic consumers on this evidence. **Precondition (as in NEG-10):** the dissociation needs recon-matched code arms — the registered real-key design lacke"
+  }
+ ],
+ "NEG-13 → **resolved": [
+  {
+   "target_token": "I",
+   "context": "ma_\\delta)$ saturates at the measured whitened-kernel $\\tr(\\tilde P\\Pi)$; naive $\\Sigma_x=I$ off ~20–60%). The **sealed finite-rate operational gate MISSED 0/16** — softmax-KL was s"
+  }
+ ],
+ "GO-B": [
+  {
+   "target_token": "I",
+   "context": "Gradient compression, curvature (Hessian) consumer** — optimization, disjoint from Papers I–II   `[predicted]` ✅ **hit**   [GO-P-2026-010](../prereg/GO-P-2026-010-gradient-curvature"
+  }
+ ],
+ "GO-B-Llama": [
+  {
+   "target_token": "NEG-12",
+   "context": "ree sealed triggers → miss. Bounds the theory to synthetic consumers on this evidence → **NEG-12**. Corrected rematch (recon-matched key codes, dynamic per-x P̂_C) = GO-P-2026-021  "
+  },
+  {
+   "target_token": "GO-B",
+   "context": "  GO-B-Llama   **Trained frontier LLM (Llama-3.2-3B), softmax-attention consumer** — blind probe"
+  }
+ ],
+ "GO-B-DOA": [
+  {
+   "target_token": "GO-B",
+   "context": "  GO-B-DOA   **Simulated physical estimation — direction-of-arrival on a ULA; beamformer-ML + ro"
+  },
+  {
+   "target_token": "I",
+   "context": "ection-of-arrival on a ULA; beamformer-ML + root-MUSIC consumers** — disjoint from Papers I–II   `[predicted]` ✅ **hit**   [GO-P-2026-031](../prereg/GO-P-2026-031-doa-gateb-simulate"
+  }
+ ],
+ "GO-B-LOCATA": [
+  {
+   "target_token": "GO-B",
+   "context": "  GO-B-LOCATA   **Real microphone-array recordings (LOCATA), DOA consumer** — held-out confirmat"
+  }
+ ],
+ "GO-B-Llama-rematch": [
+  {
+   "target_token": "GO-B-Llama",
+   "context": "  GO-B-Llama-rematch   **Trained frontier LLM (Llama-3.2-3B), softmax-attention consumer** — recon-mat"
+  },
+  {
+   "target_token": "NEG-12",
+   "context": "ama-rematch.json)   **SUPPORTED 4/4**, prospective, real weights (Atlas GPU 1). Fixes the NEG-12 flaw: the two key-error arms are **recon-matched by construction** (max\\ recon_A−recon_B\\"
+  },
+  {
+   "target_token": "GO-B",
+   "context": "  GO-B-Llama-rematch   **Trained frontier LLM (Llama-3.2-3B), softmax-attention consumer** — rec"
+  }
+ ],
+ "GO-B-legal (035→036)": [
+  {
+   "target_token": "GO-1",
+   "context": "r. **`036` REHAB (CONFIRMED):** the single fix — replace the estimated read op with the **GO-1 blind-probe** margin-sensitivity `S=mean g gᵀ, g=â−cos(a,b)b̂` (recovered from the consum"
+  },
+  {
+   "target_token": "GO-B",
+   "context": "  GO-B-legal (035→036)   **Legal-citation retrieval (CourtListener), cosine-ranking consumer, La"
+  }
+ ],
+ "GO-B-whale (038)": [
+  {
+   "target_token": "GO-1",
+   "context": "ect) classifier**; downstream = **Clan-logit AUROC** (89% majority → AUROC not accuracy). GO-1 blind margin read op (top-`r`=4), eigenbasis codes (as `036`). Config `r=4, bits=0.5` sel"
+  },
+  {
+   "target_token": "GO-B",
+   "context": "  GO-B-whale (038)   **Sperm-whale coda dialect (DSWP/Sharma 2024), Clan classifier** — cetacean"
+  }
+ ],
+ "GO-B-blind (041)": [
+  {
+   "target_token": "GO-B",
+   "context": "  GO-B-blind (041)   **Blind, NON-ORACLE prospective flip on a fresh untouched domain (20 Newsgr"
+  }
+ ],
+ "GO-B-optim-D4 (034 · D4)": [
+  {
+   "target_token": "GO-B",
+   "context": "  GO-B-optim-D4 (034 · D4)   **Optimization — gradient compression, curvature (Hessian) read ope"
+  }
+ ],
+ "GO-B-PDAR (034 · D3)": [
+  {
+   "target_token": "GO-B",
+   "context": "  GO-B-PDAR (034 · D3)   **Seismic array backazimuth (PDAR, 13-elem IMS array), teleseismic P, w"
+  }
+ ],
+ "GO-B-AV163 (034 · D2)": [
+  {
+   "target_token": "GO-B",
+   "context": "  GO-B-AV163 (034 · D2)   **Second independent acoustic corpus (AV16.3), 8-mic circular array, w"
+  }
+ ],
+ "GO-B-RaDICaL (034 · D1)": [
+  {
+   "target_token": "GO-B",
+   "context": "  GO-B-RaDICaL (034 · D1)   **Real automotive-grade 77 GHz FMCW radar (RaDICaL), MUSIC DOA consu"
+  }
+ ],
+ "VI-6 (misidentified observer)": [
+  {
+   "target_token": "I",
+   "context": "ma_x^{-1/2}\\ker\\hat P$ — the naive kernel overstates it by ${\\sim}30\\%$ when $\\Sigma_x\\ne I$   fresh-context derivation pass (R-IND-5) + `verify_observer_mismatch.py`   both theorem"
+  }
+ ],
+ "VI-8 (consumer-relative Landauer)": [
+  {
+   "target_token": "I",
+   "context": "k–distortion paper (Thm 1, Props 1–4, Thm 2, Cors 1–4), incl. the flagged suspicion that $I(X;\\hat X\\mid S)$ might not be convex in $q$   **0 ERRORS, 4 SHARPENINGS caught before sub"
+  }
+ ],
+ "VI-10 (complementarity tax)": [
+  {
+   "target_token": "I",
+   "context": "(D_A,D_B)\\preceq B^{\\mathsf T}\\Sigma_xB$; work floor with $\\kappa_S$; discount identity $=I(Y;S)$; worked instance), incl. the flagged prime suspect (the exactness \"iff\")   **1 ERRO"
+  }
+ ],
+ "VI-9 (Gaussian region with reset side information)": [
+  {
+   "target_token": "I",
+   "context": "corner quadrant** (no rate–work tradeoff in one dimension; side-information discount $\\to I(X;S)$ as $D\\to0$), and the tradeoff **reappears in the vector case** via distortion alloc"
+  }
+ ],
+ "VI-13 (OT-EC EC7-003 analytic effort instrument)": [
+  {
+   "target_token": "I",
+   "context": "audit steps. Discrepancies: analytic uses $S_0$ and $Q$ where the process has $S_0+10^{-9}I$ and $Q+10^{-12}I$ (Cholesky jitter) — combined $\\sim 1.4\\mathrm{e}{-10}$ relative, commo"
+  }
+ ],
+ "VI-14 (DR-1/DR-2 closed forms + harness correspondence)": [
+  {
+   "target_token": "VI-15",
+   "context": "eproduction certified on one platform; sealing-commit timeline verified by the DR-3 pass (VI-15), not this one. **Verified post-run, pre-submission**  "
+  }
+ ],
+ "VI-15 (DR-3 scheduling instrument + comparison fairness)": [
+  {
+   "target_token": "I",
+   "context": "he implemented rank-one family (true only for the $e^{\\top}P_Ce$ trigger family with $P_C=I$; vacuous within the tested family — explicitly stated-not-measured, so no numeric confla"
+  }
+ ],
+ "GO-EC-7": [
+  {
+   "target_token": "VI-13",
+   "context": "held-out spread 0.0407 ≤ 0.10)   The v3 analytic instrument is independently verified — **VI-13** above (re-derivation in different coordinates to 1e-15; 900k-rollout net bounds bias < "
+  }
+ ]
+}

@@ -51,9 +51,12 @@ this one does not. What survives the negative result is smaller and better
 supported. Lakatos distinguished a programme's hard core from its protective
 belt and was criticized by Feyerabend for an appraisal available only in
 hindsight. A claim ledger that fixes priority by repository ancestry and
-requires dependencies to be declared before the test turns that partition into a
-property of the record rather than a reconstruction, so the question of what a
-refutation strikes acquires a present-tense answer. That is not a paradigm. It
+requires dependencies to be declared before the test would turn that partition
+into a property of the record rather than a reconstruction, so the question of
+what a refutation strikes acquires a present-tense answer. The paper reports
+against itself here: no existing specification gives dependency edges the
+priority property it gives claims, so the answer describes what a ledger makes
+possible and not what any deployment yet shows. That is not a paradigm. It
 is a change to the medium in which paradigms are recorded. The paper identifies
 the inquiry arm positively, as a set of secondary rules in Hart's sense, and
 states five predictions by which the account can be shown wrong.
@@ -478,23 +481,49 @@ leaving a trace. The question Feyerabend said could only be answered in hindsigh
 namely what this refutation strikes, acquires an answer available the moment the
 refutation is recorded.
 
-Three limits on this claim must be stated with it.
+Four limits on this claim must be stated with it, and the first is severe
+enough that it bounds the rest.
 
-First, it addresses one input to Lakatos's appraisal rather than the appraisal
+First, the specification does not require what the argument depends on. Priority
+is a property the specification gives to *claims*: a registration must be an
+ancestor of its result, and a claim that cannot show this is capped. It gives no
+such property to *edges*. Nothing requires a dependency to have been declared
+before the test it bears on, nothing records when an edge was declared, and no
+check distinguishes a graph wired in advance from one wired afterwards. The
+argument above needs the partition to be prospective, and a ledger conforming at
+the highest level defined today can have been wired entirely in hindsight.
+
+This is not hypothetical. The companion paper's Deployment A was converted from a
+format with no dependency field into one with 27 declared edges, and every edge
+was written after the results it organises were known. The checker accepted all
+of them. A ledger in that state answers Feyerabend no better than the prose it
+replaced, because the core and belt were still separated by someone who already
+knew which survived. What the record buys over a reconstruction is the ability
+to *show* that the partition preceded the test, and that ability is currently
+available for claims and unavailable for the edges between them. The discovery
+arm has already solved the same problem for transformation families, by
+requiring a late row to carry the date it was written, name the sealed artifact
+holding the declaration, and demonstrate that the declaration preceded the
+result \citep{pedsc}; the inquiry arm has no matching clause for edges. Until it
+does, the answer to Feyerabend set out above describes a discipline the
+specification does not yet enforce, and should be read as what a claim ledger
+makes possible rather than as what any existing one demonstrates.
+
+Second, it addresses one input to Lakatos's appraisal rather than the appraisal
 itself. Whether a modification is ad hoc still requires judgment about whether a
 prediction counted as new, and no graph settles that. The discovery arm's
 requirement that transformation families be declared in the registry before the
 seal constrains the judgment, since a family cannot be selected after seeing
 which tests passed \citep{pedsc}. It does not eliminate it.
 
-Second, localization reaches only as far as the declared conjunction. Duhem and
+Third, localization reaches only as far as the declared conjunction. Duhem and
 Quine established that no hypothesis is tested alone, and a refutation indicts
 whatever was assumed alongside it \citep{duhem1954,quine1951}. A ledger can
 propagate along edges that were written down. Dependencies nobody declared are
 invisible to traversal, and the specification says so rather than claiming
 otherwise.
 
-Third, the mechanism assumes the repository history is intact. Priority proved
+Fourth, the mechanism assumes the repository history is intact. Priority proved
 by ancestry is stronger than a third party's timestamp in requiring no trusted
 service, and weaker in being vulnerable to history rewriting. The specification
 records this trade rather than resolving it, and anchoring a hash in an external

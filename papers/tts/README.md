@@ -7,7 +7,7 @@ reading did not.*
 rolling submission). Scope match: "the ethical, professional and social
 responsibility in the practice of science, technology, engineering and
 mathematics."
-**Status:** draft, September 2026 · 6 pp IEEEtran two-column · 1 figure, 1 table
+**Status:** draft, September 2026 · 7 pp IEEEtran two-column · 1 figure, 1 table
 **Companion:** [`../kuhn/`](../kuhn/) — the theory half. See *The pair* below.
 
 ---
@@ -75,6 +75,42 @@ would be the worse object. The gap stood through a written conformance report an
 a published case study because every reader checked whether P4 *passed* — whether
 it had anything to pass *over* is a question a check answers in milliseconds and a
 reading does not raise.
+
+## §7: wiring a graph into Deployment A, and the bigger gap it found
+
+The non-vacuity clause caps an edge-less format, so we gave Deployment A edges:
+77 native claim objects, 27 declared edges (8 bearing weight, 3 corroborating,
+16 contextual), edge coverage 0.078. Full write-up:
+[`../../case-studies/wiring-the-observation-spine.md`](../../case-studies/wiring-the-observation-spine.md).
+
+**Most of the first run was our error, which the paper reports.** 44 errors → 43
+were ours (marked every claim retrospective when it's the *edges* that are).
+12 → 6 were ours (registration detector knew one of the ledger's naming schemes,
+so the whole crucible family read as unregistered). Residue: **6 findings**,
+including `GO-12` `predicted` resting on `GO-11` `replicated` — a support-cap
+violation whose content is that **priority does not propagate upward through a
+dependency**. Also: two claims tagged `[refuted-as-sealed]`, a token the spec
+doesn't define, silently read as the *live* class `exploratory` where the
+programme means terminal; and a table header that has been counted as a claim in
+every previous report (true count 77, not 78).
+
+**The finding that outranks those six.** We declared 27 edges into a corpus whose
+results were all in, and the validator accepted every one. **PE-CLS-1.0 gives
+claims a priority property and gives edges none** — nothing requires an edge to
+predate the test it bears on, nothing records when it was declared, no check can
+tell a graph wired in advance from one wired afterwards.
+
+That lands on the companion paper's central claim. Its answer to Feyerabend needs
+the edges to be prospective; a top-level-conforming ledger may be wired entirely
+in hindsight, and this one now is. **Kuhn §7 has been corrected** to state the
+claim as what a ledger makes possible rather than what any deployment shows, and
+the abstract now reports against itself on that point.
+
+Fix not implemented: edges want `declared`/`entered`/`declared_in` as PE-DSC
+§3.2.1 already does for transformation families, and blast radius should then
+report the prospective subgraph separately. It changes the meaning of every
+existing edge in both deployments, so it is a deliberate decision, not a
+same-sitting one.
 
 ## The pair
 

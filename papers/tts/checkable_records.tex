@@ -45,9 +45,13 @@ defines it: it was certifying the coherence level for a deployment whose
 dependency graph its parser cannot populate, so that check was deciding an empty
 graph. The same programme requires judgment procedures to prove they are not
 vacuous, and the record specification carried no equivalent condition. It now
-does, and the reference deployment moves down a level as a result. What it
+does, and the reference deployment moves down a level as a result: what it
 demonstrated was never coherence, only the absence of anything to be incoherent
-about.
+about. Converting that deployment to a format with a dependency field then
+surfaced a second gap, larger than the first. The specification gives claims a
+priority property and gives dependency edges none, so a graph wired after its
+results are known cannot be told from one declared in advance. We wired one that
+way, and the checker accepted it.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -195,7 +199,8 @@ finding in this paper.
 The first deployment is the evidence ledger of an observation-theory programme:
 78 claims, and a registry of 91 sealed registrations.
 
-Under the amended specification of Section~ef{sec:selfcheck} it conforms at
+Under the amended specification of Section~
+ef{sec:selfcheck} it conforms at
 L2, and the L3 it was previously reported at was vacuous. P2 holds over the full
 range 001 to 091 with zero gaps and
 four identifiers carrying no result: two never assigned and proven absent from
@@ -402,6 +407,79 @@ whether the coherence property passed. Deciding whether it had anything to pass
 over is the kind of question a check answers cheaply and a reading does not
 answer at all.
 
+\section{Wiring a graph into Deployment A}
+\label{sec:spine}
+
+The non-vacuity clause caps a format that cannot express edges, which invites the
+obvious response: give it one. Deployment A was converted to native claim
+objects, 77 of them, one per ledger row.
+
+Edges were produced as candidates mechanically, by finding every mention of one
+claim's identifier inside another claim's row together with its surrounding
+sentence, then adjudicated one at a time by reading that sentence. Type
+assignment was not automated, because the specification is explicit that a
+checker cannot separate an edge a claim rests on from a contextual one, and an
+automated guess would have manufactured exactly the structure the exercise
+measures. Fifty-two raw candidates reduced to twenty-five after excluding matches
+inside a row's own identifier cell, and twenty-seven edges were declared: eight
+bearing weight, three corroborating, sixteen contextual.
+
+	extbf{Most of the first run was the converter's error, and reporting that is
+part of the result.} The first run raised 44 errors, of which 43 were ours: every
+object had been marked retrospective on the reasoning that its edges were written
+today, which is the wrong object, since that flag is about a claim's own priority
+and these claims are registered. The second run raised 12, of which 6 were ours:
+the registration detector matched one of the ledger's naming schemes, and
+reported the entire crucible family, sealed before any test ran under a different
+scheme, as unregistered. A conversion run by someone less familiar with the
+corpus would have recorded six false accusations of missing priority. The residue
+after both corrections is six findings.
+
+Three claims assert a class requiring prior registration while their rows name no
+registration under any scheme. Two verification records carry a prediction class
+where the specification provides record classes that carry no evidence grade of
+their own. Two claims are tagged with a class token the specification does not
+define, which the parser read as a live class where the programme means a
+terminal one. A table header has been counted as a claim in every previous report
+of this ledger, so the true count is 77 and not 78. And the two front ends are
+exclusive, so no single invocation reads both the claim objects and the registry
+accounting table.
+
+The sixth is the one the graph was built to find. 	exttt{GO-12} is classed as
+registered in advance and rests on 	exttt{GO-11}, which is not; under the
+partial order over classes neither dominates the other, and the check refuses the
+claim. The content is not bookkeeping. Priority does not propagate upward through
+a dependency: a claim registered before its test, resting on a claim that was
+not, cannot carry its registered standing past the joint. That is invisible in
+prose, and it is what a declared graph is for.
+
+\subsection{What the conversion showed about the specification}
+
+Twenty-seven edges were declared into a corpus whose results were all in, and the
+validator accepted every one without comment. The specification gives claims a
+priority property and gives edges none. Nothing requires an edge to have been
+declared before the test it bears on, nothing records when an edge was declared,
+and no check separates a graph wired in advance from one wired afterwards.
+
+This bears on the companion manuscript, which argues that a claim ledger makes a
+research programme's core-and-belt partition a property of the record rather than
+a reconstruction made by someone who already knows which commitments survived.
+That argument needs the edges to be prospective. A ledger conforming at the
+highest level defined today may have been wired entirely in hindsight, and this
+one was. The companion now states its claim as what a ledger makes possible
+rather than as what any deployment demonstrates.
+
+The remedy has a precedent inside this programme. The discovery arm met the same
+problem for transformation families and resolved it by admitting a late row only
+when it carries the date it was written, names the sealed artifact holding the
+real declaration, and shows that declaration preceding the result. Dependency
+edges want the same three fields, and blast radius should then report the
+prospective subgraph separately, since that is the only part of a graph the
+appraisal argument is entitled to. We have not implemented it. It changes the
+meaning of every edge in both deployments, and after the clause in
+Section~ef{sec:selfcheck} that is a change to make deliberately rather than in
+the sitting that discovered the need for it.
+
 \section{Discussion}
 
 The defects reported here fall into three classes, and the classes suggest what
@@ -486,13 +564,12 @@ machine-checked cores both exist in that programme, but they are recorded in
 prose rather than as linked objects, and claiming a level whose requirement is
 linked objects would be the error this apparatus exists to prevent.
 
-Finally, Section~\ref{sec:selfcheck}'s clause leaves the two deployments incomparable on
-coherence, and now says so rather than obscuring it. Deployment B is evaluated
-over a real dependency graph at 0.653 edge coverage. Deployment A has no graph to
-evaluate, and recovering one means migrating it to a format with a dependency
-field and declaring structure that currently exists only implicitly in its
-chapters. That migration is unperformed, and until it is done this paper reports
-one deployment's coherence rather than two.
+Finally, Section~\ref{sec:selfcheck}'s clause left the two deployments incomparable on
+coherence, and Deployment A has since been converted to a format with a
+dependency field, reported in Section~ef{sec:spine}. It now carries a real but
+sparse graph at 0.078 edge coverage against Deployment B's 0.653, and the gap is
+a fact about the corpora rather than about the checker: most of Deployment A's
+dependency structure is not written down in any document a converter can read.
 
 \section{Related Work}
 \label{sec:related}
