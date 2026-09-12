@@ -5,10 +5,20 @@
 [`conformance-geometric-observation.txt`](conformance-geometric-observation.txt)
 
 > **Status: REMEDIATED, same day.** The P1 failure described below was fixed by
-> re-anchoring, not by editing this report. Final verdict:
+> re-anchoring, not by editing this report. Verdict as of 2026-08-25:
 > **CONFORMING at L3** — P1 32/32, P2 91 rows gap-free, P3, P4 clean. The
 > failure analysis is retained in full because it is the report's most useful
 > content and because deleting it would violate the specification it tests.
+>
+> **Superseded 2026-09-12: this ledger is L2, not L3.** The L3 verdict above was
+> reported over an *empty dependency graph*. The markdown front end has no field
+> for `uses` edges, so P4 was decided over nothing and every blast radius was
+> zero by construction. [PE-CLS-1.0 §9.1](../spec/PE-CLS-1.0.md) now forbids
+> reporting P4 over a graph a format cannot express. **Nothing about the
+> programme changed and no scientific claim is affected** — what changed is that
+> the report no longer overstates what was checked. See §7 below.
+> The earlier verdict is kept rather than edited, for the same reason the P1
+> failure analysis is kept.
 
 | Property | Verdict (as found) | Verdict (after remediation) | Detail |
 |---|---|---|---|
@@ -128,3 +138,55 @@ native claim objects that declare the edge type.
 
 That limitation is itself informative: it is the concrete cost of running the
 specification against a ledger that predates it.
+
+---
+
+## 7. Superseded verdict: L3 was vacuous, the ledger is L2
+
+**Added 2026-09-12.** Re-running the validator after the §9.1 amendment:
+
+```
+P4 Coherence  FAIL (1)  {'claims': 78, 'cap_violations': 0,
+                         'uses_edges': 0, 'claims_with_deps': 0,
+                         'edge_coverage': 0.0}
+[ERROR] P4 (ledger): this ledger's format has no field for dependency edges,
+        so P4 would be decided over an empty graph and blast radius would be
+        zero for every claim. L3 and above require a format that can express
+        them (s9.1). Re-run at --level L2, or migrate to native claim objects.
+
+NON-CONFORMING at L3: 1 error(s), 2 warning(s)
+CONFORMING at L2
+```
+
+**The original P4 PASS was true and uninformative.** Zero of 78 claims carry a
+resolving `uses` edge, because `parse_markdown_ledger` has no field to read one
+out of. No dependency failed to resolve, no cycle existed, and no claim outranked
+a support it did not have, all for the same reason: there was no graph.
+
+This is the condition the judgment arm already guards. An invariance claim is
+paired with a **non-degeneracy** requirement precisely because a constant function
+satisfies invariance perfectly and says nothing. The ledger specification asked
+that of the systems it governs and not of itself.
+
+The gap had stood through a written conformance report, a case study, and a
+specification review. That is not a mark against those documents; it is the
+distinction the whole apparatus rests on. Every reader checked whether P4
+*passed*. Whether it had anything to pass *over* is a question a check answers in
+milliseconds and a reading does not raise at all.
+
+**What the return cost:** nothing was wrong with the programme. The claims, the
+seals, the registry accounting, and the remediation are all exactly as reported.
+The error was in what this document said had been verified.
+
+**Remediation options, in the programme's hands:**
+
+1. **Accept L2** and report it. Honest, immediate, and correct as of today.
+2. **Migrate to native claim objects**, which carry a `uses` field, and declare
+   the dependency structure that already exists implicitly in the chapters. This
+   is the real fix and it restores a genuine L3.
+
+Option 1 is taken here. Option 2 is the work, and it is the same work
+PE-BRW-1.0 calls wiring the spine.
+
+*This is the second specification change this ledger has forced, after §7.1.1.
+Both were found by running the checker and neither by reading the report.*

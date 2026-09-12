@@ -556,6 +556,45 @@ L1 is achievable by an individual researcher in an afternoon and already deliver
 the file-drawer guarantee. L4 is what a programme making theoretical claims at
 scale should target.
 
+### 9.1 Non-vacuity *(normative)*
+
+**P4 MUST NOT be reported as satisfied over an empty dependency graph.**
+
+Every P4 check passes perfectly on a ledger that declares no edges at all.
+Nothing fails to resolve, nothing cycles, and no claim outranks a support it does
+not have. A ledger in that state has not demonstrated coherence; it has declined
+to state anything coherence could be about, and its blast radius is zero for
+every claim by construction rather than by finding.
+
+A conforming report at L3 or above MUST therefore:
+
+1. Report **edge coverage** — the fraction of claims declaring at least one
+   `uses` edge that resolves within the ledger — as a first-class statistic
+   alongside the P4 verdict, in every run.
+2. **Fail** when the ledger declares no resolving `uses` edge at all.
+3. **Fail** when the ledger's storage format has no field capable of expressing a
+   `uses` edge. Such a ledger MAY conform at L2, where no property quantifies
+   over the graph, and MUST NOT be certified above it. A conformance claim of L3
+   over a format that cannot hold the structure L3 exists to check is a claim
+   about the parser rather than about the programme.
+4. Fail when the ledger declares a minimum coverage and measured coverage falls
+   below it. A programme MAY declare such a minimum; this specification does not
+   set one, because the correct floor depends on how many of a corpus's claims
+   are genuinely independent and no general value is defensible.
+
+This clause is the inquiry arm's analogue of the **non-degeneracy** requirement
+the judgment arm places on invariance (Foundation v1.0): a procedure that
+satisfies a constraint by making no distinctions satisfies it vacuously, and a
+specification that demands non-degeneracy of the systems it governs owes the same
+of itself. It was added after the reference validator certified L3 for a
+deployment whose front end cannot represent dependency edges, which no reading of
+the report had caught.
+
+Records conforming at L3 under an earlier revision of this specification MUST be
+re-evaluated against this clause. The reference deployment's markdown ledger does
+not meet it and is L2 under the amended definition; see
+[`case-studies/conformance-geometric-observation.md`](../case-studies/conformance-geometric-observation.md).
+
 ## 10. Failure modes of the method *(informative)*
 
 A specification that cannot say how it fails is a marketing document.

@@ -306,8 +306,18 @@ def check_p1(root: str, registry: dict) -> tuple[list[Finding], dict]:
     return out, {"checked": checked, "ancestor_ok": ok, "unknown": unknown}
 
 
-def check_p4(claims: dict[str, Claim]) -> tuple[list[Finding], dict]:
-    """Coherence: dependencies resolve, acyclic, support-cap holds."""
+def check_p4(claims: dict[str, Claim], edges_expressible: bool = True,
+             min_coverage: float | None = None) -> tuple[list[Finding], dict]:
+    """Coherence: dependencies resolve, acyclic, support-cap holds, and the
+    graph is non-vacuous (s9.1).
+
+    The non-vacuity clause exists because every other check here passes
+    perfectly on a ledger with no edges at all: nothing fails to resolve,
+    nothing cycles, and no claim outranks a support it does not have. That is
+    the same shape of defect the judgment arm rules out by pairing invariance
+    with non-degeneracy, and it went unnoticed here until the checker was run
+    against a deployment whose format cannot store edges.
+    """
     out: list[Finding] = []
     for c in claims.values():
         for dep in c.uses + c.corroborates:
@@ -361,7 +371,40 @@ def check_p4(claims: dict[str, Claim]) -> tuple[list[Finding], dict]:
                                    f"class '{c.cls}' exceeds weakest "
                                    f"load-bearing dependency '{dep}' "
                                    f"({d.cls}) -- support-cap violation"))
-    return out, {"claims": len(claims), "cap_violations": capped}
+
+    # s9.1 non-vacuity. Counted over resolvable `uses` edges only: a
+    # `corroborates` edge is support, not load, and carries nothing for blast
+    # radius to traverse.
+    edges = sum(1 for c in claims.values()
+                for dep in c.uses if dep in claims)
+    with_deps = sum(1 for c in claims.values()
+                    if any(dep in claims for dep in c.uses))
+    coverage = (with_deps / len(claims)) if claims else 0.0
+
+    if not edges_expressible:
+        out.append(Finding("P4", "ERROR", "(ledger)",
+                           "this ledger's format has no field for dependency "
+                           "edges, so P4 would be decided over an empty graph "
+                           "and blast radius would be zero for every claim. "
+                           "L3 and above require a format that can express "
+                           "them (s9.1). Re-run at --level L2, or migrate to "
+                           "native claim objects."))
+    elif claims and edges == 0:
+        out.append(Finding("P4", "ERROR", "(ledger)",
+                           "dependency graph is empty: no claim declares a "
+                           "load-bearing dependency on another. Every P4 check "
+                           "passes vacuously and blast radius is zero "
+                           "everywhere, so L3 certifies nothing (s9.1)."))
+    elif min_coverage is not None and coverage < min_coverage:
+        out.append(Finding("P4", "ERROR", "(ledger)",
+                           f"edge coverage {coverage:.3f} is below the "
+                           f"declared minimum {min_coverage:.3f} -- "
+                           f"{with_deps} of {len(claims)} claims declare a "
+                           f"dependency (s9.1)."))
+
+    return out, {"claims": len(claims), "cap_violations": capped,
+                 "uses_edges": edges, "claims_with_deps": with_deps,
+                 "edge_coverage": round(coverage, 3)}
 
 
 def check_p1_retro(claims: dict[str, Claim]) -> tuple[list[Finding], dict]:
@@ -782,6 +825,11 @@ def main() -> int:
     ap.add_argument("--level", default="L3",
                     choices=list(LEVEL_PROPS) + list(DSC_LEVEL_PROPS))
     ap.add_argument("--blast-radius", metavar="CLAIM_ID")
+    ap.add_argument("--min-edge-coverage", type=float, default=None,
+                    metavar="FRAC",
+                    help="s9.1: fail P4 unless at least FRAC of claims declare "
+                         "a load-bearing dependency. Off by default; the "
+                         "empty-graph refusal always applies.")
     ap.add_argument("--policy", default="proved,replicated,predicted",
                     help="citation policy for P3")
     ap.add_argument("--baseline", metavar="FILE",
@@ -817,8 +865,16 @@ def main() -> int:
     native = parse_native_ledger(root)
     if native:
         claims, registry, notes = native, {}, ["native ledger format"]
+        edges_expressible = True
     else:
         claims, registry, notes = parse_markdown_ledger(root)
+        # The markdown front end recovers ids, classes, statements and
+        # registrations. It has no field for `uses`, so a dependency graph
+        # cannot be read out of it (s9.1).
+        edges_expressible = False
+        notes.append("markdown front end: dependency edges are not "
+                     "expressible in this format; P4 non-vacuity fails by "
+                     "construction above L2 (s9.1)")
 
     if args.blast_radius:
         report = blast_radius(claims, args.blast_radius)
@@ -845,7 +901,9 @@ def main() -> int:
         findings += fr
         stats["P1"] = {**s, **sr}
     if "P4" in props:
-        f, s = check_p4(claims); findings += f; stats["P4"] = s
+        f, s = check_p4(claims, edges_expressible=edges_expressible,
+                        min_coverage=args.min_edge_coverage)
+        findings += f; stats["P4"] = s
     if "P3" in props:
         f, s = check_p3(root, claims, set(args.policy.split(","))); findings += f
         stats["P3"] = s

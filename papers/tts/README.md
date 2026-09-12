@@ -50,11 +50,31 @@ of the same programme requires judgment procedures to prove non-degeneracy,
 precisely because a constant function satisfies invariance vacuously. The record
 spec imposes no such condition on itself.
 
-Fix stated, **not applied**: L3 should report edge coverage as a first-class
-statistic and refuse blast-radius conformance over an empty graph; a format that
-cannot express edges should cap at L2. Applying it moves a deployed record from
-conforming to non-conforming, which is the spec owner's call, not the checker
-author's — the same reason the discovery-arm finding was reported open rather than quietly patched. That one has since produced PE-DSC-1.0 §3.2.1, which is what reporting-and-leaving-open is supposed to lead to.
+**Fix implemented** (PE-CLS-1.0 §9.1, `check_p4` non-vacuity). L3+ now reports
+edge coverage in every run, fails when no resolving `uses` edge exists, and caps
+an edge-incapable storage format at L2. `--min-edge-coverage FRAC` enforces a
+programme-declared floor; the spec sets no general value, because the defensible
+one depends on how many claims are genuinely independent.
+
+Verified outcomes after the change:
+
+| ledger | before | after | edge coverage |
+|---|---|---|---|
+| geometric-observation (markdown) | CONFORMING L3 | **NON-CONFORMING L3 · CONFORMING L2** | 0.000 (0/78) |
+| geometric-ethics (native) | CONFORMING L3 vs baseline | **unchanged** | 0.653 (154/236) |
+
+Nothing about either programme changed. No scientific claim is affected. What
+changed is that the report stops saying coherence was verified when what was
+verified was an empty graph. `case-studies/conformance-geometric-observation.md`
+supersedes its own L3 verdict in place rather than editing it, the way it already
+kept its P1 failure analysis.
+
+**Framing.** This is reported as a return, not a confession. A check that surfaces
+something is a check working; a specification its own instrument could not catch
+would be the worse object. The gap stood through a written conformance report and
+a published case study because every reader checked whether P4 *passed* — whether
+it had anything to pass *over* is a question a check answers in milliseconds and a
+reading does not raise.
 
 ## The pair
 
@@ -132,5 +152,5 @@ numbers move.
 - [x] AI-use disclosure included
 - [x] Companion sections added to **both** papers
 - [ ] **Verify on final:** Merton reprint pagination (`% verify` mark in the `.tex`)
-- [ ] Decide whether to implement the §6 fix before or after submission — it changes Deployment A's reported level
+- [x] §6 fix implemented (spec §9.1 + `check_p4`); both ledgers re-run; case study superseded in place
 - [ ] Owner submits. Not submitted, posted, or emailed.

@@ -40,13 +40,14 @@ specification. A correction was propagated so completely that the published book
 reads as though the stronger claim had never been made, leaving a blast radius of
 zero that is the finding rather than the absence of one. Three results were
 graded as requiring no modeling assumptions while their own dependency lists
-named them. We also report a defect in our own work: the validator certifies the
-higher conformance level for a deployment whose dependency graph its parser
-cannot populate, so a coherence check passes over an empty graph. The same
-programme requires judgment procedures to prove they are not vacuous, and the
-record specification carries no equivalent condition. We state the fix and do not
-apply it, because changing conformance semantics for a deployed ledger is the
-specification owner's decision rather than the checker's.
+named them. The validator also returned a result against the specification that
+defines it: it was certifying the coherence level for a deployment whose
+dependency graph its parser cannot populate, so that check was deciding an empty
+graph. The same programme requires judgment procedures to prove they are not
+vacuous, and the record specification carried no equivalent condition. It now
+does, and the reference deployment moves down a level as a result. What it
+demonstrated was never coherence, only the absence of anything to be incoherent
+about.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -194,7 +195,9 @@ finding in this paper.
 The first deployment is the evidence ledger of an observation-theory programme:
 78 claims, and a registry of 91 sealed registrations.
 
-At L3 it conforms. P2 holds over the full range 001 to 091 with zero gaps and
+Under the amended specification of Section~ef{sec:selfcheck} it conforms at
+L2, and the L3 it was previously reported at was vacuous. P2 holds over the full
+range 001 to 091 with zero gaps and
 four identifiers carrying no result: two never assigned and proven absent from
 the full history, one reservation abandoned before sealing, and one burned by a
 design failure that its own pilot caught. P4 reports no support-cap violations.
@@ -345,8 +348,11 @@ therefore invisible to the corpus's own accounting before conversion.
 \section{What the validator found in the specification}
 \label{sec:selfcheck}
 
-The most serious finding in this paper is a defect in our own work, and the
-validator produced it.
+The result with the most consequence here came from pointing the validator at
+the specification that defines it. We report it the way we report the others,
+because a check that returns something is a check doing its work, and a
+specification that could not be caught by its own instrument would be the more
+troubling object.
 
 Deployment A is certified at L3. L3 requires declared dependency edges, P4, and
 blast-radius reporting. Deployment A's record is stored as markdown tables, and
@@ -373,13 +379,28 @@ refusing to certify blast-radius conformance when the graph is empty or when
 coverage falls below a declared threshold. A format that cannot express
 dependency edges should be capped at L2 rather than certified at L3.
 
-We have not implemented it here. Applying it would move a deployed record from
-conforming to non-conforming, and that is a decision for the specification's
-owner rather than for the checker's author, on the same grounds that a separate
-finding elsewhere in this programme is left unrepaired. Reporting the defect and
-leaving it open is the behavior the specification asks for. It is also the reason
-we report conformance levels for both deployments with the qualification that
-Deployment A's L3 is, on the current definition, weaker than it sounds.
+We implemented it. The specification gained a non-vacuity clause requiring that
+edge coverage be reported in every run, that a ledger declaring no resolving
+dependency edge fail, and that a storage format incapable of expressing such an
+edge be capped at L2, where no property quantifies over the graph. A programme
+may declare a minimum coverage and the validator enforces it; the specification
+declines to set a general floor, because the defensible value depends on how many
+of a corpus's claims are independent of the rest.
+
+The effect on the two deployments is asymmetric. Deployment A now fails L3 and
+conforms at L2. Nothing about that programme changed: its claims, its seals, and
+its registry accounting are exactly as previously reported, and no scientific
+result is affected. What changed is that the report no longer states that
+coherence was verified when what was verified was an empty graph. Deployment B is
+unaffected, declaring 196 resolving edges across 154 of its 236 claims, an edge
+coverage of 0.653, and continuing to conform at L3 against its baseline.
+
+The gap had persisted through a written conformance report and a published case
+study without a reader noticing, which is the same pattern as the other three
+findings and the reason we think the exercise is worth the cost. Readers checked
+whether the coherence property passed. Deciding whether it had anything to pass
+over is the kind of question a check answers cheaply and a reading does not
+answer at all.
 
 \section{Discussion}
 
@@ -465,9 +486,13 @@ machine-checked cores both exist in that programme, but they are recorded in
 prose rather than as linked objects, and claiming a level whose requirement is
 linked objects would be the error this apparatus exists to prevent.
 
-Finally, Section~\ref{sec:selfcheck}'s defect means the two deployments are not
-directly comparable. Deployment B's conformance is evaluated over a real
-dependency graph and Deployment A's over an empty one.
+Finally, Section~\ref{sec:selfcheck}'s clause leaves the two deployments incomparable on
+coherence, and now says so rather than obscuring it. Deployment B is evaluated
+over a real dependency graph at 0.653 edge coverage. Deployment A has no graph to
+evaluate, and recovering one means migrating it to a format with a dependency
+field and declaring structure that currently exists only implicitly in its
+chapters. That migration is unperformed, and until it is done this paper reports
+one deployment's coherence rather than two.
 
 \section{Related Work}
 \label{sec:related}
