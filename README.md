@@ -177,6 +177,7 @@ that subject when the discipline arrives. Both axes apply to both arms.
 | [`spec/PE-BRW-1.0.md`](spec/PE-BRW-1.0.md) | **Brownfield Conversion** — bringing an existing corpus into a ledger without laundering it |
 | [`spec/schema/`](spec/schema/) | JSON Schemas for the claim, registration, and verification objects |
 | [`tools/pe_lint.py`](tools/pe_lint.py) | Reference validator. Checks P1–P4 against a real ledger; computes blast radius |
+| [`docs/for-philosophers.md`](docs/for-philosophers.md) | **Start here if you came from philosophy.** The discipline without the code: what it takes from Popper, Lakatos, Merton and Hohfeld, where it is weakest, and five ways in |
 | [`PRIOR-ART.md`](PRIOR-ART.md) | Honest positioning: what exists, what is borrowed, what is added |
 | [`case-studies/`](case-studies/) | Worked retractions and promotions from live programmes |
 | [`foundation/`](foundation/) | The judgment arm: Philosophy Engineering Foundation v1.0 (EIP, BIP, knowledge areas) |
