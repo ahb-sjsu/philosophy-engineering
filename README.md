@@ -203,9 +203,14 @@ first finding is the one D1 exists for. Ten tests in one registry cite three
 transformation families the registry never declares. The families were declared
 in those gates' own sealed registrations and were not mirrored into the
 registry, which is exactly the bookkeeping slip a mechanical check catches and a
-reading does not. It is left unrepaired, because backfilling a registry after
-the runs is the thing D1 forbids and the right declaration date is the
-programme's call.
+reading does not. The specification had no way to record an honest repair: it
+admitted a conforming row or a missing one, so the late registry and the fitted
+one looked alike. [PE-DSC-1.0 §3.2.1](spec/PE-DSC-1.0.md) now separates them. A
+backfill must carry the date it was written, name the sealed artifact that holds
+the real declaration, and show that the declaration precedes the result;
+otherwise it is a family chosen to fit a result and MUST NOT be entered. Deleting
+the offending tests is not a repair either, because removing a test that ran is
+the file drawer P2 exists to prevent.
 
 ## Status
 

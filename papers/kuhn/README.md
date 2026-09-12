@@ -3,7 +3,8 @@
 *A test against Kuhn's criteria, and a present-tense answer to Feyerabend's
 objection to Lakatos.*
 
-**Status:** draft, September 2026 · 14 pp · ~6,550 words body
+**Status:** draft, September 2026 · 15 pp · ~6,900 words body
+**Companion:** [`../tts/`](../tts/) — the practice half, targeting IEEE T-TS.
 **Evidence class:** `exploratory` — see §10. No document in this corpus may cite
 its thesis above that class (PE-CLS-1.0 P3).
 
@@ -65,6 +66,15 @@ record, so **"what does this refutation strike?" acquires a present-tense
 answer.** That is a contribution to the appraisal of research programmes, not a
 revolution.
 
+**P-I now has a measurement, and it corrected the prediction.** The companion
+paper computed blast radius over all 236 claims of the converted corpus: 75.0%
+suspend nothing, 84.8% suspend ≤2, max 112, tail entirely definitional. The shape
+is the predicted one. But P-I's *discriminator* fails — it said a tail on a few
+high-in-degree claims would indicate under-declaration rather than a genuine
+core, and the two are indistinguishable here (29 dangling deps, only 49 of 81
+results wired). §8 now records that as a defect in the prediction, not in the
+result. That exchange is the paper pair doing its job.
+
 §8 states five falsifiers (P-I blast-radius shape, P-II negative-result rate,
 P-III loss of discontinuity in revision, P-IV declared vs. retrospective
 partition, P-V scale-before-error-rate). P-IV is cheap and runnable on the
@@ -105,7 +115,7 @@ application should treat it as a correction to make.
 Per house rule 4, all of these are in §10 rather than a memory hole:
 
 - n=1; the author is the subject; confirmation risk is severe and irreducible from inside.
-- The discovery-arm checks **do not pass** (ten tests citing three undeclared families), left unrepaired because backfilling is what D1 forbids.
+- The discovery-arm checks **do not pass** (ten tests citing three undeclared families). This forced PE-DSC-1.0 §3.2.1, which specifies when a late row is an admissible backfill and when it is a family chosen to fit a result. Whether the registry has since been repaired is not verified in the paper.
 - P2 completeness is bounded by identifier assignment, and that boundary is set by the person the property constrains.
 - Three recorded falsifications (SU(2)/CHSH N=600; obligation hysteresis N=630; ERT schism) had **no blast radius computed**, because the dependency records did not exist yet.
 - **No external party is entitled to demand these accounts.** Every institution in §6's reform history had an outside enforcer (journals, regulators, editors); this ledger is operated by the only party it constrains. Stated in §10 as the most likely way for the method to fail in practice while appearing to succeed on paper.

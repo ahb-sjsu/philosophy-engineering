@@ -1,0 +1,136 @@
+# Checkable Properties for a Research Record
+
+*A specification, a reference validator, and three defects it found that careful
+reading did not.*
+
+**Target:** IEEE Transactions on Technology and Society (quarterly, online-only,
+rolling submission). Scope match: "the ethical, professional and social
+responsibility in the practice of science, technology, engineering and
+mathematics."
+**Status:** draft, September 2026 · 6 pp IEEEtran two-column · 1 figure, 1 table
+**Companion:** [`../kuhn/`](../kuhn/) — the theory half. See *The pair* below.
+
+---
+
+## The argument
+
+Four assertions a research artifact normally makes on trust — we registered
+before we measured, there is no file drawer, we do not assert beyond our
+evidence, we know what depends on what — are restated as predicates over a
+version-controlled record, decided by a 939-line checker, and run against two
+live corpora that were not built for them.
+
+**Three defects found, none visible to reading:**
+
+1. **Twelve priority proofs destroyed by rebasing.** Commit hashes are the seal;
+   rebase rewrites them. The written record stayed accurate throughout and the
+   author had even noted the rebase, without noting that it had broken the proof.
+   Forced a normative addition to the spec (§7.1.1). Remediation then found a
+   *third* defect: disclosed post-seal amendments change the body and silently
+   break the content hash.
+2. **A correction with a blast radius of zero.** 87 occurrences rewritten, 2,126
+   equations verified identical, and the published book now reads as though the
+   stronger claim was never made. The zero *is* the finding. Argued in the paper
+   as the most consequential result for research accountability, because no
+   existing mechanism detects it — retraction notices cover withdrawn papers,
+   version control records that text changed, and neither surfaces a thesis
+   quietly weakened into invisibility.
+3. **Results graded above their own declared dependencies.** Three claims graded
+   as assumption-free while their dependency lists name modeling constructs.
+   Acknowledged in the baseline with a named owner; the spec forbids the
+   converter from deciding which half is wrong.
+
+**And one defect in our own specification (§6), which is the paper's most serious
+finding.** The validator certifies **L3** for Deployment A, but L3 exists for
+dependency structure and that deployment's markdown format has no field for
+dependency edges. Verified directly: 0 of 78 claims carry an edge, and
+`parse_markdown_ledger` never assigns the field. So P4 passes over an empty
+graph and blast radius is zero everywhere for a parsing reason. The sibling arm
+of the same programme requires judgment procedures to prove non-degeneracy,
+precisely because a constant function satisfies invariance vacuously. The record
+spec imposes no such condition on itself.
+
+Fix stated, **not applied**: L3 should report edge coverage as a first-class
+statistic and refuse blast-radius conformance over an empty graph; a format that
+cannot express edges should cap at L2. Applying it moves a deployed record from
+conforming to non-conforming, which is the spec owner's call, not the checker
+author's — the same reason the discovery-arm finding was reported open rather than quietly patched. That one has since produced PE-DSC-1.0 §3.2.1, which is what reporting-and-leaving-open is supposed to lead to.
+
+## The pair
+
+| | Theory (`../kuhn/`) | Practice (this) |
+|---|---|---|
+| Venue | *Synthese* / *SHPS* | IEEE T-TS |
+| Claim | PE is not a Kuhnian paradigm; the ledger answers Feyerabend's retrospectivity objection to Lakatos | Four properties are checkable, a validator decides them, here is what it caught |
+| Evidence | **none, and says so** | two corpora, one figure, computed |
+| Reviewers need | Kuhn, Lakatos, Feyerabend, Hart | git, CI, research software |
+
+**Why this is a pair and not salami-slicing.** Each is incomplete in a way the
+other names. The theory paper states five predictions and admits it cannot test
+them; the practice paper supplies the first measurement of P-I. The practice
+paper asserts four properties and does not argue why *these four*; the theory
+paper does. Both now carry an explicit **Companion Paper** section saying what
+the other does and that they are separable. That disclosure is the defense
+against a salami charge, and it happens to be true.
+
+**Submission order matters.** Practice first or simultaneous. If the theory paper
+lands first it cites a companion that does not exist yet.
+
+**The pair already corrected itself once.** P-I predicted blast radii "small and
+right-skewed" and offered a discriminator: large radii concentrated on few
+high-in-degree claims would indicate under-declaration rather than a real core.
+The measurement came back right-skewed (75% zero, 85% ≤2, max 112) with the tail
+on definitional claims — and the discriminator **does not discriminate**, because
+a genuine foundational core and pervasive under-declaration produce the same
+signature. The theory paper's §8 now records this as a defect in the prediction
+rather than in the result. That exchange is the pair doing its job.
+
+## Numbers, and where they come from
+
+Every quantity is emitted by `build/blast_distribution.py` reading the live
+ledgers. **None is transcribed from the case studies**, which have drifted:
+
+| | case study (Aug 2026) | live (Sep 2026, used in paper) |
+|---|---|---|
+| brownfield claims | 234 | **236** |
+| debt ratio | 0.962 | **0.958** |
+
+Live figures used: 236 claims · 196 edges · 154/236 with ≥1 edge · mean blast
+radius 2.771 · median 0 · max 112 · 75.0% zero · 84.8% ≤2 · max in-degree 33 ·
+4 acknowledged cap violations · 4 warnings. Greenfield: 78 claims · 91 registry
+rows 001–091 · 0 gaps · 4 void · P1 32/32 · P4 0 violations · P3 3 docs, 2
+warnings.
+
+Historical figures cited *as* historical (from the conformance and conversion
+reports): 20 seals verified on first run, 1 stale, 11 non-resolving, 2
+content-hash failures; 87 occurrences and 2,126 equations in the invisible
+retraction; 5 suspended / 135 untouched in the symmetry-group case; 81 untagged
+results, 49 wired, 29 dangling.
+
+## Build
+
+```bash
+python build/blast_distribution.py     # -> build/blast_distribution.json
+python build/fig_blast.py              # -> build/fig_blast.{pdf,png}
+PDFLATEX="/c/Users/abptl/AppData/Local/Programs/MiKTeX/miktex/bin/x64/pdflatex.exe"
+"$PDFLATEX" -interaction=nonstopmode checkable_records.tex   # twice
+pandoc checkable_records.tex -o checkable_records.docx --resource-path=".;build"
+```
+
+Regenerate the figure before any resubmission — the ledgers are live and the
+numbers move.
+
+## Finalization checklist
+
+- [x] Abstract narrative, zero math
+- [x] Banned-word grep clean (one hit, `load-bearing`, removed)
+- [x] No em-dashes in prose; no colored text; no undefined refs
+- [x] Every number from a script reading the live record, not from the case studies
+- [x] Figure caption states the takeaway, both panels
+- [x] Negatives disclosed (§8): two corpora one author, discovery-arm checks fail, P2 bounded by identifier-space origin, L4 not claimed, deployments not comparable
+- [x] Prior art credited before novelty claimed (§9)
+- [x] AI-use disclosure included
+- [x] Companion sections added to **both** papers
+- [ ] **Verify on final:** Merton reprint pagination (`% verify` mark in the `.tex`)
+- [ ] Decide whether to implement the §6 fix before or after submission — it changes Deployment A's reported level
+- [ ] Owner submits. Not submitted, posted, or emailed.

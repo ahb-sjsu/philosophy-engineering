@@ -304,9 +304,13 @@ arm was built to fix, discovered in my own work.
 
 **The checks are not currently clean.** Running the discovery-arm validator on
 the reference programme fails: ten tests cite three transformation families the
-registry never declares. It is left unrepaired, because backfilling a registry
-after the runs is the thing that property forbids. A conformance report that
-passes on its first run is usually measuring the wrong thing.
+registry never declares. The interesting part is what happened next. The
+specification could not tell an honest late row from a dishonest one, so it now
+says when a backfill is admissible — it must carry the date it was written, name
+the sealed artifact holding the real declaration, and show that the declaration
+preceded the result — and when it is instead a family chosen to fit a result,
+which may not be entered at all. A conformance report that passes on its first
+run is usually measuring the wrong thing.
 
 ---
 

@@ -550,10 +550,22 @@ contributor scale refutes it, and would indicate the mechanism is epistemic afte
 all. The two hypotheses make opposite predictions about the same programme, so a
 single case can separate them.
 
-P-IV is inexpensive and can be run on the existing corpus. P-I can be computed
-today from any conforming ledger. P-II, P-III, and P-V require a second
-programme, and until a programme other than this one adopts the method, none of
-the five has been tested.
+P-I now has one measurement, reported in the companion paper. Over the 236
+claims of the converted corpus, 75 per cent suspend nothing and 85 per cent
+suspend two or fewer, while the largest suspends 112, and the claims at the top
+of the tail are the definitions of the underlying mathematical objects rather
+than the empirical results. The shape is the predicted one. The measurement does
+not settle what P-I was written to settle, and the reason is worth recording: a
+heavy tail concentrated on a few claims of high in-degree is what a genuine
+foundational core looks like, and it is also what pervasive under-declaration
+looks like, and this corpus supplies evidence for both readings. The
+discriminator stated above is therefore too weak as written, and separating the
+two requires a corpus whose dependency declaration is known to be complete. That
+is a defect in the prediction rather than in the result.
+
+P-IV is inexpensive and can be run on the existing corpus. P-II, P-III, and P-V
+require a second programme, and until a programme other than this one adopts the
+method, none of those three has been tested.
 
 \section{Related work}
 
@@ -630,11 +642,16 @@ authorship.
 \textbf{The checks do not currently pass.} Running the discovery arm's validator
 against the reference programme fails. Ten tests cite three transformation
 families the registry never declares. The families were declared in the relevant
-sealed registrations and were not mirrored into the registry. The finding is left
-unrepaired, because backfilling a registry after the runs is what the declaration
-property forbids, and the correct declaration date is not the validator's to
-assign \citep{pedsc}. A paper arguing that mechanical checks catch what reading
-misses should report the case where they caught the author.
+sealed registrations and were not mirrored into the registry. The specification
+then had no way to say so. It admitted a conforming row or a missing one, which
+left the repaired registry and the registry fitted to its results looking alike,
+and the finding forced a clause distinguishing them: a late row is admissible
+only if it carries the date it was written, names the sealed artifact holding the
+declaration, and shows that the declaration precedes the result
+\citep{pedsc}. Whether the reference registry has since been repaired under that
+clause is not something this paper verifies. A paper arguing that mechanical
+checks catch what reading misses should report the case where they caught the
+author, and should report it again when the catch changed the specification.
 
 \textbf{Completeness is narrower than it sounds.} Gap-free identifier assignment
 makes the set of identified lines of work enumerable. It says nothing about work
@@ -700,6 +717,21 @@ controlled trial, the registry, changed what could be claimed without anyone
 describing them as revolutions. The programme's own rule applies to its
 description of itself. It may not assert what its ledger cannot show, and the
 ledger does not show a paradigm.
+
+\section*{Companion paper}
+
+This paper carries no measurements, by design: its subject is what may be
+concluded from the shape of a record, and the argument stands or falls on the
+criteria in \S3 rather than on any corpus. A companion manuscript reports the
+engineering side, namely a specification of the four properties, a reference
+validator, and what running it against two live corpora found, including three
+classes of defect that accurate prose had absorbed silently and one
+vacuous-compliance failure in the specification itself. The two are separable.
+That paper stands without this argument, and this argument was developed without
+access to its measurements. They are read together for one reason: the
+blast-radius distribution it reports is the first test of P-I above, and \S8
+records both the confirmation and the respect in which the prediction was too
+weak to do the work asked of it.
 
 \section*{Acknowledgment of AI use}
 
