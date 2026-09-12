@@ -499,10 +499,33 @@ def parse_registries(root: str) -> tuple[dict[str, dict], list[str]]:
 
 
 def check_d1(regs: dict[str, dict]) -> tuple[list[Finding], dict]:
-    """D1 Declaration: every test names a family declared in the same registry."""
-    findings, tested, undeclared = [], 0, 0
+    """D1 Declaration: every test names a family declared in the same registry,
+    and every backfilled row says where its declaration actually is."""
+    findings, tested, undeclared, backfilled = [], 0, 0, 0
     for name, reg in regs.items():
         declared = {t.get("id") for t in reg.get("transformation", [])}
+        for fam in reg.get("transformation", []):
+            entered = str(fam.get("entered") or "").strip()
+            if not entered:
+                continue
+            # s3.2: a row written later than its declaration is a backfill. It
+            # is admissible only if it names the sealed declaration it mirrors.
+            backfilled += 1
+            fid = fam.get("id", "(no id)")
+            if not str(fam.get("declared_in") or "").strip():
+                findings.append(Finding("D1", "ERROR", name,
+                    f"'{fid}' is a backfill (entered {entered}) with no "
+                    f"declared_in -- name the sealed registration that declared "
+                    f"it, or the row is a family chosen to fit a result"))
+            declared_on = str(fam.get("declared") or "").strip()
+            if declared_on and declared_on > entered:
+                findings.append(Finding("D1", "ERROR", name,
+                    f"'{fid}' declared {declared_on} but entered {entered} -- "
+                    f"a row cannot be entered before it was declared"))
+            elif declared_on:
+                findings.append(Finding("D1", "INFO", name,
+                    f"'{fid}' backfilled: declared {declared_on}, "
+                    f"entered {entered}"))
         for test in reg.get("test", []):
             tested += 1
             tid = test.get("transformation")
@@ -515,7 +538,8 @@ def check_d1(regs: dict[str, dict]) -> tuple[list[Finding], dict]:
                 findings.append(Finding("D1", "ERROR", name,
                     f"test cites undeclared transformation '{tid}' -- a family "
                     f"entered after the result is a family chosen to fit it"))
-    return findings, {"tests": tested, "undeclared": undeclared}
+    return findings, {"tests": tested, "undeclared": undeclared,
+                      "backfilled": backfilled}
 
 
 def check_d2(regs: dict[str, dict]) -> tuple[list[Finding], dict]:

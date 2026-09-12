@@ -93,11 +93,41 @@ methodology paper.
 | `parameters` | the parameter set or ladder, or `none` |
 | `closure` | what the family is closed under: composition, inversion, or `none` |
 | `rank` | position in the complexity ordering, 1 the simplest |
-| `declared` | the date the family entered the registry |
+| `declared` | the date the family was declared |
+| `declared_in` | where the declaration is, when it is not this registry. Required on a backfill |
+| `entered` | the date the row was written, when later than `declared`. Its presence marks a backfill |
 
 `declared` MUST precede the seal of any registration that tests the family. This
 is the discovery arm's analogue of PE-CLS-1.0 **P1**, and it is what the registry
 buys. A family entered after a result is a family chosen to fit it.
+
+### 3.2.1 Backfills
+
+A registry can be late without its programme having been dishonest. The common
+case is a family declared in a gate's own sealed registration and never mirrored
+into the registry, so that tests cite a family the registry does not carry.
+
+Such a row MAY be added afterwards, as a **backfill**, under three conditions,
+all of which MUST hold and MUST be checkable by a third party.
+
+1. The row carries `entered`, the date it was written, so that no reader mistakes
+   it for a contemporaneous declaration.
+2. The row carries `declared_in`, naming the sealed artifact that carries the
+   real declaration, with enough identity to retrieve it: path, content hash, and
+   the commit that sealed it.
+3. That declaration demonstrably precedes the result. The seal commit is an
+   ancestor of the commit that added the gate's result, and the sealed artifact
+   still hashes to the recorded value.
+
+If condition 3 cannot be shown, the row is not a backfill. It is a family chosen
+to fit a result, and it MUST NOT be entered. Deleting the offending tests is also
+not a repair, because removing the record of a test that ran is the file drawer
+the inquiry arm's **P2** exists to prevent.
+
+A conforming report MUST list backfilled rows rather than pass over them.
+Backfilling is a repair of bookkeeping and never a repair of priority, and a
+registry with many backfills is one whose programme is not writing declarations
+down when it makes them.
 
 ### 3.3 Test
 
@@ -154,10 +184,21 @@ clause a scope is a way of dropping the cases that fail.
 
 Every test's `transformation` MUST resolve to a transformation declared in the
 same registry, and that transformation's `declared` date MUST precede the seal of
-the registration the test records.
+the registration the test records. A row bearing `entered` MUST satisfy §3.2.1,
+and a conforming report MUST name it as a backfill.
 
 *What it stops.* Naming the admissible class after seeing which transformations
 the result survived.
+
+*What it caught.* The reference programme's own OD registry declared four
+families while its tests cited seven. Ten tests, entered over a single day of
+gate records, named three families the registry had never carried. Every one of
+the three was properly declared in its gate's sealed registration, before the
+run, so nothing about the programme's priority was wrong. Only the registry was
+late, and no amount of reading the registry had found that in two days. This is
+the ordinary yield of the property. It catches bookkeeping, which is what
+bookkeeping checks are for, and it distinguishes a late registry from a chosen
+class, which is what §3.2.1 is for.
 
 ### 5.2 D2 — Reduction
 
