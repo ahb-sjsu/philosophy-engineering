@@ -6,8 +6,8 @@
 because its markdown format has no field for a dependency edge and P4 was
 therefore deciding an empty graph.
 **Result:** **77 claim objects · 27 declared edges · edge coverage 0.078 ·
-6 findings · and one gap in the specification that lands on the companion
-paper's central claim.**
+6 findings · one gap in the specification, now closed (§6.4) ·
+prospective edge fraction 0.25.**
 
 ---
 
@@ -176,9 +176,57 @@ edges want the same treatment — `declared`, `entered`, `declared_in` — and b
 radius should then report the prospective subgraph separately, because that is
 the only part of the graph Feyerabend's objection is answered by.
 
-Not implemented here. It changes what every existing edge in both deployments
-means, and after §9.1 that is a decision to make deliberately rather than in the
-same sitting as the conversion that motivated it.
+**Implemented, 2026-09-12** — [PE-CLS-1.0 §6.4](../spec/PE-CLS-1.0.md). An edge
+entry may now carry `declared`, `entered` and `declared_in`, and classifies as
+*prospective*, *backfilled*, *retrospective* or *unrecorded*. The checker fails a
+backfill naming no declaration and one entered before it was declared, reports
+the four counts and the prospective fraction in every run, and computes blast
+radius over the **prospective subgraph** separately. Unrecorded edges are
+reported and not failed, because requiring provenance on every edge would make
+every converted corpus non-conforming at a stroke.
+
+### 5.1 Auditing the eight edges against the sealed record
+
+The mechanism is worth having only if it can be populated from evidence rather
+than assertion, so each of the eight `uses` edges was audited by the obvious
+test: **does the source claim's sealed registration already name the target?** If
+it does, the dependency was declared before the run, and the edge is a backfill
+in the §6.4 sense rather than a retrospective invention. Two passed.
+
+| edge | verdict | evidence |
+|---|---|---|
+| `GO-12` → `GO-11` | **named in sealed prereg** | `prereg/GO-P-2026-065-go12-delta-invariance.md` @ `3ba5ac7` — *"pay the GO-11 static quadratic-rate penalty"* |
+| `GO-B-whale` → `GO-1` | **named in sealed prereg** | `prereg/GO-P-2026-038-whale-dialect-flip.md` @ `0a7368a` — *"Read operator. The GO-1 blind probe"* |
+| `GO-B-legal` → `GO-1` | not named | the row says the `036` rehab adopted GO-1's blind probe; the sealed prereg does not mention it |
+| the other five | no registration linked | nothing to audit against |
+
+Prospective fraction: **0.25** (2 backfilled, 6 unrecorded, 0 retrospective).
+
+**This strengthens finding 3.3 considerably.** The support-cap violation is on
+`GO-12` → `GO-11`, and that is one of the two edges whose declaration sits in the
+sealed prereg. The dependency was declared *before the run*, so the inconsistency
+between GO-12's class and GO-11's is not an artifact of today's retrospective
+wiring. The programme committed in advance to GO-12 resting on GO-11, and the
+class assignment has been inconsistent with that commitment ever since.
+
+### 5.2 What the prospective subgraph shows
+
+| refuting | strikes, on today's beliefs | strikes, on what the record fixed in advance |
+|---|---|---|
+| `GO-11` | `GO-12`, `GO-OP-077` | **`GO-12`** |
+| `GO-1` | `GO-B-legal`, `GO-B-whale` | **`GO-B-whale`** |
+| `GO-12` | `GO-OP-077` | **none** |
+
+The two columns are the distinction the companion paper's argument turns on. The
+left is what the programme believes today and could have assembled at any time.
+The right is what it can *show* it committed to before the results came in, and
+it is smaller. A programme reporting the left column while claiming the right one
+is doing the thing the whole apparatus exists to prevent.
+
+Deployment B's 196 edges are all `unrecorded`, so its prospective fraction is
+**0.0** and its prospective blast radius is empty for every claim. It remains
+conforming, and now says plainly that none of its dependency structure is known
+to predate its results.
 
 ---
 

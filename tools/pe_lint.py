@@ -82,8 +82,13 @@ class Claim:
     cites: list[str] = field(default_factory=list)
     registration: str | None = None
     result: str | None = None
+    result_commit: str | None = None
     seal_commit: str | None = None
     source: str = ""
+    # s6.4: per-edge provenance, keyed (kind, target) -> {declared, entered,
+    # declared_in}. Absent key means the edge was declared as a bare id and the
+    # ledger does not know when it was declared.
+    edge_prov: dict = field(default_factory=dict)
 
 
 @dataclass
@@ -234,15 +239,37 @@ def parse_native_ledger(root: str) -> dict[str, Claim]:
             if not (marked or complete):
                 continue
             dep = obj.get("depends", {}) or {}
+            prov: dict = {}
+
+            def _edges(kind):
+                # s6.4: an entry is a bare id, or an object carrying provenance.
+                out = []
+                for e in (dep.get(kind, []) or []):
+                    if isinstance(e, dict):
+                        tid = e.get("id")
+                        if not tid:
+                            continue
+                        out.append(tid)
+                        prov[(kind, tid)] = {
+                            "declared": e.get("declared"),
+                            "entered": e.get("entered"),
+                            "declared_in": e.get("declared_in"),
+                        }
+                    else:
+                        out.append(e)
+                return out
+
             claims[obj["id"]] = Claim(
                 id=obj["id"], statement=obj.get("statement", ""),
                 cls=obj.get("class", "exploratory"), scope=obj.get("scope", ""),
                 status=obj.get("status", "classified"),
                 retrospective=bool(obj.get("retrospective", False)),
-                uses=list(dep.get("uses", []) or []),
-                corroborates=list(dep.get("corroborates", []) or []),
-                cites=list(dep.get("cites", []) or []),
+                uses=_edges("uses"),
+                corroborates=_edges("corroborates"),
+                cites=_edges("cites"),
+                result_commit=obj.get("result_commit"),
                 source=os.path.relpath(p, root),
+                edge_prov=prov,
             )
     return claims
 
@@ -304,6 +331,21 @@ def check_p1(root: str, registry: dict) -> tuple[list[Finding], dict]:
                                f"seal {seal} is NOT an ancestor of result "
                                f"commit {run} -- priority unproven"))
     return out, {"checked": checked, "ancestor_ok": ok, "unknown": unknown}
+
+
+
+def classify_edge(meta: dict | None) -> str:
+    """s6.4: prospective | backfilled | retrospective | unrecorded."""
+    if not meta:
+        return "unrecorded"
+    declared = str(meta.get("declared") or "").strip()
+    entered = str(meta.get("entered") or "").strip()
+    di = meta.get("declared_in") or {}
+    if not entered:
+        return "prospective" if declared else "unrecorded"
+    # entered => the row was written later than the declaration it reports
+    named = all(str(di.get(k) or "").strip() for k in ("path", "hash", "commit"))
+    return "backfilled" if named else "retrospective"
 
 
 def check_p4(claims: dict[str, Claim], edges_expressible: bool = True,
@@ -372,6 +414,41 @@ def check_p4(claims: dict[str, Claim], edges_expressible: bool = True,
                                    f"load-bearing dependency '{dep}' "
                                    f"({d.cls}) -- support-cap violation"))
 
+    # s6.4 edge provenance. Accounted over resolvable `uses` edges: those are
+    # the edges blast radius traverses and the only ones an appraisal claim
+    # rests on.
+    kinds = {"prospective": 0, "backfilled": 0, "retrospective": 0,
+             "unrecorded": 0}
+    for c in claims.values():
+        for dep in c.uses:
+            if dep not in claims:
+                continue
+            meta = c.edge_prov.get(("uses", dep))
+            kinds[classify_edge(meta)] += 1
+            if not meta:
+                continue
+            declared = str(meta.get("declared") or "").strip()
+            entered = str(meta.get("entered") or "").strip()
+            di = meta.get("declared_in") or {}
+            if entered and not all(str(di.get(k) or "").strip()
+                                   for k in ("path", "hash", "commit")):
+                out.append(Finding("P4", "ERROR", c.id,
+                    f"edge -> '{dep}' is a backfill (entered {entered}) with no "
+                    f"declared_in naming path, hash and commit -- an edge "
+                    f"recorded after the fact must say where its declaration "
+                    f"is, or it is a dependency written knowing the result "
+                    f"(s6.4)"))
+            elif entered and declared and declared > entered:
+                out.append(Finding("P4", "ERROR", c.id,
+                    f"edge -> '{dep}' declared {declared} but entered "
+                    f"{entered} -- an edge cannot be entered before it was "
+                    f"declared (s6.4)"))
+            elif entered and not c.result_commit:
+                out.append(Finding("P4", "INFO", c.id,
+                    f"edge -> '{dep}' backfilled from {di.get('path')}; "
+                    f"declaration asserted, ancestry not verified (no "
+                    f"result_commit on this claim) (s6.4)"))
+
     # s9.1 non-vacuity. Counted over resolvable `uses` edges only: a
     # `corroborates` edge is support, not load, and carries nothing for blast
     # radius to traverse.
@@ -402,9 +479,12 @@ def check_p4(claims: dict[str, Claim], edges_expressible: bool = True,
                            f"{with_deps} of {len(claims)} claims declare a "
                            f"dependency (s9.1)."))
 
+    fixed = kinds["prospective"] + kinds["backfilled"]
     return out, {"claims": len(claims), "cap_violations": capped,
                  "uses_edges": edges, "claims_with_deps": with_deps,
-                 "edge_coverage": round(coverage, 3)}
+                 "edge_coverage": round(coverage, 3),
+                 "edge_provenance": kinds,
+                 "prospective_fraction": round(fixed / edges, 3) if edges else 0.0}
 
 
 def check_p1_retro(claims: dict[str, Claim]) -> tuple[list[Finding], dict]:
@@ -468,10 +548,18 @@ def blast_radius(claims: dict[str, Claim], target: str) -> dict:
     """Transitive closure of load-bearing edges INTO target (section 8)."""
     uses_in: dict[str, list[str]] = {c: [] for c in claims}
     corr_in: dict[str, list[str]] = {c: [] for c in claims}
+    # s6.4: the same graph restricted to edges whose declaration is known to
+    # predate the result. Only this subgraph supports a statement about what the
+    # record fixed in advance; the full graph says what the programme believes
+    # today.
+    fixed_in: dict[str, list[str]] = {c: [] for c in claims}
     for c in claims.values():
         for d in c.uses:
             if d in uses_in:
                 uses_in[d].append(c.id)
+                if classify_edge(c.edge_prov.get(("uses", d))) in (
+                        "prospective", "backfilled"):
+                    fixed_in[d].append(c.id)
         for d in c.corroborates:
             if d in corr_in:
                 corr_in[d].append(c.id)
@@ -489,8 +577,20 @@ def blast_radius(claims: dict[str, Claim], target: str) -> dict:
     recompute = sorted({p for n in seen for p in corr_in.get(n, [])
                         if p not in seen})
     untouched = sorted(set(claims) - seen - set(recompute))
+
+    pro, pseen = [], {target}
+    pstack = [target]
+    while pstack:
+        node = pstack.pop()
+        for parent in fixed_in.get(node, []):
+            if parent not in pseen:
+                pseen.add(parent)
+                pro.append(parent)
+                pstack.append(parent)
+
     return {"target": target,
             "suspended": sorted(suspended),
+            "prospective_suspended": sorted(pro),
             "recompute_support": recompute,
             "untouched_count": len(untouched),
             "untouched": untouched}

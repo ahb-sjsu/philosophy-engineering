@@ -1,0 +1,60 @@
+[
+ {
+  "claim": "GO-12",
+  "target": "GO-11",
+  "verdict": "NAMED IN SEALED PREREG",
+  "declared_in": {
+   "path": "prereg/GO-P-2026-065-go12-delta-invariance.md",
+   "hash": "sha256:248f7cd6e6444bb4",
+   "commit": "3ba5ac7",
+   "quote": "ables (Y_t, V_t) — GO-8's per-symbol-codebook situation — pay the GO-11 static quadratic-root CR function at **ρ unchanged, s → s/a^{"
+  }
+ },
+ {
+  "claim": "GO-B-legal",
+  "target": "GO-1",
+  "verdict": "sealed prereg does not name GO-1",
+  "declared_in": null
+ },
+ {
+  "claim": "GO-B-whale",
+  "target": "GO-1",
+  "verdict": "NAMED IN SEALED PREREG",
+  "declared_in": {
+   "path": "prereg/GO-P-2026-038-whale-dialect-flip.md",
+   "hash": "sha256:f564f1d7379ae85e",
+   "commit": "0a7368a",
+   "quote": "uracy (accuracy is swamped by the majority). - **Read operator.** The GO-1 **blind probe** of the classifier: its margin direction `w`, `S = wwᵀ"
+  }
+ },
+ {
+  "claim": "GO-OP-077",
+  "target": "GO-2-POS",
+  "verdict": "no registration file linked",
+  "declared_in": null
+ },
+ {
+  "claim": "GO-OP-077",
+  "target": "GO-12",
+  "verdict": "no registration file linked",
+  "declared_in": null
+ },
+ {
+  "claim": "GO-OP-077",
+  "target": "GO-13",
+  "verdict": "no registration file linked",
+  "declared_in": null
+ },
+ {
+  "claim": "OT-10",
+  "target": "OT-3",
+  "verdict": "no registration file linked",
+  "declared_in": null
+ },
+ {
+  "claim": "OT-9",
+  "target": "OT-2",
+  "verdict": "no registration file linked",
+  "declared_in": null
+ }
+]

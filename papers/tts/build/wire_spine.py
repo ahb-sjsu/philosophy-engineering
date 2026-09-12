@@ -71,6 +71,25 @@ EDGES = [
  ("GO-EC-7","VI-13","cites","'The v3 analytic instrument is independently verified -- VI-13 above'"),
 ]
 
+# --- s6.4 edge provenance -------------------------------------------------
+# Verified by auditing each source claim's SEALED registration for a mention of
+# the target: if the prereg already names the dependency, it was declared before
+# the run and the edge is a backfill, not a retrospective invention. Audit
+# script and full output: edge_provenance_audit.json. Only edges that passed are
+# listed; the other six stay bare, which reports them as `unrecorded`.
+BACKFILL = {
+ ("GO-12", "GO-11"): {
+   "declared": "2026-08-30", "entered": TODAY,
+   "declared_in": {"path": "prereg/GO-P-2026-065-go12-delta-invariance.md",
+                   "hash": "sha256:0e2f3c6a1b7d4e95", "commit": "3ba5ac7",
+                   "quote": "pay the GO-11 static quadratic-rate penalty"}},
+ ("GO-B-whale", "GO-1"): {
+   "declared": "2026-09-02", "entered": TODAY,
+   "declared_in": {"path": "prereg/GO-P-2026-038-whale-dialect-flip.md",
+                   "hash": "sha256:9d41b8ac25e6f077", "commit": "0a7368a",
+                   "quote": "Read operator. The GO-1 blind probe"}},
+}
+
 # --- read the markdown rows ------------------------------------------------
 lines = io.open(os.path.join(SRC, "claims", "LEDGER.md"),
                 encoding="utf-8").read().split("\n")
@@ -115,7 +134,8 @@ for src, dst, kind, why in EDGES:
     if src not in rows or dst not in rows:
         unresolved.append((src, dst, kind))
         continue
-    dep[src][kind].append(dst)
+    meta = BACKFILL.get((src, dst))
+    dep[src][kind].append({"id": dst, **meta} if meta else dst)
     prov.setdefault(src, []).append({"target": dst, "type": kind, "evidence": why})
 
 os.makedirs(OUT, exist_ok=True)
@@ -147,6 +167,7 @@ n_retro = sum(1 for r in rows.values() if r["retrospective"])
 print(f"wrote {len(rows)} claim objects to {OUT}")
 print(f"prospective (row names a sealed registration): {len(rows)-n_retro}; "
       f"retrospective: {n_retro}")
+print(f"backfills with a verified sealed declaration: {len(BACKFILL)}")
 print(f"edges declared: uses={sum(len(d['uses']) for d in dep.values())} "
       f"corroborates={sum(len(d['corroborates']) for d in dep.values())} "
       f"cites={sum(len(d['cites']) for d in dep.values())}")

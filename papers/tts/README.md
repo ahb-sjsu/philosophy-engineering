@@ -106,11 +106,29 @@ in hindsight, and this one now is. **Kuhn §7 has been corrected** to state the
 claim as what a ledger makes possible rather than what any deployment shows, and
 the abstract now reports against itself on that point.
 
-Fix not implemented: edges want `declared`/`entered`/`declared_in` as PE-DSC
-§3.2.1 already does for transformation families, and blast radius should then
-report the prospective subgraph separately. It changes the meaning of every
-existing edge in both deployments, so it is a deliberate decision, not a
-same-sitting one.
+**Fix implemented** — PE-CLS-1.0 §6.4. Edge entries carry
+`declared`/`entered`/`declared_in`, classify as prospective / backfilled /
+retrospective / unrecorded, and blast radius reports the **prospective subgraph**
+beside the full one. Errors on a backfill naming no declaration, and on an edge
+entered before it was declared. Unrecorded edges are reported, not failed —
+otherwise every converted corpus goes non-conforming at a stroke.
+
+Populated from the record, not by assertion: each of the 8 edges was audited by
+asking whether the source claim's **sealed prereg already names the target**.
+Two do — and one of them is `GO-12`→`GO-11`, the edge behind the support-cap
+violation, so that finding is **not** an artifact of wiring the graph today. The
+programme committed in advance to GO-12 resting on GO-11 and the class assignment
+has disagreed with that commitment ever since.
+
+| refuting | strikes today | strikes on what the record fixed in advance |
+|---|---|---|
+| `GO-11` | `GO-12`, `GO-OP-077` | **`GO-12`** |
+| `GO-1` | `GO-B-legal`, `GO-B-whale` | **`GO-B-whale`** |
+
+Prospective fraction: **Deployment A 0.25, Deployment B 0.00** (all 196 of B's
+edges unrecorded). Both stay as conforming as they were. What changed is that a
+programme can no longer quote the full blast radius while claiming the warrant of
+the prospective one, because the report prints both.
 
 ## The pair
 

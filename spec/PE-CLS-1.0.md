@@ -317,6 +317,59 @@ A `proved` claim whose derivation uses an `exploratory` claim is not proved. A
 This rule is checkable (§7.4) and is the most frequently violated in practice,
 because prose permits an author to lean on a weak result without noticing.
 
+### 6.4 Edge provenance and the prospective subgraph *(normative)*
+
+**P1 gives a claim a priority property. Until this clause, an edge had none.**
+A ledger could declare its entire dependency graph after every result was known,
+and no check could distinguish that from a graph declared in advance. This
+matters because the argument a dependency graph is usually recruited for, that
+the core and belt of a programme are a property of the record rather than a
+reconstruction made by someone who already knows which commitments survived,
+holds only of edges that preceded the results they organise.
+
+An edge entry MAY be a bare target identifier, or an object carrying provenance:
+
+| Field | Meaning |
+|---|---|
+| `id` | the target claim |
+| `declared` | the date the dependency was declared |
+| `entered` | the date this row was written, when later than `declared`. Its presence marks a backfill |
+| `declared_in` | where the declaration is, when not this ledger: `path`, `hash`, `commit` |
+
+Each edge is then classified:
+
+- **prospective** — carries `declared` and no `entered`, so it was written when
+  declared;
+- **backfilled** — carries `entered` and a `declared_in` naming the sealed
+  artifact that holds the real declaration, with enough identity to retrieve it;
+- **retrospective** — carries `entered` with no `declared_in`, and is therefore a
+  dependency recorded after the fact;
+- **unrecorded** — a bare identifier. The common case in any converted corpus,
+  and it means the ledger does not know when the edge was declared.
+
+A conforming report at L3 or above MUST:
+
+1. Report the counts of all four kinds and the **prospective fraction** of
+   `uses` edges, in every run.
+2. **Fail** an edge carrying `entered` with no `declared_in`, and an edge whose
+   `declared` falls after its `entered`.
+3. Report blast radius over the **prospective subgraph** separately from the
+   full graph (§8). Only the prospective figure supports a claim about what the
+   record fixed in advance; the full figure describes what the programme
+   believes today.
+
+**Unrecorded edges are reported, not failed.** Requiring provenance on every edge
+would make every converted corpus non-conforming at a stroke, and a conversion
+that cannot be entered is a conversion nobody performs. What the specification
+requires is that the ledger not *claim* the prospective figure when it holds the
+retrospective one.
+
+Verifying that a `declared_in` artifact truly precedes the result requires the
+result commit. Where a claim records one, a conforming checker MUST verify
+ancestry; where it does not, the report MUST mark the declaration as asserted and
+not verified. This mirrors [PE-DSC-1.0 §3.2.1](PE-DSC-1.0.md), which reached the
+same construction for transformation families first.
+
 ### 6.3 Propagation on status change
 
 When claim `c` transitions to `refuted` or `withdrawn`, for every claim `a` with

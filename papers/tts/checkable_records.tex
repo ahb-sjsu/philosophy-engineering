@@ -49,9 +49,12 @@ does, and the reference deployment moves down a level as a result: what it
 demonstrated was never coherence, only the absence of anything to be incoherent
 about. Converting that deployment to a format with a dependency field then
 surfaced a second gap, larger than the first. The specification gives claims a
-priority property and gives dependency edges none, so a graph wired after its
-results are known cannot be told from one declared in advance. We wired one that
-way, and the checker accepted it.
+priority property and gave dependency edges none, so a graph wired after its
+results are known could not be told from one declared in advance. We wired one
+that way and the checker accepted it, so we added the missing property: edges
+now carry provenance, and blast radius is reported over the subgraph whose
+declarations can be shown to predate their results as well as over the whole.
+Measured that way the two deployments stand at 0.25 and 0.00.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -199,8 +202,7 @@ finding in this paper.
 The first deployment is the evidence ledger of an observation-theory programme:
 78 claims, and a registry of 91 sealed registrations.
 
-Under the amended specification of Section~
-ef{sec:selfcheck} it conforms at
+Under the amended specification of Section~\ref{sec:selfcheck} it conforms at
 L2, and the L3 it was previously reported at was vacuous. P2 holds over the full
 range 001 to 091 with zero gaps and
 four identifiers carrying no result: two never assigned and proven absent from
@@ -475,10 +477,33 @@ when it carries the date it was written, names the sealed artifact holding the
 real declaration, and shows that declaration preceding the result. Dependency
 edges want the same three fields, and blast radius should then report the
 prospective subgraph separately, since that is the only part of a graph the
-appraisal argument is entitled to. We have not implemented it. It changes the
-meaning of every edge in both deployments, and after the clause in
-Section~ef{sec:selfcheck} that is a change to make deliberately rather than in
-the sitting that discovered the need for it.
+appraisal argument is entitled to.
+
+We implemented it. An edge entry may now carry the date its dependency was
+declared, the date the row was written, and a pointer to the sealed artifact
+holding the declaration; it classifies as prospective, backfilled, retrospective
+or unrecorded; the checker refuses a backfill that names no declaration and one
+entered before it was declared; and every run reports the four counts, the
+prospective fraction, and blast radius over the prospective subgraph beside the
+full one. Unrecorded edges are reported rather than failed, because requiring
+provenance on every edge would make every converted corpus non-conforming at a
+stroke, and a conversion nobody can enter is a conversion nobody performs.
+
+Populating it was the test that mattered, and it was done from the record rather
+than by assertion: each of the eight edges was audited by asking whether the
+source claim's sealed registration already names the target. Two do. One of them
+is the edge that produced the support-cap violation above, which means that
+inconsistency is not an artifact of wiring the graph today. The programme
+committed in advance to \texttt{GO-12} resting on \texttt{GO-11}, and the class
+assignment has disagreed with that commitment ever since.
+
+The two columns the mechanism produces are the ones the appraisal argument turns
+on. Refuting \texttt{GO-11} strikes two claims on the programme's present
+beliefs and one on what the record can show it fixed in advance. Deployment A's
+prospective fraction is 0.25 and Deployment B's is 0.00, its 196 edges being
+entirely unrecorded. Both remain as conforming as they were. What has changed is
+that a programme can no longer report the full blast radius while claiming the
+warrant of the prospective one, because the report prints both.
 
 \section{Discussion}
 
@@ -566,7 +591,7 @@ linked objects would be the error this apparatus exists to prevent.
 
 Finally, Section~\ref{sec:selfcheck}'s clause left the two deployments incomparable on
 coherence, and Deployment A has since been converted to a format with a
-dependency field, reported in Section~ef{sec:spine}. It now carries a real but
+dependency field, reported in Section~\ref{sec:spine}. It now carries a real but
 sparse graph at 0.078 edge coverage against Deployment B's 0.653, and the gap is
 a fact about the corpora rather than about the checker: most of Deployment A's
 dependency structure is not written down in any document a converter can read.
