@@ -1,0 +1,726 @@
+\documentclass[11pt,letterpaper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{geometry}
+\usepackage{microtype}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage[round,authoryear]{natbib}
+\usepackage{xcolor}
+\usepackage{hyperref}
+
+\geometry{margin=1.15in}
+\hypersetup{colorlinks=true, linkcolor=black, citecolor=black, urlcolor=blue!55!black}
+
+\setlist{itemsep=2pt, topsep=4pt}
+\renewcommand{\arraystretch}{1.25}
+
+\title{\vspace{-1.2cm}\textbf{Philosophy Engineering Is Not a Paradigm}\\[0.5em]
+\large A test against Kuhn's criteria, and a present-tense answer to\\
+Feyerabend's objection to Lakatos}
+
+\author{Andrew H. Bond\\
+\small Department of Computer Engineering, San Jos\'{e} State University\\
+\small \texttt{andrew.bond@sjsu.edu}}
+
+\date{\small September 2026 \\[0.4em]
+\small\textit{Draft. Evidence class:} \texttt{exploratory}\textit{. See \S10.}}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent
+Philosophy Engineering has been described by its author as a new paradigm for
+science in Kuhn's sense. This paper tests that description against Kuhn's own
+criteria and rejects it. The programme supplies symbolic generalizations and a
+changed account of what counts as a solved problem, and it has a small stock of
+exemplars. It has no community, which for Kuhn is not a rhetorical shortfall but
+the unit of analysis. It also possesses a specified procedure for translating a
+legacy corpus into its own vocabulary, and the existence of that procedure is
+evidence against incommensurability and therefore against revolution. The
+anomaly the programme names, representation dependence, cannot produce a
+Kuhnian crisis, because the reigning instruments score a representation-dependent
+system as correct. Kuhn requires a paradigm to fail by its own standards, and
+this one does not. What survives the negative result is smaller and better
+supported. Lakatos distinguished a programme's hard core from its protective
+belt and was criticized by Feyerabend for an appraisal available only in
+hindsight. A claim ledger that fixes priority by repository ancestry and
+requires dependencies to be declared before the test turns that partition into a
+property of the record rather than a reconstruction, so the question of what a
+refutation strikes acquires a present-tense answer. That is not a paradigm. It
+is a change to the medium in which paradigms are recorded, and the paper states
+four predictions by which it can be shown wrong.
+\end{abstract}
+
+\vspace{0.6em}
+\noindent\textbf{Keywords:} Kuhn, Lakatos, Feyerabend, research programmes,
+scientific infrastructure, preregistration, philosophy engineering, claim ledger
+
+\section{Introduction}
+
+Philosophy Engineering is the practice of taking a philosophical commitment and
+building something that mechanically refuses to violate it. Its author has
+described it as a new paradigm for science in the sense of Kuhn
+\citep{kuhn1970}. This paper tests that description. The result is negative.
+
+The test is worth running because the claim is cheap. Announcing a paradigm
+shift costs nothing, cannot be refuted by any short argument, and is made
+routinely by programmes that turn out to be ordinary. A discipline whose stated
+rule is that a programme may not assert what its ledger cannot show is poorly
+placed to make the cheapest claim in science and leave it unexamined. The
+appropriate response is to state the criteria in advance, apply them, and report
+what happens, including to the parts of the claim that fail.
+
+Three results follow. First, the programme fails Kuhn's community criterion by a
+wide margin, and it fails the incommensurability criterion in a way that counts
+in its favour rather than against it, because the thing that fails the criterion
+is a working translation procedure. Second, the anomaly on which the strongest
+case rests cannot do the work Kuhn's account requires of anomalies, since a
+system exhibiting it still passes the measurements the reigning approach uses.
+Kuhn's crises begin when a paradigm fails by its own standards, and this
+anomaly is invisible to those standards rather than damaging to them. Third, the
+programme contains two arms with different verdicts, and the appearance of a
+paradigm comes largely from running them together: the judgment arm has the
+shape of a candidate theory change inside one subfield, while the inquiry arm is
+not a theory at all and was never a candidate.
+
+What remains after the negative result is a smaller claim with better support.
+Lakatos separated a research programme's hard core from its protective belt and
+argued that refutations ordinarily strike the belt \citep{lakatos1970}.
+Feyerabend objected that the resulting appraisal was available only in hindsight,
+which made it useless to a scientist deciding what to do now
+\citep{feyerabend1975}. The objection has force because nothing in the ordinary
+scientific record fixes which commitments were core before the test was run, so
+the partition is reconstructed afterwards by someone with an interest in the
+answer. A record that fixes priority by repository ancestry, requires
+dependencies to be declared before the seal, and computes the consequences of a
+refutation by traversing a graph, turns that partition into something the record
+already contains. The question of what a refutation strikes then has an answer
+in the present tense. This is a contribution to the appraisal of research
+programmes, not a revolution, and the paper states four ways it could be shown
+wrong.
+
+\section{The claimant is badly placed to assess the claim}
+
+Kuhn's own account makes a participant's declaration of a paradigm shift weak
+evidence. Revolutions in \emph{Structure} are described as invisible from the
+inside. The community's textbooks are rewritten so that the current position
+appears to be the cumulative result of what came before, and the practitioners
+who perform the rewriting do not experience themselves as doing so
+\citep[ch.~11]{kuhn1970}. If revolutions are hard to see while standing in them,
+the person best placed to see one is a historian at some distance, and the person
+worst placed is the programme's founder.
+
+There is a second difficulty. The word is used loosely. Masterman counted
+twenty-one distinct senses of ``paradigm'' in the first edition of
+\emph{Structure} \citep{masterman1970}, and Kuhn accepted enough of the criticism
+to separate two of them in later work: the disciplinary matrix, meaning
+everything a community shares, and the exemplar, meaning a concrete problem
+solution that trains practitioners to recognize new problems as being of the same
+kind \citep{kuhn1974}. A claim to be a paradigm is therefore ambiguous until the
+sense is fixed. Both senses are tested below.
+
+The procedural safeguard adopted here is the one the programme applies to
+itself. Under PE-CLS-1.0 no document may cite a claim above its evidence class
+\citep{pecls}. The thesis of this paper is supported by one programme, observed
+by its own author, and has not been tried elsewhere. Its class is
+\texttt{exploratory}, and no other document in the corpus may cite it as more
+than that. Section~10 states what the record cannot currently show.
+
+\section{What Kuhn requires}
+
+Kuhn's criteria are stated here in the form in which they will be applied.
+
+\textbf{The disciplinary matrix.} A paradigm in the broad sense is what the
+members of a scientific community share. Kuhn decomposes it into symbolic
+generalizations deployed without argument, models and metaphysical commitments
+that supply preferred analogies, values that govern what counts as a good
+solution, and exemplars \citep[Postscript]{kuhn1970}.
+
+\textbf{Exemplars.} In the narrow sense a paradigm is a concrete problem
+solution, transmitted through training, that lets a practitioner see an
+unfamiliar situation as similar to a familiar one \citep{kuhn1974}. Kuhn treats
+this as the primary sense. Exemplars are numerous, they are taught, and they do
+their work by resemblance rather than by rule.
+
+\textbf{The community as the unit.} Kuhn's definition is openly circular. A
+paradigm is what a scientific community shares, and a scientific community
+consists of those who share a paradigm \citep[Postscript]{kuhn1970}. The
+circularity is not an embarrassment in his account; it fixes the unit of
+analysis. Paradigms are properties of communities of practitioners. They are not
+properties of positions, theories, or individuals.
+
+\textbf{Normal science and anomaly.} Normal science is puzzle-solving conducted
+inside the matrix, where the existence of a solution is assumed and the
+practitioner's skill is at issue. An anomaly is a result the paradigm cannot
+assimilate. Anomalies alone do not produce crises. A crisis arises when the
+paradigm repeatedly fails at puzzles it has itself certified as solvable, and the
+failure becomes visible to the community using the paradigm's own instruments
+\citep[chs.~6--8]{kuhn1970}.
+
+\textbf{Incommensurability.} Rival paradigms lack a neutral vocabulary in which
+their claims can be compared without loss. Kuhn's later statements narrow this
+to taxonomic incommensurability, a failure of intertranslatability among the
+kind terms of the two theories. The relevant consequence for this paper is
+negative and sharp: there is no algorithm that converts the claims of one
+paradigm into the claims of another with their evidential standing intact. Where
+such a procedure exists, the two bodies of work are not separated by a
+revolution.
+
+\section{The case for}
+
+The case that Philosophy Engineering is a paradigm is stronger than its brevity
+here suggests, and it should be put at full strength before it is tested.
+
+The programme names an anomaly. Systems deployed in medicine, law, hiring, and
+content moderation change their verdicts when the description of a case changes
+in ways that preserve its content. Order of presentation, party names, active
+against passive voice, choice of synonym, and units of measure all move outputs
+that ought to be fixed by the situation rather than by its wording. The
+Foundation document collects the failure modes and treats them as instances of a
+single defect rather than as unrelated bugs \citep{foundation}.
+
+The programme supplies symbolic generalizations. The Epistemic Invariance
+Principle requires a judgment procedure to return equivalent outputs for
+representations related by a declared transformation group. The Bond Invariance
+Principle requires that transformations preserving the relational structure of a
+case leave the evaluation unchanged, and yields an accountability theorem: any
+two differing judgments differ because the relational structure differs, because
+the evaluative parameters differ, or both, with no fourth option
+\citep{foundation}. Both are stated formally and proved.
+
+The programme changes what counts as a good solution. Under the reigning
+approach a classifier is good when its aggregate accuracy is high. Under this
+one a judgment procedure is good when it is invariant under the declared group
+and still discriminates between cases that differ. Invariance alone is
+satisfied perfectly by a constant function, so the second condition is not
+decoration. A change in the criteria of adequacy is exactly what Kuhn lists among
+the components of a disciplinary matrix.
+
+The programme has exemplars. A failed invariance test produces a witness, a
+minimal transformation that flips the verdict, and learning to read a witness
+teaches a practitioner what kind of object a representation-dependence failure
+is. The derivation of the Klein four-group from Hohfeld's jural relations
+\citep{hohfeld1913} shows how a deontic vocabulary becomes a symmetry claim. The
+withdrawal episode recorded in the corpus shows how a distinction between
+unsupported and refuted operates on a dependency graph \citep{pecls}. Brownfield
+conversion shows what to do with a corpus written before the method existed
+\citep{pebrw}. These are concrete problem solutions of the kind Kuhn describes,
+and a practitioner who has worked through them sees new cases differently.
+
+Finally, the field the programme addresses talks like a field in crisis. Its
+practitioners describe alignment as unsolved, its evaluation methods as
+saturated, and its failures as poorly understood. Crisis rhetoric is not crisis,
+but Kuhn treats the community's own sense of malaise as one of the marks.
+
+\section{The test}
+
+\begin{longtable}{p{0.26\textwidth} p{0.10\textwidth} p{0.55\textwidth}}
+\toprule
+\textbf{Kuhn's criterion} & \textbf{Verdict} & \textbf{Basis} \\
+\midrule
+\endhead
+Symbolic generalizations & Partial & EIP and BIP are stated and proved. Kuhn's generalizations are deployed by a community without argument; these are argued for by one author. \\
+Values and criteria of adequacy & Pass & Invariance with discrimination replaces aggregate accuracy. This is a change in what counts as a solved problem. \\
+Exemplars & Partial & Five or six exist. Kuhn's paradigms supply hundreds, transmitted by training. There is no training pipeline. \\
+Community & \textbf{Fail} & One author, one department, a small number of students, a chat server. The unit of analysis is absent. \\
+Normal science & Weak & Puzzle-solving inside the matrix occurs, set and solved by the same person. \\
+Crisis in a predecessor & \textbf{Fail} & The anomaly does not register as failure on the reigning instruments. See below. \\
+Incommensurability & \textbf{Fail} & A specified translation procedure exists and has been run. See below. \\
+\bottomrule
+\end{longtable}
+
+\textbf{Community.} This is the decisive failure and it does not require
+elaboration. Kuhn's paradigms are what communities share. The programme has one
+author, a handful of student contributors, and an open chat server. A position
+held by one person and explained to others is a position. It may be correct. It
+is not a disciplinary matrix, because there is no discipline whose matrix it is.
+No amount of formal development substitutes for this, and the criterion is not
+one a programme can satisfy by wanting to.
+
+\textbf{The anomaly cannot produce a crisis.} This is the more interesting
+failure, and it follows from the strongest card in the case for.
+
+Kuhn's crises are generated internally. A paradigm certifies certain puzzles as
+solvable, practitioners attempt them using the paradigm's instruments, and the
+attempts fail repeatedly in ways the practitioners can see. Representation
+dependence does not have this structure. A model that returns different verdicts
+for two descriptions of the same case is scored on a benchmark that contains one
+of the two descriptions. On that benchmark it is correct. Aggregate accuracy is
+insensitive to the defect by construction, because accuracy is computed against
+a fixed encoding of each case and never presents the alternative encoding. The
+reigning instruments therefore do not register the anomaly as a failure. They do
+not register it at all.
+
+This is a real defect in current practice, and identifying it is worth doing.
+But it is the wrong shape for a Kuhnian crisis. Kuhn needs a paradigm that is
+failing by its own lights, visibly, to the people using it. What is described
+here is a paradigm succeeding by its own lights at something its critic regards
+as the wrong target. Kuhn has no category for that, and the reason he has none is
+that such a complaint cannot build pressure inside the community by the mechanism
+his account specifies. It has to be argued from outside, in a vocabulary the
+reigning measurements do not contain. Which is what the programme is in fact
+doing, and which is not what revolutions look like in \emph{Structure}.
+
+\textbf{The translation procedure is evidence against revolution.} PE-BRW-1.0
+specifies how to convert a corpus written under ordinary scholarly norms into a
+claim ledger \citep{pebrw}. It defines a characterization step that assigns each
+existing claim the class its actual support warrants, a debt ratio measuring the
+fraction of claims entered without a prior registration, and a discipline that
+forbids re-deriving the corpus under the new method, on the ground that priority
+is the one property no later rigour reconstructs. It has been run. A book of roughly thirty-five thousand lines, six foundation papers, and one
+further paper converted to 234 claim objects at a debt ratio of 0.962, with five findings and six registrable
+predictions identified \citep{casebrownfield}.
+
+Kuhn's incommensurability thesis says no such procedure exists between
+paradigms. There is no neutral algorithm that carries the claims of one
+disciplinary matrix into another with their standing intact. PE-BRW-1.0 is an
+algorithm that does precisely this, it is written down, and its output is
+inspectable. Two readings are available. Either the corpus and the ledger are not
+separated by a revolution, or Kuhn is wrong about incommensurability. The first
+is overwhelmingly more likely.
+
+The right description is that Philosophy Engineering is a conservative extension
+of ordinary scholarship. It adds constraints on what may be asserted and
+requires records that were not previously required. It does not change the
+referents of the terms, and a claim converted into the ledger means what it meant
+before. The debt ratio near unity is itself the proof: almost every converted
+claim retained its content and gained only a statement about the evidence behind
+it. Conservative extensions are valuable. They are not revolutions, and a
+programme that can translate its predecessor has by that fact shown it is not
+incommensurable with it.
+
+\section{Two arms, two verdicts}
+
+The programme has three arms. The judgment arm governs what an autonomous system
+may assert and contains EIP and BIP. The inquiry arm governs what a research
+programme may claim and contains the claim ledger. The discovery arm governs
+what a programme may claim survives and contains the transformation registry
+\citep{pecls,pedsc}. Much of the plausibility of the paradigm claim comes from
+treating these as one thing, and they should be separated.
+
+The judgment arm has the shape of a candidate theory change within one subfield.
+It supplies generalizations, changes the criteria of adequacy, and has exemplars.
+Whether it becomes a paradigm inside AI alignment is an empirical question about
+a community, and the answer is currently no by a wide margin and too early to
+assess on any other ground. That is the correct thing to say about a programme of
+this age, and saying more would be the error this paper exists to avoid.
+
+The inquiry arm is not a candidate and never was. It contains no theory of any
+subject matter. It specifies what a record must contain for certain claims about
+that record to be checkable. Reform of this kind has a history, and its history
+is not a history of paradigms. The controlled trial, the journal, peer review,
+the clinical trial registry, and preregistration each changed what could be
+claimed and what had to be shown, and none of them is a paradigm in Kuhn's sense.
+The literature on psychology's credibility revolution has reached the same
+verdict about that episode: it is substantial reform of standards of evidence
+rather than a change of theory, and the sources that call it a revolution are
+using the word in a different sense from Kuhn's \citep{vazire2018}.
+
+Combining the two arms produces a rhetorical effect that neither supports alone.
+The judgment arm lends theoretical content, which reform movements usually lack.
+The inquiry arm lends scope across all of science, which a subfield theory
+lacks. A reader who takes both at once perceives something that looks like a
+general scientific revolution. Assessed separately, one is an early theory in a
+single field and the other is an infrastructure proposal. Neither is a paradigm.
+
+\section{What survives: a present-tense answer to Feyerabend}
+
+The negative result leaves a positive claim standing, and it is more defensible
+than the one it replaces.
+
+Lakatos held that a research programme consists of a hard core its adherents
+protect by decision and a protective belt of auxiliary hypotheses that absorbs
+refutations \citep{lakatos1970}. A programme is progressive when successive
+versions predict facts not predicted before and some of those predictions are
+confirmed, and degenerating when its modifications only accommodate anomalies
+already known. The account rescues scientific rationality from Popper's
+difficulty that theories are never abandoned on a single failed prediction, and
+it does so by moving the unit of appraisal from the theory to the programme.
+
+Feyerabend's objection is that the appraisal arrives too late to be of use. A
+degenerating programme may recover, so no rule tells a scientist when to abandon
+one, and the verdict becomes clear only in hindsight \citep{feyerabend1975}. The
+Stanford Encyclopedia states the point in the same terms, calling the
+methodology pragmatically unsatisfactory because its evaluations are exclusively
+retrospective and it therefore cannot advise anyone in the present
+\citep{seplakatos}. The objection is usually treated as decisive against
+Lakatos's use of the account for demarcation.
+
+The objection depends on a fact about the record rather than a fact about
+science. The core and the belt are not marked anywhere at the time the
+predictions are made. After a refutation, someone reconstructs which commitments
+were central and which were auxiliary, and that person is normally a participant
+with an interest in the answer. The reconstruction is not dishonest, and it need
+not be. It is simply unconstrained, because no document written before the test
+fixed the partition. Kuhn's observation about textbook rewriting is the same
+phenomenon at community scale: the record is prose, prose does not carry
+dependency structure, and what a refutation actually struck cannot be recovered
+from it.
+
+A claim ledger changes that fact about the record. Three of its properties bear
+directly on the objection \citep{pecls}. Priority requires that the commit
+sealing a registration be an ancestor, in the repository history, of the first
+commit that adds the result, so a prediction cannot be written after its
+outcome is known. Coherence requires that every dependency a claim declares
+resolve to another claim, and that no claim be classified above the weakest
+support it rests on. Blast radius is then computed by traversing the declared
+graph, so the set of claims a refutation reaches is obtained by traversal rather
+than by argument.
+
+The consequence for Lakatos is direct. The core and the belt correspond to
+position in the dependency graph, with heavily depended-upon claims occupying the
+core and claims nothing rests on occupying the belt. Because the edges are
+declared before the test and the ordering is fixed by repository ancestry, the
+partition is a property of the record at the time of the seal. It is not
+reconstructed and it cannot be adjusted after the outcome is known without
+leaving a trace. The question Feyerabend said could only be answered in hindsight,
+namely what this refutation strikes, acquires an answer available the moment the
+refutation is recorded.
+
+Three limits on this claim must be stated with it.
+
+First, it addresses one input to Lakatos's appraisal rather than the appraisal
+itself. Whether a modification is ad hoc still requires judgment about whether a
+prediction counted as new, and no graph settles that. The discovery arm's
+requirement that transformation families be declared in the registry before the
+seal constrains the judgment, since a family cannot be selected after seeing
+which tests passed \citep{pedsc}. It does not eliminate it.
+
+Second, localization reaches only as far as the declared conjunction. Duhem and
+Quine established that no hypothesis is tested alone, and a refutation indicts
+whatever was assumed alongside it \citep{duhem1954,quine1951}. A ledger can
+propagate along edges that were written down. Dependencies nobody declared are
+invisible to traversal, and the specification says so rather than claiming
+otherwise.
+
+Third, the mechanism assumes the repository history is intact. Priority proved
+by ancestry is stronger than a third party's timestamp in requiring no trusted
+service, and weaker in being vulnerable to history rewriting. The specification
+records this trade rather than resolving it, and anchoring a hash in an external
+timestamping service closes the gap cheaply.
+
+\section{Predictions}
+
+A paper arguing that records govern appraisal should say what would show it
+wrong. Four predictions follow from the account in \S7, stated so that a
+programme other than this one can test them.
+
+\textbf{P-I. Blast radii are small and right-skewed.} If Lakatos is right that
+refutations ordinarily strike the belt, and dependencies are declared in advance,
+then the number of claims reached by a recorded refutation should be small in
+most cases with a long tail. Routinely large radii would indicate either that
+the core and belt picture is wrong or that dependencies are under-declared. The
+two can be distinguished: under-declaration concentrates large radii on a few
+claims with high in-degree, while a wrong picture spreads them evenly.
+
+\textbf{P-II. Recorded negative results rise, then settle high.} A programme
+adopting gap-free identifier assignment should record more null and abandoned
+lines than matched programmes without a ledger, with the excess concentrated in
+the first conversion period as previously undisclosed work receives
+dispositions, followed by a steady state above the matched baseline rather than a
+return to it.
+
+\textbf{P-III. Wholesale revision loses its discontinuous character.} If the
+gestalt quality Kuhn attributes to revolutions is partly an effect of a record
+that cannot represent partial change, then programmes with individually
+versioned claims should show major revisions as many dated propagations rather
+than as a single switch. If ledger programmes still revise discontinuously, the
+record was not the cause and Kuhn's psychological account survives intact. This
+is the prediction most likely to fail, and it is the one that most directly tests
+the paper's thesis.
+
+\textbf{P-IV. Declared partitions diverge from retrospective attribution.} Take
+a refutation recorded in a ledger. Ask practitioners who know the field but not
+the ledger to say which commitments were central before the test. Compare with
+the declaration sealed beforehand. Kuhn's invisibility thesis predicts systematic
+divergence, with retrospective attribution making surviving commitments look more
+central than they were declared to be. Absence of divergence would indicate that
+prose records preserve the partition adequately and that the machinery is
+unnecessary.
+
+P-IV is inexpensive and can be run on the existing corpus. P-I can be computed
+today from any conforming ledger. P-II and P-III require a second programme, and
+until a programme other than this one adopts the method, none of the four has
+been tested.
+
+\section{Related work}
+
+Nothing in \S7 is new in its components, and PRIOR-ART.md states the debts at
+length \citep{priorart}. The parts assembled here have the following owners.
+
+Claim-level publication was proposed as nanopublications
+\citep{groth2010} and developed as micropublications with argumentation graphs
+linking claims to evidence and to each other \citep{clark2014}. Both predate this
+specification by a decade or more and both have better serializations.
+Manuscripts as version-controlled repositories with continuous integration are
+Manubot's contribution \citep{himmelstein2019}. Preregistration established the
+norm that priority requires a record made before measurement, and registered
+reports made it a condition of publication \citep{chambers2013}. Dependency
+resolution and deprecation semantics are borrowed wholesale from package
+management, and proof assistant libraries already compute blast radius exactly
+for the fragment of claims that can be formalized.
+
+Two adjacent proposals deserve separation. Horstmeyer's Lakat is a
+peer-to-peer architecture for continuous integration publishing, explicitly
+inspired by Lakatos, with a review-based consensus mechanism and a finality rule
+for branched contributions \citep{horstmeyer2023}. Its concern is the governance
+of a distributed publishing system, and it does not address the appraisal
+question treated in \S7. Vazire's account of psychology's credibility revolution
+describes exactly the change in standards of evidence that the inquiry arm
+mechanizes, and describes it fifteen years earlier and with a discipline behind
+it \citep{vazire2018}. The reading offered here, that such reform is not a
+Kuhnian paradigm shift, is not original either. It is the settled view in that
+literature.
+
+On infrastructure as a subject for philosophy of science rather than a
+precondition of it, the relevant work is Bowker and Star on classification
+systems and their invisible consequences \citep{bowker1999}, and Leonelli on how
+data infrastructures shape what biology can claim \citep{leonelli2016}. Hacking's
+styles of reasoning \citep{hacking1992} and Galison's account of trading zones
+and instrument-driven change \citep{galison1997} both describe scientific change
+that is not theory change, which is the category this paper places the inquiry
+arm in.
+
+What is left after these concessions is narrow. The claim is that declaring the
+dependency partition before the test, and proving priority by repository
+ancestry, converts Lakatos's core and belt from a retrospective reconstruction
+into a property of the record, and thereby answers one standing objection to his
+methodology. I am not aware of prior art for that specific move. It is also the
+only part of this paper that would survive if the rest were withdrawn.
+
+We do not offer a better account of scientific revolutions. We offer the test,
+and the test came out negative.
+
+\section{Limits, and what the record cannot show}
+
+The programme's rule is that it may not assert what its ledger cannot show. What
+follows is the application of that rule to this paper.
+
+\textbf{One programme, and its author is the subject.} Every observation
+supporting \S7 comes from a single corpus, maintained by the person making the
+argument, who chose the method and then reported that it worked. The
+confirmation risk is severe and cannot be reduced from inside. None of the four
+predictions in \S8 has been tested against a programme with different
+authorship.
+
+\textbf{The checks do not currently pass.} Running the discovery arm's validator
+against the reference programme fails. Ten tests cite three transformation
+families the registry never declares. The families were declared in the relevant
+sealed registrations and were not mirrored into the registry. The finding is left
+unrepaired, because backfilling a registry after the runs is what the declaration
+property forbids, and the correct declaration date is not the validator's to
+assign \citep{pedsc}. A paper arguing that mechanical checks catch what reading
+misses should report the case where they caught the author.
+
+\textbf{Completeness is narrower than it sounds.} Gap-free identifier assignment
+makes the set of identified lines of work enumerable. It says nothing about work
+that was considered and never given an identifier. The property converts an
+unfalsifiable claim into a finite check over a bounded domain, and the boundary
+of that domain is set by the same person the property is meant to constrain.
+
+\textbf{The corpus contains falsified predictions that were never propagated.}
+Three are recorded: a gauge structure refuted by CHSH-style tests at
+\(N=600\), a predicted hysteresis effect that failed to confirm and reversed
+under double-blind conditions at \(N=630\), and a predicted schism effect with no
+confirmations that failed on the best-powered instrument available. Each was
+reported where it was found. None had a blast radius computed, because the
+dependency records did not exist when they were found
+\citep{casebrownfield}. That is the pathology \S7 describes, observed in the
+author's own work before the machinery existed, which is weak evidence that the
+machinery was needed and no evidence that it succeeds.
+
+\textbf{This paper is an unregistered claim.} It was not sealed before its
+argument was developed, it has no instrument, and it has not been verified in
+fresh context. Its class is \texttt{exploratory}. Under the assertion authority
+property, no document in this corpus may cite it above that class, and a reader
+encountering the thesis of \S7 asserted more strongly elsewhere has found a
+defect worth reporting.
+
+\section{Conclusion}
+
+The claim tested was that Philosophy Engineering is a new paradigm in Kuhn's
+sense. It is not. It has no community, which is the unit Kuhn's account is about.
+Its anomaly is invisible to the instruments of the approach it criticizes, so it
+cannot generate the internal failure a crisis requires. It possesses a working
+procedure for translating its predecessor's corpus into its own vocabulary, and
+the existence of that procedure is evidence that the two are not separated by a
+revolution at all. The correct description is a conservative extension of
+ordinary scholarship, which adds requirements about evidence without changing
+what the claims mean.
+
+The claim that survives is smaller. Lakatos's separation of a programme's core
+from its protective belt was criticized by Feyerabend for yielding verdicts only
+after the fact, and the criticism holds because ordinary scientific records do
+not fix the partition in advance. A record that proves priority by ancestry and
+requires dependencies to be declared before the test makes the partition a
+property of the record, and what a refutation strikes becomes computable when the
+refutation is entered rather than arguable afterwards. Section~8 states four ways
+that account can fail, and until a programme with different authorship adopts the
+method, none of them has been tested.
+
+There is a reason to prefer the smaller claim beyond its being better supported.
+Paradigms are announced constantly and the announcements are almost always wrong.
+Changes to the record are rare, and the ones that took hold, the journal, the
+controlled trial, the registry, changed what could be claimed without anyone
+describing them as revolutions. The programme's own rule applies to its
+description of itself. It may not assert what its ledger cannot show, and the
+ledger does not show a paradigm.
+
+\section*{Acknowledgment of AI use}
+
+Drafting, prior-art search, and structural editing for this paper were performed
+with the assistance of a large language model under the author's direction. The
+argument, the claims about the corpus, and the verdicts in \S5 are the author's.
+Every factual statement about the corpus was checked against the repository
+before inclusion. The negative result in \S5 and the limits in \S10 were adopted
+on the author's instruction that the paper apply the programme's own assertion
+rule to itself.
+
+\begin{thebibliography}{99}
+\small
+
+\bibitem[Bowker and Star(1999)]{bowker1999}
+Bowker, G.~C. and Star, S.~L.
+\newblock \emph{Sorting Things Out: Classification and Its Consequences}.
+\newblock MIT Press, Cambridge, MA, 1999.
+
+\bibitem[Bond(2026a)]{foundation}
+Bond, A.~H.
+\newblock \emph{Philosophy Engineering: A Foundation Document for the
+Discipline}, v1.0.
+\newblock San Jos\'{e} State University, March 2026.
+
+\bibitem[Bond(2026b)]{pecls}
+Bond, A.~H.
+\newblock PE-CLS-1.0: The Claim Ledger Specification. Draft, 2026.
+\newblock \url{https://github.com/ahb-sjsu/philosophy-engineering}
+
+\bibitem[Bond(2026c)]{pebrw}
+Bond, A.~H.
+\newblock PE-BRW-1.0: Brownfield Conversion. Draft, 2026.
+
+\bibitem[Bond(2026d)]{pedsc}
+Bond, A.~H.
+\newblock PE-DSC-1.0: The Discovery Arm. Draft, 2026.
+
+\bibitem[Bond(2026e)]{priorart}
+Bond, A.~H.
+\newblock Prior art and positioning. Companion to PE-CLS-1.0, 2026.
+
+\bibitem[Bond(2026f)]{casebrownfield}
+Bond, A.~H.
+\newblock Brownfield conversion of the Geometric Ethics corpus. Case study,
+August 2026.
+
+\bibitem[Chambers(2013)]{chambers2013}
+Chambers, C.~D.
+\newblock Registered reports: A new publishing initiative at \emph{Cortex}.
+\newblock \emph{Cortex}, 49(3):609--610, 2013.
+
+\bibitem[Clark et al.(2014)]{clark2014}
+Clark, T., Ciccarese, P.~N., and Goble, C.~A.
+\newblock Micropublications: A semantic model for claims, evidence, arguments
+and annotations in biomedical communications.
+\newblock \emph{Journal of Biomedical Semantics}, 5:28, 2014.
+
+\bibitem[Duhem(1954)]{duhem1954}
+Duhem, P.
+\newblock \emph{The Aim and Structure of Physical Theory}.
+\newblock Princeton University Press, 1954. Translation of the 1914 second
+edition.
+
+\bibitem[Feyerabend(1975)]{feyerabend1975}
+Feyerabend, P.
+\newblock \emph{Against Method: Outline of an Anarchistic Theory of Knowledge}.
+\newblock New Left Books, London, 1975.
+% verify chapter/pages for the Lakatos rhetoric charge on final
+
+\bibitem[Galison(1997)]{galison1997}
+Galison, P.
+\newblock \emph{Image and Logic: A Material Culture of Microphysics}.
+\newblock University of Chicago Press, 1997.
+
+\bibitem[Groth et al.(2010)]{groth2010}
+Groth, P., Gibson, A., and Velterop, J.
+\newblock The anatomy of a nanopublication.
+\newblock \emph{Information Services and Use}, 30(1--2):51--56, 2010.
+
+\bibitem[Hacking(1992)]{hacking1992}
+Hacking, I.
+\newblock `Style' for historians and philosophers.
+\newblock \emph{Studies in History and Philosophy of Science}, 23(1):1--20,
+1992.
+
+\bibitem[Himmelstein et al.(2019)]{himmelstein2019}
+Himmelstein, D.~S. et al.
+\newblock Open collaborative writing with Manubot.
+\newblock \emph{PLOS Computational Biology}, 15(6):e1007128, 2019.
+
+\bibitem[Hohfeld(1913)]{hohfeld1913}
+Hohfeld, W.~N.
+\newblock Some fundamental legal conceptions as applied in judicial reasoning.
+\newblock \emph{Yale Law Journal}, 23(1):16--59, 1913.
+
+\bibitem[Horstmeyer(2023)]{horstmeyer2023}
+Horstmeyer, L.
+\newblock Lakat: An open and permissionless architecture for continuous
+integration academic publishing.
+\newblock arXiv:2306.09298, 2023.
+
+\bibitem[Kuhn(1970)]{kuhn1970}
+Kuhn, T.~S.
+\newblock \emph{The Structure of Scientific Revolutions}, 2nd edition, enlarged.
+\newblock University of Chicago Press, 1970.
+
+\bibitem[Kuhn(1974)]{kuhn1974}
+Kuhn, T.~S.
+\newblock Second thoughts on paradigms.
+\newblock In F.~Suppe, editor, \emph{The Structure of Scientific Theories},
+pages 459--482. University of Illinois Press, 1974.
+% verify pages on final
+
+\bibitem[Lakatos(1970)]{lakatos1970}
+Lakatos, I.
+\newblock Falsification and the methodology of scientific research programmes.
+\newblock In I.~Lakatos and A.~Musgrave, editors, \emph{Criticism and the Growth
+of Knowledge}, pages 91--196. Cambridge University Press, 1970.
+
+\bibitem[Leonelli(2016)]{leonelli2016}
+Leonelli, S.
+\newblock \emph{Data-Centric Biology: A Philosophical Study}.
+\newblock University of Chicago Press, 2016.
+
+\bibitem[Masterman(1970)]{masterman1970}
+Masterman, M.
+\newblock The nature of a paradigm.
+\newblock In I.~Lakatos and A.~Musgrave, editors, \emph{Criticism and the Growth
+of Knowledge}, pages 59--89. Cambridge University Press, 1970.
+
+\bibitem[Musgrave and Pigden(2025)]{seplakatos}
+Musgrave, A. and Pigden, C.
+\newblock Imre Lakatos.
+\newblock \emph{Stanford Encyclopedia of Philosophy}.
+\newblock \url{https://plato.stanford.edu/entries/lakatos/}
+% verify edition year and authorship on final
+
+\bibitem[Quine(1951)]{quine1951}
+Quine, W.~V.~O.
+\newblock Two dogmas of empiricism.
+\newblock \emph{The Philosophical Review}, 60(1):20--43, 1951.
+
+\bibitem[Vazire(2018)]{vazire2018}
+Vazire, S.
+\newblock Implications of the credibility revolution for productivity,
+creativity, and progress.
+\newblock \emph{Perspectives on Psychological Science}, 13(4):411--417, 2018.
+
+\end{thebibliography}
+
+\end{document}
