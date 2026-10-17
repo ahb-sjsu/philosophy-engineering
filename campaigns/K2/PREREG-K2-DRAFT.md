@@ -1,0 +1,283 @@
+# PREREG K2: design-admissibility failures predict replication failure beyond the known predictors
+
+**Status: DRAFT, NOT SEALED.** Sealing is the rename to `PREREG-K2.md`, the
+commit of that rename, and the recording of its blob hash in `README.md`, in that
+order, and only after Section 7 is filled from a rubric self-test, a
+reliability probe, a contamination probe and a pilot that have actually run.
+Before sealing, a session other than the drafting one rereads this file cold, and
+the reread is recorded in Section 10 rather than applied silently.
+
+This registration is itself subject to PE-CLS-1.0 §7.5 (P5). Its admissibility
+block is Section 9. A design that cannot pass the property it tests is not
+registered.
+
+## 1. Claim under test
+
+`PE-K2-1`, stage K-2 of [`docs/kuhnian-path.md`](../../docs/kuhnian-path.md).
+Among published studies later subjected to a large-scale replication attempt,
+studies whose **original** design fails one or more of the admissibility checks
+A1 to A4 (PE-CLS-1.0 §7.5), as scored by auditors blind to the replication
+outcome, replicate less often, and the gate score carries predictive information
+about replication **beyond** the predictors already established in the
+replication literature.
+
+Why this claim and not another. The Kuhn paper (`papers/kuhn`) scored
+Philosophy Engineering as failing Kuhn's crisis criterion, because the anomaly it
+addresses does not register as failure on the reigning instruments. Replication
+is a reigning instrument, and current practice already scores replication
+failure as its own failure. If the gates explain part of that failure that
+current practice cannot explain, the anomaly is visible on the predecessor's own
+instrument. If they do not, the crisis cell stays failed, with a measurement
+behind it.
+
+## 2. Why incremental validity is the whole design
+
+Replication failure is already predictable from cheap features: the original
+effect size, its p-value, the sample size, and, where they exist, prediction
+markets and surveys of researchers. A gate score could correlate with
+replication simply by proxying those. A small-N study tends to fail A4 (unstable
+denominators) and also tends not to replicate, and a gate that only rediscovers
+small N has added nothing.
+
+The gate is therefore **the increment**: out-of-sample discrimination of a model
+with the baseline predictors plus the gate score, against the same model without
+the gate score, on the same studies. The gate score's marginal correlation with
+replication is reported and is not the gate.
+
+## 3. World
+
+**Candidate datasets (survey of 2026-10-17; items marked † are from memory, not
+yet verified, and MUST be verified before sealing).**
+
+| Role | Dataset | Size | Baselines on the same studies |
+|---|---|---|---|
+| Primary | **SCORE** replication set: Tyner et al., *Nature* 652:143–150 (2026), doi:10.1038/s41586-025-10078-y; data osf.io/dtzx4 | 274 claims from 164 papers (2009–2018, 54 journals), stratified sample, not chosen for fame | Human forecasts (repliCATS, Replication Markets) and machine scores exist; per-claim coverage **not confirmed** |
+| Secondary | Pooled markets: Gordon et al., *PLOS ONE* (2021), doi:10.1371/journal.pone.0248780, R package `pooledmaRket` (RP:P, EE-RP, ML2, SSRP) | ~103 findings | Market prices and surveys (73% correct; r = 0.581 for prices); Altmejd et al. 2019 ML scores on an overlapping set† |
+| Not primary | RP:CB (Errington et al., *eLife* 2021) | 50 experiments from 23 papers | Few; too few papers to cluster |
+| Not primary | Brazilian Reproducibility Initiative (*eLife* 2026, reviewed preprint) | 45 experiments, 3 methods | DOI, license, original identification not confirmed |
+
+Deduplicate SCORE against RP:P before pooling. Realistic total: about 250
+original papers. **Pre-sealing estimate, not sourced:** at that N the design has
+power only for ΔAUC of roughly 0.05 or more over a baseline near 0.75. Section 7.4
+replaces this estimate with a calculation.
+
+**Consequence for the prospective arm.** SCORE's outcomes became public on
+2026-04-01, so SCORE cannot be prospective. A partial substitute: model auditors
+whose training cutoff predates 2026-04-01 cannot have learned SCORE outcomes from
+the SCORE papers, though they may have seen preprints or forecasts. The
+contamination probe measures the residue rather than assuming it is zero. A truly
+prospective arm needs replications not yet reported at the seal (registered
+replication reports in progress, or a new multi-site project); its frame is an
+open item.
+
+*Requirements on any dataset admitted:*
+
+1. Per-study replication outcome under a definition the project fixed before its
+   own results (not one this registration chooses after seeing them).
+2. The original article identifiable per study, with full methods available to
+   the auditors.
+3. Baseline predictors available on the **same** studies: at minimum original
+   effect size, p-value and N. Prediction-market or survey forecasts where they
+   exist.
+4. License permitting redistribution of derived codes, or else the codes are
+   committed and the source is referenced.
+
+The primary outcome definition is the one the replication project itself
+registered. Where a project reports several, the registration names one here
+before sealing and reports the others as secondary.
+
+## 4. The audit instrument
+
+**Rubric.** A coding rubric operationalizes A1 to A4 for published empirical
+studies that were not designed with them in mind. Each check is scored 0 (passes),
+1 (fails), or U (cannot be assessed from the article), with a required evidence
+quote from the article for every 1. The rubric is frozen before any test-set
+article is coded (Section 7.1).
+
+| Check | Scored as a failure when the original article shows… |
+|---|---|
+| A1 Nonvacuity | No outcome reported or reportable would have been taken against the hypothesis: flexible or unstated primary outcome, a hypothesis stated only post hoc, components fit after the data that can absorb any result |
+| A2 Identification | A key measure or construct used without validity or reliability evidence fit for its role, or calibrated on the same data it evaluates |
+| A3 Intervention | No manipulation check, a manipulation check that fails or is not reported, or a manipulation that plausibly produces the measured response by construction (demand, stimulus identity with the outcome) |
+| A4 Inference | Estimand, exclusions or denominator not fixed; exclusions that depend on condition; treatment-dependent attrition unaddressed; selected among analysis conventions |
+
+**Gate score.** The count of checks scored 1, range 0 to 4. U is treated as
+missing and its rate is reported per check. A study with more than two U is
+excluded from the primary analysis and counted (A4 applied to this design).
+
+**Auditors.** Two independent auditor streams per article:
+
+- *Human:* at least two coders with methods training, blind to the replication
+  outcome. Recruitment is the owner's decision and is not assumed here.
+- *Model:* language-model auditors run with the frozen rubric, under the
+  contamination control of Section 4.2. Their role is reliability and scale. The
+  primary analysis uses the human consensus score unless Section 7 shows model
+  and human scores interchangeable at the registered reliability bar.
+
+### 4.1 Blinding
+
+Articles are presented with title, authors, journal, year, and DOI removed, and
+with reference lists removed. Blinding is imperfect for famous studies, and the
+contamination probe below measures how imperfect.
+
+### 4.2 Contamination
+
+The replication outcomes of the large projects are widely known, and language
+models have almost certainly seen them. A blind audit that recalls the outcome
+measures memory, not design.
+
+- **Contamination probe (instrument gate).** Each auditor, human and model, is
+  asked separately, on the blinded article alone, whether it recognizes the
+  study and whether it replicated. Out-of-sample discrimination of that direct
+  guess is measured. If an auditor stream predicts replication from the blinded
+  text **without the rubric** better than the baseline predictors do, by a
+  margin to be fixed from the probe, that stream's gate scores are inadmissible
+  for the retrospective arm.
+- **Recognition exclusion.** Articles an auditor reports recognizing are coded by
+  a different auditor, or excluded, and the count is reported.
+- **Prospective arm.** Studies whose replication outcomes are not yet public at
+  the seal are audited, and their codes are committed and hashed, before the
+  outcomes appear. This arm cannot be contaminated by recall. It is the stronger
+  test and probably the smaller one. Its sampling frame is fixed in Section 3
+  before sealing.
+
+## 5. Estimator
+
+Primary: the difference in out-of-sample AUC (ΔAUC) between logistic models
+
+- M0: replication outcome ~ baseline predictors
+- M1: M0 + gate score
+
+estimated by cross-validation, with folds blocked by replication project and,
+within project, by original article, so that no article contributes to both fit
+and evaluation. The 95% interval is a cluster bootstrap over original articles.
+Clustering is by article because the gate score lives on the article
+(several replicated effects can come from one paper).
+
+Secondary: the M1 gate-score coefficient and its interval; per-check
+contributions (A1 to A4 entered separately), reported and not gated; the
+retrospective and prospective arms separately.
+
+## 6. Bars and what falsifies
+
+*Bars are fixed from the pilot before sealing (Section 7). The structure is
+fixed now.*
+
+**Instrument gates.** A miss voids the run and does not grade the claim.
+
+| Gate | Passes when |
+|---|---|
+| I1 Rubric reliability | Inter-rater agreement on the gate score at or above a bar fixed from the reliability probe |
+| I2 Contamination | Section 4.2 probe within its bar for every auditor stream used in the primary analysis |
+| I3 Blinding leak | Redaction leaves none of title, author, journal, year or DOI, by automated check |
+| I4 Coverage | Fewer than a fixed fraction of studies excluded for U or recognition |
+| I5 Power | The minimum detectable ΔAUC at the realized N is stated and is below a value fixed before sealing; if it is not, the run is reported as underpowered and grades nothing |
+
+**Physics gate.** A miss refutes the claim at this scope.
+
+- **Pass:** the lower end of the 95% interval for ΔAUC exceeds 0 **and** the
+  gate-score coefficient has the predicted sign (more failures, less
+  replication).
+- **Fail:** the upper end of the 95% interval for ΔAUC lies below the smallest
+  effect of interest fixed before sealing, i.e. the increment is shown small. A result between the two is
+  reported as unresolved, not as a pass.
+
+**What a fail means.** The admissibility gates do not explain replication failure
+beyond what is already known. The crisis cell of the Kuhn paper's table stays at
+Fail, and the plan's §5 position 2 (reform, not paradigm) is the one supported.
+
+## 7. Before sealing (all run, recorded here)
+
+### 7.0 Dataset survey
+
+Run 2026-10-17 (web search; OSF and Nature pages could not be fetched, so
+licenses and per-claim file layouts are unconfirmed). Results are in Section 3.
+Before sealing: open osf.io/dtzx4 and confirm the per-claim outcome files,
+forecast coverage, and license.
+
+### 7.0.1 Prior art that this design must cite and distinguish
+
+- **META-REP project (Jekel & Smela, DFG SPP 2317)**, "Replicating Failed
+  Replications: A Validity-based Framework for Predicting Replication Success":
+  codes validity indicators of original studies (construct validation of
+  measures, attrition, design; Fabrigar's four validities) and adds them to
+  Altmejd-style prediction. **Closest overlap, especially with A2 and A3.**
+  Results not found in the survey. If it has published, K-2's novelty narrows
+  to A1 and A4 and to the registered-admissibility framing, and the
+  registration MUST say so before sealing.
+- **Van Bavel et al. 2016, PNAS**† coded RP:P originals for contextual
+  sensitivity and related it to replication; Inbar 2016† disputed the increment.
+  Direct precedent for coding originals beyond N and effect size.
+- **Chester & Lasko 2021**, *Perspect. Psychol. Sci.* 16(2):377–395: 348 JPSP
+  manipulations coded; ~one third had a manipulation check. Not linked to
+  replication. Base rate for A3.
+- **Flake & Fried 2020** (AMPPS, doi:10.1177/2515245920952393) and **Hussey &
+  Hughes 2020** (AMPPS 3(2):166–184): measurement practices. Source for A2's
+  rubric.
+- **Baselines:** Altmejd et al. 2019, *PLOS ONE* 14(12):e0225826 (AUC 0.77 CV,
+  0.73 preregistered out-of-sample); Yang, Youyou & Uzzi 2020, PNAS (0.65–0.78);
+  SCORE forecasters (76–78% best-metric). **The increment is measured against
+  the strongest baseline available on the same claims, not the weakest.**
+
+### 7.1 Rubric development set
+
+The rubric is developed on articles **disjoint** from the test set (not in any
+replication project used for testing, or a held-out project). Its versions are
+committed. The frozen version's hash goes in Section 9.
+
+### 7.2 Reliability probe
+
+Not run.
+
+### 7.3 Contamination probe
+
+Not run.
+
+### 7.4 Pilot
+
+Not run. Purpose: realized N, U rate, recognition rate, and the variance needed
+to size the I5 power bar and the physics bar.
+
+## 8. Compute
+
+Model auditors run on NRP or Atlas, never on the laptop. NRP submissions follow
+the PREFLIGHT checklist in the NRP policy memory and go through the existing
+NATS burst path. No sizing is chosen in this draft.
+
+## 9. Admissibility block (PE-CLS-1.0 §7.5, applied to this design)
+
+| Check | Discharged by | Status |
+|---|---|---|
+| A1 Nonvacuity | **Witness record:** a synthetic dataset in which gate scores are independent of replication; the registered analysis code must score it as a miss. **Free components:** rubric wording (frozen on the development set before test coding); outcome definition (fixed by the replication projects); model auditor prompts (frozen with the rubric) | Witness not yet built |
+| A2 Identification | The gate score is identified only if coders agree: I1. The rubric is fit on the development set only, disjoint from the test set (7.1) | Pending 7.1, 7.2 |
+| A3 Intervention | Not applicable: observational, no manipulation. **Construction check still applies:** the gate score could encode the outcome through recall; I2 and the prospective arm are the construction checks | Pending 7.3 |
+| A4 Inference | Estimand ΔAUC (Section 5), denominator all studies in the sampling frame, exclusions counted per reason (U, recognition), one outcome definition named before sealing | Partly fixed; outcome definition pending Section 3 |
+
+## 10. Reread record
+
+None yet.
+
+## 11. Known weaknesses
+
+- **The author designed the gates being tested.** The rubric operationalizes
+  checks the author wrote. An independent methods team, as in plan stage K-3,
+  would remove this; K-2 does not. The rubric's freeze on a disjoint development
+  set and the cold reread are the mitigations, and they are partial.
+- **Published articles under-report.** A missing manipulation check may be
+  missing from the article and present in the study. The rubric scores what the
+  article shows, which is what a reviewer sees, and the claim is scoped to that.
+- **Retrospective contamination may be unremovable.** If I2 fails for every
+  auditor stream, the retrospective arm grades nothing and the prospective arm
+  carries the claim alone.
+- **Domain.** The large replication projects are mostly social and behavioral
+  science. A pass is scoped there.
+
+## 12. What a pass would and would not mean
+
+A pass would mean that design defects of the kind the gates name explain part
+of a failure that current practice measures and does not explain: the shape a
+Kuhnian crisis requires, on the predecessor's own instrument. It would not mean
+that the gates improve research going forward (that is K-3's prospective
+multi-team study), that Philosophy Engineering is a paradigm (community and
+incommensurability are untouched), or that the result holds outside the domains
+sampled.

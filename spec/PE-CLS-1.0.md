@@ -1,7 +1,7 @@
 # PE-CLS-1.0 — The Claim Ledger Specification
 
 **Philosophy Engineering · Inquiry arm · Draft specification, version 1.0**
-Andrew H. Bond · 2026-08-25
+Andrew H. Bond · 2026-08-25 · amended 2026-10-17 (§7.5 P5 Admissibility)
 
 > **House rule.** A programme may not assert what its ledger cannot show.
 
@@ -14,14 +14,15 @@ carry no conformance weight.
 ## 1. Scope
 
 This specification defines a **claim ledger**: a version-controlled repository in
-which the atomic unit is not the paper but the **claim**, and in which four
+which the atomic unit is not the paper but the **claim**, and in which five
 epistemic norms — priority of registration, completeness of the record, fidelity
-of assertion to evidence, and integrity of dependencies — are enforced by
+of assertion to evidence, integrity of dependencies, and admissibility of the
+design — are enforced by
 mechanical check rather than by trust.
 
 It specifies the objects a conforming ledger contains (§3), the evidence classes
 a claim may carry (§4), the lifecycle transitions a claim may undergo (§5), the
-dependency edges between claims and their propagation semantics (§6), the four
+dependency edges between claims and their propagation semantics (§6), the five
 checkable properties (§7), the blast-radius computation that makes localized
 retraction possible (§8), and four conformance levels (§9). §10 records the
 failure modes of the method itself.
@@ -396,7 +397,7 @@ specification produces a named, finite, checkable set of affected claims and an
 explicit statement that everything else stands. That is what it means to prune
 rather than burn.
 
-## 7. The four checkable properties *(normative)*
+## 7. The five checkable properties *(normative)*
 
 Each property converts a norm that is ordinarily asserted on trust into a
 predicate over the repository. A conforming ledger MUST be able to demonstrate
@@ -564,6 +565,95 @@ the `uses`/`corroborates` graph is acyclic; (c) the support-cap rule (§6.2) hol
 for every claim; (d) no claim is `suspended` without a recorded reason naming the
 dependency that suspended it.
 
+### 7.5 P5 — Admissibility *(normative; added 2026-10-17)*
+
+*The norm:* the design could have graded the claim.
+
+P1 to P4 check the **record**. A ledger can satisfy all four over an experiment
+that was incapable of failing, whose treatment built the predicted response, or
+whose instrument stopped measuring under the manipulation. Each of those runs is
+registered first, reported, cited at its class, and correctly wired, and it is
+still not evidence. P5 is the property that refuses it.
+
+*Scope:* every registration (§3.2) governing a claim of class `demonstrated`,
+`replicated`, or `predicted` that rests on a measurement. Claims of class
+`proved` and `definition` are exempt.
+
+*The predicate:* the registration MUST carry an `admissibility` block with the
+four checks below, and a claim MUST NOT be promoted on a result whose governing
+registration lacks the block or whose run fails a check. Each check MUST name
+the **artifact** that discharges it: a committed result produced by a hashed
+instrument (§3.3), or, where no computation is possible, a recorded human
+decision naming the rule applied and the evidence inspected. An author's
+unsupported "yes" discharges nothing.
+
+| Check | Question | Discharged by (examples) | When it is decided |
+|---|---|---|---|
+| **A1 Nonvacuity** | Could any admissible record have withheld the promotion? | A **witness record**: a constructed outcome the registered grading code scores as a miss. A list of free components (anything fit after the seal) with, for each, whether it can absorb every outcome | At registration. A1 failure makes the registration unsealable |
+| **A2 Identification** | Is every fitted object the test relies on identified, on data fit for its role? | The data each fitted object was fit on, and its overlap with evaluation data. A registered identification statistic with a threshold: spectral gap, rank condition, test-retest, posterior concentration | At registration (declared) and at run time (measured) |
+| **A3 Intervention** | Did the manipulation move the named construct, leave the instrument measuring, and not build the response? | A manipulation check against a threshold. An instrument-invariance check under treatment. A **construction check**: a placebo or sham arm, or a derivation showing the estimand is not a function of the classifying fit alone | At run time |
+| **A4 Inference** | Is the estimand the registered one, on the registered population? | A fixed estimand and denominator. A per-arm exclusion and missingness account. Where treatment changes which units are gradeable, an intent-to-treat denominator or a prespecified missingness model. Unparsed or ungradeable responses scored as their own category, never as disagreement. One registered scoring convention | At run time |
+
+A1 is a defect of the design and is caught before any data exist. A2 to A4 are
+**instrument gates** in the sense of §3.2: a miss voids the run and does not
+refute the claim. P5 makes them mandatory and typed. A run voided under P5 MUST
+record which check failed (`void: A3 construction`, not `void: instrument`), so
+that the failure is a reusable finding about the design rather than a closed
+ticket.
+
+A check MAY be declared not applicable, with a reason. A theoretical claim
+tested by a fixed benchmark has no manipulation, and A3 does not apply to it.
+
+#### 7.5.1 P5 can be satisfied vacuously *(normative)*
+
+The §9.1 hazard recurs here. A registration that declares every check not
+applicable, or sets every threshold where no run could miss it, passes P5 and
+has checked nothing. A conforming report MUST therefore state, per registration,
+the number of checks declared not applicable, and MUST fail a registration that
+declares all four not applicable. A threshold is subject to the same
+bar-and-power requirement as the registration's own bar (§3.2): the report MUST
+say how it was sized, or that it was not.
+
+#### 7.5.2 Exemplars *(informative)*
+
+Each check exists because a registered design in this corpus failed it. The
+record is in `geometric-cognition` (CAMPAIGN.md, PREREG-C1-DRAFT.md §10), and no
+design there was ever sealed, which is P5 working as intended.
+
+- **A1.** A menu-dependent admissible set reproduces any finite choice record by
+  admitting only the selection observed. Choice data alone cannot grade that
+  model; the repair was modular identification (`paper/olgc.tex`, Prop. 3 and 5).
+- **A2.** A retained rank-k subspace was the top eigenspace of a moment that was
+  isotropic by construction (uniform options, ideal at the centroid). Two
+  independent calibration draws gave directions 56° apart, against 60° for
+  random directions. No direction was identified.
+- **A3.** Displaying pre-projected values changed the stimulus, not the
+  evaluator's resolution, and the class label was read off the same fitted
+  metric: the design could not have failed. A random-plane placebo then
+  reproduced the contrast (0.9531 and 0.9688 against 0.9683). Separately,
+  removing deliberation left the evaluator 89 to 98% position-driven: the
+  manipulation destroyed the instrument.
+- **A4.** Unparsed responses at a generation cap were scored as parsed
+  disagreement. Conditioning on pairs that survived a swap-consistency filter
+  made accuracy appear to rise (0.857 to 0.930) because the treatment changed
+  which pairs survived. Three candidate scoring conventions gave three signs,
+  and one had been selected.
+
+#### 7.5.3 Legacy registrations
+
+A registration sealed before this section existed carries no `admissibility`
+block. Under PE-BRW-1.0 its claims are not reclassified downward for that
+reason alone. They are marked `admissibility: unassessed`, which a conforming
+report MUST count, and they MUST NOT be promoted again until the block is
+written and its checks are discharged on the existing evidence.
+
+*Provenance:* the four checks were proposed as the nonvacuity, identification,
+intervention, and inference gates of *An Architecture for Continuous Auditable
+Science* (A. H. Bond, draft 0.1, October 2026,
+[`docs/`](../docs/philosophy-engineering-and-epistemic-sciops.docx)). P5 is the
+keystone commitment **extracted predictions** (§7.0) taken one step further: a
+prediction earns its keep only if the measurement could have contradicted it.
+
 ## 8. Blast radius *(normative)*
 
 **Definition.** For a claim `c` in ledger `L`, the **blast radius**
@@ -602,8 +692,12 @@ A ledger MAY claim conformance at one of four levels. Each includes the previous
 |---|---|---|
 | **L1** | Accounted | §3 objects; §4 classes on every claim; **P2** (gap-free, dispositioned) |
 | **L2** | Prioritized | L1 + **P1** (ancestry-verified registration) + physics/instrument gate separation |
-| **L3** | Coherent | L2 + §6 declared edges + **P4** + **P3** + blast-radius reporting |
+| **L3** | Coherent | L2 + §6 declared edges + **P4** + **P3** + **P5** + blast-radius reporting |
 | **L4** | Verified | L3 + fresh-context verification for load-bearing claims + machine-checked cores where the claim is formalizable + CI re-execution of instruments |
+
+P5 entered L3 on 2026-10-17. A ledger certified L3 before that date MUST be
+re-evaluated; its pre-existing registrations fall under §7.5.3 and are counted
+as `admissibility: unassessed`, which does not by itself demote the ledger.
 
 L1 is achievable by an individual researcher in an afternoon and already delivers
 the file-drawer guarantee. L4 is what a programme making theoretical claims at
