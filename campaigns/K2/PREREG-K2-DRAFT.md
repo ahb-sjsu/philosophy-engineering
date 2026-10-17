@@ -51,7 +51,7 @@ yet verified, and MUST be verified before sealing).**
 
 | Role | Dataset | Size | Baselines on the same studies |
 |---|---|---|---|
-| Primary | **SCORE** replication set: Tyner et al., *Nature* 652:143–150 (2026), doi:10.1038/s41586-025-10078-y; data osf.io/dtzx4 | 274 claims from 164 papers (2009–2018, 54 journals), stratified sample, not chosen for fame | Human forecasts (repliCATS, Replication Markets) and machine scores exist; per-claim coverage **not confirmed** |
+| Primary | **SCORE** replication set: Tyner et al., *Nature* 652:143–150 (2026), doi:10.1038/s41586-025-10078-y. Data: living repository doi:10.17605/OSF.IO/G5SNY; **archived as-published version doi:10.17605/OSF.IO/BZFGY** (the version this registration will name) | 274 claims of positive results from 164 papers (2009–2018, 54 journals). Replicated: 151/274 claims (55.1%), 80.8/164 papers weighted (49.3%), significance-in-original-pattern criterion | Human forecasts (repliCATS, Replication Markets) and machine scores are reported in separate SCORE preprints, not in the Nature paper; per-claim coverage **not confirmed** |
 | Secondary | Pooled markets: Gordon et al., *PLOS ONE* (2021), doi:10.1371/journal.pone.0248780, R package `pooledmaRket` (RP:P, EE-RP, ML2, SSRP) | ~103 findings | Market prices and surveys (73% correct; r = 0.581 for prices); Altmejd et al. 2019 ML scores on an overlapping set† |
 | Not primary | RP:CB (Errington et al., *eLife* 2021) | 50 experiments from 23 papers | Few; too few papers to cluster |
 | Not primary | Brazilian Reproducibility Initiative (*eLife* 2026, reviewed preprint) | 45 experiments, 3 methods | DOI, license, original identification not confirmed |
@@ -190,10 +190,18 @@ Fail, and the plan's §5 position 2 (reform, not paradigm) is the one supported.
 
 ### 7.0 Dataset survey
 
-Run 2026-10-17 (web search; OSF and Nature pages could not be fetched, so
-licenses and per-claim file layouts are unconfirmed). Results are in Section 3.
-Before sealing: open osf.io/dtzx4 and confirm the per-claim outcome files,
-forecast coverage, and license.
+Run 2026-10-17. The Nature paper's data and code availability statements were
+read directly. They give the living repository (OSF G5SNY) and an archived,
+as-published registration (OSF BZFGY) holding the data, code, and a
+push-button package that regenerates every statistic. Only data that "can be
+shared without restriction" are public, so some per-claim records may be
+withheld. The survey's earlier pointer (osf.io/dtzx4) is the COS programme page,
+not the paper's data. **OSF was down for a scheduled migration
+(2026-10-16 09:00 to 2026-10-19 09:00 EDT, status.cos.io), so the file layout,
+license, and the restricted fraction are still unconfirmed.** After the window:
+list BZFGY's files, confirm a per-claim outcome table and its license, count the
+restricted claims, and locate the forecast data (Mody et al., osf.io/vgyed;
+Rajtmajer et al., osf.io/bdmte).
 
 ### 7.0.1 Prior art that this design must cite and distinguish
 

@@ -19,7 +19,7 @@ measure of failure.
 
 ## Next, in order
 
-1. Confirm SCORE per-claim outcome files, forecast coverage, and license (osf.io/dtzx4).
+1. After OSF's migration window closes (2026-10-19 09:00 EDT): list the archived SCORE repository (doi:10.17605/OSF.IO/BZFGY), confirm the per-claim outcome table, its license, the restricted fraction, and forecast coverage.
 2. Check whether META-REP (Jekel & Smela) has published; narrow the novelty claim if so.
 3. Build the A1 witness record (synthetic null data the analysis code must score as a miss).
 4. Draft the rubric on a development set disjoint from the test set; freeze and hash it.
