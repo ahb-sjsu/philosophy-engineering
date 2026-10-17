@@ -57,9 +57,11 @@ yet verified, and MUST be verified before sealing).**
 | Not primary | Brazilian Reproducibility Initiative (*eLife* 2026, reviewed preprint) | 45 experiments, 3 methods | DOI, license, original identification not confirmed |
 
 Deduplicate SCORE against RP:P before pooling. Realistic total: about 250
-original papers. **Pre-sealing estimate, not sourced:** at that N the design has
-power only for ΔAUC of roughly 0.05 or more over a baseline near 0.75. Section 7.4
-replaces this estimate with a calculation.
+original papers. **Power by simulation (Section 7.5):** at SCORE's shape (~274
+claims, 164 papers, baseline AUC ~0.75) the design has 80% power only for a true
+out-of-sample ΔAUC of about 0.055, and 31% at about 0.026. A real but small
+increment is likely to be graded `fail` at a smallest effect of interest of
+0.05; that is the bar doing its job, and the owner should set it knowing this.
 
 **Consequence for the prospective arm.** SCORE's outcomes became public on
 2026-04-01, so SCORE cannot be prospective. A partial substitute: model auditors
@@ -209,10 +211,24 @@ Rajtmajer et al., osf.io/bdmte).
   Replications: A Validity-based Framework for Predicting Replication Success":
   codes validity indicators of original studies (construct validation of
   measures, attrition, design; Fabrigar's four validities) and adds them to
-  Altmejd-style prediction. **Closest overlap, especially with A2 and A3.**
-  Results not found in the survey. If it has published, K-2's novelty narrows
-  to A1 and A4 and to the registered-admissibility framing, and the
-  registration MUST say so before sealing.
+  Altmejd-style prediction. Ran Feb 2022 to Jan 2025 (Cologne project page).
+  **Re-checked 2026-10-17: no paper, preprint, dataset, or predictive result
+  found;** the one public output is a poster abstract, Smela (2024), "Predicting
+  the Success of Replication Based on Validity Indicators", TeaP 2024
+  Regensburg, coding attrition, sample differences, measure validation, and
+  within/between design (abstract seen only via search summary). Overlap: A2
+  (measure validation) and part of A4 (attrition). **Not covered there:** A1
+  nonvacuity, A3 manipulation checks and construction, A4 treatment-dependent
+  selection and selected scoring conventions. The registration MUST cite it and
+  MUST re-check for publication at sealing. Framework source: **Fabrigar,
+  Wegener & Petty 2020**, *Personality and Social Psychology Review*
+  24(4):316–344, doi:10.1177/1088868320931366.
+- **Boyce, Mathur & Frank 2023**, *R. Soc. Open Sci.* 10(11):231240,
+  doi:10.1098/rsos.231240: 176 student replications; codes design features
+  (within/between subjects, vignettes, trials, online switch) against
+  replication; within-subjects OR 2.59, weakened once effect size and p are
+  in. No manipulation checks coded, no AUC. Precedent for design features as
+  predictors; its weak increment is a warning for this bar.
 - **Van Bavel et al. 2016, PNAS**† coded RP:P originals for contextual
   sensitivity and related it to replication; Inbar 2016† disputed the increment.
   Direct precedent for coding originals beyond N and effect size.
@@ -246,6 +262,31 @@ Not run.
 Not run. Purpose: realized N, U rate, recognition rate, and the variance needed
 to size the I5 power bar and the physics bar.
 
+### 7.5 A1 witness, construction check, and power (simulation, run 2026-10-17)
+
+`k2_witness.py` draws synthetic SCORE-shaped data (assumptions in its `WORLD`
+block, not evidence about the gates) and runs the registered analysis
+`k2_analysis.py` 400 times per scenario, 500 bootstrap draws each, seed
+20261017, SESOI 0.05, on Atlas. Result committed as `k2_witness_result.json`.
+
+| Scenario | Mean ΔAUC | pass | fail | unresolved |
+|---|---:|---:|---:|---:|
+| null (gate independent) | -0.003 | 0.000 | 1.000 | 0.000 |
+| proxy (gate tracks N only) | -0.002 | 0.003 | 0.998 | 0.000 |
+| signal, slope 0.25 | 0.005 | 0.028 | 0.923 | 0.050 |
+| signal, slope 0.5 | 0.026 | 0.310 | 0.413 | 0.278 |
+| signal, slope 0.75 | 0.057 | 0.843 | 0.030 | 0.128 |
+| signal, slope 1.0 | 0.092 | 0.983 | 0.000 | 0.018 |
+
+**A1 witness: PASS.** The analysis does not credit a gate score with no signal
+(0/400) or one that only proxies a baseline (1/400). **Limits:** the proxy
+scenario has the gate track a baseline M0 already contains. A gate that tracks a
+quantity the baselines measure *with error* would earn a legitimate-looking
+increment; that case is not simulated and belongs in the reread. The bootstrap
+resamples pooled out-of-sample predictions and does not refit, so fold-to-fold
+variance is not in the interval; the null's zero pass rate suggests this is not
+inflating passes here, but it is a choice the reread should examine.
+
 ## 8. Compute
 
 Model auditors run on NRP or Atlas, never on the laptop. NRP submissions follow
@@ -256,7 +297,7 @@ NATS burst path. No sizing is chosen in this draft.
 
 | Check | Discharged by | Status |
 |---|---|---|
-| A1 Nonvacuity | **Witness record:** a synthetic dataset in which gate scores are independent of replication; the registered analysis code must score it as a miss. **Free components:** rubric wording (frozen on the development set before test coding); outcome definition (fixed by the replication projects); model auditor prompts (frozen with the rubric) | Witness not yet built |
+| A1 Nonvacuity | **Witness record:** a synthetic dataset in which gate scores are independent of replication; the registered analysis code must score it as a miss. **Free components:** rubric wording (frozen on the development set before test coding); outcome definition (fixed by the replication projects); model auditor prompts (frozen with the rubric) | Witness built and run: PASS (7.5) |
 | A2 Identification | The gate score is identified only if coders agree: I1. The rubric is fit on the development set only, disjoint from the test set (7.1) | Pending 7.1, 7.2 |
 | A3 Intervention | Not applicable: observational, no manipulation. **Construction check still applies:** the gate score could encode the outcome through recall; I2 and the prospective arm are the construction checks | Pending 7.3 |
 | A4 Inference | Estimand ΔAUC (Section 5), denominator all studies in the sampling frame, exclusions counted per reason (U, recognition), one outcome definition named before sealing | Partly fixed; outcome definition pending Section 3 |

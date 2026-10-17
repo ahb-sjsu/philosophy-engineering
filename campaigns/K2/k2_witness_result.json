@@ -1,0 +1,87 @@
+{
+ "world": {
+  "n_papers": 164,
+  "extra_claims_poisson": 0.67,
+  "intercept": 0.25,
+  "baseline_slopes": [
+   0.9,
+   0.6,
+   -0.5
+  ],
+  "paper_sd": 0.6,
+  "gate_p_mean": 0.3
+ },
+ "reps": 400,
+ "boot": 500,
+ "sesoi": 0.05,
+ "seed": 20261017,
+ "scenarios": {
+  "null": {
+   "gate_slope": 0.0,
+   "rates": {
+    "pass": 0.0,
+    "fail": 1.0,
+    "unresolved": 0.0
+   },
+   "mean_delta_auc": -0.002839836948385571,
+   "mean_auc_m0": 0.7582003947142333,
+   "mean_n_claims": 274.2175
+  },
+  "proxy": {
+   "gate_slope": 0.0,
+   "rates": {
+    "pass": 0.0025,
+    "fail": 0.9975,
+    "unresolved": 0.0
+   },
+   "mean_delta_auc": -0.001974158869919989,
+   "mean_auc_m0": 0.7582258180961056,
+   "mean_n_claims": 274.575
+  },
+  "signal_0.25": {
+   "gate_slope": 0.25,
+   "rates": {
+    "pass": 0.0275,
+    "fail": 0.9225,
+    "unresolved": 0.05
+   },
+   "mean_delta_auc": 0.005195619286679156,
+   "mean_auc_m0": 0.7534498169936373,
+   "mean_n_claims": 274.7925
+  },
+  "signal_0.5": {
+   "gate_slope": 0.5,
+   "rates": {
+    "pass": 0.31,
+    "fail": 0.4125,
+    "unresolved": 0.2775
+   },
+   "mean_delta_auc": 0.025670610852527743,
+   "mean_auc_m0": 0.7473469177421995,
+   "mean_n_claims": 273.5075
+  },
+  "signal_0.75": {
+   "gate_slope": 0.75,
+   "rates": {
+    "pass": 0.8425,
+    "fail": 0.03,
+    "unresolved": 0.1275
+   },
+   "mean_delta_auc": 0.05705232829279109,
+   "mean_auc_m0": 0.7335663636066931,
+   "mean_n_claims": 273.7
+  },
+  "signal_1.0": {
+   "gate_slope": 1.0,
+   "rates": {
+    "pass": 0.9825,
+    "fail": 0.0,
+    "unresolved": 0.0175
+   },
+   "mean_delta_auc": 0.09167535512821409,
+   "mean_auc_m0": 0.7213805918896729,
+   "mean_n_claims": 274.365
+  }
+ },
+ "a1_witness": "PASS: null and proxy pass at <= 5%"
+}
