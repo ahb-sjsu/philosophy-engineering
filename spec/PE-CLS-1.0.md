@@ -827,7 +827,15 @@ A specification that cannot say how it fails is a marketing document.
    verification remains a human task.
 5. **Registration theater.** A registration whose bars are set so loosely that no
    outcome could miss them is conforming and worthless. §3.2's power requirement
-   mitigates but does not eliminate this.
+   mitigates but does not eliminate this. Since the 2026-10-17 amendment, §7.5
+   A1 makes the strongest mitigation checkable at L3: the registration must
+   carry a witness (a record, or a distribution where grading is a statistical
+   test) that its own grading code scores as a miss. That still does not
+   eliminate it. A witness can be weaker than the real alternative, and a bar
+   that refuses a pure null can still credit a proxy: in campaign K2's
+   simulation, a score tracking what the baselines measure with error passed in
+   22% of draws at baseline reliability 0.3 (`campaigns/K2/PREREG-K2-DRAFT.md`
+   §7.5).
 6. **Verifier capture.** A fresh-context verifier that shares the author's
    assumptions, tools, or training will miss the same things the author missed.
    Independence is a matter of degree and SHOULD be characterized, not asserted.

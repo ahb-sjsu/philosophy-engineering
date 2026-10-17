@@ -151,6 +151,41 @@ measures memory, not design.
   test and probably the smaller one. Its sampling frame is fixed in Section 3
   before sealing.
 
+### 4.3 Auditors are instruments (draft 2026-10-17)
+
+Adopted from the owner's book *All Tests Pass* (draft 0.3: ch. 10 "The
+Evaluator Is an Instrument"; patterns V04 Independent Witness, V09 Placebo Run,
+V10 Calibrated Judge, S05 Selection Is Fitting). Each is a requirement on this
+design, not a citation:
+
+1. **Planted-defect calibration (instrument gate, joins I1).** Before any test
+   coding, every auditor stream codes development-set articles with known
+   plants: a manipulation-check paragraph removed (A3), a primary outcome made
+   post hoc (A1), a condition-dependent exclusion inserted (A4). Recall per
+   check is measured, and a stream below a bar fixed from the pilot is not
+   used. Plants never touch test articles.
+2. **Placebo gate (secondary, must not pass).** Gate scores permuted within
+   discipline × design-type strata (B2, B3), run through the registered
+   analysis 400 times; its pass rate is reported beside the real result. A
+   placebo that passes more than 5% means the strata leak.
+3. **U is not missing at random.** Badly reported articles are plausibly both
+   high-U and less replicable. Registered sensitivity analyses: U scored as
+   fail, U scored as pass, and the excluded fraction by outcome.
+4. **Two model families, each one opinion.** Model auditors come from at least
+   two model families; agreement between two runs of one family counts once.
+   Each stream is recorded as a description (family, revision, context, what
+   it saw), not as "independent".
+5. **Pinned revisions.** Every model auditor is named with an exact revision. A
+   hosted model that can change or be withdrawn after the seal is recorded as
+   such, and a withdrawn auditor voids its stream (I1), not the run.
+6. **Prompts are selected on reliability only.** Model-auditor prompts are
+   chosen on development-set agreement and plant recall, never on
+   development-set replication outcomes (7.1 consequence 5 extended to
+   prompts).
+7. **Order and decoration.** Rubric items are presented in randomized order,
+   and the sensitivity of scores to confident prose is measured on the pilot
+   (persuasive writing may track the outcome).
+
 ## 5. Estimator
 
 Primary: the difference in out-of-sample AUC (ΔAUC) between logistic models
@@ -175,9 +210,13 @@ secondary test:** the gates beyond a text model is a stronger claim than the
 gates beyond known features, and both are reported. Which of the two is primary
 is an owner decision, recorded before sealing.
 
-estimated by cross-validation, with folds blocked by replication project and,
-within project, by original article, so that no article contributes to both fit
-and evaluation. The 95% interval is a cluster bootstrap over original articles.
+estimated by cross-validation, with folds blocked by original article, so that
+no article contributes to both fit and evaluation (an article replicated in two
+projects carries one `paper_id` after deduplication, so blocking by article also
+keeps it on one side). *Corrected 2026-10-17:* the earlier text also blocked by
+replication project, which `k2_analysis.py` never did, and which cannot be done
+with one primary project; the code was right and the text was not. Per-project
+results are a secondary report. The 95% interval is a cluster bootstrap over original articles.
 Clustering is by article because the gate score lives on the article
 (several replicated effects can come from one paper).
 

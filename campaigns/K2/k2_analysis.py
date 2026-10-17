@@ -4,7 +4,10 @@
 Input: a CSV with one row per replicated claim and columns
 
     claim_id, paper_id, project, replicated (0/1), gate_score (0-4),
+    n_u (checks scored U; rows with n_u > 2 are excluded and listed),
     and the baseline predictor columns named with --baseline.
+    `project` is carried for the per-project secondary report and is not
+    used here.
 
 Estimand: out-of-sample AUC of M1 (baselines + gate_score) minus that of M0
 (baselines), with cross-validation folds blocked by original paper so that no
@@ -139,12 +142,17 @@ def main() -> int:
     cols = args.baseline.split(",")
     with open(args.csv, newline="", encoding="utf-8") as fh:
         rows = list(csv.DictReader(fh))
+    # Registration Section 4: a study with more than two checks scored U is
+    # excluded from the primary analysis and counted. The CSV carries n_u.
+    excluded = [r["claim_id"] for r in rows if int(r["n_u"]) > 2]
+    rows = [r for r in rows if int(r["n_u"]) <= 2]
     y = np.array([int(r["replicated"]) for r in rows], dtype=float)
     base = np.array([[float(r[c]) for c in cols] for r in rows])
     gate = np.array([float(r["gate_score"]) for r in rows])
     groups = np.array([r["paper_id"] for r in rows])
     out = analyze(y, base, gate, groups, k=args.folds, n_boot=args.boot,
                   sesoi=args.sesoi, seed=args.seed)
+    out["excluded_more_than_two_u"] = {"n": len(excluded), "claims": excluded}
     print(json.dumps(out, indent=2))
     return 0
 
