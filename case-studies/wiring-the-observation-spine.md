@@ -234,3 +234,18 @@ to predate its results.
 *`python tools/pe_lint.py --ledger C:\source\geometric-observation\ledger --level L3`.*
 *The 77 objects are written into the `geometric-observation` working tree and are*
 *uncommitted there; committing them is that repository's decision.*
+
+## Addendum, 2026-10-17: P5
+
+PE-CLS-1.0 §7.5 (P5 Admissibility) entered L3 on 2026-10-17. Run against these
+77 objects, the extended `pe_lint` refused all **43** in-scope claims
+(`demonstrated`, `replicated`, `predicted`): none carried an admissibility
+block, because none of the corpus's registrations predates the property. The
+§7.5.3 remedy was applied mechanically: each of the 43 was marked
+`admissibility: "unassessed"` with a dated history entry, in the uncommitted
+working-tree objects, and `wire_spine.py` now emits the same field so that a
+regeneration cannot silently drop it. P5 then passes with **43 unassessed, 0
+assessed, 0 exempt**. That count is the finding. Not one claim in the reference
+deployment has a design that has been checked for whether it could have failed.
+The six P1/P4 findings above are unchanged. Committing the objects remains that
+repository's decision.

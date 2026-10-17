@@ -158,6 +158,16 @@ for cid, r in rows.items():
                               "claim objects (PE-BRW-1.0 s5.1-5.2). Dependency edges "
                               "declared retrospectively; see edge_provenance."}],
     }
+    # PE-CLS-1.0 s7.5.3: every registration in this corpus predates P5, so an
+    # in-scope claim converts as `unassessed`, never as an absent block.
+    if r["class"] in ("demonstrated", "replicated", "predicted"):
+        hist = obj.pop("history")
+        obj["admissibility"] = "unassessed"
+        obj["history"] = hist + [{
+            "date": "2026-10-17",
+            "event": "admissibility marked unassessed: legacy registration with no "
+                     "admissibility block (PE-CLS-1.0 s7.5.3). Not a demotion; the "
+                     "claim may not be promoted again until A1-A4 are discharged."}]
     if cid in prov:
         obj["edge_provenance"] = prov[cid]
     io.open(os.path.join(OUT, cid + ".json"), "w", encoding="utf-8").write(
