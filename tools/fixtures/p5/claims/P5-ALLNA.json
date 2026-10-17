@@ -1,0 +1,38 @@
+{
+ "spec": "PE-CLS-1.0",
+ "id": "P5-ALLNA",
+ "class": "demonstrated",
+ "statement": "fixture claim P5-ALLNA",
+ "scope": "pe_lint P5 fixture",
+ "evidence": [],
+ "depends": {
+  "uses": [],
+  "corroborates": [],
+  "cites": []
+ },
+ "status": "classified",
+ "history": [
+  {
+   "date": "2026-09-01",
+   "event": "created"
+  }
+ ],
+ "admissibility": {
+  "A1": {
+   "status": "na",
+   "reason": "fixture"
+  },
+  "A2": {
+   "status": "na",
+   "reason": "fixture"
+  },
+  "A3": {
+   "status": "na",
+   "reason": "fixture"
+  },
+  "A4": {
+   "status": "na",
+   "reason": "fixture"
+  }
+ }
+}

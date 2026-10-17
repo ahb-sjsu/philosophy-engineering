@@ -1,0 +1,41 @@
+{
+ "spec": "PE-CLS-1.0",
+ "id": "P5-HUMAN",
+ "class": "demonstrated",
+ "statement": "fixture claim P5-HUMAN",
+ "scope": "pe_lint P5 fixture",
+ "evidence": [],
+ "depends": {
+  "uses": [],
+  "corroborates": [],
+  "cites": []
+ },
+ "status": "classified",
+ "history": [
+  {
+   "date": "2026-09-01",
+   "event": "created"
+  }
+ ],
+ "admissibility": {
+  "A1": {
+   "status": "pass",
+   "artifact": "results/artifact.json"
+  },
+  "A2": {
+   "status": "pass",
+   "artifact": {
+    "rule": "test-retest r >= 0.8",
+    "evidence": "results/artifact.json"
+   }
+  },
+  "A3": {
+   "status": "na",
+   "reason": "fixed benchmark, no manipulation"
+  },
+  "A4": {
+   "status": "pass",
+   "artifact": "results/artifact.json"
+  }
+ }
+}

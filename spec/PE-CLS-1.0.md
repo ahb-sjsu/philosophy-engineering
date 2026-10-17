@@ -577,7 +577,16 @@ still not evidence. P5 is the property that refuses it.
 
 *Scope:* every registration (§3.2) governing a claim of class `demonstrated`,
 `replicated`, or `predicted` that rests on a measurement. Claims of class
-`proved` and `definition` are exempt.
+`proved` and `definition` are exempt. A claim of an in-scope class that does
+not rest on a measurement (a numerical verification of a theorem, for example)
+MUST say so with a reasoned exemption (`admissibility: {exempt: <reason>}`)
+rather than by omission, and a conforming report MUST count exemptions.
+
+*Format:* in a native ledger the governing registration's block is carried on
+the claim object as `admissibility`, keyed `A1` to `A4`, each with a `status`
+of `pass`, `fail`, or `na`; a `pass` or `fail` names its `artifact`, an `na`
+gives its `reason`, and a `threshold` carries its `sizing`. A legacy claim
+carries the string `unassessed` (§7.5.3).
 
 *The predicate:* the registration MUST carry an `admissibility` block with the
 four checks below, and a claim MUST NOT be promoted on a result whose governing
@@ -822,7 +831,8 @@ history:
 
 ## Appendix B — Checking a ledger (informative)
 
-The reference validator implements P1–P4 and the blast-radius computation:
+The reference validator implements P1–P5 and the blast-radius computation
+(P5 self-test: `python tools/test_pe_lint_p5.py`, fixtures in `tools/fixtures/p5/`):
 
 ```
 python tools/pe_lint.py --ledger <path> --level L3

@@ -1,0 +1,40 @@
+{
+ "spec": "PE-CLS-1.0",
+ "id": "P5-YES",
+ "class": "demonstrated",
+ "statement": "fixture claim P5-YES",
+ "scope": "pe_lint P5 fixture",
+ "evidence": [],
+ "depends": {
+  "uses": [],
+  "corroborates": [],
+  "cites": []
+ },
+ "status": "classified",
+ "history": [
+  {
+   "date": "2026-09-01",
+   "event": "created"
+  }
+ ],
+ "admissibility": {
+  "A1": {
+   "status": "pass",
+   "artifact": "yes"
+  },
+  "A2": {
+   "status": "pass",
+   "artifact": "results/artifact.json",
+   "threshold": 0.2,
+   "sizing": "pilot value with 2x margin"
+  },
+  "A3": {
+   "status": "na",
+   "reason": "fixed benchmark, no manipulation"
+  },
+  "A4": {
+   "status": "pass",
+   "artifact": "results/artifact.json"
+  }
+ }
+}

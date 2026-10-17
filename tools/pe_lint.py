@@ -1,13 +1,14 @@
 #!/usr/bin/env python
 """pe_lint -- reference validator for PE-CLS-1.0 (the Claim Ledger Specification).
 
-Checks the four properties a conforming claim ledger must demonstrate
+Checks the five properties a conforming claim ledger must demonstrate
 mechanically, and computes blast radius for a retraction.
 
-    P1  Priority     seal commit is a git ancestor of the result commit
-    P2  Completeness identifier sequence gap-free, every ID dispositioned
-    P3  Authority    no document cites a claim above its class
-    P4  Coherence    dependencies resolve, graph acyclic, support-cap holds
+    P1  Priority      seal commit is a git ancestor of the result commit
+    P2  Completeness  identifier sequence gap-free, every ID dispositioned
+    P3  Authority     no document cites a claim above its class
+    P4  Coherence     dependencies resolve, graph acyclic, support-cap holds
+    P5  Admissibility the design could have graded the claim (A1-A4)
 
 Two front ends:
 
@@ -58,6 +59,7 @@ CLASSES = {
     "revised":       {"support": 0, "priority": 0},
 }
 TERMINAL = {"refuted", "withdrawn", "suspended", "void"}
+MISSING = "<missing>"
 RECORD_CLASSES = {"witness", "revised"}
 
 
@@ -89,6 +91,11 @@ class Claim:
     # declared_in}. Absent key means the edge was declared as a bare id and the
     # ledger does not know when it was declared.
     edge_prov: dict = field(default_factory=dict)
+    # s7.5: the governing registration's admissibility block, carried on the
+    # claim object in the native format. MISSING means the field is absent,
+    # which is different from a ledger saying "unassessed".
+    admissibility: object = None
+    history: list = field(default_factory=list)
 
 
 @dataclass
@@ -270,6 +277,8 @@ def parse_native_ledger(root: str) -> dict[str, Claim]:
                 result_commit=obj.get("result_commit"),
                 source=os.path.relpath(p, root),
                 edge_prov=prov,
+                admissibility=obj.get("admissibility", MISSING),
+                history=obj.get("history", []) or [],
             )
     return claims
 
@@ -544,6 +553,154 @@ def check_p3(root: str, claims: dict[str, Claim],
     return out, {"documents_scanned": scanned}
 
 
+# s7.5: P5 governs registrations behind these classes. `proved` and
+# `definition` are exempt by the spec; exploratory and record classes promote
+# nothing, so there is nothing for an admissibility block to license.
+P5_SCOPE = {"demonstrated", "replicated", "predicted"}
+P5_CHECKS = ("A1", "A2", "A3", "A4")
+P5_STATUSES = {"pass", "fail", "na"}
+# The date s7.5 entered the specification. A promotion recorded after it on a
+# claim still marked `unassessed` is the s7.5.3 violation.
+P5_EFFECTIVE = "2026-10-17"
+
+
+def _promoted_after(history: list, date: str) -> list[str]:
+    out = []
+    for h in history:
+        if isinstance(h, dict):
+            d, ev = str(h.get("date", "")), str(h.get("event", ""))
+        else:
+            m = re.match(r"\s*(\d{4}-\d{2}-\d{2})\s*:?\s*(.*)", str(h))
+            d, ev = (m.group(1), m.group(2)) if m else ("", str(h))
+        if d > date and re.search(r"\bpromot", ev, re.I):
+            out.append(d)
+    return out
+
+
+def _artifact_resolves(root: str, art) -> str | None:
+    """None if the artifact discharges a check, else the reason it does not.
+
+    An artifact is a committed file (a path that must exist under the ledger
+    root) or a recorded human decision, which must name the rule applied and
+    the evidence inspected (s7.5). A bare "yes" is neither.
+    """
+    if isinstance(art, dict):
+        missing = [k for k in ("rule", "evidence") if not art.get(k)]
+        return f"human decision missing {missing}" if missing else None
+    if not isinstance(art, str) or not art.strip():
+        return "no artifact named"
+    a = art.strip()
+    if a.lower() in {"yes", "y", "true", "ok", "pass", "done", "n/a"}:
+        return f"artifact '{a}' is an assertion, not an artifact"
+    if not os.path.exists(os.path.join(root, a)):
+        return f"artifact '{a}' does not resolve under the ledger root"
+    return None
+
+
+def check_p5(root: str, claims: dict[str, Claim],
+             block_expressible: bool = True) -> tuple[list[Finding], dict]:
+    """Admissibility (s7.5): the governing design could have graded the claim."""
+    out: list[Finding] = []
+    scope = [c for c in claims.values()
+             if c.cls in P5_SCOPE and c.status not in TERMINAL]
+    st = {"in_scope": len(scope), "assessed": 0, "unassessed": 0,
+          "exempt": 0, "missing": 0, "all_na": 0,
+          "na": {k: 0 for k in P5_CHECKS}, "fail": {k: 0 for k in P5_CHECKS}}
+
+    if not block_expressible:
+        # Same shape as s9.1(3): the markdown front end has no field for the
+        # block. Its claims are legacy by construction and are counted under
+        # s7.5.3, not passed.
+        st["unassessed"] = len(scope)
+        if scope:
+            out.append(Finding(
+                "P5", "WARN", "(ledger)",
+                f"format has no admissibility field; {len(scope)} in-scope "
+                f"claim(s) counted as unassessed (s7.5.3)"))
+        return out, st
+
+    for c in sorted(scope, key=lambda c: c.id):
+        blk = c.admissibility
+        if blk is MISSING or blk is None:
+            st["missing"] += 1
+            out.append(Finding(
+                "P5", "ERROR", c.id,
+                f"'{c.cls}' claim has no admissibility block; it may not be "
+                f"promoted, and a legacy claim must be marked 'unassessed' "
+                f"(s7.5, s7.5.3)"))
+            continue
+        if isinstance(blk, str) and blk.strip().lower() == "unassessed":
+            st["unassessed"] += 1
+            late = _promoted_after(c.history, P5_EFFECTIVE)
+            if late:
+                out.append(Finding(
+                    "P5", "ERROR", c.id,
+                    f"promoted on {late[0]} while admissibility is unassessed "
+                    f"(s7.5.3)"))
+            continue
+        if not isinstance(blk, dict):
+            st["missing"] += 1
+            out.append(Finding("P5", "ERROR", c.id,
+                               f"admissibility must be a mapping or "
+                               f"'unassessed', got {type(blk).__name__}"))
+            continue
+        if "exempt" in blk:
+            # s7.5 scope: the claim does not rest on a measurement. The reason
+            # is required so the exemption is a recorded judgment, and the
+            # count is reported so exemption cannot quietly become the norm.
+            st["exempt"] += 1
+            if not str(blk.get("exempt") or "").strip():
+                out.append(Finding("P5", "ERROR", c.id,
+                                   "scope exemption with no reason (s7.5)"))
+            continue
+
+        st["assessed"] += 1
+        n_na = 0
+        for k in P5_CHECKS:
+            chk = blk.get(k)
+            if not isinstance(chk, dict):
+                out.append(Finding("P5", "ERROR", c.id,
+                                   f"{k} missing from admissibility block"))
+                continue
+            status = str(chk.get("status", "")).lower()
+            if status not in P5_STATUSES:
+                out.append(Finding("P5", "ERROR", c.id,
+                                   f"{k} status '{status}' not one of "
+                                   f"{sorted(P5_STATUSES)}"))
+                continue
+            if status == "na":
+                n_na += 1
+                st["na"][k] += 1
+                if not str(chk.get("reason") or "").strip():
+                    out.append(Finding("P5", "ERROR", c.id,
+                                       f"{k} declared not applicable with no "
+                                       f"reason"))
+                continue
+            why = _artifact_resolves(root, chk.get("artifact"))
+            if why:
+                out.append(Finding("P5", "ERROR", c.id, f"{k} {status}: {why}"))
+            if chk.get("threshold") is not None and not str(
+                    chk.get("sizing") or "").strip():
+                out.append(Finding(
+                    "P5", "ERROR", c.id,
+                    f"{k} threshold given with no sizing; say how it was "
+                    f"sized, or that it was not (s7.5.1)"))
+            if status == "fail":
+                st["fail"][k] += 1
+                kind = "registration unsealable" if k == "A1" else "run void"
+                out.append(Finding(
+                    "P5", "ERROR", c.id,
+                    f"{k} failed ({kind}) yet the claim stands at "
+                    f"'{c.cls}'; an inadmissible design grades nothing "
+                    f"(s7.5)"))
+        if n_na == len(P5_CHECKS):
+            st["all_na"] += 1
+            out.append(Finding("P5", "ERROR", c.id,
+                               "all four checks declared not applicable; P5 "
+                               "satisfied vacuously (s7.5.1)"))
+    return out, st
+
+
 def blast_radius(claims: dict[str, Claim], target: str) -> dict:
     """Transitive closure of load-bearing edges INTO target (section 8)."""
     uses_in: dict[str, list[str]] = {c: [] for c in claims}
@@ -601,7 +758,8 @@ def blast_radius(claims: dict[str, Claim], target: str) -> dict:
 # --------------------------------------------------------------------------
 
 LEVEL_PROPS = {"L1": ["P2"], "L2": ["P2", "P1"],
-               "L3": ["P2", "P1", "P4", "P3"], "L4": ["P2", "P1", "P4", "P3"]}
+               "L3": ["P2", "P1", "P4", "P3", "P5"],
+               "L4": ["P2", "P1", "P4", "P3", "P5"]}
 
 # --------------------------------------------------------------------------
 # discovery arm: transformation registries (PE-DSC-1.0)
@@ -1007,6 +1165,9 @@ def main() -> int:
     if "P3" in props:
         f, s = check_p3(root, claims, set(args.policy.split(","))); findings += f
         stats["P3"] = s
+    if "P5" in props:
+        f, s = check_p5(root, claims, block_expressible=edges_expressible)
+        findings += f; stats["P5"] = s
 
     acked_entries, baseline_path = ([], None) if args.no_baseline else \
         load_baseline(root, args.baseline)
@@ -1044,7 +1205,7 @@ def main() -> int:
         pf = [f for f in findings if f.prop == prop]
         errs = sum(1 for f in pf if f.severity == "ERROR")
         label = {"P1": "Priority", "P2": "Completeness", "P3": "Authority",
-                 "P4": "Coherence"}[prop]
+                 "P4": "Coherence", "P5": "Admissibility"}[prop]
         nack = sum(1 for f in ack_findings if f.prop == prop)
         if errs:
             verdict = f"FAIL ({errs})"
