@@ -47,7 +47,7 @@ def first_page_candidates(pages: str) -> tuple[list[str], bool]:
     """First-page candidates, undoing a spreadsheet date coercion.
 
     The RP:P master file stores some page ranges as dates ("1-15" became
-    "15-Jan"; "22-4", RP:P's abbreviation of 22-24, became "22-Apr").
+    "15-jan"; "22-4", RP:P's abbreviation of 22-24, probably became "22-apr").
     PE-CLS-1.0 s7.6 I2's defect family. Which of month-day or day-month the
     spreadsheet used is not recoverable from the cell, so both readings are
     candidates and Crossref decides; the row is flagged either way.

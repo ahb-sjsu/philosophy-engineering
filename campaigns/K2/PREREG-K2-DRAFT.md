@@ -434,10 +434,10 @@ mirrors, DOIs verified through Crossref; files in `devset/`).**
 - Shared articles: Risen & Gilovich 2008 (RP:P and ML2); Tversky & Kahneman
   1981 (ML1 and ML2); two RP:P articles each contributed two replications.
   132 distinct articles with DOIs, before ML3. Rubric development codes the article.
-- **Found while assembling:** RP:P's master data file stores four page ranges
-  as spreadsheet dates ("1-15" as "15-Jan"; "22-4", RP:P's abbreviation of
-  22-24, as "22-Apr"). This is PE-CLS-1.0 §7.6 I2's defect family in the most
-  cited replication dataset. It does not touch outcomes; it is a reason the
+- **Found while assembling:** the GitHub copy of RP:P's data file (the OSF original not yet checked) stores four page ranges
+  as spreadsheet dates (pages 1-15 as "15-jan"; pages 22-24, probably entered as RP:P's abbreviation "22-4",
+  as "22-apr"; also "20-jan" and "18-sep"). This is PE-CLS-1.0 §7.6 I2's defect family in a central
+  replication dataset. It does not touch outcomes; it is a reason the
   SCORE files get the same check (I2) when they arrive.
 - The files carry no replication outcomes (consequence 5 above).
 
