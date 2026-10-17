@@ -18,6 +18,7 @@ of this run.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import os
 import subprocess
@@ -44,11 +45,28 @@ def _admissibility(spec):
     return spec
 
 
-def _write_native(root: str, claims: list[dict]) -> None:
+def _sha_fill(obj, files: dict):
+    """Replace "{sha:<path>}" with the SHA-256 of that fixture file's text."""
+    if isinstance(obj, dict):
+        return {k: _sha_fill(v, files) for k, v in obj.items()}
+    if isinstance(obj, list):
+        return [_sha_fill(v, files) for v in obj]
+    if isinstance(obj, str) and obj.startswith("{sha:") and obj.endswith("}"):
+        return hashlib.sha256(files[obj[5:-1]].encode()).hexdigest()
+    return obj
+
+
+def _write_native(root: str, claims: list[dict], files: dict | None = None) -> None:
     os.makedirs(os.path.join(root, "claims"))
     os.makedirs(os.path.join(root, "results"))
     with open(os.path.join(root, "results", "artifact.json"), "w") as fh:
         fh.write("{}\n")
+    files = files or {}
+    for rel, text in files.items():
+        full = os.path.join(root, rel)
+        os.makedirs(os.path.dirname(full), exist_ok=True)
+        with open(full, "w", newline="") as fh:
+            fh.write(text)
     for c in claims:
         meta = c.get("edge_meta", {})
         uses = [({"id": t, **meta[t]} if t in meta else t)
@@ -61,6 +79,8 @@ def _write_native(root: str, claims: list[dict]) -> None:
                "history": [{"date": "2026-09-01", "event": "created"}]}
         if "admissibility" in c:
             obj["admissibility"] = _admissibility(c["admissibility"])
+        if "integrity" in c:
+            obj["integrity"] = _sha_fill(c["integrity"], files)
         with open(os.path.join(root, "claims", c["id"] + ".json"), "w",
                   encoding="utf-8") as fh:
             json.dump(obj, fh, indent=1)
@@ -103,9 +123,11 @@ def findings_for(entry: dict, which: str) -> list:
     fx = entry["fixture"]
     with tempfile.TemporaryDirectory() as root:
         if fx["kind"] == "native":
-            _write_native(root, fx[which])
+            _write_native(root, fx[which], fx.get("files", {}).get(which))
             claims = pe_lint.parse_native_ledger(root)
             chk = entry["check"]
+            if chk == "p6":
+                return pe_lint.check_p6(root, claims)[0]
             if chk == "p5":
                 return pe_lint.check_p5(root, claims)[0]
             if chk == "p4":

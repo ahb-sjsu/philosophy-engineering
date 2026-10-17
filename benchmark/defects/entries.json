@@ -696,10 +696,51 @@
    "source": "case-studies/kv-longgen-withdrawal.md",
    "defect": "A 13.7-point degradation claim did not reproduce in five of six cells; the most probable cause was arm-label contamination during off-repo aggregation, and it could not be pinned because raw outputs were never committed.",
    "detected_by": "re-validation six weeks later",
-   "check": null,
-   "enforced_by": "none",
-   "gap": "PE-CLS s3.4 requires results committed, but pe_lint checks only that a result file exists at a seal-descendant commit, not that the aggregation's inputs are committed with it.",
-   "would_need": "A result manifest listing the raw files an aggregate was computed from, each hashed and committed; a missing input is an error."
+   "check": "p6",
+   "enforced_by": "P6 (s7.6, added 2026-10-17)",
+   "spec_gate": "P6 I1",
+   "fixture": {
+    "kind": "native",
+    "defective": [
+     {
+      "id": "C1",
+      "class": "demonstrated",
+      "integrity": {
+       "inputs": [
+        {
+         "path": "raw/arm_a.jsonl",
+         "sha256": "0"
+        }
+       ]
+      }
+     }
+    ],
+    "repaired": [
+     {
+      "id": "C1",
+      "class": "demonstrated",
+      "integrity": {
+       "inputs": [
+        {
+         "path": "raw/arm_a.jsonl",
+         "sha256": "{sha:raw/arm_a.jsonl}"
+        }
+       ]
+      }
+     }
+    ],
+    "files": {
+     "defective": {},
+     "repaired": {
+      "raw/arm_a.jsonl": "{\"arm\": \"asym-nf4\", \"rouge\": 31.2}\n"
+     }
+    }
+   },
+   "expect": {
+    "severity": "ERROR",
+    "contains": "is not in the repository"
+   },
+   "repair": "Commit the raw outputs with the aggregate and list them, hashed, in the result's integrity manifest."
   },
   {
    "id": "DB-023",
@@ -891,8 +932,8 @@
    "source": "Bennett, Baird, Miller & Wolford, OHBM 2009 poster, NeuroImage 47:S125 (index-confirmed); JSUR 1(1):1-5 (2010) version cited only by secondary sources",
    "defect": "Thousands of uncorrected voxelwise tests produced 'active' voxels in a post-mortem salmon.",
    "detected_by": "deliberate demonstration",
-   "spec_gate": "A4 (multiplicity rule fixed)",
-   "checkable": "mechanical",
+   "spec_gate": "A4 (multiplicity rule; added to s7.5 after the held-out test)",
+   "checkable": "judgment",
    "check": null,
    "enforced_by": "none (external entries are classified, not fixtured)",
    "entered": "2026-10-17"
@@ -905,7 +946,7 @@
    "source": "Eklund, Nichols & Knutsson 2016, PNAS 113(28):7900-7905, doi:10.1073/pnas.1602413113 (a correction notice exists, not read)",
    "defect": "Parametric cluster inference assumes Gaussian spatial autocorrelation, which the data do not follow: 'false-positive rates of up to 70%', plus a 15-year-old bug in AFNI 3dClustSim.",
    "detected_by": "null data from 499 resting-state subjects run through the grading pipeline",
-   "spec_gate": "A1 (witness record: null data the grading code must score as a miss)",
+   "spec_gate": "A1 (witness distribution; added to s7.5 after the held-out test)",
    "checkable": "mechanical",
    "check": null,
    "enforced_by": "none (external entries are classified, not fixtured)",
@@ -975,8 +1016,8 @@
    "source": "Baggerly & Coombes 2009, Ann. Appl. Stat. 3(4):1309-1334, doi:10.1214/09-AOAS291",
    "defect": "Simple errors, 'row or column offsets' and mislabeled samples, went undetected because documentation was poor, and patients in trials were assigned on the signatures.",
    "detected_by": "forensic re-derivation from the data",
-   "spec_gate": "none (needs a raw-input manifest, cf. DB-022)",
-   "checkable": "none",
+   "spec_gate": "P6 I2 (partial: the key exists and is unique; whether the analysis joined by it needs L4 re-execution)",
+   "checkable": "mechanical",
    "check": null,
    "enforced_by": "none (external entries are classified, not fixtured)",
    "entered": "2026-10-17"
@@ -1045,11 +1086,70 @@
    "source": "Ziemann, Eren & El-Osta 2016, Genome Biol. 17:177, doi:10.1186/s13059-016-1044-7",
    "defect": "Default spreadsheet settings convert gene symbols 'to dates and floating-point numbers' (SEPT2 -> 2-Sep); about one fifth of papers with supplementary Excel gene lists affected.",
    "detected_by": "programmatic scan of supplements",
-   "spec_gate": "none (needs a data-integrity schema check)",
-   "checkable": "none",
-   "check": null,
-   "enforced_by": "none (external entries are classified, not fixtured)",
-   "entered": "2026-10-17"
+   "spec_gate": "P6 I2",
+   "checkable": "mechanical",
+   "check": "p6",
+   "enforced_by": "P6 (s7.6, added 2026-10-17)",
+   "entered": "2026-10-17",
+   "fixture": {
+    "kind": "native",
+    "defective": [
+     {
+      "id": "C1",
+      "class": "demonstrated",
+      "integrity": {
+       "inputs": [
+        {
+         "path": "data/genes.csv",
+         "sha256": "{sha:data/genes.csv}",
+         "schema": {
+          "key": "sample",
+          "columns": {
+           "sample": "id",
+           "gene": "id",
+           "fold": "float"
+          }
+         }
+        }
+       ]
+      }
+     }
+    ],
+    "repaired": [
+     {
+      "id": "C1",
+      "class": "demonstrated",
+      "integrity": {
+       "inputs": [
+        {
+         "path": "data/genes.csv",
+         "sha256": "{sha:data/genes.csv}",
+         "schema": {
+          "key": "sample",
+          "columns": {
+           "sample": "id",
+           "gene": "id",
+           "fold": "float"
+          }
+         }
+        }
+       ]
+      }
+     }
+    ],
+    "files": {
+     "defective": {
+      "data/genes.csv": "sample,gene,fold\ns1,2-Sep,1.5\ns2,TP53,0.8\n"
+     },
+     "repaired": {
+      "data/genes.csv": "sample,gene,fold\ns1,SEPT2,1.5\ns2,TP53,0.8\n"
+     }
+    }
+   },
+   "expect": {
+    "severity": "ERROR",
+    "contains": "shape of a spreadsheet coercion"
+   }
   },
   {
    "id": "DB-X15",
@@ -1101,11 +1201,68 @@
    "source": "van der Zee, Anaya & Brown 2017, BMC Nutrition 3, doi:10.1186/s40795-017-0167-x; Cornell Provost statement, 20 Sept 2018",
    "defect": "About 150 inconsistencies across four articles, including degrees of freedom larger than the sample; Cornell found misreporting of data and problematic statistical techniques.",
    "detected_by": "consistency checks on published numbers",
-   "spec_gate": "none (needs reported-statistic consistency checks)",
-   "checkable": "none",
-   "check": null,
-   "enforced_by": "none (external entries are classified, not fixtured)",
-   "entered": "2026-10-17"
+   "spec_gate": "P6 I3",
+   "checkable": "mechanical",
+   "check": "p6",
+   "enforced_by": "P6 (s7.6, added 2026-10-17)",
+   "entered": "2026-10-17",
+   "fixture": {
+    "kind": "native",
+    "defective": [
+     {
+      "id": "C1",
+      "class": "demonstrated",
+      "integrity": {
+       "inputs": [
+        {
+         "restricted": true,
+         "sha256": "ab12",
+         "custodian": "named registry",
+         "access": "data-use agreement, independent audit"
+        }
+       ],
+       "reported": [
+        {
+         "test": "t",
+         "value": "2.50",
+         "df": 150,
+         "p": ".014",
+         "n": 95
+        }
+       ]
+      }
+     }
+    ],
+    "repaired": [
+     {
+      "id": "C1",
+      "class": "demonstrated",
+      "integrity": {
+       "inputs": [
+        {
+         "restricted": true,
+         "sha256": "ab12",
+         "custodian": "named registry",
+         "access": "data-use agreement, independent audit"
+        }
+       ],
+       "reported": [
+        {
+         "test": "t",
+         "value": "2.50",
+         "df": 93,
+         "p": ".014",
+         "n": 95
+        }
+       ]
+      }
+     }
+    ]
+   },
+   "expect": {
+    "severity": "ERROR",
+    "contains": "is impossible"
+   }
   },
   {
    "id": "DB-X19",
@@ -1143,11 +1300,49 @@
    "source": "Mehra, Ruschitzka & Patel 2020, Lancet 395:1820 (retraction), doi:10.1016/S0140-6736(20)31324-6",
    "defect": "The authors 'can no longer vouch for the veracity of the primary data sources'; the data provider would not give independent reviewers the dataset.",
    "detected_by": "outside researchers, within weeks",
-   "spec_gate": "none (provenance of inputs; cf. DB-022)",
-   "checkable": "none",
-   "check": null,
-   "enforced_by": "none (external entries are classified, not fixtured)",
-   "entered": "2026-10-17"
+   "spec_gate": "P6 I1 (restricted input)",
+   "checkable": "mechanical",
+   "check": "p6",
+   "enforced_by": "P6 (s7.6, added 2026-10-17)",
+   "entered": "2026-10-17",
+   "fixture": {
+    "kind": "native",
+    "defective": [
+     {
+      "id": "C1",
+      "class": "demonstrated",
+      "integrity": {
+       "inputs": [
+        {
+         "restricted": true,
+         "sha256": "ab12"
+        }
+       ]
+      }
+     }
+    ],
+    "repaired": [
+     {
+      "id": "C1",
+      "class": "demonstrated",
+      "integrity": {
+       "inputs": [
+        {
+         "restricted": true,
+         "sha256": "ab12",
+         "custodian": "named registry",
+         "access": "data-use agreement, independent audit"
+        }
+       ]
+      }
+     }
+    ]
+   },
+   "expect": {
+    "severity": "ERROR",
+    "contains": "restricted input missing"
+   },
+   "note": "P6 refuses data no independent party can examine. It does not show the data are genuine (s7.6.1); reclassified from fabrication to provenance on 2026-10-17."
   },
   {
    "id": "DB-X22",
@@ -1194,6 +1389,6 @@
  ],
  "external": {
   "target": 20,
-  "note": "Entered 2026-10-17 from a verified research pass; Gelman & Loken 2014 (doi:10.1511/2014.111.460) is cited as the framework for A1/A4 flexibility, not entered, because it names a mechanism rather than a documented instance. spec_gate is the author's classification and is exactly what the K-1 held-out test asks an outside reader to reproduce."
+  "note": "Entered 2026-10-17 from a verified research pass; Gelman & Loken 2014 (doi:10.1511/2014.111.460) is cited as the framework for A1/A4 flexibility, not entered, because it names a mechanism rather than a documented instance. spec_gate is the author's classification and is exactly what the K-1 held-out test asks an outside reader to reproduce. Held-out test 2026-10-17: heldout-2026-10-17.json (score with score_heldout.py). Classifications of DB-X03, X04 (spec amended) and X09, X14, X18, X21 (P6 added) changed after that test; the held-out record keeps the pre-change key."
  }
 }

@@ -1,7 +1,7 @@
 # PE-CLS-1.0 — The Claim Ledger Specification
 
 **Philosophy Engineering · Inquiry arm · Draft specification, version 1.0**
-Andrew H. Bond · 2026-08-25 · amended 2026-10-17 (§7.5 P5 Admissibility)
+Andrew H. Bond · 2026-08-25 · amended 2026-10-17 (§7.5 P5 Admissibility, §7.6 P6 Integrity)
 
 > **House rule.** A programme may not assert what its ledger cannot show.
 
@@ -14,15 +14,15 @@ carry no conformance weight.
 ## 1. Scope
 
 This specification defines a **claim ledger**: a version-controlled repository in
-which the atomic unit is not the paper but the **claim**, and in which five
+which the atomic unit is not the paper but the **claim**, and in which six
 epistemic norms — priority of registration, completeness of the record, fidelity
-of assertion to evidence, integrity of dependencies, and admissibility of the
-design — are enforced by
+of assertion to evidence, integrity of dependencies, admissibility of the
+design, and integrity of the data — are enforced by
 mechanical check rather than by trust.
 
 It specifies the objects a conforming ledger contains (§3), the evidence classes
 a claim may carry (§4), the lifecycle transitions a claim may undergo (§5), the
-dependency edges between claims and their propagation semantics (§6), the five
+dependency edges between claims and their propagation semantics (§6), the six
 checkable properties (§7), the blast-radius computation that makes localized
 retraction possible (§8), and four conformance levels (§9). §10 records the
 failure modes of the method itself.
@@ -397,7 +397,7 @@ specification produces a named, finite, checkable set of affected claims and an
 explicit statement that everything else stands. That is what it means to prune
 rather than burn.
 
-## 7. The five checkable properties *(normative)*
+## 7. The six checkable properties *(normative)*
 
 Each property converts a norm that is ordinarily asserted on trust into a
 predicate over the repository. A conforming ledger MUST be able to demonstrate
@@ -598,10 +598,10 @@ unsupported "yes" discharges nothing.
 
 | Check | Question | Discharged by (examples) | When it is decided |
 |---|---|---|---|
-| **A1 Nonvacuity** | Could any admissible record have withheld the promotion? | A **witness record**: a constructed outcome the registered grading code scores as a miss. A list of free components (anything fit after the seal) with, for each, whether it can absorb every outcome | At registration. A1 failure makes the registration unsealable |
+| **A1 Nonvacuity** | Could any admissible record have withheld the promotion? | A **witness record**: a constructed outcome the registered grading code scores as a miss. Where grading is a statistical test, a **witness distribution**: many records drawn from the declared null, on which the grading code passes at no more than its nominal false-positive rate (one record cannot show a rate). A list of free components (anything fit after the seal) with, for each, whether it can absorb every outcome | At registration. A1 failure makes the registration unsealable |
 | **A2 Identification** | Is every fitted object the test relies on identified, on data fit for its role? | The data each fitted object was fit on, and its overlap with evaluation data. A registered identification statistic with a threshold: spectral gap, rank condition, test-retest, posterior concentration | At registration (declared) and at run time (measured) |
 | **A3 Intervention** | Did the manipulation move the named construct, leave the instrument measuring, and not build the response? | A manipulation check against a threshold. An instrument-invariance check under treatment. A **construction check**: a placebo or sham arm, or a derivation showing the estimand is not a function of the classifying fit alone | At run time |
-| **A4 Inference** | Is the estimand the registered one, on the registered population? | A fixed estimand and denominator. A per-arm exclusion and missingness account. Where treatment changes which units are gradeable, an intent-to-treat denominator or a prespecified missingness model. Unparsed or ungradeable responses scored as their own category, never as disagreement. One registered scoring convention | At run time |
+| **A4 Inference** | Is the estimand the registered one, on the registered population? | A fixed estimand and denominator. A per-arm exclusion and missingness account. Where treatment changes which units are gradeable, an intent-to-treat denominator or a prespecified missingness model. Unparsed or ungradeable responses scored as their own category, never as disagreement. One registered scoring convention. A **multiplicity rule**: the family of tests the claim is drawn from and its correction, fixed at registration | At registration (multiplicity) and at run time |
 
 A1 is a defect of the design and is caught before any data exist. A2 to A4 are
 **instrument gates** in the sense of §3.2: a miss voids the run and does not
@@ -612,6 +612,14 @@ ticket.
 
 A check MAY be declared not applicable, with a reason. A theoretical claim
 tested by a fixed benchmark has no manipulation, and A3 does not apply to it.
+
+*Amended 2026-10-17 (A1 witness distribution, A4 multiplicity).* Both were
+found by the first held-out test of the defect benchmark
+(`benchmark/defects/heldout-2026-10-17.json`): an outside reader, given only
+this specification, judged that A1 could not refuse a pipeline with a 70%
+false-positive rate (cluster failure in fMRI) and that A4 could not refuse
+uncorrected voxelwise testing (the dead salmon). The author had classified both
+as expressible. The reader was right on both.
 
 #### 7.5.1 P5 can be satisfied vacuously *(normative)*
 
@@ -663,6 +671,57 @@ Science* (A. H. Bond, draft 0.1, October 2026,
 keystone commitment **extracted predictions** (§7.0) taken one step further: a
 prediction earns its keep only if the measurement could have contradicted it.
 
+### 7.6 P6 — Integrity *(normative; added 2026-10-17)*
+
+*The norm:* the numbers a claim reports are the numbers its data produce.
+
+P1 to P5 assume the data under a result are the data that were collected, in the
+rows they belong to, with the values they had. Published defects show each
+assumption failing in a mechanically detectable way: an aggregate whose raw
+inputs were never kept, so a mislabeled arm could not be traced; spreadsheet
+rows offset by one, so labels moved to the wrong samples; identifiers silently
+converted into dates; reported test statistics with more degrees of freedom
+than participants. P6 is the property that checks them.
+
+*Scope:* every claim in the P5 scope (§7.5) whose evidence includes a result
+(§3.4). Claims of class `proved` and `definition` are exempt.
+
+*The predicate:* the claim MUST carry an `integrity` block with the three checks
+below. A failure of any is an error. As with P5, a legacy claim carries the
+string `unassessed` and MUST NOT be promoted until the block is written, and a
+claim whose evidence includes no data file MAY carry a reasoned exemption
+(`integrity: {exempt: <reason>}`), which a conforming report MUST count.
+
+| Check | Question | Mechanical test |
+|---|---|---|
+| **I1 Inputs** | Are the raw inputs behind every reported aggregate kept, and are they the ones used? | A manifest lists every input file with its SHA-256. Each file MUST exist in the repository and hash to the recorded value. A **restricted** input (one that cannot be published) MUST still record its hash, a named custodian, and the condition under which an independent party can verify it; an input that no independent party can ever examine fails I1 |
+| **I2 Data types and keys** | Do the data files hold the values and rows they claim to? | Each tabular input declares a schema: column types and a **key** column. Every value MUST parse as its declared type. The key MUST be present, non-null and unique. An identifier column MUST NOT contain values with the shape of a spreadsheet coercion (a date such as `2-Sep`, scientific notation such as `1.00E+04`) |
+| **I3 Reported statistics** | Is every reported test statistic internally consistent? | Each reported test is recorded as statistic, degrees of freedom, p, and N where known. The p-value recomputed from the statistic and degrees of freedom MUST agree with the reported p within the rounding of the reported digits. Degrees of freedom MUST be possible given N (for a one-sample or paired t-test, df ≤ N − 1). A mean of integer-valued responses MUST be attainable at the reported N and number of items (the GRIM test) |
+
+#### 7.6.1 What P6 does not check *(normative)*
+
+**P6 does not detect fabrication.** Data invented consistently pass all three
+checks, and every other property in this specification. A conforming report
+MUST NOT describe a P6 pass as evidence that data are genuine. Statistical
+forensics sometimes exposes fabrication (a published case was found because
+follow-up waves were baseline plus normal noise), but such tests carry false
+positive and false negative rates no record check can fix, and this
+specification does not adopt them.
+
+I2's key check establishes that rows *can* be joined by key. It cannot establish
+that an analysis *did* join by key rather than by position. Re-execution of the
+instrument on the committed inputs (L4) is what shows the analysis used them.
+
+#### 7.6.2 Provenance *(informative)*
+
+Each check exists because the defect benchmark (`benchmark/defects/`) found a
+documented defect that the specification could not express: DB-022 (an
+aggregate whose raw outputs were never committed) and DB-X21 (a dataset no
+independent party could examine) for I1; DB-X09 (row offsets) and DB-X14 (gene
+names converted to dates) for I2; DB-X18 (impossible reported statistics) for
+I3. I3 is the statcheck and GRIM tradition applied to the record rather than to
+a published PDF.
+
 ## 8. Blast radius *(normative)*
 
 **Definition.** For a claim `c` in ledger `L`, the **blast radius**
@@ -702,7 +761,7 @@ A ledger MAY claim conformance at one of four levels. Each includes the previous
 | **L1** | Accounted | §3 objects; §4 classes on every claim; **P2** (gap-free, dispositioned) |
 | **L2** | Prioritized | L1 + **P1** (ancestry-verified registration) + physics/instrument gate separation |
 | **L3** | Coherent | L2 + §6 declared edges + **P4** + **P3** + **P5** + blast-radius reporting |
-| **L4** | Verified | L3 + fresh-context verification for load-bearing claims + machine-checked cores where the claim is formalizable + CI re-execution of instruments |
+| **L4** | Verified | L3 + fresh-context verification for load-bearing claims + machine-checked cores where the claim is formalizable + CI re-execution of instruments + **P6** |
 
 P5 entered L3 on 2026-10-17. A ledger certified L3 before that date MUST be
 re-evaluated; its pre-existing registrations fall under §7.5.3 and are counted
@@ -831,7 +890,7 @@ history:
 
 ## Appendix B — Checking a ledger (informative)
 
-The reference validator implements P1–P5 and the blast-radius computation
+The reference validator implements P1–P6 and the blast-radius computation
 (P5 self-test: `python tools/test_pe_lint_p5.py`, fixtures in `tools/fixtures/p5/`):
 
 ```

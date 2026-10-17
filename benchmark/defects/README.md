@@ -38,12 +38,12 @@ about the specification, and stays in the benchmark.
 | | Count |
 |---|---:|
 | Entries | 53 (26 corpus, 3 seeded, 24 external) |
-| Corpus + seeded: caught | 22 |
-| Corpus + seeded: broken | 0 |
-| Corpus + seeded: gaps | 7 |
+| Caught (fixtured entries) | 26 |
+| Broken | 0 |
+| Gaps (corpus) | 6 |
 | External entered | **24** (target 20) |
-| External the spec can express | **16 of 24** |
-| ... of which mechanically checkable | 4 (multiplicity, null-data witness, priority, power) |
+| External the spec can express | **20 of 24** after P6 and the A1/A4 amendments (16 before; 14 by the held-out reader's reading of the pre-change spec) |
+| Inexpressible | 4, all fabrication (LaCour, Hwang, Stapel, Shu et al.), disclaimed in s7.6.1 |
 
 **Two gaps were closed the day the benchmark was built**, which is what it is
 for:
@@ -65,7 +65,6 @@ geometric-ethics, the OD registries).
 | DB-009 | A registration's content hash after a post-seal amendment | Hash the blob at the seal commit; amendments in a separate dated file |
 | DB-010 | A claim's meaning changed with no version bump (the orphan correction) | Claim semantic versioning (kuhnian-path I-3) |
 | DB-016 | A report's claim count against an independent count | Two counts per report, fail on disagreement |
-| DB-022 | Raw inputs behind an aggregate result | A result manifest of hashed, committed inputs |
 | DB-023 | Withdrawn vs refuted | Nothing mechanical: a recorded human decision |
 | DB-024 | A campaign summary against its registrations | Generated, never typed, accounting |
 | DB-025 | Prose claiming a status change the ledger never made | P3 over all narrative files, claim-state phrases resolved to history |
@@ -106,7 +105,40 @@ is not yet measured.
    has no property for them. Together with DB-022 (raw inputs never committed),
    they are the case for a sixth property. **Owner decision.**
 
-**Not yet done:** the K-1 exit's held-out test, in which a reader who did not
-build the benchmark classifies the external entries from the entries alone. The
-`spec_gate` values above are the author's classification, which is exactly what
-that test is meant to check.
+**Follow-up the same day.** The data-integrity family became **P6 Integrity**
+(PE-CLS-1.0 s7.6, required at L4): I1 hashed input manifests (with a rule for
+restricted data), I2 typed and keyed data files with a spreadsheet-coercion
+check, I3 recomputed p-values, possible degrees of freedom, and GRIM. DB-022,
+DB-X14, DB-X18 and DB-X21 now carry fixtures and are CAUGHT; DB-X09 is
+expressible only in part (I2 shows a key exists, not that the analysis joined by
+it). Surgisphere moved from fabrication to provenance: P6 refuses data no
+independent party can examine, which is not the same as showing data genuine.
+
+## Held-out test, first run (2026-10-17)
+
+Record: [`heldout-2026-10-17.json`](heldout-2026-10-17.json); score it with
+`python benchmark/defects/score_heldout.py benchmark/defects/heldout-2026-10-17.json`.
+
+A fresh-context agent (same model family as the author, so partial independence
+only, s10.6) was given the two specifications as they stood at `ce252fa` and the
+24 external entries with the author's classification removed, and nothing else.
+
+| | Agreement |
+|---|---:|
+| Expressible or not | 22/24 (92%) |
+| Primary gate, exact | 20/24 (83%) |
+| Gate, counting secondaries | 22/24 (92%) |
+| Mechanical / judgment / none | 17/24 (71%) |
+
+The plan's K-1 exit asked for 80%; this clears it, with the caveat that the
+reader was a model, not a person. **Both expressibility disagreements ran the
+same way: the author over-credited the specification, and the reader was right.**
+
+- **DB-X03** (dead salmon): A4 had no multiplicity rule. The author had credited
+  it from the rubric, not the spec.
+- **DB-X04** (cluster failure): A1 required one witness record, and a 70%
+  false-positive rate is a property of a distribution.
+
+Both were fixed in s7.5 the same day (A1 witness distribution, A4 multiplicity
+rule, rubric item A4.5), and are reported here rather than absorbed. A human
+reader remains the real test.

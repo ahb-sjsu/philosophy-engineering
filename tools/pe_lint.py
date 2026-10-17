@@ -9,6 +9,8 @@ mechanically, and computes blast radius for a retraction.
     P3  Authority     no document cites a claim above its class
     P4  Coherence     dependencies resolve, graph acyclic, support-cap holds
     P5  Admissibility the design could have graded the claim (A1-A4)
+    P6  Integrity     inputs kept and hashed, data typed and keyed, reported
+                      statistics internally consistent (I1-I3; L4)
 
 Two front ends:
 
@@ -96,6 +98,7 @@ class Claim:
     # which is different from a ledger saying "unassessed".
     admissibility: object = None
     history: list = field(default_factory=list)
+    integrity: object = None
 
 
 @dataclass
@@ -278,6 +281,7 @@ def parse_native_ledger(root: str) -> dict[str, Claim]:
                 source=os.path.relpath(p, root),
                 edge_prov=prov,
                 admissibility=obj.get("admissibility", MISSING),
+                integrity=obj.get("integrity", MISSING),
                 history=obj.get("history", []) or [],
             )
     return claims
@@ -708,6 +712,276 @@ def check_p5(root: str, claims: dict[str, Claim],
     return out, st
 
 
+# --------------------------------------------------------------------------
+# P6 Integrity (s7.6)
+# --------------------------------------------------------------------------
+
+import csv as _csv
+import hashlib as _hashlib
+import math as _math
+
+
+def _betacf(a: float, b: float, x: float) -> float:
+    """Continued fraction for the regularized incomplete beta (Lentz)."""
+    tiny, qab, qap, qam = 1e-300, a + b, a + 1.0, a - 1.0
+    c, d = 1.0, 1.0 - qab * x / qap
+    d = 1.0 / (d if abs(d) > tiny else tiny)
+    h = d
+    for m in range(1, 400):
+        m2 = 2 * m
+        aa = m * (b - m) * x / ((qam + m2) * (a + m2))
+        d = 1.0 + aa * d
+        d = 1.0 / (d if abs(d) > tiny else tiny)
+        c = 1.0 + aa / c
+        c = c if abs(c) > tiny else tiny
+        h *= d * c
+        aa = -(a + m) * (qab + m) * x / ((a + m2) * (qap + m2))
+        d = 1.0 + aa * d
+        d = 1.0 / (d if abs(d) > tiny else tiny)
+        c = 1.0 + aa / c
+        c = c if abs(c) > tiny else tiny
+        delta = d * c
+        h *= delta
+        if abs(delta - 1.0) < 1e-14:
+            break
+    return h
+
+
+def _ibeta(a: float, b: float, x: float) -> float:
+    if x <= 0.0:
+        return 0.0
+    if x >= 1.0:
+        return 1.0
+    lbt = (_math.lgamma(a + b) - _math.lgamma(a) - _math.lgamma(b)
+           + a * _math.log(x) + b * _math.log(1.0 - x))
+    if x < (a + 1.0) / (a + b + 2.0):
+        return _math.exp(lbt) * _betacf(a, b, x) / a
+    return 1.0 - _math.exp(lbt) * _betacf(b, a, 1.0 - x) / b
+
+
+def _gammaq(a: float, x: float) -> float:
+    """Upper regularized incomplete gamma Q(a, x)."""
+    if x <= 0.0:
+        return 1.0
+    if x < a + 1.0:                                   # series for P
+        term = total = 1.0 / a
+        ap = a
+        for _ in range(1000):
+            ap += 1.0
+            term *= x / ap
+            total += term
+            if abs(term) < abs(total) * 1e-15:
+                break
+        return 1.0 - total * _math.exp(-x + a * _math.log(x) - _math.lgamma(a))
+    tiny = 1e-300                                     # continued fraction for Q
+    b, c, d = x + 1.0 - a, 1.0 / tiny, 1.0 / (x + 1.0 - a)
+    h = d
+    for i in range(1, 1000):
+        an = -i * (i - a)
+        b += 2.0
+        d = an * d + b
+        d = 1.0 / (d if abs(d) > tiny else tiny)
+        c = b + an / c
+        c = c if abs(c) > tiny else tiny
+        delta = d * c
+        h *= delta
+        if abs(delta - 1.0) < 1e-15:
+            break
+    return _math.exp(-x + a * _math.log(x) - _math.lgamma(a)) * h
+
+
+def p_value(test: str, stat: float, df=None, df2=None, tail: str = "two") -> float:
+    """p for t (df), F (df, df2), chi2 (df), z. Two-sided for t and z unless
+    tail == 'one'."""
+    t = test.lower()
+    if t == "t":
+        p = _ibeta(df / 2.0, 0.5, df / (df + stat * stat))
+        return p / 2.0 if tail == "one" else p
+    if t == "z":
+        p = _math.erfc(abs(stat) / _math.sqrt(2.0))
+        return p / 2.0 if tail == "one" else p
+    if t == "f":
+        return _ibeta(df2 / 2.0, df / 2.0, df2 / (df2 + df * stat))
+    if t in ("chi2", "x2", "chisq"):
+        return _gammaq(df / 2.0, stat / 2.0)
+    raise ValueError(f"unsupported test '{test}'")
+
+
+def _decimals(text: str) -> int:
+    text = text.strip().lstrip("<>=").strip()
+    return len(text.split(".")[1]) if "." in text else 0
+
+
+def _check_reported(r: dict) -> str | None:
+    """None if consistent, else why not (I3)."""
+    test = str(r.get("test", "")).lower()
+    if test == "grim":
+        mean_s, n, items = str(r["mean"]), int(r["n"]), int(r.get("items", 1))
+        dec, mean = _decimals(mean_s), float(mean_s)
+        units = n * items
+        k = round(mean * units)
+        if all(round(j / units, dec) != round(mean, dec)
+               for j in (k - 1, k, k + 1)):
+            return (f"GRIM: mean {mean_s} is not attainable from integer "
+                    f"responses at N={n}, items={items}")
+        return None
+    val_s = str(r["value"])
+    stat, dv = abs(float(val_s)), _decimals(val_s)
+    df, df2 = r.get("df"), r.get("df2")
+    n = r.get("n")
+    if n is not None and test in ("t", "f"):
+        lim = int(n) - 1
+        used = df if test == "t" else df2
+        if used is not None and float(used) > lim:
+            return (f"{test} with df={used} is impossible at N={n} "
+                    f"(df <= N-1)")
+    half = 0.5 * 10 ** -dv
+    lo, hi = max(stat - half, 0.0), stat + half
+    tail = str(r.get("tail", "two"))
+    p_at_hi = p_value(test, hi, df, df2, tail)       # p falls as |stat| rises
+    p_at_lo = p_value(test, lo, df, df2, tail)
+    rep_s = str(r["p"]).strip()
+    if rep_s.startswith("<"):
+        bound = float(rep_s[1:])
+        return None if p_at_hi < bound else (
+            f"reported p {rep_s} but {test}={val_s} gives p >= {p_at_hi:.4g}")
+    pr, dp = float(rep_s.lstrip("=")), _decimals(rep_s)
+    rlo, rhi = pr - 0.5 * 10 ** -dp, pr + 0.5 * 10 ** -dp
+    if p_at_hi <= rhi and p_at_lo >= rlo:
+        return None
+    return (f"reported p={rep_s} but {test}={val_s}"
+            f"{f', df={df}' if df is not None else ''}"
+            f"{f', df2={df2}' if df2 is not None else ''} gives p in "
+            f"[{p_at_hi:.4g}, {p_at_lo:.4g}]")
+
+
+# s7.6 I2: shapes a spreadsheet produces when it coerces an identifier.
+_MONTHS = "jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec"
+COERCED = re.compile(
+    rf"^(\d{{1,2}}-({_MONTHS})|({_MONTHS})-\d{{1,2}}|\d{{4}}-\d{{2}}-\d{{2}}"
+    rf"|\d+(\.\d+)?e[+-]?\d+)$", re.I)
+
+
+def _check_table(root: str, inp: dict) -> list[str]:
+    """I2 on one tabular input. Returns problems."""
+    path = os.path.join(root, inp["path"])
+    sch = inp.get("schema")
+    if not isinstance(sch, dict) or not sch.get("key") or not sch.get("columns"):
+        return [f"{inp['path']}: tabular input with no schema (key + columns)"]
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(_csv.DictReader(fh))
+    out, key, cols = [], sch["key"], sch["columns"]
+    if rows and key not in rows[0]:
+        return [f"{inp['path']}: key column '{key}' absent"]
+    keys = [r.get(key, "") for r in rows]
+    if any(not k.strip() for k in keys):
+        out.append(f"{inp['path']}: key '{key}' has empty values")
+    dup = sorted({k for k in keys if keys.count(k) > 1})
+    if dup:
+        out.append(f"{inp['path']}: key '{key}' not unique ({dup[:3]})")
+    for i, r in enumerate(rows, start=2):
+        for c, typ in cols.items():
+            v = (r.get(c) or "").strip()
+            if typ in ("int", "float"):
+                try:
+                    int(v) if typ == "int" else float(v)
+                except ValueError:
+                    out.append(f"{inp['path']}:{i} {c}='{v}' is not {typ}")
+            elif typ == "id" and COERCED.match(v):
+                out.append(f"{inp['path']}:{i} identifier {c}='{v}' has the "
+                           f"shape of a spreadsheet coercion")
+    return out
+
+
+def check_p6(root: str, claims: dict[str, Claim],
+             block_expressible: bool = True) -> tuple[list[Finding], dict]:
+    """Integrity (s7.6): inputs kept, data typed and keyed, statistics
+    consistent. Does not detect fabrication (s7.6.1)."""
+    out: list[Finding] = []
+    scope = [c for c in claims.values()
+             if c.cls in P5_SCOPE and c.status not in TERMINAL]
+    st = {"in_scope": len(scope), "assessed": 0, "unassessed": 0,
+          "exempt": 0, "missing": 0, "inputs": 0, "restricted": 0,
+          "tables": 0, "reported_tests": 0}
+    if not block_expressible:
+        st["unassessed"] = len(scope)
+        if scope:
+            out.append(Finding("P6", "WARN", "(ledger)",
+                               f"format has no integrity field; {len(scope)} "
+                               f"in-scope claim(s) counted as unassessed"))
+        return out, st
+    for c in sorted(scope, key=lambda c: c.id):
+        blk = c.integrity
+        if blk is MISSING or blk is None:
+            st["missing"] += 1
+            out.append(Finding("P6", "ERROR", c.id,
+                               "no integrity block (s7.6); a legacy claim must "
+                               "be marked 'unassessed'"))
+            continue
+        if isinstance(blk, str) and blk.strip().lower() == "unassessed":
+            st["unassessed"] += 1
+            late = _promoted_after(c.history, P5_EFFECTIVE)
+            if late:
+                out.append(Finding("P6", "ERROR", c.id,
+                                   f"promoted on {late[0]} while integrity is "
+                                   f"unassessed (s7.6)"))
+            continue
+        if not isinstance(blk, dict):
+            st["missing"] += 1
+            out.append(Finding("P6", "ERROR", c.id,
+                               "integrity must be a mapping or 'unassessed'"))
+            continue
+        if "exempt" in blk:
+            st["exempt"] += 1
+            if not str(blk.get("exempt") or "").strip():
+                out.append(Finding("P6", "ERROR", c.id,
+                                   "integrity exemption with no reason"))
+            continue
+        st["assessed"] += 1
+        inputs = blk.get("inputs") or []
+        if not inputs:
+            out.append(Finding("P6", "ERROR", c.id,
+                               "I1: no inputs listed behind the result"))
+        for inp in inputs:
+            st["inputs"] += 1
+            if inp.get("restricted"):
+                st["restricted"] += 1
+                miss = [k for k in ("sha256", "custodian", "access")
+                        if not str(inp.get(k) or "").strip()]
+                if miss:
+                    out.append(Finding(
+                        "P6", "ERROR", c.id,
+                        f"I1: restricted input missing {miss}; data no "
+                        f"independent party can examine fail I1"))
+                continue
+            rel = inp.get("path", "")
+            full = os.path.join(root, rel)
+            if not rel or not os.path.isfile(full):
+                out.append(Finding("P6", "ERROR", c.id,
+                                   f"I1: input '{rel}' is not in the repository"))
+                continue
+            with open(full, "rb") as fh:
+                digest = _hashlib.sha256(fh.read()).hexdigest()
+            if digest != str(inp.get("sha256", "")).lower():
+                out.append(Finding("P6", "ERROR", c.id,
+                                   f"I1: input '{rel}' does not match its "
+                                   f"recorded sha256"))
+                continue
+            if rel.lower().endswith((".csv", ".tsv")):
+                st["tables"] += 1
+                for prob in _check_table(root, inp):
+                    out.append(Finding("P6", "ERROR", c.id, f"I2: {prob}"))
+        for r in blk.get("reported") or []:
+            st["reported_tests"] += 1
+            try:
+                why = _check_reported(r)
+            except (KeyError, ValueError, TypeError) as exc:
+                why = f"reported test not recomputable ({exc})"
+            if why:
+                out.append(Finding("P6", "ERROR", c.id, f"I3: {why}"))
+    return out, st
+
+
 def blast_radius(claims: dict[str, Claim], target: str) -> dict:
     """Transitive closure of load-bearing edges INTO target (section 8)."""
     uses_in: dict[str, list[str]] = {c: [] for c in claims}
@@ -766,7 +1040,7 @@ def blast_radius(claims: dict[str, Claim], target: str) -> dict:
 
 LEVEL_PROPS = {"L1": ["P2"], "L2": ["P2", "P1"],
                "L3": ["P2", "P1", "P4", "P3", "P5"],
-               "L4": ["P2", "P1", "P4", "P3", "P5"]}
+               "L4": ["P2", "P1", "P4", "P3", "P5", "P6"]}
 
 # --------------------------------------------------------------------------
 # discovery arm: transformation registries (PE-DSC-1.0)
@@ -1185,6 +1459,9 @@ def main() -> int:
     if "P5" in props:
         f, s = check_p5(root, claims, block_expressible=edges_expressible)
         findings += f; stats["P5"] = s
+    if "P6" in props:
+        f, s = check_p6(root, claims, block_expressible=edges_expressible)
+        findings += f; stats["P6"] = s
 
     acked_entries, baseline_path = ([], None) if args.no_baseline else \
         load_baseline(root, args.baseline)
@@ -1222,7 +1499,8 @@ def main() -> int:
         pf = [f for f in findings if f.prop == prop]
         errs = sum(1 for f in pf if f.severity == "ERROR")
         label = {"P1": "Priority", "P2": "Completeness", "P3": "Authority",
-                 "P4": "Coherence", "P5": "Admissibility"}[prop]
+                 "P4": "Coherence", "P5": "Admissibility",
+                 "P6": "Integrity"}[prop]
         nack = sum(1 for f in ack_findings if f.prop == prop)
         if errs:
             verdict = f"FAIL ({errs})"

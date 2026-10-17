@@ -172,11 +172,13 @@ claim set).
 ### K-1. Exemplars (Partial → Pass). Months 0–4.
 
 *Status 2026-10-17:* P5 in PE-CLS and `pe_lint` done. Defect benchmark v0.1 in
-[`benchmark/defects/`](../benchmark/defects/): 53 entries; corpus/seeded 22 caught,
-7 gaps; **24 external, 16 expressible by the spec** (4 mechanically). The
-falsifier below is not triggered. Inexpressible: fabrication (5, a stated
-limit) and data integrity (3, the case for a sixth property). Building it found
-one new instrument defect (DB-026). Held-out classification test not yet run.
+[`benchmark/defects/`](../benchmark/defects/): 53 entries, 26 caught, 0 broken,
+6 gaps; **24 external, 20 expressible** after P6 Integrity (s7.6) and two
+amendments to A1/A4. The falsifier below is not triggered; the 4 inexpressible
+are fabrication, disclaimed in s7.6.1. **Held-out test (fresh agent, blinded):
+92% agreement on expressibility, 83% on exact gate;** both disagreements were
+the author over-crediting the spec, and both were fixed. A human reader is the
+remaining K-1 item.
 
 1. Write P5 Admissibility (I-1), the `ungradeable` state (I-2), claim semver
    (I-3), and the release object (I-4) into PE-CLS 1.1. Extend `pe_lint`.

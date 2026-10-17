@@ -86,6 +86,7 @@ manipulations reported a check).
 | A4.2 Exclusions not condition-dependent | Exclusion or attrition differs across conditions by more than a few points and is not analyzed | Similar across conditions, or analyzed (intent-to-treat, sensitivity analysis) |
 | A4.3 Denominator fixed | The analyzed sample is conditioned on a post-treatment variable (completers, passers of a post-treatment attention check, those who "understood" the treatment) with no analysis of the full sample | The analyzed sample is defined pre-treatment, or the full-sample result is reported |
 | A4.4 One analysis convention | The claim's test is chosen among alternatives visible in the article (covariates added only in some models, a transformation applied without reason, a one-tailed test not justified in advance) and the alternatives disagree or are not reported | One analysis, fixed or conventional, or the alternatives are reported and agree |
+| A4.5 Multiplicity | The claim is one of several tests (outcomes, subgroups, voxels, time points) and no correction or family is stated | A correction is applied to a stated family, or the claim is the single registered test |
 
 ## Adjudication
 

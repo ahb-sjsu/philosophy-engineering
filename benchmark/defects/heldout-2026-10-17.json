@@ -1,0 +1,56 @@
+{
+ "test": "K-1 held-out classification, first run",
+ "date": "2026-10-17",
+ "reader": "fresh-context Claude subagent (same model family as the author; partial independence only, PE-CLS-1.0 s10.6). Instructed to read only the three files below and nothing else, no web.",
+ "reader_inputs": {
+  "spec_snapshot": "spec/PE-CLS-1.0.md and spec/PE-DSC-1.0.md at commit ce252fa (before P6 and before the A1/A4 amendments)",
+  "entries": "the 24 external entries with spec_gate and checkable removed (id, title, source, defect, detected_by only)"
+ },
+ "author_key": {
+  "DB-X01": "A2", "DB-X02": "A2", "DB-X03": "A4", "DB-X04": "A1", "DB-X05": "A2",
+  "DB-X06": "A4", "DB-X07": "A4", "DB-X08": "A1", "DB-X09": "none", "DB-X10": "s3.2-instrument-gate",
+  "DB-X11": "A2", "DB-X12": "A3", "DB-X13": "none", "DB-X14": "none", "DB-X15": "P1",
+  "DB-X16": "s3.1-scope", "DB-X17": "A3", "DB-X18": "none", "DB-X19": "s3.2-bar-sizing", "DB-X20": "s3.2-instrument-gate",
+  "DB-X21": "none", "DB-X22": "none", "DB-X23": "none", "DB-X24": "none"
+ },
+ "author_secondary": {"DB-X08": "A4", "DB-X15": "A1", "DB-X16": "A3"},
+ "author_checkable": {
+  "DB-X01": "judgment", "DB-X02": "judgment", "DB-X03": "mechanical", "DB-X04": "mechanical", "DB-X05": "judgment",
+  "DB-X06": "judgment", "DB-X07": "judgment", "DB-X08": "judgment", "DB-X09": "none", "DB-X10": "judgment",
+  "DB-X11": "judgment", "DB-X12": "judgment", "DB-X13": "none", "DB-X14": "none", "DB-X15": "mechanical",
+  "DB-X16": "judgment", "DB-X17": "judgment", "DB-X18": "none", "DB-X19": "mechanical", "DB-X20": "judgment",
+  "DB-X21": "none", "DB-X22": "none", "DB-X23": "none", "DB-X24": "none"
+ },
+ "reader_answers": {
+  "DB-X01": {"primary": "A2", "secondary": "A3", "checkable": "mechanical", "why": "s7.5 A2 requires each fitted object's fit data and its overlap with evaluation data; A3 construction check asks whether the estimand comes from the selecting fit alone."},
+  "DB-X02": {"primary": "A2", "secondary": "A3", "checkable": "mechanical", "why": "s7.5 A2: selection fit on the same data as evaluation shows up as fit/evaluation overlap; A3 construction check is secondary."},
+  "DB-X03": {"primary": "none", "secondary": null, "checkable": "none", "why": "No normative multiplicity check. s3.2/s7.5.1 sizing only needs to be stated (or declared not done); s10.5 registration theater is informative."},
+  "DB-X04": {"primary": "none", "secondary": null, "checkable": "none", "why": "Neither spec requires validating the inference method's false-positive rate on null data; hashing and re-running an instrument would reproduce the bug."},
+  "DB-X05": {"primary": "A2", "secondary": null, "checkable": "judgment", "why": "s7.5 A2: fitted objects must be identified on data fit for their role, with overlap declared; leakage types such as unavailable features need a coder's call."},
+  "DB-X06": {"primary": "A4", "secondary": null, "checkable": "judgment", "why": "s7.5 A4: fixed estimand and denominator, a per-arm exclusion account, one registered scoring convention; selective exclusion and odd weighting break these."},
+  "DB-X07": {"primary": "A4", "secondary": "P1", "checkable": "judgment", "why": "s7.5 A4 'one registered scoring convention' refuses picking the LR p over the Pearson p; s3.2/P1 requires the stopping rule to be registered before measurement."},
+  "DB-X08": {"primary": "P1", "secondary": "A4", "checkable": "mechanical", "why": "s7.1 P1 ancestry: the DVs, stopping rule and design (s3.2) are fixed before the result commit; A4 single registered estimand is secondary."},
+  "DB-X09": {"primary": "none", "secondary": null, "checkable": "none", "why": "No listed check catches row offsets or sample mislabels; s4.2 withdrawn class only records the defect once it is found."},
+  "DB-X10": {"primary": "s3.2-instrument-gate", "secondary": null, "checkable": "judgment", "why": "s3.2 physics/instrument gate split: a registered timing-instrument gate miss voids the run. Which gates get registered is the author's choice."},
+  "DB-X11": {"primary": "A2", "secondary": null, "checkable": "judgment", "why": "s7.5 A2: the fitted foreground object must be identified on data fit for its role, which here would have been independent frequency data."},
+  "DB-X12": {"primary": "A3", "secondary": null, "checkable": "mechanical", "why": "s7.5 A3 manipulation check against a threshold: did arsenate replacing phosphate deliver the named phosphate-free condition."},
+  "DB-X13": {"primary": "none", "secondary": null, "checkable": "none", "why": "Fabrication is out of reach: s7.1.2 says ancestry is tamper-evident, not non-repudiable against fabrication; no check tests whether data are authentic."},
+  "DB-X14": {"primary": "none", "secondary": null, "checkable": "none", "why": "s3.4 only says results SHOULD be machine-readable; no normative check validates data values for spreadsheet corruption."},
+  "DB-X15": {"primary": "P1", "secondary": "P3", "checkable": "mechanical", "why": "s7.1/s4.3: a confirmatory class needs a registration that is an ancestor of the result; P3 refuses citing exploratory rows above their class."},
+  "DB-X16": {"primary": "s3.1-scope", "secondary": "D1", "checkable": "judgment", "why": "s3.1 scope states the conditions of assertion; s10.4 says scope verification is a human task; D1 refuses invariance over an undeclared family."},
+  "DB-X17": {"primary": "A3", "secondary": null, "checkable": "judgment", "why": "s7.5 A3: did the manipulation move the named construct (depletion)? Whether e-crossing taps the construct is a construct-validity judgment."},
+  "DB-X18": {"primary": "none", "secondary": null, "checkable": "none", "why": "No consistency check on reported statistics; P3 checks class, not values; CI comparison against committed results is L4, not a listed check."},
+  "DB-X19": {"primary": "s3.2-bar-sizing", "secondary": null, "checkable": "judgment", "why": "s3.2 requires stating how the bar or power was sized. It refuses only a missing statement; an explicit 'not done' passes, so adequacy is judged."},
+  "DB-X20": {"primary": "A3", "secondary": "s3.2-instrument-gate", "checkable": "judgment", "why": "s7.5 A3 instrument-invariance: is the unstirred-cell calorimetry still measuring under treatment? s3.2 instrument gate voids the run."},
+  "DB-X21": {"primary": "none", "secondary": null, "checkable": "none", "why": "s3.4 committed results is not a listed check, and nothing verifies where primary data came from or that it exists."},
+  "DB-X22": {"primary": "none", "secondary": null, "checkable": "none", "why": "Fabricated data: s7.1.2 disclaims protection against fabrication; no listed check detects it."},
+  "DB-X23": {"primary": "none", "secondary": null, "checkable": "none", "why": "Fabricated or manipulated datasets: no listed check detects fabrication (s7.1.2)."},
+  "DB-X24": {"primary": "none", "secondary": null, "checkable": "none", "why": "Fabricated data found by distributional forensics; neither spec has a data-authenticity check (s7.1.2)."}
+ },
+ "adjudication": {
+  "DB-X03": "Reader right. A4 as written had no multiplicity rule; the author credited it from the rubric, not the spec. A4 amended 2026-10-17.",
+  "DB-X04": "Reader right. A1 required one witness record; a 70% false-positive rate is a property of a distribution, which one record cannot show. A1 amended 2026-10-17 to require a witness distribution where grading is a statistical test.",
+  "DB-X08": "Both expressible; primary differs (author A1, reader P1). Either refuses it; counted as gate disagreement.",
+  "DB-X20": "Both expressible; primary differs (author s3.2, reader A3). Either refuses it; counted as gate disagreement."
+ }
+}
