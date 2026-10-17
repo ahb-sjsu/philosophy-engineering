@@ -371,6 +371,13 @@ def check_p4(claims: dict[str, Claim], edges_expressible: bool = True,
     """
     out: list[Finding] = []
     for c in claims.values():
+        # A class outside s4 must never default to a live one: '[refuted-as-
+        # sealed]' was once read as 'exploratory' where terminal was meant
+        # (defect benchmark DB-015). The support cap below cannot rank it.
+        if c.cls not in CLASSES:
+            out.append(Finding("P4", "ERROR", c.id,
+                               f"class '{c.cls}' is not defined in s4 (or a "
+                               f"registered record class); refusing to rank it"))
         for dep in c.uses + c.corroborates:
             if dep.startswith("reg:"):
                 continue
@@ -775,6 +782,9 @@ ABSORBERS = {"representation", "metric", "constraint", "budget", "dynamics",
              "equivalence", "declaration", "measurement"}
 OUTCOMES = {"survived", "failed", "boundary", "predicted", "proved"}
 NEEDS_WITNESS = {"failed", "boundary"}
+# PE-DSC-1.0 s4. An outcome outside this set is an error, never a pass: 'fail'
+# for 'failed' once made a failed test invisible to D3 (defect benchmark DB-026).
+OUTCOMES = {"survived", "failed", "boundary", "predicted", "proved"}
 HEADER_FIELDS = ("x", "y", "equivalence", "complexity_ordering")
 
 
@@ -877,7 +887,14 @@ def check_d3(regs: dict[str, dict]) -> tuple[list[Finding], dict]:
     findings, need, stated = [], 0, 0
     for name, reg in regs.items():
         for test in reg.get("test", []):
-            if (test.get("outcome") or "").strip() not in NEEDS_WITNESS:
+            outcome = (test.get("outcome") or "").strip()
+            if outcome not in OUTCOMES:
+                findings.append(Finding("D3", "ERROR", name,
+                    f"{_snip(test.get('claim'))}: outcome '{outcome}' is not "
+                    f"one of {sorted(OUTCOMES)} (PE-DSC-1.0 s4); a misspelled "
+                    f"failure would otherwise need no revision"))
+                continue
+            if outcome not in NEEDS_WITNESS:
                 continue
             need += 1
             rev = (test.get("revision") or "").strip()

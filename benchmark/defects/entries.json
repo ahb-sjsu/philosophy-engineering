@@ -1,0 +1,864 @@
+{
+ "benchmark": "PE defect benchmark (stage K-1 of docs/kuhnian-path.md)",
+ "version": "0.1",
+ "created": "2026-10-17",
+ "fields": {
+  "origin": "corpus (a defect this programme actually committed, with its source) | seeded (a constructed defect covering a property the corpus has not yet failed) | external (a defect from outside the author's corpus; K-1 targets >= 20)",
+  "layer": "record (the ledger misstates what happened) | design (the experiment could not grade the claim) | instrument (the checker or converter itself was wrong)",
+  "detected_by": "what actually found it: audit, derivation, computation, the linter, a reader",
+  "enforced_by": "the pe_lint property that refuses the recorded defect, or 'none' (a gap)",
+  "fixture": "defective + repaired ledgers the runner materializes; the expected finding must fire on the first and nothing may fire on the second"
+ },
+ "entries": [
+  {
+   "id": "DB-001",
+   "origin": "corpus",
+   "layer": "design",
+   "title": "Unrestricted admissibility absorbs every choice record",
+   "source": "geometric-cognition paper/olgc.tex:186-196 (Prop. 3); ledger GC-27",
+   "defect": "With a menu-dependent admissible set fit to the data, the observer model reproduces any finite choice record by admitting only the option chosen. No record can fail it.",
+   "detected_by": "derivation (Prop. 3), before any data",
+   "check": "p5",
+   "spec": "PE-CLS-1.0 s7.5 A1",
+   "repair": "Modular identification: identify components on evidence disjoint from the choices predicted; fix admissibility by an independent constraint (olgc.tex Prop. 5).",
+   "fixture": {
+    "kind": "native",
+    "defective": [
+     {
+      "id": "C1",
+      "class": "predicted",
+      "admissibility": {
+       "_fail": "A1"
+      }
+     }
+    ],
+    "repaired": [
+     {
+      "id": "C1",
+      "class": "predicted",
+      "admissibility": "_pass"
+     }
+    ]
+   },
+   "expect": {
+    "severity": "ERROR",
+    "contains": "A1 failed"
+   }
+  },
+  {
+   "id": "DB-002",
+   "origin": "corpus",
+   "layer": "design",
+   "title": "Retained subspace of an isotropic moment",
+   "source": "geometric-cognition experiments/C1/PREREG-C1-DRAFT.md:478-490",
+   "defect": "The rank-k budget kept the top eigenspace of a workload moment that was isotropic by construction (uniform options, ideal at the centroid; 833.33*I). Two calibration draws gave directions 56 degrees apart against 60 for random. The retained directions were sampling noise.",
+   "detected_by": "cold reread + computation of the population moment",
+   "check": "p5",
+   "spec": "PE-CLS-1.0 s7.5 A2",
+   "repair": "Register an eigengap statistic with a threshold; build a workload with a gap (the D1 repair, s10.11).",
+   "fixture": {
+    "kind": "native",
+    "defective": [
+     {
+      "id": "C1",
+      "class": "demonstrated",
+      "admissibility": {
+       "_fail": "A2"
+      }
+     }
+    ],
+    "repaired": [
+     {
+      "id": "C1",
+      "class": "demonstrated",
+      "admissibility": "_pass"
+     }
+    ]
+   },
+   "expect": {
+    "severity": "ERROR",
+    "contains": "A2 failed"
+   }
+  },
+  {
+   "id": "DB-003",
+   "origin": "corpus",
+   "layer": "design",
+   "title": "Treatment built the predicted response",
+   "source": "geometric-cognition commits 4e59e85, 6404279; CAMPAIGN.md:266-276, 298-306",
+   "defect": "Showing pre-projected values changed the stimulus, not the evaluator's resolution, and the class label came from the same fitted metric: the contrast reduces to (2p-1)^2 and could not have failed. A random-plane placebo reproduced it (0.9531, 0.9688 vs 0.9683).",
+   "detected_by": "audit, then a placebo run",
+   "check": "p5",
+   "spec": "PE-CLS-1.0 s7.5 A3 (construction)",
+   "repair": "Manipulate the evaluator, not the stimulus; require a placebo arm in the registration.",
+   "fixture": {
+    "kind": "native",
+    "defective": [
+     {
+      "id": "C1",
+      "class": "demonstrated",
+      "admissibility": {
+       "_fail": "A3"
+      }
+     }
+    ],
+    "repaired": [
+     {
+      "id": "C1",
+      "class": "demonstrated",
+      "admissibility": "_pass"
+     }
+    ]
+   },
+   "expect": {
+    "severity": "ERROR",
+    "contains": "A3 failed"
+   }
+  },
+  {
+   "id": "DB-004",
+   "origin": "corpus",
+   "layer": "design",
+   "title": "Manipulation destroyed the instrument",
+   "source": "geometric-cognition commit 4e59e85; PREREG-C1-DRAFT.md s10.16; e5a7bc3",
+   "defect": "Turning deliberation off left the evaluator 89-98% position-driven (2, 7, 1, 2 of 64 pairs graded). The manipulation removed the comparison, not its resolution.",
+   "detected_by": "instrument-invariance check under treatment",
+   "check": "p5",
+   "spec": "PE-CLS-1.0 s7.5 A3 (instrument)",
+   "repair": "Register an instrument-invariance bar (position-bias rate under treatment) as an instrument gate.",
+   "fixture": {
+    "kind": "native",
+    "defective": [
+     {
+      "id": "C1",
+      "class": "demonstrated",
+      "admissibility": {
+       "_fail": "A3"
+      }
+     }
+    ],
+    "repaired": [
+     {
+      "id": "C1",
+      "class": "demonstrated",
+      "admissibility": "_pass"
+     }
+    ]
+   },
+   "expect": {
+    "severity": "ERROR",
+    "contains": "A3 failed"
+   }
+  },
+  {
+   "id": "DB-005",
+   "origin": "corpus",
+   "layer": "design",
+   "title": "Unparsed responses scored as disagreement",
+   "source": "geometric-cognition commit e5a7bc3",
+   "defect": "run_level scored answers cut off at max_tokens=1024 the same as parsed disagreement; the apparent consistency decline was the cap. 'Load degrades swap consistency' was withdrawn.",
+   "detected_by": "second cold reread",
+   "check": "p5",
+   "spec": "PE-CLS-1.0 s7.5 A4",
+   "repair": "Score ungradeable responses as their own category; raise the cap and re-run (C1-D, 13b24a8).",
+   "fixture": {
+    "kind": "native",
+    "defective": [
+     {
+      "id": "C1",
+      "class": "demonstrated",
+      "admissibility": {
+       "_fail": "A4"
+      }
+     }
+    ],
+    "repaired": [
+     {
+      "id": "C1",
+      "class": "demonstrated",
+      "admissibility": "_pass"
+     }
+    ]
+   },
+   "expect": {
+    "severity": "ERROR",
+    "contains": "A4 failed"
+   }
+  },
+  {
+   "id": "DB-006",
+   "origin": "corpus",
+   "layer": "design",
+   "title": "Treatment changed which units were gradeable",
+   "source": "geometric-cognition commit 2d7758c",
+   "defect": "Conditioning accuracy on pairs that survived a swap-consistency filter made accuracy rise 0.857 to 0.930 (hypergeometric p=0.023 against random attrition) because the treatment changed which pairs survived.",
+   "detected_by": "attrition analysis",
+   "check": "p5",
+   "spec": "PE-CLS-1.0 s7.5 A4",
+   "repair": "Fixed denominator (all pairs) or a prespecified missingness model.",
+   "fixture": {
+    "kind": "native",
+    "defective": [
+     {
+      "id": "C1",
+      "class": "demonstrated",
+      "admissibility": {
+       "_fail": "A4"
+      }
+     }
+    ],
+    "repaired": [
+     {
+      "id": "C1",
+      "class": "demonstrated",
+      "admissibility": "_pass"
+     }
+    ]
+   },
+   "expect": {
+    "severity": "ERROR",
+    "contains": "A4 failed"
+   }
+  },
+  {
+   "id": "DB-007",
+   "origin": "corpus",
+   "layer": "design",
+   "title": "Scoring convention selected among three that disagree",
+   "source": "geometric-cognition commit e5a7bc3",
+   "defect": "Three candidate scoring conventions gave three signs, one was in use, and the registered parse gate was never applied.",
+   "detected_by": "second cold reread",
+   "check": "p5",
+   "spec": "PE-CLS-1.0 s7.5 A4",
+   "repair": "Register one convention; report the others as sensitivity only.",
+   "fixture": {
+    "kind": "native",
+    "defective": [
+     {
+      "id": "C1",
+      "class": "demonstrated",
+      "admissibility": {
+       "_fail": "A4"
+      }
+     }
+    ],
+    "repaired": [
+     {
+      "id": "C1",
+      "class": "demonstrated",
+      "admissibility": "_pass"
+     }
+    ]
+   },
+   "expect": {
+    "severity": "ERROR",
+    "contains": "A4 failed"
+   }
+  },
+  {
+   "id": "DB-008",
+   "origin": "corpus",
+   "layer": "record",
+   "title": "Rebase destroyed priority proofs",
+   "source": "papers/tts/README.md (defect 1); PE-CLS-1.0 s7.1.1",
+   "defect": "Twelve seal hashes recorded in the ledger stopped existing after a rebase. The prose stayed accurate, the author even noted the rebase, and the proof of priority was gone.",
+   "detected_by": "pe_lint P1 on the converted corpus",
+   "check": "p1",
+   "spec": "PE-CLS-1.0 s7.1, s7.1.1",
+   "repair": "Re-anchor: record the current commit beside the historical hash (s7.1.1); merge, never rebase, in a ledger repository.",
+   "fixture": {
+    "kind": "git",
+    "defective": {
+     "steps": [
+      "seal",
+      "result"
+     ],
+     "row": "| 001 | prereg r1 | reported, sealed 0badc0de1, results r1.json |"
+    },
+    "repaired": {
+     "steps": [
+      "seal",
+      "result"
+     ],
+     "row": "| 001 | prereg r1 | reported, sealed 0badc0de1 (rewritten), current commit {seal}, results r1.json |"
+    }
+   },
+   "expect": {
+    "severity": "WARN",
+    "contains": "unknown to repo"
+   }
+  },
+  {
+   "id": "DB-009",
+   "origin": "corpus",
+   "layer": "record",
+   "title": "Disclosed post-seal amendment silently breaks the content hash",
+   "source": "papers/tts/README.md (defect 1, remediation)",
+   "defect": "Amendments made after sealing were disclosed in the text, but they changed the registration body, so the recorded content hash no longer matched. Disclosure did not preserve the seal.",
+   "detected_by": "remediation of DB-008",
+   "check": null,
+   "enforced_by": "none",
+   "gap": "pe_lint verifies ancestry of the seal commit, not the registration's content hash.",
+   "would_need": "P1 sub-check: hash the registration blob at the seal commit and compare with the recorded hash; amendments live in a separate dated file (s3.2)."
+  },
+  {
+   "id": "DB-010",
+   "origin": "corpus",
+   "layer": "record",
+   "title": "Orphan correction: a thesis weakened with a blast radius of zero",
+   "source": "papers/tts/README.md (defect 2); papers/kuhn (Hart, primary rules without secondary)",
+   "defect": "87 occurrences rewritten and 2,126 equations verified identical; the published book now reads as though the stronger claim was never made. No row records that a claim changed meaning.",
+   "detected_by": "blast-radius computation returning zero",
+   "check": null,
+   "enforced_by": "none",
+   "gap": "No property ties a change in a claim's statement or scope to a version bump on its row. PE-CLS s10.4 leaves scope drift to humans.",
+   "would_need": "Claim semantic versioning (docs/kuhnian-path.md I-3): a statement or scope diff on a row with no major-version history entry is an error."
+  },
+  {
+   "id": "DB-011",
+   "origin": "corpus",
+   "layer": "record",
+   "title": "Results graded above their own declared dependencies",
+   "source": "papers/tts/README.md (defect 3); geometric-ethics baseline",
+   "defect": "Claims graded assumption-free while their dependency lists name modeling constructs.",
+   "detected_by": "pe_lint P4 support cap",
+   "check": "p4",
+   "spec": "PE-CLS-1.0 s6.2",
+   "repair": "Demote to the weakest load-bearing dependency, or promote the dependency on its own evidence.",
+   "fixture": {
+    "kind": "native",
+    "defective": [
+     {
+      "id": "C1",
+      "class": "demonstrated",
+      "uses": [
+       "M1"
+      ]
+     },
+     {
+      "id": "M1",
+      "class": "exploratory"
+     }
+    ],
+    "repaired": [
+     {
+      "id": "C1",
+      "class": "exploratory",
+      "uses": [
+       "M1"
+      ]
+     },
+     {
+      "id": "M1",
+      "class": "exploratory"
+     }
+    ]
+   },
+   "expect": {
+    "severity": "ERROR",
+    "contains": "support-cap violation"
+   }
+  },
+  {
+   "id": "DB-012",
+   "origin": "corpus",
+   "layer": "record",
+   "title": "Priority does not propagate up a dependency (GO-12 on GO-11)",
+   "source": "case-studies/wiring-the-observation-spine.md; geometric-observation GO-12",
+   "defect": "GO-12 is 'predicted' and rests on GO-11, which is 'replicated'. A prediction cannot inherit priority its support lacks; the edge was named in GO-12's own sealed prereg, so this is not a wiring artifact.",
+   "detected_by": "pe_lint P4 after the spine was wired",
+   "check": "p4",
+   "spec": "PE-CLS-1.0 s4.1, s6.2",
+   "repair": "Owner decision on which class is wrong (acknowledged in baseline).",
+   "fixture": {
+    "kind": "native",
+    "defective": [
+     {
+      "id": "GO-12",
+      "class": "predicted",
+      "uses": [
+       "GO-11"
+      ]
+     },
+     {
+      "id": "GO-11",
+      "class": "replicated"
+     }
+    ],
+    "repaired": [
+     {
+      "id": "GO-12",
+      "class": "demonstrated",
+      "uses": [
+       "GO-11"
+      ]
+     },
+     {
+      "id": "GO-11",
+      "class": "replicated"
+     }
+    ]
+   },
+   "expect": {
+    "severity": "ERROR",
+    "contains": "support-cap violation"
+   }
+  },
+  {
+   "id": "DB-013",
+   "origin": "corpus",
+   "layer": "instrument",
+   "title": "L3 certified over an empty dependency graph",
+   "source": "papers/tts/README.md (s6); PE-CLS-1.0 s9.1",
+   "defect": "The validator certified L3 for a ledger with 0 of 78 claims carrying an edge, because the format had no edge field. Every P4 check passed over nothing.",
+   "detected_by": "reading the parser, not the report",
+   "check": "p4",
+   "spec": "PE-CLS-1.0 s9.1",
+   "repair": "Non-vacuity: report edge coverage, fail on an empty graph, cap edge-incapable formats at L2.",
+   "fixture": {
+    "kind": "native",
+    "defective": [
+     {
+      "id": "C1",
+      "class": "exploratory"
+     },
+     {
+      "id": "C2",
+      "class": "exploratory"
+     }
+    ],
+    "repaired": [
+     {
+      "id": "C1",
+      "class": "exploratory",
+      "uses": [
+       "C2"
+      ]
+     },
+     {
+      "id": "C2",
+      "class": "exploratory"
+     }
+    ]
+   },
+   "expect": {
+    "severity": "ERROR",
+    "contains": "dependency graph is empty"
+   }
+  },
+  {
+   "id": "DB-014",
+   "origin": "corpus",
+   "layer": "record",
+   "title": "Edges wired after the results, with no priority of their own",
+   "source": "papers/tts/README.md (s7); PE-CLS-1.0 s6.4",
+   "defect": "27 edges were declared into a corpus whose results were all in, and the validator accepted every one: claims had a priority property and edges had none.",
+   "detected_by": "noticing what the validator accepted",
+   "check": "p4",
+   "spec": "PE-CLS-1.0 s6.4",
+   "repair": "Edge provenance (declared / entered / declared_in); a backfill must name its sealed declaration.",
+   "fixture": {
+    "kind": "native",
+    "defective": [
+     {
+      "id": "C1",
+      "class": "exploratory",
+      "uses": [
+       "C2"
+      ],
+      "edge_meta": {
+       "C2": {
+        "entered": "2026-09-12"
+       }
+      }
+     },
+     {
+      "id": "C2",
+      "class": "exploratory"
+     }
+    ],
+    "repaired": [
+     {
+      "id": "C1",
+      "class": "exploratory",
+      "uses": [
+       "C2"
+      ],
+      "edge_meta": {
+       "C2": {
+        "declared": "2026-08-01"
+       }
+      }
+     },
+     {
+      "id": "C2",
+      "class": "exploratory"
+     }
+    ]
+   },
+   "expect": {
+    "severity": "ERROR",
+    "contains": "is a backfill"
+   }
+  },
+  {
+   "id": "DB-015",
+   "origin": "corpus",
+   "layer": "instrument",
+   "title": "An undefined class token read as a live class",
+   "source": "papers/tts/README.md (s7): '[refuted-as-sealed]'",
+   "defect": "Two claims tagged '[refuted-as-sealed]', a token the spec does not define, were silently read as 'exploratory' (live) where the programme meant terminal.",
+   "detected_by": "reading the converter's output",
+   "check": "p4",
+   "enforced_by": "P4 (class schema, added 2026-10-17)",
+   "spec": "PE-CLS-1.0 s4",
+   "repair": "Map the token to a defined class (the converter's CLASS_FIXUP does this for 'refuted-as-sealed'); the linter now refuses any undefined class on native objects. The markdown front end still cannot see an unmatched token.",
+   "fixture": {
+    "kind": "native",
+    "defective": [
+     {
+      "id": "C1",
+      "class": "refuted-as-sealed"
+     },
+     {
+      "id": "C2",
+      "class": "exploratory",
+      "uses": [
+       "C1"
+      ]
+     }
+    ],
+    "repaired": [
+     {
+      "id": "C1",
+      "class": "exploratory"
+     },
+     {
+      "id": "C2",
+      "class": "exploratory",
+      "uses": [
+       "C1"
+      ]
+     }
+    ]
+   },
+   "expect": {
+    "severity": "ERROR",
+    "contains": "is not defined in s4"
+   }
+  },
+  {
+   "id": "DB-016",
+   "origin": "corpus",
+   "layer": "instrument",
+   "title": "A table header counted as a claim",
+   "source": "papers/tts/README.md (s7): true count 77, not 78",
+   "defect": "Every conformance report before the native conversion counted the ledger's header row as a claim.",
+   "detected_by": "native conversion",
+   "check": null,
+   "enforced_by": "none",
+   "gap": "Markdown front end is heuristic; native objects remove the failure but nothing checks a report's claim count against an independent count.",
+   "would_need": "Conformance reports state the parser's count and a second count from the source (e.g. registry rows), and fail on disagreement."
+  },
+  {
+   "id": "DB-017",
+   "origin": "corpus",
+   "layer": "record",
+   "title": "Tests citing undeclared transformation families",
+   "source": "observation-theory-campaigns OD.toml; repaired d43edb7; PE-DSC-1.0 s3.2.1",
+   "defect": "Ten OD tests cited three families the registry never declared; generate.py then rendered 30 blank family slots in the published encyclopedia.",
+   "detected_by": "pe_lint --registry (D1)",
+   "check": "d1",
+   "spec": "PE-DSC-1.0 s5.1",
+   "repair": "Backfill rows that say so: declared date from the sealed prereg, declared_in naming it, entered = the repair date.",
+   "fixture": {
+    "kind": "registry",
+    "defective": "[[transformation]]\nid = \"OD:observer-family\"\ndeclared = \"2026-09-01\"\n\n[[test]]\ntransformation = \"OD:singular-transition\"\nclaim = \"invariant across the transition\"\noutcome = \"survived\"\n",
+    "repaired": "[[transformation]]\nid = \"OD:observer-family\"\ndeclared = \"2026-09-01\"\n\n[[transformation]]\nid = \"OD:singular-transition\"\ndeclared = \"2026-09-10\"\nentered = \"2026-09-12\"\ndeclared_in = \"prereg/D5.md @ 06707ec\"\n\n[[test]]\ntransformation = \"OD:singular-transition\"\nclaim = \"invariant across the transition\"\noutcome = \"survived\"\n"
+   },
+   "expect": {
+    "severity": "ERROR",
+    "contains": "undeclared transformation"
+   }
+  },
+  {
+   "id": "DB-018",
+   "origin": "corpus",
+   "layer": "record",
+   "title": "A backfill that does not name its declaration",
+   "source": "PE-DSC-1.0 s3.2.1 (written during the DB-017 repair)",
+   "defect": "The repair path for DB-017 is also the forgery path: a family row added after the result, dated earlier, with nothing pointing to the sealed text that declared it.",
+   "detected_by": "specification of the repair",
+   "check": "d1",
+   "spec": "PE-DSC-1.0 s3.2.1",
+   "repair": "declared_in names the sealed registration; deleting the offending tests is not an alternative repair.",
+   "fixture": {
+    "kind": "registry",
+    "defective": "[[transformation]]\nid = \"OD:a\"\ndeclared = \"2026-09-10\"\nentered = \"2026-09-12\"\n\n[[test]]\ntransformation = \"OD:a\"\nclaim = \"c\"\noutcome = \"survived\"\n",
+    "repaired": "[[transformation]]\nid = \"OD:a\"\ndeclared = \"2026-09-10\"\nentered = \"2026-09-12\"\ndeclared_in = \"prereg/D6.md @ b9701a0\"\n\n[[test]]\ntransformation = \"OD:a\"\nclaim = \"c\"\noutcome = \"survived\"\n"
+   },
+   "expect": {
+    "severity": "ERROR",
+    "contains": "with no declared_in"
+   }
+  },
+  {
+   "id": "DB-019",
+   "origin": "corpus",
+   "layer": "record",
+   "title": "A failed test whose revision is a bare 'none'",
+   "source": "observation-theory-campaigns OD.toml; repaired 6eec873",
+   "defect": "Two failed tests recorded revision = 'none' with no reason, so the encyclopedia printed no revision line at all.",
+   "detected_by": "pe_lint --registry (D3)",
+   "check": "d3",
+   "spec": "PE-DSC-1.0 s5.3",
+   "repair": "State what was revised, or that nothing was and why (both were absorbed by the declaration: the bar gave way, not the claim).",
+   "fixture": {
+    "kind": "registry",
+    "defective": "[[transformation]]\nid = \"OD:a\"\ndeclared = \"2026-09-01\"\n\n[[test]]\ntransformation = \"OD:a\"\nclaim = \"c\"\noutcome = \"failed\"\nrevision = \"none\"\n",
+    "repaired": "[[transformation]]\nid = \"OD:a\"\ndeclared = \"2026-09-01\"\n\n[[test]]\ntransformation = \"OD:a\"\nclaim = \"c\"\noutcome = \"failed\"\nrevision = \"none registered: absorbed by the declaration; the bar gave way, not the claim\"\n"
+   },
+   "expect": {
+    "severity": "WARN",
+    "contains": "bare 'none'"
+   }
+  },
+  {
+   "id": "DB-020",
+   "origin": "corpus",
+   "layer": "record",
+   "title": "Retrospective claims classed 'predicted'",
+   "source": "geometric-observation native ledger: VI-10, VI-13, GO-EC-5, GO-EC-6, GO-EC-7 (pe_lint run 2026-10-17)",
+   "defect": "Claims whose rows name no sealed registration carry the class 'predicted'. Priority cannot be reconstructed after the data.",
+   "detected_by": "pe_lint P1 (s4.3)",
+   "check": "p1_retro",
+   "spec": "PE-CLS-1.0 s4.3",
+   "repair": "Reclass to the retrospective cap, or locate the sealed registration the converter missed.",
+   "fixture": {
+    "kind": "native",
+    "defective": [
+     {
+      "id": "C1",
+      "class": "predicted",
+      "retrospective": true
+     }
+    ],
+    "repaired": [
+     {
+      "id": "C1",
+      "class": "exploratory",
+      "retrospective": true
+     }
+    ]
+   },
+   "expect": {
+    "severity": "ERROR",
+    "contains": "priority cannot be reconstructed"
+   }
+  },
+  {
+   "id": "DB-021",
+   "origin": "corpus",
+   "layer": "design",
+   "title": "No design in the reference ledger was ever checked for admissibility",
+   "source": "case-studies/wiring-the-observation-spine.md, Addendum 2026-10-17",
+   "defect": "All 43 in-scope claims of the reference deployment carried no admissibility block.",
+   "detected_by": "pe_lint P5",
+   "check": "p5",
+   "spec": "PE-CLS-1.0 s7.5, s7.5.3",
+   "repair": "Mark unassessed (no demotion, no further promotion) until A1-A4 are discharged.",
+   "fixture": {
+    "kind": "native",
+    "defective": [
+     {
+      "id": "C1",
+      "class": "replicated"
+     }
+    ],
+    "repaired": [
+     {
+      "id": "C1",
+      "class": "replicated",
+      "admissibility": "unassessed"
+     }
+    ]
+   },
+   "expect": {
+    "severity": "ERROR",
+    "contains": "no admissibility block"
+   }
+  },
+  {
+   "id": "DB-022",
+   "origin": "corpus",
+   "layer": "record",
+   "title": "A result whose raw outputs were never committed",
+   "source": "case-studies/kv-longgen-withdrawal.md",
+   "defect": "A 13.7-point degradation claim did not reproduce in five of six cells; the most probable cause was arm-label contamination during off-repo aggregation, and it could not be pinned because raw outputs were never committed.",
+   "detected_by": "re-validation six weeks later",
+   "check": null,
+   "enforced_by": "none",
+   "gap": "PE-CLS s3.4 requires results committed, but pe_lint checks only that a result file exists at a seal-descendant commit, not that the aggregation's inputs are committed with it.",
+   "would_need": "A result manifest listing the raw files an aggregate was computed from, each hashed and committed; a missing input is an error."
+  },
+  {
+   "id": "DB-023",
+   "origin": "corpus",
+   "layer": "record",
+   "title": "Withdrawn recorded as refuted (the near miss)",
+   "source": "case-studies/kv-longgen-withdrawal.md; PE-CLS-1.0 s4.2",
+   "defect": "Recording DB-022 as 'refuted' would have manufactured a negative result from a broken instrument (n=40 re-measurement against n=200).",
+   "detected_by": "author judgment, which forced s4.2",
+   "check": null,
+   "enforced_by": "none",
+   "gap": "The withdrawn/refuted choice depends on whether the evidence was valid, which no record check can decide.",
+   "would_need": "Nothing mechanical; the class choice is a recorded human decision naming the rule (s4.2) and the evidence."
+  },
+  {
+   "id": "DB-024",
+   "origin": "corpus",
+   "layer": "record",
+   "title": "A campaign record that stopped tracking its campaign",
+   "source": "geometric-cognition CAMPAIGN.md:352-360, claims/LEDGER.md:136-138 (stale at fdf124b)",
+   "defect": "The accounting still reads 'gates drafted 1' and 'no self-test, probe or pilot has run' after C2, C3 and H1 were drafted, refused and self-tested.",
+   "detected_by": "verification of an outside draft's case study",
+   "check": null,
+   "enforced_by": "none",
+   "gap": "No check compares a campaign's summary counts with the registrations actually present.",
+   "would_need": "Generated accounting: summary counts computed from the registration files, never typed."
+  },
+  {
+   "id": "DB-025",
+   "origin": "corpus",
+   "layer": "record",
+   "title": "Prose asserting a status change the ledger never made",
+   "source": "docs/philosophy-engineering-and-epistemic-sciops.docx s6.6 vs geometric-cognition CAMPAIGN.md:362",
+   "defect": "The draft says the audit 'changed the programme's claim states from testable or demonstrated to open'. The ledger says no claim was raised or lowered by a gate.",
+   "detected_by": "checking the draft against the record",
+   "check": null,
+   "enforced_by": "none (in practice)",
+   "gap": "P3 forbids it, but the reference implementation scans a fixed list of documents and parses registration ids, not claim-state assertions.",
+   "would_need": "P3 over every narrative file, with claim-state phrases resolved to ledger history."
+  },
+  {
+   "id": "DB-026",
+   "origin": "corpus",
+   "layer": "instrument",
+   "title": "An outcome outside the vocabulary hides a failed test from D3",
+   "source": "found while building this benchmark, 2026-10-17 (fixture DB-019 written with outcome 'fail')",
+   "defect": "PE-DSC-1.0 s4 spells the outcome 'failed'. A test recorded as 'fail' is not in pe_lint's NEEDS_WITNESS set, so D3 skips it without a finding: the failed test needs no revision and no witness, and the registry reads clean.",
+   "detected_by": "a benchmark fixture that should have fired and did not",
+   "check": "d3",
+   "enforced_by": "D3 (outcome schema, added 2026-10-17)",
+   "spec": "PE-DSC-1.0 s4",
+   "repair": "Spell the outcome as s4 does; the linter now refuses an outcome outside s4.",
+   "fixture": {
+    "kind": "registry",
+    "defective": "[[transformation]]\nid = \"OD:a\"\ndeclared = \"2026-09-01\"\n\n[[test]]\ntransformation = \"OD:a\"\nclaim = \"c\"\noutcome = \"fail\"\n",
+    "repaired": "[[transformation]]\nid = \"OD:a\"\ndeclared = \"2026-09-01\"\n\n[[test]]\ntransformation = \"OD:a\"\nclaim = \"c\"\noutcome = \"failed\"\nrevision = \"none registered: the family boundary was the finding\"\n"
+   },
+   "expect": {
+    "severity": "ERROR",
+    "contains": "is not one of"
+   }
+  },
+  {
+   "id": "DB-S01",
+   "origin": "seeded",
+   "layer": "record",
+   "title": "Result committed before its seal",
+   "source": "constructed",
+   "defect": "The result file entered the repository before the registration that predicts it.",
+   "detected_by": "pe_lint P1",
+   "check": "p1",
+   "spec": "PE-CLS-1.0 s7.1",
+   "repair": "None. Reclass to exploratory; priority cannot be repaired.",
+   "fixture": {
+    "kind": "git",
+    "defective": {
+     "steps": [
+      "result",
+      "seal"
+     ],
+     "row": "| 001 | prereg r1 | reported, sealed {seal}, results r1.json |"
+    },
+    "repaired": {
+     "steps": [
+      "seal",
+      "result"
+     ],
+     "row": "| 001 | prereg r1 | reported, sealed {seal}, results r1.json |"
+    }
+   },
+   "expect": {
+    "severity": "ERROR",
+    "contains": "is NOT an ancestor"
+   }
+  },
+  {
+   "id": "DB-S02",
+   "origin": "seeded",
+   "layer": "record",
+   "title": "File drawer: an identifier with no disposition",
+   "source": "constructed",
+   "defect": "Registration 002 was assigned, run, and left out of the accounting.",
+   "detected_by": "pe_lint P2",
+   "check": "p2",
+   "spec": "PE-CLS-1.0 s7.2",
+   "repair": "Disposition every identifier, including void with reason.",
+   "fixture": {
+    "kind": "git",
+    "defective": {
+     "steps": [],
+     "row": "| 001 | prereg a | reported |\n| 003 | prereg c | reported |"
+    },
+    "repaired": {
+     "steps": [],
+     "row": "| 001 | prereg a | reported |\n| 002 | prereg b | void: design failure found before sealing (never-run) |\n| 003 | prereg c | reported |"
+    }
+   },
+   "expect": {
+    "severity": "ERROR",
+    "contains": "NO disposition row"
+   }
+  },
+  {
+   "id": "DB-S03",
+   "origin": "seeded",
+   "layer": "design",
+   "title": "Admissibility satisfied vacuously",
+   "source": "constructed",
+   "defect": "Every check declared not applicable, each with a reason.",
+   "detected_by": "pe_lint P5",
+   "check": "p5",
+   "spec": "PE-CLS-1.0 s7.5.1",
+   "repair": "Discharge the checks that apply.",
+   "fixture": {
+    "kind": "native",
+    "defective": [
+     {
+      "id": "C1",
+      "class": "demonstrated",
+      "admissibility": "_all_na"
+     }
+    ],
+    "repaired": [
+     {
+      "id": "C1",
+      "class": "demonstrated",
+      "admissibility": "_pass"
+     }
+    ]
+   },
+   "expect": {
+    "severity": "ERROR",
+    "contains": "satisfied vacuously"
+   }
+  }
+ ],
+ "external": {
+  "target": 20,
+  "count": 0,
+  "note": "K-1 exit requires >= 20 entries not from the author's corpus. Candidate sources, none yet entered: published corrections and retractions with a stated mechanism, the RP:P / Many Labs development set once coded (RUBRIC-v0.md), and defect classes in Flake & Fried 2020 and Chester & Lasko 2021. Each must cite its source and be checked against it before entry."
+ }
+}
