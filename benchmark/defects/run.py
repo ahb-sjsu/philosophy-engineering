@@ -138,6 +138,15 @@ def main() -> int:
 
     rows, bad = [], 0
     for e in bench["entries"]:
+        if e["origin"] == "external" and not e.get("check"):
+            # Classified, not fixtured: the question for an external defect is
+            # whether the specification can express it at all (K-1 falsifier).
+            inexp = str(e.get("spec_gate", "none")).lower().startswith("none")
+            rows.append({"id": e["id"], "origin": "external",
+                         "result": "EXT-NONE" if inexp else "EXT-EXPR",
+                         "title": e["title"], "spec_gate": e.get("spec_gate"),
+                         "checkable": e.get("checkable")})
+            continue
         if not e.get("check"):
             rows.append({"id": e["id"], "result": "GAP", "origin": e["origin"],
                          "title": e["title"], "would_need": e.get("would_need")})
@@ -159,9 +168,16 @@ def main() -> int:
 
     caught = sum(r["result"] == "CAUGHT" for r in rows)
     gaps = [r for r in rows if r["result"] == "GAP"]
-    ext = bench["external"]
+    # Counted, never typed (DB-024): the K-1 tally comes from the entries.
+    ext = [e for e in bench["entries"] if e["origin"] == "external"]
+    expressible = [e for e in ext
+                   if not str(e.get("spec_gate", "none")).lower().startswith("none")]
     summary = {"entries": len(rows), "caught": caught, "broken": bad,
-               "gaps": len(gaps), "external": f"{ext['count']}/{ext['target']}"}
+               "gaps": len(gaps),
+               "external": f"{len(ext)}/{bench['external']['target']}",
+               # The K-1 falsifier: of the defects from outside the corpus, how
+               # many can the specification express at all?
+               "external_expressible": f"{len(expressible)}/{len(ext)}"}
     if args.json:
         print(json.dumps({"summary": summary, "rows": rows}, indent=1))
     else:

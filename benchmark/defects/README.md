@@ -37,11 +37,13 @@ about the specification, and stays in the benchmark.
 
 | | Count |
 |---|---:|
-| Entries | 29 (26 corpus, 3 seeded) |
-| Caught | 22 |
-| Broken | 0 |
-| Gaps | 7 |
-| External | **0 of 20** (the K-1 exit requires 20) |
+| Entries | 53 (26 corpus, 3 seeded, 24 external) |
+| Corpus + seeded: caught | 22 |
+| Corpus + seeded: broken | 0 |
+| Corpus + seeded: gaps | 7 |
+| External entered | **24** (target 20) |
+| External the spec can express | **16 of 24** |
+| ... of which mechanically checkable | 4 (multiplicity, null-data witness, priority, power) |
 
 **Two gaps were closed the day the benchmark was built**, which is what it is
 for:
@@ -68,9 +70,43 @@ geometric-ethics, the OD registries).
 | DB-024 | A campaign summary against its registrations | Generated, never typed, accounting |
 | DB-025 | Prose claiming a status change the ledger never made | P3 over all narrative files, claim-state phrases resolved to history |
 
-## The K-1 falsifier
+## The K-1 falsifier, first reading (2026-10-17)
 
-If entries from outside the author's corpus cannot be caught by any check
-expressible in the specification, the method only sees its author's own kind of
-error. The 20 external entries are the test of that, and none is in yet.
-Sources and rules for entering them are in `entries.json` under `external`.
+*Registered question:* can the specification express defects from outside the
+author's corpus, or does it only see its author's own kind of error?
+
+24 documented defects from neuroscience, machine learning, economics, physics,
+cosmology, microbiology, genomics, psychology, toxicology and political science
+were entered from primary sources (verified citations; partial verifications
+are marked in the entry). External entries are **classified, not fixtured**:
+each names the spec gate that could express it, or `none`.
+
+**16 of 24 are expressible.** The falsifier is not triggered. Most land on A2
+(selection and evaluation on the same data: Vul, Kriegeskorte, Kapoor &
+Narayanan, BICEP2) and A4 (flexibility: Reinhart-Rogoff, power posing,
+Simmons et al.). Eklund et al.'s cluster failure is A1's witness record exactly:
+null data run through the grading pipeline.
+
+**But 12 of the 16 are judgment, not computation.** The linter enforces a
+recorded verdict; a coder has to reach it. That is what the K-2 rubric is for,
+and it means the benchmark's strength here is the rubric's reliability, which
+is not yet measured.
+
+**8 of 24 are inexpressible, in two families:**
+
+1. **Fabrication (5):** LaCour, Surgisphere, Hwang, Stapel, Shu et al. Every
+   record property presumes the record is honest. Priority, completeness and
+   admissibility of invented data all pass. This is a limit to state in every
+   presentation of the method, not a gap to close with another check.
+2. **Data integrity (3):** spreadsheet row offsets (Baggerly & Coombes), gene
+   names converted to dates (Ziemann et al.), reported statistics that are
+   impossible (van der Zee et al.). These *are* mechanically checkable (input
+   manifests, type schemas on data files, consistency checks of reported test
+   statistics against their degrees of freedom and N), and the specification
+   has no property for them. Together with DB-022 (raw inputs never committed),
+   they are the case for a sixth property. **Owner decision.**
+
+**Not yet done:** the K-1 exit's held-out test, in which a reader who did not
+build the benchmark classifies the external entries from the entries alone. The
+`spec_gate` values above are the author's classification, which is exactly what
+that test is meant to check.
