@@ -1,0 +1,12 @@
+{
+ "distinct_dois": 132,
+ "found_in_openalex": 132,
+ "is_oa": 30,
+ "oa_status": {
+  "green": 27,
+  "closed": 102,
+  "gold": 1,
+  "bronze": 2
+ },
+ "note": "OpenAlex records, not verified downloads"
+}

@@ -167,10 +167,24 @@ design, not a citation:
 2. **Placebo gate (secondary, must not pass).** Gate scores permuted within
    discipline × design-type strata (B2, B3), run through the registered
    analysis 400 times; its pass rate is reported beside the real result. A
-   placebo that passes more than 5% means the strata leak.
+   placebo that passes more than 5% means the strata leak. Implemented as
+   `k2_analysis.placebo` (article-level permutation; CLI `--strata`).
+   **Witness** (`k2_placebo_witness.py`, 60 synthetic datasets × 100 placebo
+   permutations per scenario, on Atlas). Run 1 (seed 20261019) FAILED on its
+   own design: its leak was too weak for the real analysis to credit (1.7%
+   real passes), so there was nothing for the placebo to flag
+   (`k2_placebo_witness_run1.json`, kept). Run 2 (seed 20261020, stronger
+   leak, stated in the script beside run 1's values) PASSED: real signal,
+   real 100% / placebo flags 0%; unadjusted stratum leak, real 98% / placebo
+   flags 100%; same leak with the stratum in M0, real 0% / placebo 0%.
+   **Limit:** the placebo sees only the strata it is given. With B2 and B3 in
+   M0 additively, it guards against what the additive model misses (a stratum
+   effect on the gate's slope, a stratum not coded), not against strata never
+   named.
 3. **U is not missing at random.** Badly reported articles are plausibly both
    high-U and less replicable. Registered sensitivity analyses: U scored as
-   fail, U scored as pass, and the excluded fraction by outcome.
+   fail, U scored as pass, and the excluded fraction by outcome. Implemented
+   in `k2_analysis.py` (output `u_sensitivity`; smoke-tested on Atlas).
 4. **Two model families, each one opinion.** Model auditors come from at least
    two model families; agreement between two runs of one family counts once.
    Each stream is recorded as a description (family, revision, context, what
@@ -201,7 +215,7 @@ predicts replication, or because a gate could proxy it:
 |---|---|---|
 | B1 | original effect size, p-value, N (log) | Altmejd et al. 2019; the statistical-inference rival (Branch 2019; Stanley et al. 2018) lives here |
 | B2 | experimental or not; main effect or interaction | Youyou et al. 2023 (experiments replicate less) and Altmejd et al. 2019 (interactions); A3 applies only to experiments, so without B2 an A3 increment can be the design type |
-| B3 | discipline, and subfield within psychology | the risk named by Inbar 2016's title; RP:P's replication rate differed by subfield (cognitive and social) |
+| B3 | discipline, and subfield within psychology (covariates, never an interaction test in their place) | Inbar 2016: Van Bavel et al.'s coded feature lost its association once subdiscipline was a covariate (OR = 0.85, P = 0.51); in RP:P, cognitive studies replicated 53% and social-personality 28% |
 | B4 | recall-free text score (the 4.2 reference model) | Yang et al. 2020: text alone predicts |
 | B5 | forecasts (markets, surveys), where present on the same claims | strongest known human baseline |
 
@@ -305,11 +319,37 @@ Rajtmajer et al., osf.io/bdmte).
   topic-level judgement rather than a design defect with an evidence quote;
   in-sample regression rather than out-of-sample ΔAUC. **Inbar 2016**, *PNAS*
   113, doi:10.1073/pnas.1608676113, "Association between contextual dependence
-  and replicability in psychology may be spurious" (verified as published; the
-  text could not be read on 2026-10-17, PMC and PNAS both refused the fetch, and
-  its argument is NOT summarized here from memory; read before sealing). The
-  title alone states the risk this design must answer: a coded property that
-  proxies something else. Consequence: baseline B3 below.
+  and replicability in psychology may be spurious" (**read in full 2026-10-17**,
+  PMC5003252 fetched from Atlas, sha256 c64dd396…). The association (r = −0.23,
+  P = 0.024) "is entirely the result of an omitted third variable", subdiscipline:
+  cognitive studies replicated more (53% vs. 28%) and were rated less
+  context-dependent (d = −1.85); within each subdiscipline r = −0.08 (P = 0.54)
+  and r = −0.04 (P = 0.79); entered as a covariate in a logistic regression,
+  "the previously significant effect of context dependence disappears, OR =
+  0.85, Z = –0.66, P = 0.51". Van Bavel et al. had tested the interaction, which
+  "asks 'does the effect differ by subdiscipline?' not 'is there an effect
+  controlling for subdiscipline?'". Inbar also notes that the subdisciplines
+  differ in "greater use of within-subject designs in cognitive psychology",
+  so subdiscipline itself bundles design differences. A reply exists (Van Bavel
+  et al. 2016, *PNAS*, doi:10.1073/pnas.1609700113, "Reply to Inbar:
+  Contextual sensitivity helps explain the reproducibility gap between social
+  and cognitive psychology"; verified as published, NOT read: the fetch hit a
+  captcha; read before sealing). **Van Bavel et al.'s coding design**, read in
+  full (PMC4988618): three coders, ratings from the abstract (methods when no
+  abstract, 5 of 100), raters "unaware of the results of replication attempts";
+  25 studies coded by all three (reliability α = 0.86, ICC(2,3), the
+  reliability of the three-rater **mean**), the other 75 coded by one coder each.
+  **Consequences for this design:** (i) B3 enters M0 as a covariate; no
+  interaction test substitutes for it; (ii) the reliability bar (I1) is stated
+  for a **single** coder's score, and the primary score is the consensus of two
+  coders on every article, never a single coder on most; (iii) because
+  subdiscipline bundles design, an increment that vanishes with B3 in the model
+  is still graded by Section 6 exactly as registered, and a `fail` stands: the
+  claim is "beyond the known predictors", and subfield is one. What a fail
+  would not show is that the gates are irrelevant to replication, only that
+  this design cannot separate them from subfield, and the report says so in
+  that sentence. The analysis without B3 is reported as a secondary and
+  grades nothing.
 - **Chester & Lasko 2021**, *Perspect. Psychol. Sci.* 16(2):377–395: 348 JPSP
   manipulations coded; ~one third had a manipulation check. Not linked to
   replication. Base rate for A3.
@@ -479,6 +519,12 @@ coders code all 40 independently.
 **Access.** Coders need full texts. Most originals are paywalled journal
 articles; access route (institutional library) to be confirmed. Article PDFs
 are not committed to this public repository; their DOIs and hashes are.
+**Measured 2026-10-17** (`k2_devset_access.py`, `devset/access.csv`): of the
+132 development-set DOIs, OpenAlex records 30 (23%) as open access (27 green,
+2 bronze, 1 gold) and 102 as closed. These are database records, not verified
+downloads. Coding even the development set therefore needs a library route for
+about three articles in four; the SCORE test set's rate is unmeasured until its
+claim list is available.
 
 ### 7.2 Reliability probe
 

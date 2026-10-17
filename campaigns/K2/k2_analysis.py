@@ -126,6 +126,33 @@ def analyze(y, base, gate, groups, *, k=5, n_boot=2000, sesoi=0.05,
             "sesoi": sesoi, "verdict": verdict}
 
 
+def placebo(y, base, gate, groups, strata, *, reps=400, k=5, n_boot=500,
+            sesoi=0.05, seed=0) -> dict:
+    """Registration 4.3 item 2: permute article-level gate scores among
+    articles of the same stratum and rerun the registered analysis. The
+    permutation destroys any link between a gate score and its own article
+    while keeping the gate's distribution within each stratum, so a placebo
+    that passes more often than 5% means the increment rides on differences
+    between strata that M0 does not absorb (the strata leak)."""
+    rng = np.random.default_rng(seed)
+    papers, first = np.unique(groups, return_index=True)
+    p_gate = gate[first]
+    p_stratum = strata[first]
+    row_paper = np.searchsorted(papers, groups)
+    passes = 0
+    for _ in range(reps):
+        g = p_gate.copy()
+        for s in np.unique(p_stratum):
+            idx = np.flatnonzero(p_stratum == s)
+            g[idx] = p_gate[rng.permutation(idx)]
+        out = analyze(y, base, g[row_paper], groups, k=k, n_boot=n_boot,
+                      sesoi=sesoi, seed=int(rng.integers(2**31)))
+        passes += out["verdict"] == "pass"
+    rate = passes / reps
+    return {"reps": reps, "pass_rate": rate, "bar": 0.05,
+            "strata_leak": bool(rate > 0.05)}
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("csv")
@@ -137,22 +164,58 @@ def main() -> int:
     ap.add_argument("--folds", type=int, default=5)
     ap.add_argument("--boot", type=int, default=2000)
     ap.add_argument("--seed", type=int, required=True)
+    ap.add_argument("--strata", default="",
+                    help="comma-separated stratum columns for the placebo "
+                         "gate (registration 4.3 item 2: discipline, design)")
+    ap.add_argument("--placebo-reps", type=int, default=400)
     args = ap.parse_args()
 
     cols = args.baseline.split(",")
     with open(args.csv, newline="", encoding="utf-8") as fh:
-        rows = list(csv.DictReader(fh))
+        every = list(csv.DictReader(fh))
     # Registration Section 4: a study with more than two checks scored U is
     # excluded from the primary analysis and counted. The CSV carries n_u.
-    excluded = [r["claim_id"] for r in rows if int(r["n_u"]) > 2]
-    rows = [r for r in rows if int(r["n_u"]) <= 2]
-    y = np.array([int(r["replicated"]) for r in rows], dtype=float)
-    base = np.array([[float(r[c]) for c in cols] for r in rows])
-    gate = np.array([float(r["gate_score"]) for r in rows])
-    groups = np.array([r["paper_id"] for r in rows])
+    excluded = [r for r in every if int(r["n_u"]) > 2]
+    rows = [r for r in every if int(r["n_u"]) <= 2]
+
+    def arrays(rs, u_as=None):
+        y = np.array([int(r["replicated"]) for r in rs], dtype=float)
+        base = np.array([[float(r[c]) for c in cols] for r in rs])
+        gate = np.array([float(r["gate_score"]) for r in rs])
+        if u_as == "fail":
+            gate = gate + np.array([float(r["n_u"]) for r in rs])
+        return y, base, gate, np.array([r["paper_id"] for r in rs])
+
+    y, base, gate, groups = arrays(rows)
     out = analyze(y, base, gate, groups, k=args.folds, n_boot=args.boot,
                   sesoi=args.sesoi, seed=args.seed)
-    out["excluded_more_than_two_u"] = {"n": len(excluded), "claims": excluded}
+    out["excluded_more_than_two_u"] = {"n": len(excluded),
+                                       "claims": [r["claim_id"] for r in excluded]}
+
+    # Registration 4.3 item 3: U is not missing at random. Reported, not
+    # graded: gate_score counts checks scored 1, so U as pass is the score as
+    # recorded and U as fail adds n_u; both runs keep every study.
+    sens = {}
+    for u_as in ("pass", "fail"):
+        r = analyze(*arrays(every, u_as), k=args.folds, n_boot=args.boot,
+                    sesoi=args.sesoi, seed=args.seed)
+        sens[f"u_as_{u_as}"] = {k: r[k] for k in
+                                ("n_claims", "delta_auc", "ci95", "verdict")}
+
+    def rate(rs):
+        return sum(int(r["replicated"]) for r in rs) / len(rs) if rs else None
+
+    sens["replication_rate_included"] = rate(rows)
+    sens["replication_rate_excluded"] = rate(excluded)
+    out["u_sensitivity"] = sens
+
+    if args.strata:
+        scol = args.strata.split(",")
+        strata = np.array(["|".join(r[c] for c in scol) for r in rows])
+        out["placebo"] = placebo(y, base, gate, groups, strata,
+                                 reps=args.placebo_reps, k=args.folds,
+                                 n_boot=min(args.boot, 500), sesoi=args.sesoi,
+                                 seed=args.seed + 1)
     print(json.dumps(out, indent=2))
     return 0
 

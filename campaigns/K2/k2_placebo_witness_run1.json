@@ -1,0 +1,41 @@
+{
+ "world": {
+  "n_papers": 164,
+  "extra_claims_poisson": 0.67,
+  "intercept": 0.25,
+  "baseline_slopes": [
+   0.9,
+   0.6,
+   -0.5
+  ],
+  "paper_sd": 0.6,
+  "gate_p_mean": 0.3
+ },
+ "stratum": {
+  "p": 0.5,
+  "replication_slope": -1.0,
+  "gate_logit_slope": 1.2
+ },
+ "datasets": 60,
+ "placebo_reps": 100,
+ "boot": 300,
+ "seed": 20261019,
+ "scenarios": {
+  "signal": {
+   "real_pass_rate": 1.0,
+   "placebo_mean_pass_rate": 0.0005,
+   "placebo_flags_leak": 0.0
+  },
+  "leak_unadjusted": {
+   "real_pass_rate": 0.016666666666666666,
+   "placebo_mean_pass_rate": 0.018833333333333334,
+   "placebo_flags_leak": 0.03333333333333333
+  },
+  "leak_adjusted": {
+   "real_pass_rate": 0.0,
+   "placebo_mean_pass_rate": 0.0003333333333333333,
+   "placebo_flags_leak": 0.0
+  }
+ },
+ "verdict": "FAIL: the placebo does not separate the scenarios at the stated rates"
+}

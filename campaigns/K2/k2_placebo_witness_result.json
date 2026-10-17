@@ -1,0 +1,42 @@
+{
+ "world": {
+  "n_papers": 164,
+  "extra_claims_poisson": 0.67,
+  "intercept": 0.25,
+  "baseline_slopes": [
+   0.9,
+   0.6,
+   -0.5
+  ],
+  "paper_sd": 0.6,
+  "gate_p_mean": 0.3
+ },
+ "stratum": {
+  "p": 0.5,
+  "replication_slope": -2.5,
+  "gate_logit_slope": 3.0
+ },
+ "datasets": 60,
+ "placebo_reps": 100,
+ "boot": 300,
+ "seed": 20261020,
+ "scenarios": {
+  "signal": {
+   "real_pass_rate": 1.0,
+   "placebo_mean_pass_rate": 0.00016666666666666666,
+   "placebo_flags_leak": 0.0
+  },
+  "leak_unadjusted": {
+   "real_pass_rate": 0.9833333333333333,
+   "placebo_mean_pass_rate": 0.9748333333333333,
+   "placebo_flags_leak": 1.0
+  },
+  "leak_adjusted": {
+   "real_pass_rate": 0.0,
+   "placebo_mean_pass_rate": 0.00016666666666666666,
+   "placebo_flags_leak": 0.0
+  }
+ },
+ "leak_precondition_real_pass": 0.9833333333333333,
+ "verdict": "PASS: the placebo is quiet on real signal and on an adjusted stratum, and fires on an unadjusted one"
+}
