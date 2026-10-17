@@ -1,0 +1,41 @@
+{
+ "ML1_xls_sha256": "8faca26346b4fad11d1c152dffc739b8d504d363450a35448cf8bb143d20f373",
+ "ML2_folders": 28,
+ "entries": 40,
+ "by_source": {
+  "ML1": 12,
+  "ML2": 26,
+  "ML3": 1,
+  "ML4": 1
+ },
+ "doi_resolved": 37,
+ "no_doi": [
+  [
+   "DEV-ML-006",
+   "Hyman and Sheatsley, 1950",
+   "cited; no DOI and no title in the reference"
+  ],
+  [
+   "DEV-ML-019",
+   "Tversky & Gati, 1978",
+   "cited; no DOI and no title in the reference"
+  ],
+  [
+   "DEV-ML-040",
+   "",
+   "pending: ML3's original list is sourced from OSF only; not filled from memory"
+  ]
+ ],
+ "reference_lookups_failed": [
+  "10.5281/zenodo.838685"
+ ],
+ "ml_rpp_overlap": [
+  "10.1037/0022-3514.95.2.293"
+ ],
+ "ml_internal_duplicates": [
+  "10.1126/science.7455683"
+ ],
+ "distinct_articles_rpp_plus_ml": 132,
+ "ml5_refs_in_rpp_list": 10,
+ "ml5_refs_with_doi": 57
+}

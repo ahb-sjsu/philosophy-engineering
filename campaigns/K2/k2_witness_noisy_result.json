@@ -1,0 +1,70 @@
+{
+ "world": {
+  "n_papers": 164,
+  "extra_claims_poisson": 0.67,
+  "intercept": 0.25,
+  "baseline_slopes": [
+   0.9,
+   0.6,
+   -0.5
+  ],
+  "paper_sd": 0.6,
+  "gate_p_mean": 0.3
+ },
+ "reps": 400,
+ "boot": 500,
+ "sesoi": 0.05,
+ "seed": 20261018,
+ "scenarios": {
+  "noisy_proxy_rel0.9": {
+   "gate_slope": 0.9,
+   "rates": {
+    "pass": 0.0,
+    "fail": 0.9975,
+    "unresolved": 0.0025
+   },
+   "mean_delta_auc": -0.0018665198692116463,
+   "mean_auc_m0": 0.7472640770504728,
+   "mean_n_claims": 273.5625
+  },
+  "noisy_proxy_rel0.7": {
+   "gate_slope": 0.7,
+   "rates": {
+    "pass": 0.01,
+    "fail": 0.97,
+    "unresolved": 0.02
+   },
+   "mean_delta_auc": 0.0021942033066334257,
+   "mean_auc_m0": 0.7280298963947439,
+   "mean_n_claims": 275.05
+  },
+  "noisy_proxy_rel0.5": {
+   "gate_slope": 0.5,
+   "rates": {
+    "pass": 0.0725,
+    "fail": 0.7925,
+    "unresolved": 0.135
+   },
+   "mean_delta_auc": 0.010160021901483756,
+   "mean_auc_m0": 0.7083548064887722,
+   "mean_n_claims": 273.27
+  },
+  "noisy_proxy_rel0.3": {
+   "gate_slope": 0.3,
+   "rates": {
+    "pass": 0.2225,
+    "fail": 0.4475,
+    "unresolved": 0.33
+   },
+   "mean_delta_auc": 0.024258734625995534,
+   "mean_auc_m0": 0.6833018745994625,
+   "mean_n_claims": 273.7625
+  }
+ },
+ "construction": {
+  "noisy_proxy_rel0.9": 0.0,
+  "noisy_proxy_rel0.7": 0.01,
+  "noisy_proxy_rel0.5": 0.0725,
+  "noisy_proxy_rel0.3": 0.2225
+ }
+}

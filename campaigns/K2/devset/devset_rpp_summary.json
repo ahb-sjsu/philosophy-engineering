@@ -1,0 +1,35 @@
+{
+ "source_file": "../raw/rpp/RPPdataConverted.csv",
+ "source_sha256": "e753eae64a65015069217aa68effc85cd797fa2f9fc0958cbbf463dc3d505ddb",
+ "rows_in_source": 168,
+ "completed": 100,
+ "doi_matched": 99,
+ "distinct_dois": 97,
+ "unresolved": [
+  "DEV-RPP-053"
+ ],
+ "pages_coerced_in_source": [
+  "DEV-RPP-037",
+  "DEV-RPP-066",
+  "DEV-RPP-076",
+  "DEV-RPP-099"
+ ],
+ "shared_doi": [
+  [
+   "DEV-RPP-033",
+   "10.1037/a0012833"
+  ],
+  [
+   "DEV-RPP-034",
+   "10.1037/a0012833"
+  ],
+  [
+   "DEV-RPP-090",
+   "10.1111/j.1467-9280.2008.02060.x"
+  ],
+  [
+   "DEV-RPP-091",
+   "10.1111/j.1467-9280.2008.02060.x"
+  ]
+ ]
+}

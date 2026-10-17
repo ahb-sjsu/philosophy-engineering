@@ -53,6 +53,19 @@ def draw(rng, scenario: str, g: float = 0.0):
     eta = W["intercept"] + base @ np.array(W["baseline_slopes"])
     eta += W["paper_sd"] * rng.normal(size=W["n_papers"])[paper]
 
+    if scenario.startswith("noisy_proxy"):
+        # Replication runs on the TRUE value of baseline 0 (say, the study's
+        # real power); M0 sees it only with reliability `rel`, while the gate
+        # tracks the true value. The gate then carries information the
+        # baselines lack without measuring design at all (Section 7.5 limit).
+        rel = g
+        true0 = base[:, 0].copy()
+        sd = true0.std()
+        base[:, 0] = np.sqrt(rel) * true0 + np.sqrt(1 - rel) * sd * rng.normal(size=n)
+        logit_p = np.log(W["gate_p_mean"] / (1 - W["gate_p_mean"])) - 0.9 * true0 / sd
+        gate = rng.binomial(4, 1 / (1 + np.exp(-logit_p))).astype(float)
+        y = (rng.random(n) < 1 / (1 + np.exp(-eta))).astype(float)
+        return y, base, gate, paper.astype(str)
     if scenario == "null":
         logit_p = np.full(n, np.log(W["gate_p_mean"] / (1 - W["gate_p_mean"])))
     elif scenario == "proxy":
@@ -75,10 +88,18 @@ def main() -> int:
     ap.add_argument("--sesoi", type=float, default=0.05)
     ap.add_argument("--seed", type=int, required=True)
     ap.add_argument("--slopes", default="0.25,0.5,0.75,1.0")
+    ap.add_argument("--noisy", default="",
+                    help="comma-separated baseline reliabilities for the "
+                         "noisy-proxy scenarios; when given, only those run")
+    ap.add_argument("--out", default="k2_witness_result.json")
     args = ap.parse_args()
 
-    scenarios = [("null", 0.0), ("proxy", 0.0)] + [
-        (f"signal_{s}", float(s)) for s in args.slopes.split(",")]
+    if args.noisy:
+        scenarios = [(f"noisy_proxy_rel{r}", float(r))
+                     for r in args.noisy.split(",")]
+    else:
+        scenarios = [("null", 0.0), ("proxy", 0.0)] + [
+            (f"signal_{s}", float(s)) for s in args.slopes.split(",")]
     rng = np.random.default_rng(args.seed)
     report = {"world": WORLD, "reps": args.reps, "boot": args.boot,
               "sesoi": args.sesoi, "seed": args.seed, "scenarios": {}}
@@ -102,13 +123,22 @@ def main() -> int:
         }
         print(name, json.dumps(report["scenarios"][name]), flush=True)
 
-    witness_ok = all(report["scenarios"][s]["rates"]["pass"] <= 0.05
-                     for s in ("null", "proxy"))
-    report["a1_witness"] = ("PASS: null and proxy pass at <= 5%" if witness_ok
-                            else "FAIL: the analysis credits a gate score "
-                                 "that carries no signal of its own")
-    print(json.dumps({"a1_witness": report["a1_witness"]}))
-    with open("k2_witness_result.json", "w", encoding="utf-8") as fh:
+    if args.noisy:
+        # Not an A1 verdict: a pass here is a real increment over the
+        # baselines AS MEASURED, credited to the wrong construct. Reported,
+        # for the registration to scope the claim by.
+        report["construction"] = {
+            s: v["rates"]["pass"] for s, v in report["scenarios"].items()}
+        print(json.dumps({"noisy_proxy_pass_rates": report["construction"]}))
+        witness_ok = True
+    else:
+        witness_ok = all(report["scenarios"][s]["rates"]["pass"] <= 0.05
+                         for s in ("null", "proxy"))
+        report["a1_witness"] = ("PASS: null and proxy pass at <= 5%" if witness_ok
+                                else "FAIL: the analysis credits a gate score "
+                                     "that carries no signal of its own")
+        print(json.dumps({"a1_witness": report["a1_witness"]}))
+    with open(args.out, "w", encoding="utf-8") as fh:
         json.dump(report, fh, indent=1)
     return 0 if witness_ok else 1
 
