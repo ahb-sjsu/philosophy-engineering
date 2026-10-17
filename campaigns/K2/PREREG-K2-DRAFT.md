@@ -52,7 +52,7 @@ yet verified, and MUST be verified before sealing).**
 | Role | Dataset | Size | Baselines on the same studies |
 |---|---|---|---|
 | Primary | **SCORE** replication set: Tyner et al., *Nature* 652:143–150 (2026), doi:10.1038/s41586-025-10078-y. Data: living repository doi:10.17605/OSF.IO/G5SNY; **archived as-published version doi:10.17605/OSF.IO/BZFGY** (the version this registration will name) | 274 claims of positive results from 164 papers (2009–2018, 54 journals). Replicated: 151/274 claims (55.1%), 80.8/164 papers weighted (49.3%), significance-in-original-pattern criterion | Human forecasts (repliCATS, Replication Markets) and machine scores are reported in separate SCORE preprints, not in the Nature paper; per-claim coverage **not confirmed** |
-| Secondary | Pooled markets: Gordon et al., *PLOS ONE* (2021), doi:10.1371/journal.pone.0248780, R package `pooledmaRket` (RP:P, EE-RP, ML2, SSRP) | ~103 findings | Market prices and surveys (73% correct; r = 0.581 for prices); Altmejd et al. 2019 ML scores on an overlapping set† |
+| Secondary | Pooled markets: Gordon et al., *PLOS ONE* (2021), doi:10.1371/journal.pone.0248780, R package `pooledmaRket` (RP:P, EE-RP, ML2, SSRP), **restricted to EE-RP and SSRP**: RP:P and Many Labs are the rubric development set (7.1, owner decision 2026-10-17) and MUST NOT be test data | ~39 findings (EE-RP 18, SSRP 21†); too few to grade alone, reported as secondary | Market prices and surveys (73% correct; r = 0.581 for prices); Altmejd et al. 2019 ML scores on an overlapping set† |
 | Not primary | RP:CB (Errington et al., *eLife* 2021) | 50 experiments from 23 papers | Few; too few papers to cluster |
 | Not primary | Brazilian Reproducibility Initiative (*eLife* 2026, reviewed preprint) | 45 experiments, 3 methods | DOI, license, original identification not confirmed |
 
@@ -248,6 +248,48 @@ Rajtmajer et al., osf.io/bdmte).
 The rubric is developed on articles **disjoint** from the test set (not in any
 replication project used for testing, or a held-out project). Its versions are
 committed. The frozen version's hash goes in Section 9.
+
+**Development set (owner decision, 2026-10-17): the originals of the
+Reproducibility Project: Psychology (Open Science Collaboration 2015, 100
+replications†) and of the Many Labs projects (ML1 to ML5†).** Consequences,
+recorded now so none is discovered later:
+
+1. **They leave the test pool permanently.** No RP:P or Many Labs claim is test
+   data in any arm, including the secondary arm (Section 3).
+2. **Disjointness from SCORE is checked, not assumed.** RP:P sampled 2008
+   issues and SCORE's papers run 2009 to 2018, so they should not overlap; Many
+   Labs effects span decades, and ML2 in particular includes post-2009
+   originals. Before the freeze, every development-set original is matched by
+   DOI against SCORE's claim list, and any match is removed from the
+   development set, never from the test set. The match list is committed.
+3. **Coverage gap.** Both projects are psychology. SCORE spans economics,
+   political science, sociology, and others, and the rubric's items on
+   reliability conventions (A2.2) and analysis choices (A4.4) differ by field.
+   The freeze is therefore a psychology-calibrated rubric applied to a
+   multi-discipline test set. Either a non-psychology supplement is added to
+   the development set (candidate: a held-out set of 2009–2018 economics or
+   political-science articles never replicated in any project, coded for
+   reliability only, since they have no outcome) or the registration states the
+   gap and reports test results by discipline. **Owner decision pending.**
+4. **The development set is the contamination probe's calibration set.** These
+   are the most famous replications in the literature. Recall on them gives the
+   ceiling of the contamination problem; the Section 4.2 probe's bar is set
+   from how well each auditor stream guesses RP:P and Many Labs outcomes from
+   blinded text, before it is applied to SCORE.
+5. **Outcomes are visible to the developers.** Rubric development uses item
+   reliability and evidence quality only. Development-set replication outcomes
+   MUST NOT be used to choose, weight, or cut items: that would fit the rubric
+   to the outcome it is meant to predict. Any item change is justified by
+   reliability or by a coding ambiguity, in a dated note.
+
+**Size and sampling.** About 40 claims, stratified across RP:P's three
+journals and the Many Labs projects, drawn by seeded random sample from the
+full list once it is assembled; the seed is committed before the draw. Two
+coders code all 40 independently.
+
+**Access.** Coders need full texts. Most originals are paywalled journal
+articles; access route (institutional library) to be confirmed. Article PDFs
+are not committed to this public repository; their DOIs and hashes are.
 
 ### 7.2 Reliability probe
 
