@@ -24,7 +24,7 @@ measure of failure.
 1. After OSF's migration window closes (2026-10-19 09:00 EDT): list the archived SCORE repository (doi:10.17605/OSF.IO/BZFGY), confirm the per-claim outcome table, its license, the restricted fraction, and forecast coverage.
 2. ~~META-REP check~~ done 2026-10-17: no results published (poster only); overlaps A2 and part of A4. Re-check at sealing.
 3. ~~A1 witness~~ done 2026-10-17: `k2_witness.py` on `k2_analysis.py`, PASS (null 0/400, proxy 1/400). Power: 80% at true ΔAUC ~0.055.
-4. Rubric: v0 drafted 2026-10-17 ([`RUBRIC-v0.md`](RUBRIC-v0.md), 16 items over A1-A4, evidence rule, U rule). Development set = RP:P + Many Labs originals (owner, 2026-10-17); both leave the test pool. Next: assemble the list (OSF, after Oct 19), DOI-match against SCORE, seeded draw of ~40 claims, code, revise, freeze as `RUBRIC.md`, hash. Open: non-psychology supplement or by-discipline reporting (owner).
+4. Rubric: v0 drafted 2026-10-17 ([`RUBRIC-v0.md`](RUBRIC-v0.md), 16 items over A1-A4, evidence rule, U rule). Development set = RP:P + Many Labs originals (owner, 2026-10-17); both leave the test pool. Next: assemble the list (OSF, after Oct 19), DOI-match against SCORE, seeded draw of ~40 claims, code, revise, freeze as `RUBRIC.md`, hash. Plus a ~30-claim non-psychology supplement from SCORE's journals/years, not replicated (owner, 2026-10-17; registration 7.1.1); test results also by discipline.
 5. Reliability, contamination, and power probes; pilot.
 6. Cold reread in a fresh session; then seal.
 

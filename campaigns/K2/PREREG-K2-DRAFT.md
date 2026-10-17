@@ -265,12 +265,10 @@ recorded now so none is discovered later:
 3. **Coverage gap.** Both projects are psychology. SCORE spans economics,
    political science, sociology, and others, and the rubric's items on
    reliability conventions (A2.2) and analysis choices (A4.4) differ by field.
-   The freeze is therefore a psychology-calibrated rubric applied to a
-   multi-discipline test set. Either a non-psychology supplement is added to
-   the development set (candidate: a held-out set of 2009–2018 economics or
-   political-science articles never replicated in any project, coded for
-   reliability only, since they have no outcome) or the registration states the
-   gap and reports test results by discipline. **Owner decision pending.**
+   A psychology-only freeze would be a psychology-calibrated rubric applied
+   to a multi-discipline test set. **Resolved (owner, 2026-10-17): a
+   non-psychology supplement is added (7.1.1).** Test results are also
+   reported by discipline, as a secondary analysis.
 4. **The development set is the contamination probe's calibration set.** These
    are the most famous replications in the literature. Recall on them gives the
    ceiling of the contamination problem; the Section 4.2 probe's bar is set
@@ -282,8 +280,38 @@ recorded now so none is discovered later:
    to the outcome it is meant to predict. Any item change is justified by
    reliability or by a coding ambiguity, in a dated note.
 
-**Size and sampling.** About 40 claims, stratified across RP:P's three
-journals and the Many Labs projects, drawn by seeded random sample from the
+#### 7.1.1 Non-psychology supplement
+
+*Purpose:* calibrate the rubric's field-dependent items on the disciplines
+SCORE tests, so that the freeze is not psychology-only. *Used for:* inter-rater
+reliability by discipline (I1), the field conventions A2.2 (reliability) and
+A4.2 (the attrition-difference threshold) are set from, and evidence-rule
+practice. *Not used for:* anything involving replication. These claims have no
+replication outcome, so no item can be fitted to one.
+
+*Frame.* Articles from the **same journals and years as SCORE** (2009 to 2018;
+SCORE's journal list, taken from its data) in its non-psychology disciplines,
+that were **not** among SCORE's replicated claims and were never replicated in
+any project used here. Same journals and years means the supplement differs from
+the test set only in not having been replicated, which is the property wanted.
+Preferred source, to verify when OSF returns: if SCORE's data include claims
+that were sampled and forecast but not replicated, draw from those, because
+their claim statements already exist in SCORE's own format. Otherwise, draw
+articles from the journal list and pick the claim by SCORE's documented
+claim-selection procedure, or failing documentation, the first finding stated
+in the abstract with an inferential test.
+
+*Size.* About 30 claims, with at least 8 each from economics and political
+science and the rest spread across SCORE's other non-psychology disciplines,
+in proportion to SCORE's own mix. Seeded draw; the seed is committed before the
+draw. Two independent coders, as for the main development set.
+
+*Disjointness.* Every supplement article is matched by DOI against SCORE's
+replicated claims and against the secondary arm (EE-RP, SSRP); any match is
+redrawn. The supplement is development data permanently and never test data.
+
+**Size and sampling (main development set).** About 40 claims, stratified
+across RP:P's three journals and the Many Labs projects, drawn by seeded random sample from the
 full list once it is assembled; the seed is committed before the draw. Two
 coders code all 40 independently.
 

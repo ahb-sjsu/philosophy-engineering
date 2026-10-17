@@ -102,7 +102,9 @@ before adjudication, at the check level and on the gate score.
 - "A few points" in A4.2 needs a number. It is set on the development set from
   the distribution of attrition differences, not here.
 - Field conventions for reliability (A2.2) differ across SCORE's disciplines.
-  The chosen development set (RP:P + Many Labs) is psychology only; see
-  registration 7.1 item 3 for the supplement-or-report decision.
+  The development set is RP:P + Many Labs (psychology) plus a ~30-claim
+  non-psychology supplement from SCORE's journals and years (registration
+  7.1.1). The A2.2 conventions and the A4.2 threshold are set per discipline
+  from it.
 - The model-auditor prompt is this rubric verbatim plus the evidence rule. It is
   frozen with the rubric and hashed with it.
