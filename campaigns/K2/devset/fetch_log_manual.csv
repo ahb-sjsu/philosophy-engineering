@@ -1,0 +1,24 @@
+dev_id,date,method,source,version_on_copy,bytes,sha256
+DEV-ML-001,2026-10-18,browser,https://papers.ssrn.com/sol3/Delivery.cfm/ssrn_id1369023_code713366.pdf?abstractid=1003424&mirid=1,"typeset publisher PDF (Elsevier first page), though OpenAlex lists submittedVersion",266783,0655c2c86ac61a6a07abce0726ecf26992838d2a9d440fbb6b847a4b4f603d07
+DEV-ML-011,2026-10-18,none,https://durham-repository.worktribe.com/output/1351230,"not obtained: bot check (Cloudflare), not bypassed",,
+DEV-ML-020,2026-10-18,none,https://philpapers.org/archive/KNODSP-2.pdf,"not obtained: bot check (Cloudflare), not bypassed",,
+DEV-ML-026,2026-10-18,none,https://onlinelibrary.wiley.com/doi/pdfdirect/10.1207/s15516709cog2605_4,"not obtained: bot check (Cloudflare), not bypassed",,
+DEV-ML-031,2026-10-18,browser,https://repub.eur.nl/pub/9727/ERS-2007-021-ORG.pdf,"working paper (ERIM report series), before publication",392190,949bcfe087b62b5fb964b193fd5c9cc77badbc93f534ebd15069fab8f3c877c4
+DEV-ML-034,2026-10-18,script (Atlas),https://escholarship.org/content/qt2x39c3kp/qt2x39c3kp.pdf,working paper (stated on first page),372575,c4259e6bcf7cccb6576c4af6833ef1af366d0fb2bace89a1656c9f39ee82278c
+DEV-ML-035,2026-10-18,none,https://research.vu.nl/files/570774/,"not obtained: bot check (Cloudflare), not bypassed",,
+DEV-RPP-003,2026-10-18,script (Atlas),https://access.archive-ouverte.unige.ch/access/metadata/9b7eef39-ca6b-450f-b4fb-817087b9f7e8/download,published version (stated by repository),310102,677e6029b6f914e791cc76576603035cbc6ed245ae123dd2fddd2744ab118b13
+DEV-RPP-006,2026-10-18,browser,https://pearl.plymouth.ac.uk/cgi/viewcontent.cgi?article=1013&context=psy-research,author manuscript; its title differs from the published title,1432243,cf3aadf99b1c3586abeb49fe3d572aaa06da034b57109377c4c820c0c2bd87e5
+DEV-RPP-010,2026-10-18,browser,https://pmc.ncbi.nlm.nih.gov/articles/PMC2276160/pdf/nihms42745.pdf,"author manuscript (NIH, PubMed Central)",771548,44e6ebd2d5fb1000434f0d68be538f4993e479204c83b8b2782edbfdc4b863b3
+DEV-RPP-016,2026-10-18,none,http://libres.uncg.edu/ir/uncg/f/P_Delaney_Intentional_2008(MULTI UNCG AUTHORS).pdf,not obtained: server did not respond (Atlas and browser),,
+DEV-RPP-022,2026-10-18,browser,https://pmc.ncbi.nlm.nih.gov/articles/PMC2908266/pdf/nihms213259.pdf,"author manuscript (NIH, PubMed Central)",311822,bf14c78d36b7877a19a4fe689df5dc4daeae1fe4d6b418fd05135c1db48816dd
+DEV-RPP-033,2026-10-18,browser,https://pmc.ncbi.nlm.nih.gov/articles/PMC3626413/pdf/nihms454537.pdf,"author manuscript (NIH, PubMed Central)",503048,d19ac528c01d77593831c5bd956afb3dd34268d62ae913b23b236894000661b0
+DEV-RPP-035,2026-10-18,browser,https://pmc.ncbi.nlm.nih.gov/articles/PMC2365308/pdf/nihms40356.pdf,"author manuscript (NIH, PubMed Central)",160112,a6a9ec6ff2ee1a2201eae43d67a37be0329a50f66dee6959d69428ddd58f81d6
+DEV-RPP-038,2026-10-18,browser,https://pure.uva.nl/ws/files/4320065/61627_Van_Dijk_Van_Kleef_Steinel_Van_Beest_2008_JPSP_Final_unformatted.pdf,accepted manuscript (states it is not the copy of record),370477,dfc0c01361d137e9a3e455f7e42c7abde2a23038f31781db6862c21e504c4aef
+DEV-RPP-041,2026-10-18,browser,https://pmc.ncbi.nlm.nih.gov/articles/PMC2807633/pdf/nihms156794.pdf,"author manuscript (NIH, PubMed Central)",526322,defb95eae00b50d8f8dcc79b7809e9b634fca67f4a0f7cf5e6477b11a4cec6d1
+DEV-RPP-055,2026-10-18,none,https://figshare.com/articles/journal_contribution/23326919,not obtained: figshare record has no file (API lists none),,
+DEV-RPP-064,2026-10-18,browser,https://pmc.ncbi.nlm.nih.gov/articles/PMC2890253/pdf/nihms210268.pdf,"author manuscript (NIH, PubMed Central)",364214,5cf09ad4f1f8c33f0e1f0e04dd8be61990a2cd14a5aad7abcb0c3b906a2a357e
+DEV-RPP-070,2026-10-18,script (Atlas),https://escholarship.org/content/qt7x1799rm/qt7x1799rm.pdf,eScholarship 'Previously Published Works' copy; version not checked,144074,9f0ddf48ae8aa1545bbaaaf3ac2923b106ce914f986ec2cab322723401a65528
+DEV-RPP-075,2026-10-18,browser,https://pmc.ncbi.nlm.nih.gov/articles/PMC2587223/pdf/nihms48191.pdf,"author manuscript (NIH, PubMed Central)",747235,9e0b1fee9b86e443097899bc618935db1fcfb62a7f2e47b2fcae86e0f8bd15fc
+DEV-RPP-085,2026-10-18,browser,https://pmc.ncbi.nlm.nih.gov/articles/PMC2394280/pdf/nihms-49123.pdf,"author manuscript (NIH, PubMed Central)",103672,fabd191e951cb45a760fa523e1ab1a505c70bf953b82460a30dfb2481c11770b
+DEV-RPP-093,2026-10-18,browser,https://www.repository.cam.ac.uk/bitstreams/b63038c7-fba8-48fb-a5b8-541f94207ab1/download,version not checked,70669,c6c6976dfe919ace3ffbd4c95ac4e66841b33f94347c8adf6432422a143b533a
+DEV-RPP-100,2026-10-18,browser,https://scholarworks.iu.edu/bitstreams/756f44de-ba89-4f52-8738-b73c35444b84/download,typeset journal layout on first page; not confirmed as the publisher PDF,293013,76cb33394b9ed2f0a9bd04edd9380a48bc0259c522a8b2fd08bd6e98a728a573

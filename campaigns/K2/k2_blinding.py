@@ -310,4 +310,10 @@ def redact(text: str, meta: dict, mark: str = "[REDACTED]") -> str:
         out = out[:a] + mark + out[b:]
     for kind, rx in _rules(meta):
         out = rx.sub("" if kind == "cover" else mark, out)
+    # a running head longer than 8 words ("D.M. Name et al. / Journal of ...
+    # 45 (2009) 867-872") only becomes short enough to count as repeated once
+    # its fields are redacted, and its initials stay behind; drop such lines
+    while heads := _repeated_lines(out):
+        out = "\n".join(line for line in out.splitlines()
+                        if re.sub(r"\s*\d+\s*", " ", line).strip() not in heads)
     return out

@@ -172,6 +172,38 @@ from what reviewers and readers saw (added analyses, a changed manipulation
 check), so the version coded is recorded per article and the published
 version is preferred where one is available.
 
+**Second intake (2026-10-18): passing the check is not being blind.** The
+other 23 open copies were fetched with the owner's permission: 3 by script
+from Atlas (eScholarship, Geneva) and 14 through the owner's browser (PubMed
+Central, Erasmus, Indiana, Amsterdam, Plymouth, Cambridge, SSRN); sources,
+sizes and hashes are in `devset/fetch_log_manual.csv`. Six could not be had:
+four sites answer with a bot check that is not bypassed (Durham, PhilPapers,
+Wiley, VU Amsterdam), one server did not respond (UNC Greensboro), and one
+figshare record has no file. Of the 24 PDFs now held, the leak check released
+23 and quarantined the 1990 scan, after one rule fix: a running head longer
+than 8 words ("D.M. Name et al. / Journal ... 45 (2009) ...") counts as
+repeated only once its fields are redacted, and its initials were left
+behind; repeated lines are now removed again after redaction (planted case
+added; the test fails on the old code with 77 residuals and passes on the new).
+Then a person read the opening of 6 released texts, and **all 6 still
+identified the article or narrowed it sharply**: author initials and surname
+particles ("R. [REDACTED]", "Van [REDACTED]"); institution names before a
+redacted "University" ("Indiana [REDACTED], South Bend"), addresses, phone
+numbers, postcodes and building names; volume and issue numbers ("34(1)");
+APA's ISSN-and-year line ("0278-7393/08/$12.00", which names the journal and
+year); report-series and repository labels and numbers ("ERIM Report Series",
+"PEARL", "Archive ouverte UNIGE", "ScienceDirect"); a manuscript whose title
+differs from the published one, so no title rule fires; and a title with a
+curly apostrophe. Almost all of it sits in the front matter (cover page,
+title block, first-page header and footer). **Consequence for the design
+(owner decision, not adopted):** redacting a whole PDF is the wrong unit.
+The recommended unit is the methods and results sections only, cut at their
+headings, with the front matter dropped rather than redacted and the
+redaction rules kept as a second line; this needs a check that a coder can
+still score every rubric item from those sections. Until decided, intake
+status "blinded" means only "passed the automated check", and nothing is
+released to a coder.
+
 ### 4.2 Contamination
 
 The replication outcomes of the large projects are widely known, and language

@@ -22,7 +22,9 @@ Version 2 (2026-10-17) adds the kinds that the first real-article intake
 (k2_intake.py on 7 open PDFs) showed the first version missed: given names,
 capitalized surnames, institutions, volume and pages, cover and running-head
 lines, near years, "Name YEAR" citations, entity-encoded journal names, and
-fuzzy titles. The body is synthetic, so this shows each rule works on real
+fuzzy titles. A long running head with author initials (more than 8 words,
+so repeated only after redaction) was added after the second intake
+(2026-10-18, 24 articles). The body is synthetic, so this shows each rule works on real
 metadata; the real-article read is the check on what the rules miss.
 
     python k2_blinding_test.py
@@ -68,6 +70,11 @@ def planted(m):
     # an unlabelled running head on three pages, and a repository cover page
     parts += ["Selection Effects 12", BODY, "Selection Effects 13", BODY,
               "Selection Effects 14"]
+    # a running head of more than 8 words, as Elsevier prints it: it counts as
+    # repeated only after its fields are redacted (DEV-ML-001, 2026-10-18)
+    head = (f"{given[0]}.Q. {sur} et al. / {_norm(m.get('journal') or 'Journal of Studies')}"
+            f" 45 ({m['year']}) 101-112")
+    parts += [head, BODY, head, BODY, head]
     return ("Repository copy\nGeneral rights: see the portal.\nTake down policy: "
             "contact us.\f" + "\n".join(parts))
 
