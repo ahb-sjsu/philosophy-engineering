@@ -7,12 +7,16 @@ Registration 4.1. For each <dev_id>.pdf in the input directory:
     2. cut the reference list at the LAST line that is only a references
        heading in the back 40% of the text; if none is found the article is
        flagged, not guessed at
-    3. k2_blinding.redact with the article's Crossref metadata (meta.json from
+    3. k2_sections.extract: keep only Method and Results sections (the coding
+       unit, adopted 2026-10-18); front matter, introductions and discussions
+       are dropped
+    4. k2_blinding.redact with the article's Crossref metadata (meta.json from
        k2_fulltext_fetch.py: all surnames, title, journal and its short names,
        year)
-    4. k2_blinding.leaks on the result; an article with any residual leak, no
-       reference heading, or letter-spaced scanned type (SINGLE_LETTER_MAX)
-       is quarantined for a person, never released to coders
+    5. k2_blinding.leaks on the result; an article with any residual leak, no
+       reference heading, no Method or no Results heading, or letter-spaced
+       scanned type (SINGLE_LETTER_MAX) is quarantined for a person, never
+       released to coders
 
 Blinded texts are written next to the PDFs, outside the repository (articles
 are copyrighted). Only the manifest (hashes, counts, flags) is committed.
@@ -30,6 +34,7 @@ import sys
 from pathlib import Path
 
 from k2_blinding import leaks, redact
+from k2_sections import extract
 
 # share of one-letter words above which the text is treated as a letter-spaced
 # scan. Chosen before any value was seen; on the 7 open articles the six
@@ -61,16 +66,19 @@ def main() -> int:
         raw = subprocess.run(["pdftotext", "-enc", "UTF-8", str(pdf), "-"],
                              capture_output=True, text=True, check=True).stdout
         body, cut = cut_references(raw)
-        blind = redact(body, m)
+        # the coding unit is Method and Results only (4.1, adopted
+        # 2026-10-18); front matter is dropped, then the rest is redacted
+        unit, sec = extract(body)
+        blind = redact(unit, m)
         residual = leaks(blind, m)
-        pre = leaks(body, m)
+        pre = leaks(unit, m)
         # scanned, letter-spaced type ("N o r b e r t") defeats the word rules
         # and garbles the text for coders; such articles go to a person
         toks = re.findall(r"[A-Za-z]+", raw)
         single = sum(len(t) == 1 for t in toks) / max(1, len(toks))
         ocr_flag = single > SINGLE_LETTER_MAX
         dest = root / ("quarantine" if residual or not cut or ocr_flag
-                       else "blinded") / f"{dev}.txt"
+                       or not sec["found"] else "blinded") / f"{dev}.txt"
         dest.write_text(blind, encoding="utf-8")
         kinds: dict[str, int] = {}
         for k, _ in pre:
@@ -79,6 +87,8 @@ def main() -> int:
             "dev_id": dev, "pdf_sha256": hashlib.sha256(pdf.read_bytes()).hexdigest(),
             "chars_raw": len(raw), "chars_blinded": len(blind),
             "references_cut": cut,
+            "sections_found": sec["found"], "method_headings": sec["method_headings"],
+            "results_headings": sec["results_headings"], "kept_share": sec["kept_share"],
             "leaks_before": len(pre), "leak_kinds_before": json.dumps(kinds, sort_keys=True),
             "residual_leaks": len(residual),
             "residual_kinds": json.dumps(sorted({k for k, _ in residual})),

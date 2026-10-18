@@ -91,12 +91,32 @@ VOLUME = re.compile(r"\b(?:Vol\.|Volume)\s*\d+", re.I)
 COVER = re.compile(
     r"^.*(?:running\s+head|suggested\s+citation|empfohlene\s+zitierung|"
     r"research\s+portal|first\s+publ|published\s+online\s+by|version\s+of\s+record|"
-    r"downloaded\s+from|citation\s+for\s+published\s+version|©|\(c\)\s*\d{4}).*$",
+    r"downloaded\s+from|citation\s+for\s+published\s+version|©|\(c\)\s*\d{4}|"
+    # PubMed Central page stamps: "J Pers Soc Psychol. Author manuscript;
+    # available in PMC 2010 ..." names the journal (NLM abbreviation) and year
+    r"author\s+manuscript|available\s+in\s+pmc|nih-pa|hhs\s+public\s+access|"
+    r"europe\s+pmc\s+funders).*$",
     re.I | re.M)
+# what redaction leaves around a removed name: a surname particle ("Van
+# [REDACTED]", "van der [REDACTED]") or initials ("A. B. [REDACTED]",
+# "[REDACTED], A. B."); built per mark in _name_residue
+PARTICLES = r"(?:(?:[Vv]an|[Vv]on|[Dd]e|[Dd]er|[Dd]en|[Dd]i|[Dd]u|[Ll]a|[Ll]e|[Tt]er|[Tt]en)\s+)+"
+INITIALS = r"(?:[A-Z]\.\s?){1,3}"
+
+
+def _name_residue(mark: str) -> re.Pattern:
+    m = re.escape(mark)
+    return re.compile(rf"\b{PARTICLES}{m}|\b{INITIALS}\s?{m}|{m},?\s{INITIALS}(?=[,;&)]|\s|$)")
+
+
+# curly quotes as straight ones: "Thaler’s (1985)" must match the citation
+# rule and "Objects’ Typical Location" the title (second intake, 2026-10-18)
+_QUOTES = str.maketrans({"‘": "'", "’": "'", "‚": "'", "‛": "'",
+                         "′": "'", "“": '"', "”": '"', "„": '"'})
 
 
 def _norm(s: str) -> str:
-    s = unicodedata.normalize("NFKD", html.unescape(s or ""))
+    s = unicodedata.normalize("NFKD", html.unescape(s or "")).translate(_QUOTES)
     return "".join(c for c in s if not unicodedata.combining(c))
 
 
@@ -289,6 +309,8 @@ def leaks(text: str, meta: dict) -> list[tuple[str, str]]:
               for a, b in _front_title_spans(v, meta)]
     found += [("cover", k) for k in _repeated_lines(_norm(text))]
     found += [("cover", f"repository cover page {i + 1}") for i in _cover_pages(_norm(text))]
+    # on redacted text: a particle or initials still beside a redaction mark
+    found += [("name_residue", m.group(0)) for m in _name_residue("[REDACTED]").finditer(text)]
     return found
 
 
@@ -310,6 +332,11 @@ def redact(text: str, meta: dict, mark: str = "[REDACTED]") -> str:
         out = out[:a] + mark + out[b:]
     for kind, rx in _rules(meta):
         out = rx.sub("" if kind == "cover" else mark, out)
+    # particles and initials left beside a removed name join it (repeated,
+    # since "A. van [REDACTED]" takes two passes)
+    rx = _name_residue(mark)
+    while rx.search(out):
+        out = rx.sub(mark, out)
     # a running head longer than 8 words ("D.M. Name et al. / Journal of ...
     # 45 (2009) 867-872") only becomes short enough to count as repeated once
     # its fields are redacted, and its initials stay behind; drop such lines

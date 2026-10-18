@@ -1,0 +1,29 @@
+{
+ "lead_chars": 2000,
+ "by_check": {
+  "A1 Nonvacuity": {
+   "in_unit": 73,
+   "lead": 72,
+   "intro_other": 69,
+   "discussion_or_other": 77
+  },
+  "A2 Identification": {
+   "in_unit": 48,
+   "lead": 4,
+   "intro_other": 20,
+   "discussion_or_other": 34
+  },
+  "A3 Intervention": {
+   "in_unit": 29,
+   "lead": 1,
+   "intro_other": 3,
+   "discussion_or_other": 5
+  },
+  "A4 Inference": {
+   "in_unit": 70,
+   "lead": 2,
+   "intro_other": 20,
+   "discussion_or_other": 13
+  }
+ }
+}

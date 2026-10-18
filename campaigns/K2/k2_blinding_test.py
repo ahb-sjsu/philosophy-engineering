@@ -75,6 +75,11 @@ def planted(m):
     head = (f"{given[0]}.Q. {sur} et al. / {_norm(m.get('journal') or 'Journal of Studies')}"
             f" 45 ({m['year']}) 101-112")
     parts += [head, BODY, head, BODY, head]
+    # self-citations leave particles and initials beside the removed surname,
+    # and PubMed Central stamps every page (second intake, 2026-10-18)
+    parts += [f"see van der {sur} and Q. R. {sur}, also {sur}, Q. R., and others",
+              "the task follows Thaler’s (1985) beer pricing study",
+              "J Exp Psychol. Author manuscript; available in PMC 2010 May 1."]
     return ("Repository copy\nGeneral rights: see the portal.\nTake down policy: "
             "contact us.\f" + "\n".join(parts))
 
@@ -116,6 +121,10 @@ def main() -> int:
             if extra not in values:
                 got.discard("cover")
                 want.add(f"cover: {extra}")
+        # leaks() normalizes the way redact() does, so a shared blind spot
+        # passes the residual check; the curly-quote citation is checked by name
+        if not any(k == "citation" and "Thaler" in v for k, v in found):
+            want.add("citation: curly apostrophe")
         if want - got:
             report["planted_missed"].append([dev, sorted(want - got)])
         f = fuzzy(m)

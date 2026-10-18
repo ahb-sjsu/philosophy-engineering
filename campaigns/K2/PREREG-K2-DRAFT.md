@@ -118,9 +118,13 @@ excluded from the primary analysis and counted (A4 applied to this design).
 
 ### 4.1 Blinding
 
-Articles are presented with title, authors, journal, year, and DOI removed, and
-with reference lists removed. Blinding is imperfect for famous studies, and the
-contamination probe below measures how imperfect.
+**Coding unit (adopted by the owner 2026-10-18): the Method and Results
+sections of every study in the article, nothing else.** Front matter,
+abstract, introductions, discussions and reference lists are dropped, not
+redacted (`k2_sections.py`); title, authors, journal, year and DOI are then
+redacted from what remains. An article without a Method-type and a
+Results-type heading goes to a person. Blinding is imperfect for famous
+studies, and the contamination probe below measures how imperfect.
 
 **Implemented 2026-10-17: `k2_blinding.py`** (stdlib only), with intake
 `k2_intake.py` (PDF text by poppler's pdftotext, reference list cut at the
@@ -195,14 +199,49 @@ year); report-series and repository labels and numbers ("ERIM Report Series",
 "PEARL", "Archive ouverte UNIGE", "ScienceDirect"); a manuscript whose title
 differs from the published one, so no title rule fires; and a title with a
 curly apostrophe. Almost all of it sits in the front matter (cover page,
-title block, first-page header and footer). **Consequence for the design
-(owner decision, not adopted):** redacting a whole PDF is the wrong unit.
-The recommended unit is the methods and results sections only, cut at their
-headings, with the front matter dropped rather than redacted and the
-redaction rules kept as a second line; this needs a check that a coder can
-still score every rubric item from those sections. Until decided, intake
-status "blinded" means only "passed the automated check", and nothing is
-released to a coder.
+title block, first-page header and footer). So redacting a whole PDF is the
+wrong unit, and the owner adopted Method and Results as the unit (above).
+
+**The unit, measured on the same 24 PDFs.** `k2_sections.extract` found
+Method and Results headings in 23; the 24th (a 1993 article with no such
+headings) goes to a person, as does the 1990 scan, so 22 pass intake. The
+unit keeps 16% to 64% of each body. *Residue:* `k2_unit_residue.py` counts
+the kinds the person's read found. Redacting the whole body leaves residue
+in 19 of 23 articles; redacting the unit, in 2, and both are false alarms
+(a redacted citation after a test's and a book's name). Building the unit
+exposed three more misses, now fixed with planted cases: PubMed Central
+footers on every page ("J Pers Soc Psychol. Author manuscript; available in
+PMC ..." names the journal and year), surname particles and initials beside a
+redacted name ("Van [REDACTED]", "W. [REDACTED]", mostly self-citations), and
+curly apostrophes, which hid "Thaler’s (1985)" from the citation rule and a
+title from the title rule. The leak check shares redaction's normalization,
+so a blind spot in one is a blind spot in both; the curly-quote case is
+therefore checked by name in the test, and the committed code before this
+fix fails it on all 132 records. *Not caught, stated limit:* where the
+sample was drawn ("students at [REDACTED] Rotterdam, the Netherlands"), which
+Method sections report by convention and which narrows the authors'
+institution. A person still reads every pilot text.
+
+**What the unit costs the rubric (measured, a proxy).** `k2_unit_coverage.py`
+counts sentences carrying each check's evidence words (hypothesis and
+prediction for A1; reliability and validity for A2; manipulation check and
+demand for A3; exclusion and attrition for A4) and the share inside the unit,
+over 23 articles: A1 25% (71 of 290; in 10 of 23 articles none of them),
+A2 44% (4 of 14 lose all), A3 76% (none loses all), A4 66% (1 of 20 loses
+all). `k2_unit_where.py` places A1's lost sentences: 72 in the 2,000
+characters before a Method heading (where a study's predictions are usually
+stated), 69 elsewhere in introductions, 77 in discussions. A3 and A4 are
+scoreable from the unit. **A1 is not, as written**: "a hypothesis stated only
+post hoc" needs where the hypothesis was first stated, and that is mostly
+outside the unit. A2 is weakened. Word counts say where evidence words sit,
+not what a coder would score; the pilot (7.4) codes a subset both from the
+unit and from the full text to measure the difference. **Open for the
+owner:** keep the unit and let A1 be scored U more often (its U rate is
+reported per check, Section 4), or add the stretch before each Method heading
+to the unit, which this proxy says doubles A1's kept evidence to about 50%,
+at the cost of more introduction text (citations, which redaction handles).
+Until the pilot, intake status "blinded" means only "passed the automated
+check", and nothing is released to a coder.
 
 ### 4.2 Contamination
 
