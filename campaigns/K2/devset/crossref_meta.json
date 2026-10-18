@@ -1,0 +1,2854 @@
+{
+ "DEV-ML-001": {
+  "doi": "10.1016/j.jesp.2009.03.009",
+  "title": "Instructional manipulation checks: Detecting satisficing to increase statistical power",
+  "authors": [
+   "Oppenheimer",
+   "Meyvis",
+   "Davidenko"
+  ],
+  "given": [
+   "Daniel M.",
+   "Tom",
+   "Nicolas"
+  ],
+  "volume": "45",
+  "page": "867-872",
+  "journal": "Journal of Experimental Social Psychology",
+  "journal_short": [
+   "Journal of Experimental Social Psychology"
+  ],
+  "publisher": "Elsevier BV",
+  "year": "2009"
+ },
+ "DEV-ML-002": {
+  "doi": "10.1126/science.7455683",
+  "title": "The Framing of Decisions and the Psychology of Choice",
+  "authors": [
+   "Tversky",
+   "Kahneman"
+  ],
+  "given": [
+   "Amos",
+   "Daniel"
+  ],
+  "volume": "211",
+  "page": "453-458",
+  "journal": "Science",
+  "journal_short": [
+   "Science"
+  ],
+  "publisher": "American Association for the Advancement of Science (AAAS)",
+  "year": "1981"
+ },
+ "DEV-ML-003": {
+  "doi": "10.1177/01461672952111004",
+  "title": "Measures of Anchoring in Estimation Tasks",
+  "authors": [
+   "Jacowitz",
+   "Kahneman"
+  ],
+  "given": [
+   "Karen E.",
+   "Daniel"
+  ],
+  "volume": "21",
+  "page": "1161-1166",
+  "journal": "Personality and Social Psychology Bulletin",
+  "journal_short": [
+   "Pers Soc Psychol Bull"
+  ],
+  "publisher": "SAGE Publications",
+  "year": "1995"
+ },
+ "DEV-ML-004": {
+  "doi": "10.1017/s1930297500001170",
+  "title": "The retrospective gambler\u2019s fallacy: Unlikely events, constructing the past, and multiple universes",
+  "authors": [
+   "Oppenheimer",
+   "Monin"
+  ],
+  "given": [
+   "Daniel M.",
+   "Beno\u00eet"
+  ],
+  "volume": "4",
+  "page": "326-334",
+  "journal": "Judgment and Decision Making",
+  "journal_short": [
+   "Judgm. decis. mak."
+  ],
+  "publisher": "Cambridge University Press (CUP)",
+  "year": "2009"
+ },
+ "DEV-ML-005": {
+  "doi": "10.1086/268936",
+  "title": "Response Scales: Effects of Category Range on Reported Behavior and Comparative Judgments",
+  "authors": [
+   "Schwarz",
+   "Hippler",
+   "Deutsch",
+   "Strack"
+  ],
+  "given": [
+   "Norbert",
+   "Hans-J.",
+   "Brigitte",
+   "Fritz"
+  ],
+  "volume": "49",
+  "page": "388",
+  "journal": "Public Opinion Quarterly",
+  "journal_short": [],
+  "publisher": "Oxford University Press (OUP)",
+  "year": "1985"
+ },
+ "DEV-ML-007": {
+  "doi": "10.1086/265467",
+  "title": "Experiments in Wording Questions: II",
+  "authors": [
+   "Rugg"
+  ],
+  "given": [
+   "Donald"
+  ],
+  "volume": "5",
+  "page": "91",
+  "journal": "Public Opinion Quarterly",
+  "journal_short": [],
+  "publisher": "Oxford University Press (OUP)",
+  "year": "1941"
+ },
+ "DEV-ML-008": {
+  "doi": "10.1080/00224545.1936.9919891",
+  "title": "Prestige, Suggestion, and Attitudes",
+  "authors": [
+   "Lorge",
+   "Curtiss"
+  ],
+  "given": [
+   "Irving",
+   "Carl C."
+  ],
+  "volume": "7",
+  "page": "386-402",
+  "journal": "The Journal of Social Psychology",
+  "journal_short": [
+   "The Journal of Social Psychology"
+  ],
+  "publisher": "Informa UK Limited",
+  "year": "1936"
+ },
+ "DEV-ML-009": {
+  "doi": "10.1177/0956797611414726",
+  "title": "A Single Exposure to the American Flag Shifts Support Toward Republicanism up to 8 Months Later",
+  "authors": [
+   "Carter",
+   "Ferguson",
+   "Hassin"
+  ],
+  "given": [
+   "Travis J.",
+   "Melissa J.",
+   "Ran R."
+  ],
+  "volume": "22",
+  "page": "1011-1018",
+  "journal": "Psychological Science",
+  "journal_short": [
+   "Psychol Sci"
+  ],
+  "publisher": "SAGE Publications",
+  "year": "2011"
+ },
+ "DEV-ML-010": {
+  "doi": "10.1037/a0029288",
+  "title": "Mere exposure to money increases endorsement of free-market systems and social inequality.",
+  "authors": [
+   "Caruso",
+   "Vohs",
+   "Baxter",
+   "Waytz"
+  ],
+  "given": [
+   "Eugene M.",
+   "Kathleen D.",
+   "Brittani",
+   "Adam"
+  ],
+  "volume": "142",
+  "page": "301-306",
+  "journal": "Journal of Experimental Psychology: General",
+  "journal_short": [
+   "Journal of Experimental Psychology: General"
+  ],
+  "publisher": "American Psychological Association (APA)",
+  "year": "2013"
+ },
+ "DEV-ML-011": {
+  "doi": "10.1016/j.jesp.2010.05.014",
+  "title": "Elaboration enhances the imagined contact effect",
+  "authors": [
+   "Husnu",
+   "Crisp"
+  ],
+  "given": [
+   "Senel",
+   "Richard J."
+  ],
+  "volume": "46",
+  "page": "943-950",
+  "journal": "Journal of Experimental Social Psychology",
+  "journal_short": [
+   "Journal of Experimental Social Psychology"
+  ],
+  "publisher": "Elsevier BV",
+  "year": "2010"
+ },
+ "DEV-ML-012": {
+  "doi": "10.1037/0022-3514.83.1.44",
+  "title": "Math = male, me = female, therefore math \u2260 me.",
+  "authors": [
+   "Nosek",
+   "Banaji",
+   "Greenwald"
+  ],
+  "given": [
+   "Brian A.",
+   "Mahzarin R.",
+   "Anthony G."
+  ],
+  "volume": "83",
+  "page": "44-59",
+  "journal": "Journal of Personality and Social Psychology",
+  "journal_short": [
+   "Journal of Personality and Social Psychology"
+  ],
+  "publisher": "American Psychological Association (APA)",
+  "year": "2002"
+ },
+ "DEV-ML-013": {
+  "doi": "10.1177/0956797609359908",
+  "title": "What Counts as a Choice?",
+  "authors": [
+   "Savani",
+   "Markus",
+   "Naidu",
+   "Kumar",
+   "Berlia"
+  ],
+  "given": [
+   "Krishna",
+   "Hazel Rose",
+   "N.V.R.",
+   "Satishchandra",
+   "Neha"
+  ],
+  "volume": "21",
+  "page": "391-398",
+  "journal": "Psychological Science",
+  "journal_short": [
+   "Psychol Sci"
+  ],
+  "publisher": "SAGE Publications",
+  "year": "2010"
+ },
+ "DEV-ML-014": {
+  "doi": "10.1111/1467-9280.00334",
+  "title": "Money, Kisses, and Electric Shocks: On the Affective Psychology of Risk",
+  "authors": [
+   "Rottenstreich",
+   "Hsee"
+  ],
+  "given": [
+   "Yuval",
+   "Christopher K."
+  ],
+  "volume": "12",
+  "page": "185-190",
+  "journal": "Psychological Science",
+  "journal_short": [
+   "Psychol Sci"
+  ],
+  "publisher": "SAGE Publications",
+  "year": "2001"
+ },
+ "DEV-ML-015": {
+  "doi": "10.1086/269239",
+  "title": "Assimilation and Contrast Effects in Part-Whole Question Sequences: A Conversational Logic Analysis",
+  "authors": [
+   "Schwarz",
+   "Strack",
+   "Mai"
+  ],
+  "given": [
+   "Norbert",
+   "Fritz",
+   "Hans-Peter"
+  ],
+  "volume": "55",
+  "page": "3",
+  "journal": "Public Opinion Quarterly",
+  "journal_short": [],
+  "publisher": "Oxford University Press (OUP)",
+  "year": "1991"
+ },
+ "DEV-ML-016": {
+  "doi": "10.3758/bf03197186",
+  "title": "Choosing versus rejecting: Why some options are both better and worse than others",
+  "authors": [
+   "Shafir"
+  ],
+  "given": [
+   "Eldar"
+  ],
+  "volume": "21",
+  "page": "546-556",
+  "journal": "Memory &amp; Cognition",
+  "journal_short": [
+   "Memory &amp; Cognition"
+  ],
+  "publisher": "Springer Science and Business Media LLC",
+  "year": "1993"
+ },
+ "DEV-ML-017": {
+  "doi": "10.1037/0022-3514.83.5.1239",
+  "title": "Cultural variation in correspondence bias: The critical role of attitude diagnosticity of socially constrained behavior.",
+  "authors": [
+   "Miyamoto",
+   "Kitayama"
+  ],
+  "given": [
+   "Yuri",
+   "Shinobu"
+  ],
+  "volume": "83",
+  "page": "1239-1248",
+  "journal": "Journal of Personality and Social Psychology",
+  "journal_short": [
+   "Journal of Personality and Social Psychology"
+  ],
+  "publisher": "American Psychological Association (APA)",
+  "year": "2002"
+ },
+ "DEV-ML-018": {
+  "doi": "10.1002/ejsp.2013",
+  "title": "Living in the north is not necessarily favorable: Different metaphoric associations between cardinal direction and valence in Hong Kong and in the United States",
+  "authors": [
+   "Huang",
+   "Tse",
+   "Cho"
+  ],
+  "given": [
+   "Yanli",
+   "Chi\u2010Shing",
+   "Kit W."
+  ],
+  "volume": "44",
+  "page": "360-369",
+  "journal": "European Journal of Social Psychology",
+  "journal_short": [
+   "Euro J Social Psych"
+  ],
+  "publisher": "Wiley",
+  "year": "2014"
+ },
+ "DEV-ML-020": {
+  "doi": "10.1037/a0015960",
+  "title": "Disgust sensitivity predicts intuitive disapproval of gays.",
+  "authors": [
+   "Inbar",
+   "Pizarro",
+   "Knobe",
+   "Bloom"
+  ],
+  "given": [
+   "Yoel",
+   "David A.",
+   "Joshua",
+   "Paul"
+  ],
+  "volume": "9",
+  "page": "435-439",
+  "journal": "Emotion",
+  "journal_short": [
+   "Emotion"
+  ],
+  "publisher": "American Psychological Association (APA)",
+  "year": "2009"
+ },
+ "DEV-ML-021": {
+  "doi": "10.1016/0022-1031(77)90049-x",
+  "title": "The \u201cfalse consensus effect\u201d: An egocentric bias in social perception and attribution processes",
+  "authors": [
+   "Ross",
+   "Greene",
+   "House"
+  ],
+  "given": [
+   "Lee",
+   "David",
+   "Pamela"
+  ],
+  "volume": "13",
+  "page": "279-301",
+  "journal": "Journal of Experimental Social Psychology",
+  "journal_short": [
+   "Journal of Experimental Social Psychology"
+  ],
+  "publisher": "Elsevier BV",
+  "year": "1977"
+ },
+ "DEV-ML-023": {
+  "doi": "10.1002/bdm.586",
+  "title": "Incidental environmental anchors",
+  "authors": [
+   "Critcher",
+   "Gilovich"
+  ],
+  "given": [
+   "Clayton R.",
+   "Thomas"
+  ],
+  "volume": "21",
+  "page": "241-251",
+  "journal": "Journal of Behavioral Decision Making",
+  "journal_short": [
+   "Behavioral Decision Making"
+  ],
+  "publisher": "Wiley",
+  "year": "2007"
+ },
+ "DEV-ML-024": {
+  "doi": "10.1037/0096-3445.136.4.569",
+  "title": "Overcoming intuition: Metacognitive difficulty activates analytic reasoning.",
+  "authors": [
+   "Alter",
+   "Oppenheimer",
+   "Epley",
+   "Eyre"
+  ],
+  "given": [
+   "Adam L.",
+   "Daniel M.",
+   "Nicholas",
+   "Rebecca N."
+  ],
+  "volume": "136",
+  "page": "569-576",
+  "journal": "Journal of Experimental Psychology: General",
+  "journal_short": [
+   "Journal of Experimental Psychology: General"
+  ],
+  "publisher": "American Psychological Association (APA)",
+  "year": "2007"
+ },
+ "DEV-ML-025": {
+  "doi": "10.1111/1467-8284.00419",
+  "title": "Intentional action and side effects in ordinary language",
+  "authors": [
+   "Knobe"
+  ],
+  "given": [
+   "J."
+  ],
+  "volume": "63",
+  "page": "190-194",
+  "journal": "Analysis",
+  "journal_short": [
+   "Analysis"
+  ],
+  "publisher": "Oxford University Press (OUP)",
+  "year": "2003"
+ },
+ "DEV-ML-026": {
+  "doi": "10.1207/s15516709cog2605_4",
+  "title": "Cultural preferences for formal versus intuitive reasoning",
+  "authors": [
+   "Norenzayan",
+   "Smith",
+   "Kim",
+   "Nisbett"
+  ],
+  "given": [
+   "Ara",
+   "Edward E.",
+   "Beom Jun",
+   "Richard E."
+  ],
+  "volume": "26",
+  "page": "653-684",
+  "journal": "Cognitive Science",
+  "journal_short": [
+   "Cognitive Science"
+  ],
+  "publisher": "Wiley",
+  "year": "2002"
+ },
+ "DEV-ML-027": {
+  "doi": "10.1002/(sici)1099-0771(199806)11:2<107::aid-bdm292>3.0.co;2-y",
+  "title": "Less is better: when low-value options are valued more highly than high-value options",
+  "authors": [
+   "Hsee"
+  ],
+  "given": [
+   "Christopher K."
+  ],
+  "volume": "11",
+  "page": "107-121",
+  "journal": "Journal of Behavioral Decision Making",
+  "journal_short": [
+   "J. Behav. Decis. Making"
+  ],
+  "publisher": "Wiley",
+  "year": "1998"
+ },
+ "DEV-ML-028": {
+  "doi": "10.1126/science.1130726",
+  "title": "Washing Away Your Sins: Threatened Morality and Physical Cleansing",
+  "authors": [
+   "Zhong",
+   "Liljenquist"
+  ],
+  "given": [
+   "Chen-Bo",
+   "Katie"
+  ],
+  "volume": "313",
+  "page": "1451-1452",
+  "journal": "Science",
+  "journal_short": [
+   "Science"
+  ],
+  "publisher": "American Association for the Advancement of Science (AAAS)",
+  "year": "2006"
+ },
+ "DEV-ML-029": {
+  "doi": "10.1037/a0015141",
+  "title": "Liberals and conservatives rely on different sets of moral foundations.",
+  "authors": [
+   "Graham",
+   "Haidt",
+   "Nosek"
+  ],
+  "given": [
+   "Jesse",
+   "Jonathan",
+   "Brian A."
+  ],
+  "volume": "96",
+  "page": "1029-1046",
+  "journal": "Journal of Personality and Social Psychology",
+  "journal_short": [
+   "Journal of Personality and Social Psychology"
+  ],
+  "publisher": "American Psychological Association (APA)",
+  "year": "2009"
+ },
+ "DEV-ML-030": {
+  "doi": "10.1037/a0013748",
+  "title": "Moral typecasting: Divergent perceptions of moral agents and moral patients.",
+  "authors": [
+   "Gray",
+   "Wegner"
+  ],
+  "given": [
+   "Kurt",
+   "Daniel M."
+  ],
+  "volume": "96",
+  "page": "505-520",
+  "journal": "Journal of Personality and Social Psychology",
+  "journal_short": [
+   "Journal of Personality and Social Psychology"
+  ],
+  "publisher": "American Psychological Association (APA)",
+  "year": "2009"
+ },
+ "DEV-ML-031": {
+  "doi": "10.1016/j.obhdp.2006.10.001",
+  "title": "High in the hierarchy: How vertical location and judgments of leaders\u2019 power are interrelated",
+  "authors": [
+   "Giessner",
+   "Schubert"
+  ],
+  "given": [
+   "Steffen R.",
+   "Thomas W."
+  ],
+  "volume": "104",
+  "page": "30-44",
+  "journal": "Organizational Behavior and Human Decision Processes",
+  "journal_short": [
+   "Organizational Behavior and Human Decision Processes"
+  ],
+  "publisher": "Elsevier BV",
+  "year": "2007"
+ },
+ "DEV-ML-032": {
+  "doi": "10.1177/0956797611429579",
+  "title": "Cuing Consumerism",
+  "authors": [
+   "Bauer",
+   "Wilkie",
+   "Kim",
+   "Bodenhausen"
+  ],
+  "given": [
+   "Monika A.",
+   "James E. B.",
+   "Jung K.",
+   "Galen V."
+  ],
+  "volume": "23",
+  "page": "517-523",
+  "journal": "Psychological Science",
+  "journal_short": [
+   "Psychol Sci"
+  ],
+  "publisher": "SAGE Publications",
+  "year": "2012"
+ },
+ "DEV-ML-033": {
+  "doi": "10.1038/nclimate2093",
+  "title": "How warm days increase belief in global warming",
+  "authors": [
+   "Zaval",
+   "Keenan",
+   "Johnson",
+   "Weber"
+  ],
+  "given": [
+   "Lisa",
+   "Elizabeth A.",
+   "Eric J.",
+   "Elke U."
+  ],
+  "volume": "4",
+  "page": "143-147",
+  "journal": "Nature Climate Change",
+  "journal_short": [
+   "Nature Clim Change"
+  ],
+  "publisher": "Springer Science and Business Media LLC",
+  "year": "2014"
+ },
+ "DEV-ML-034": {
+  "doi": "10.1177/0956797611434537",
+  "title": "The Local-Ladder Effect",
+  "authors": [
+   "Anderson",
+   "Kraus",
+   "Galinsky",
+   "Keltner"
+  ],
+  "given": [
+   "Cameron",
+   "Michael W.",
+   "Adam D.",
+   "Dacher"
+  ],
+  "volume": "23",
+  "page": "764-771",
+  "journal": "Psychological Science",
+  "journal_short": [
+   "Psychol Sci"
+  ],
+  "publisher": "SAGE Publications",
+  "year": "2012"
+ },
+ "DEV-ML-035": {
+  "doi": "10.1037/0022-3514.73.4.733",
+  "title": "Development of prosocial, individualistic, and competitive orientations: Theory and preliminary evidence.",
+  "authors": [
+   "Van Lange",
+   "De Bruin",
+   "Otten",
+   "Joireman"
+  ],
+  "given": [
+   "Paul A. M.",
+   "Ellen M. N.",
+   "Wilma",
+   "Jeffrey A."
+  ],
+  "volume": "73",
+  "page": "733-746",
+  "journal": "Journal of Personality and Social Psychology",
+  "journal_short": [
+   "Journal of Personality and Social Psychology"
+  ],
+  "publisher": "American Psychological Association (APA)",
+  "year": "1997"
+ },
+ "DEV-ML-036": {
+  "doi": "10.1037/a0034462",
+  "title": "A functional basis for structure-seeking: Exposure to structure promotes willingness to engage in motivated action.",
+  "authors": [
+   "Kay",
+   "Laurin",
+   "Fitzsimons",
+   "Landau"
+  ],
+  "given": [
+   "Aaron C.",
+   "Kristin",
+   "Gr\u00e1inne M.",
+   "Mark J."
+  ],
+  "volume": "143",
+  "page": "486-491",
+  "journal": "Journal of Experimental Psychology: General",
+  "journal_short": [
+   "Journal of Experimental Psychology: General"
+  ],
+  "publisher": "American Psychological Association (APA)",
+  "year": "2014"
+ },
+ "DEV-ML-038": {
+  "doi": "10.1111/j.1468-0017.2006.00297.x",
+  "title": "A Dissociation Between Moral Judgments and Justifications",
+  "authors": [
+   "HAUSER",
+   "CUSHMAN",
+   "YOUNG",
+   "KANG\u2010XING JIN",
+   "MIKHAIL"
+  ],
+  "given": [
+   "MARC",
+   "FIERY",
+   "LIANE",
+   "R.",
+   "JOHN"
+  ],
+  "volume": "22",
+  "page": "1-21",
+  "journal": "Mind &amp; Language",
+  "journal_short": [
+   "Mind &amp;amp; Language"
+  ],
+  "publisher": "Wiley",
+  "year": "2007"
+ },
+ "DEV-ML-039": {
+  "doi": "10.1037/0022-3514.67.4.627",
+  "title": "Role of consciousness and accessibility of death-related thoughts in mortality salience effects.",
+  "authors": [
+   "Greenberg",
+   "Pyszczynski",
+   "Solomon",
+   "Simon",
+   "Breus"
+  ],
+  "given": [
+   "Jeff",
+   "Tom",
+   "Sheldon",
+   "Linda",
+   "Michael"
+  ],
+  "volume": "67",
+  "page": "627-637",
+  "journal": "Journal of Personality and Social Psychology",
+  "journal_short": [
+   "Journal of Personality and Social Psychology"
+  ],
+  "publisher": "American Psychological Association (APA)",
+  "year": "1994"
+ },
+ "DEV-RPP-001": {
+  "doi": "10.1037/0278-7393.34.2.353",
+  "title": "Tracing attention and the activation flow in spoken word planning using eye movements.",
+  "authors": [
+   "Roelofs"
+  ],
+  "given": [
+   "Ardi"
+  ],
+  "volume": "34",
+  "page": "353-368",
+  "journal": "Journal of Experimental Psychology: Learning, Memory, and Cognition",
+  "journal_short": [
+   "Journal of Experimental Psychology: Learning, Memory, and Cognition"
+  ],
+  "publisher": "American Psychological Association (APA)",
+  "year": "2008"
+ },
+ "DEV-RPP-002": {
+  "doi": "10.1037/0278-7393.34.1.146",
+  "title": "Now you see it, now you don't: Repetition blindness for nonwords.",
+  "authors": [
+   "Morris",
+   "Still"
+  ],
+  "given": [
+   "Alison L.",
+   "Mary L."
+  ],
+  "volume": "34",
+  "page": "146-166",
+  "journal": "Journal of Experimental Psychology: Learning, Memory, and Cognition",
+  "journal_short": [
+   "Journal of Experimental Psychology: Learning, Memory, and Cognition"
+  ],
+  "publisher": "American Psychological Association (APA)",
+  "year": "2008"
+ },
+ "DEV-RPP-003": {
+  "doi": "10.1037/0278-7393.34.3.478",
+  "title": "Working memory costs of task switching.",
+  "authors": [
+   "Liefooghe",
+   "Barrouillet",
+   "Vandierendonck",
+   "Camos"
+  ],
+  "given": [
+   "Baptist",
+   "Pierre",
+   "Andr\u00e9",
+   "Val\u00e9rie"
+  ],
+  "volume": "34",
+  "page": "478-494",
+  "journal": "Journal of Experimental Psychology: Learning, Memory, and Cognition",
+  "journal_short": [
+   "Journal of Experimental Psychology: Learning, Memory, and Cognition"
+  ],
+  "publisher": "American Psychological Association (APA)",
+  "year": "2008"
+ },
+ "DEV-RPP-004": {
+  "doi": "10.1037/0278-7393.34.1.230",
+  "title": "Accelerated relearning after retrieval-induced forgetting: The benefit of being forgotten.",
+  "authors": [
+   "Storm",
+   "Bjork",
+   "Bjork"
+  ],
+  "given": [
+   "Benjamin C.",
+   "Elizabeth Ligon",
+   "Robert A."
+  ],
+  "volume": "34",
+  "page": "230-236",
+  "journal": "Journal of Experimental Psychology: Learning, Memory, and Cognition",
+  "journal_short": [
+   "Journal of Experimental Psychology: Learning, Memory, and Cognition"
+  ],
+  "publisher": "American Psychological Association (APA)",
+  "year": "2008"
+ },
+ "DEV-RPP-005": {
+  "doi": "10.1037/0278-7393.34.1.237",
+  "title": "The intermixed-blocked effect in human perceptual learning is not the consequence of trial spacing.",
+  "authors": [
+   "Mitchell",
+   "Nash",
+   "Hall"
+  ],
+  "given": [
+   "Chris",
+   "Scott",
+   "Geoffrey"
+  ],
+  "volume": "34",
+  "page": "237-242",
+  "journal": "Journal of Experimental Psychology: Learning, Memory, and Cognition",
+  "journal_short": [
+   "Journal of Experimental Psychology: Learning, Memory, and Cognition"
+  ],
+  "publisher": "American Psychological Association (APA)",
+  "year": "2008"
+ },
+ "DEV-RPP-006": {
+  "doi": "10.1037/0278-7393.34.1.97",
+  "title": "A single-system account of the relationship between priming, recognition, and fluency.",
+  "authors": [
+   "Berry",
+   "Shanks",
+   "Henson"
+  ],
+  "given": [
+   "Christopher J.",
+   "David R.",
+   "Richard N. A."
+  ],
+  "volume": "34",
+  "page": "97-111",
+  "journal": "Journal of Experimental Psychology: Learning, Memory, and Cognition",
+  "journal_short": [
+   "Journal of Experimental Psychology: Learning, Memory, and Cognition"
+  ],
+  "publisher": "American Psychological Association (APA)",
+  "year": "2008"
+ },
+ "DEV-RPP-007": {
+  "doi": "10.1037/0278-7393.34.1.219",
+  "title": "Modeling distributions of immediate memory effects: No strategies needed?",
+  "authors": [
+   "Beaman",
+   "Neath",
+   "Surprenant"
+  ],
+  "given": [
+   "C. Philip",
+   "Ian",
+   "Aim\u00e9e M."
+  ],
+  "volume": "34",
+  "page": "219-229",
+  "journal": "Journal of Experimental Psychology: Learning, Memory, and Cognition",
+  "journal_short": [
+   "Journal of Experimental Psychology: Learning, Memory, and Cognition"
+  ],
+  "publisher": "American Psychological Association (APA)",
+  "year": "2008"
+ },
+ "DEV-RPP-008": {
+  "doi": "10.1037/0278-7393.34.3.460",
+  "title": "Stereotypes and retrieval-provoked illusory source recollections.",
+  "authors": [
+   "Dodson",
+   "Darragh",
+   "Williams"
+  ],
+  "given": [
+   "Chad S.",
+   "James",
+   "Allison"
+  ],
+  "volume": "34",
+  "page": "460-477",
+  "journal": "Journal of Experimental Psychology: Learning, Memory, and Cognition",
+  "journal_short": [
+   "Journal of Experimental Psychology: Learning, Memory, and Cognition"
+  ],
+  "publisher": "American Psychological Association (APA)",
+  "year": "2008"
+ },
+ "DEV-RPP-009": {
+  "doi": "10.1037/0278-7393.34.2.430",
+  "title": "Across-notation automatic numerical processing.",
+  "authors": [
+   "Ganor-Stern",
+   "Tzelgov"
+  ],
+  "given": [
+   "Dana",
+   "Joseph"
+  ],
+  "volume": "34",
+  "page": "430-437",
+  "journal": "Journal of Experimental Psychology: Learning, Memory, and Cognition",
+  "journal_short": [
+   "Journal of Experimental Psychology: Learning, Memory, and Cognition"
+  ],
+  "publisher": "American Psychological Association (APA)",
+  "year": "2008"
+ },
+ "DEV-RPP-010": {
+  "doi": "10.1037/0278-7393.34.1.65",
+  "title": "Attractor dynamics and semantic neighborhood density: Processing is slowed by near neighbors and speeded by distant neighbors.",
+  "authors": [
+   "Mirman",
+   "Magnuson"
+  ],
+  "given": [
+   "Daniel",
+   "James S."
+  ],
+  "volume": "34",
+  "page": "65-79",
+  "journal": "Journal of Experimental Psychology: Learning, Memory, and Cognition",
+  "journal_short": [
+   "Journal of Experimental Psychology: Learning, Memory, and Cognition"
+  ],
+  "publisher": "American Psychological Association (APA)",
+  "year": "2008"
+ },
+ "DEV-RPP-011": {
+  "doi": "10.1037/0278-7393.34.1.243",
+  "title": "When does between-sequence phonological similarity promote irrelevant sound disruption?",
+  "authors": [
+   "Marsh",
+   "Vachon",
+   "Jones"
+  ],
+  "given": [
+   "John E.",
+   "Fran\u00e7ois",
+   "Dylan M."
+  ],
+  "volume": "34",
+  "page": "243-248",
+  "journal": "Journal of Experimental Psychology: Learning, Memory, and Cognition",
+  "journal_short": [
+   "Journal of Experimental Psychology: Learning, Memory, and Cognition"
+  ],
+  "publisher": "American Psychological Association (APA)",
+  "year": "2008"
+ },
+ "DEV-RPP-012": {
+  "doi": "10.1037/0278-7393.34.3.546",
+  "title": "Bidirectional associations in multiplication memory: Conditions of negative and positive transfer.",
+  "authors": [
+   "Campbell",
+   "Robert"
+  ],
+  "given": [
+   "Jamie I. D.",
+   "Nicole D."
+  ],
+  "volume": "34",
+  "page": "546-555",
+  "journal": "Journal of Experimental Psychology: Learning, Memory, and Cognition",
+  "journal_short": [
+   "Journal of Experimental Psychology: Learning, Memory, and Cognition"
+  ],
+  "publisher": "American Psychological Association (APA)",
+  "year": "2008"
+ },
+ "DEV-RPP-013": {
+  "doi": "10.1037/0278-7393.34.3.514",
+  "title": "The Stroop effect: Why proportion congruent has nothing to do with congruency and everything to do with contingency.",
+  "authors": [
+   "Schmidt",
+   "Besner"
+  ],
+  "given": [
+   "James R.",
+   "Derek"
+  ],
+  "volume": "34",
+  "page": "514-523",
+  "journal": "Journal of Experimental Psychology: Learning, Memory, and Cognition",
+  "journal_short": [
+   "Journal of Experimental Psychology: Learning, Memory, and Cognition"
+  ],
+  "publisher": "American Psychological Association (APA)",
+  "year": "2008"
+ },
+ "DEV-RPP-014": {
+  "doi": "10.1037/0278-7393.34.1.186",
+  "title": "The ultimate sampling dilemma in experience-based decision making.",
+  "authors": [
+   "Fiedler"
+  ],
+  "given": [
+   "Klaus"
+  ],
+  "volume": "34",
+  "page": "186-203",
+  "journal": "Journal of Experimental Psychology: Learning, Memory, and Cognition",
+  "journal_short": [
+   "Journal of Experimental Psychology: Learning, Memory, and Cognition"
+  ],
+  "publisher": "American Psychological Association (APA)",
+  "year": "2008"
+ },
+ "DEV-RPP-015": {
+  "doi": "10.1037/0278-7393.34.3.439",
+  "title": "How to say no: Single- and dual-process theories of short-term recognition tested on negative probes.",
+  "authors": [
+   "Oberauer"
+  ],
+  "given": [
+   "Klaus"
+  ],
+  "volume": "34",
+  "page": "439-459",
+  "journal": "Journal of Experimental Psychology: Learning, Memory, and Cognition",
+  "journal_short": [
+   "Journal of Experimental Psychology: Learning, Memory, and Cognition"
+  ],
+  "publisher": "American Psychological Association (APA)",
+  "year": "2008"
+ },
+ "DEV-RPP-016": {
+  "doi": "10.1037/0278-7393.34.2.408",
+  "title": "Intentional forgetting is easier after two \"shots\" than one.",
+  "authors": [
+   "Sahakyan",
+   "Delaney",
+   "Waldum"
+  ],
+  "given": [
+   "Lili",
+   "Peter F.",
+   "Emily R."
+  ],
+  "volume": "34",
+  "page": "408-414",
+  "journal": "Journal of Experimental Psychology: Learning, Memory, and Cognition",
+  "journal_short": [
+   "Journal of Experimental Psychology: Learning, Memory, and Cognition"
+  ],
+  "publisher": "American Psychological Association (APA)",
+  "year": "2008"
+ },
+ "DEV-RPP-017": {
+  "doi": "10.1037/0278-7393.34.2.302",
+  "title": "How does bilingualism improve executive control? A comparison of active and reactive inhibition mechanisms.",
+  "authors": [
+   "Colzato",
+   "Bajo",
+   "van den Wildenberg",
+   "Paolieri",
+   "Nieuwenhuis",
+   "La Heij",
+   "Hommel"
+  ],
+  "given": [
+   "Lorenza S.",
+   "Maria Teresa",
+   "Wery",
+   "Daniela",
+   "Sander",
+   "Wido",
+   "Bernhard"
+  ],
+  "volume": "34",
+  "page": "302-312",
+  "journal": "Journal of Experimental Psychology: Learning, Memory, and Cognition",
+  "journal_short": [
+   "Journal of Experimental Psychology: Learning, Memory, and Cognition"
+  ],
+  "publisher": "American Psychological Association (APA)",
+  "year": "2008"
+ },
+ "DEV-RPP-018": {
+  "doi": "10.1037/0278-7393.34.2.343",
+  "title": "Priming addition facts with semantic relations.",
+  "authors": [
+   "Bassok",
+   "Pedigo",
+   "Oskarsson"
+  ],
+  "given": [
+   "Miriam",
+   "Samuel F.",
+   "An T."
+  ],
+  "volume": "34",
+  "page": "343-352",
+  "journal": "Journal of Experimental Psychology: Learning, Memory, and Cognition",
+  "journal_short": [
+   "Journal of Experimental Psychology: Learning, Memory, and Cognition"
+  ],
+  "publisher": "American Psychological Association (APA)",
+  "year": "2008"
+ },
+ "DEV-RPP-019": {
+  "doi": "10.1037/0278-7393.34.3.524",
+  "title": "Learning correct responses and errors in the Hebb repetition effect: Two faces of the same coin.",
+  "authors": [
+   "Couture",
+   "Lafond",
+   "Tremblay"
+  ],
+  "given": [
+   "Mathieu",
+   "Daniel",
+   "S\u00e9bastien"
+  ],
+  "volume": "34",
+  "page": "524-532",
+  "journal": "Journal of Experimental Psychology: Learning, Memory, and Cognition",
+  "journal_short": [
+   "Journal of Experimental Psychology: Learning, Memory, and Cognition"
+  ],
+  "publisher": "American Psychological Association (APA)",
+  "year": "2008"
+ },
+ "DEV-RPP-020": {
+  "doi": "10.1037/0278-7393.34.1.50",
+  "title": "Contextual effects on reading aloud: Evidence for pathway control.",
+  "authors": [
+   "Reynolds",
+   "Besner"
+  ],
+  "given": [
+   "Michael",
+   "Derek"
+  ],
+  "volume": "34",
+  "page": "50-64",
+  "journal": "Journal of Experimental Psychology: Learning, Memory, and Cognition",
+  "journal_short": [
+   "Journal of Experimental Psychology: Learning, Memory, and Cognition"
+  ],
+  "publisher": "American Psychological Association (APA)",
+  "year": "2008"
+ },
+ "DEV-RPP-021": {
+  "doi": "10.1037/0278-7393.34.3.495",
+  "title": "On the additive effects of stimulus quality and word frequency in lexical decision: Evidence for opposing interactive influences revealed by RT distributional analyses.",
+  "authors": [
+   "Yap",
+   "Balota",
+   "Tse",
+   "Besner"
+  ],
+  "given": [
+   "Melvin J.",
+   "David A.",
+   "Chi-Shing",
+   "Derek"
+  ],
+  "volume": "34",
+  "page": "495-513",
+  "journal": "Journal of Experimental Psychology: Learning, Memory, and Cognition",
+  "journal_short": [
+   "Journal of Experimental Psychology: Learning, Memory, and Cognition"
+  ],
+  "publisher": "American Psychological Association (APA)",
+  "year": "2008"
+ },
+ "DEV-RPP-022": {
+  "doi": "10.1037/0278-7393.34.1.249",
+  "title": "Semantic interference in a delayed naming task: Evidence for the response exclusion hypothesis.",
+  "authors": [
+   "Janssen",
+   "Schirm",
+   "Mahon",
+   "Caramazza"
+  ],
+  "given": [
+   "Niels",
+   "Walter",
+   "Bradford Z.",
+   "Alfonso"
+  ],
+  "volume": "34",
+  "page": "249-256",
+  "journal": "Journal of Experimental Psychology: Learning, Memory, and Cognition",
+  "journal_short": [
+   "Journal of Experimental Psychology: Learning, Memory, and Cognition"
+  ],
+  "publisher": "American Psychological Association (APA)",
+  "year": "2008"
+ },
+ "DEV-RPP-023": {
+  "doi": "10.1037/0278-7393.34.2.399",
+  "title": "Multidimensional visual statistical learning.",
+  "authors": [
+   "Turk-Browne",
+   "Isola",
+   "Scholl",
+   "Treat"
+  ],
+  "given": [
+   "Nicholas B.",
+   "Phillip J.",
+   "Brian J.",
+   "Teresa A."
+  ],
+  "volume": "34",
+  "page": "399-407",
+  "journal": "Journal of Experimental Psychology: Learning, Memory, and Cognition",
+  "journal_short": [
+   "Journal of Experimental Psychology: Learning, Memory, and Cognition"
+  ],
+  "publisher": "American Psychological Association (APA)",
+  "year": "2008"
+ },
+ "DEV-RPP-024": {
+  "doi": "10.1037/0278-7393.34.1.204",
+  "title": "Accounting for occurrences: A new view of the use of contingency information in causal judgment.",
+  "authors": [
+   "White"
+  ],
+  "given": [
+   "Peter A."
+  ],
+  "volume": "34",
+  "page": "204-218",
+  "journal": "Journal of Experimental Psychology: Learning, Memory, and Cognition",
+  "journal_short": [
+   "Journal of Experimental Psychology: Learning, Memory, and Cognition"
+  ],
+  "publisher": "American Psychological Association (APA)",
+  "year": "2008"
+ },
+ "DEV-RPP-025": {
+  "doi": "10.1037/0278-7393.34.1.128",
+  "title": "Multiple roles for time in short-term memory: Evidence from serial recall of order and timing.",
+  "authors": [
+   "Farrell"
+  ],
+  "given": [
+   "Simon"
+  ],
+  "volume": "34",
+  "page": "128-145",
+  "journal": "Journal of Experimental Psychology: Learning, Memory, and Cognition",
+  "journal_short": [
+   "Journal of Experimental Psychology: Learning, Memory, and Cognition"
+  ],
+  "publisher": "American Psychological Association (APA)",
+  "year": "2008"
+ },
+ "DEV-RPP-026": {
+  "doi": "10.1037/0278-7393.34.1.80",
+  "title": "An attention-based associative account of adjacent and nonadjacent dependency learning.",
+  "authors": [
+   "Pacton",
+   "Perruchet"
+  ],
+  "given": [
+   "S\u00e9bastien",
+   "Pierre"
+  ],
+  "volume": "34",
+  "page": "80-96",
+  "journal": "Journal of Experimental Psychology: Learning, Memory, and Cognition",
+  "journal_short": [
+   "Journal of Experimental Psychology: Learning, Memory, and Cognition"
+  ],
+  "publisher": "American Psychological Association (APA)",
+  "year": "2008"
+ },
+ "DEV-RPP-027": {
+  "doi": "10.1037/0278-7393.34.2.369",
+  "title": "Orienting attention in visual working memory reduces interference from memory probes.",
+  "authors": [
+   "Makovski",
+   "Sussman",
+   "Jiang"
+  ],
+  "given": [
+   "Tal",
+   "Rachel",
+   "Yuhong V."
+  ],
+  "volume": "34",
+  "page": "369-380",
+  "journal": "Journal of Experimental Psychology: Learning, Memory, and Cognition",
+  "journal_short": [
+   "Journal of Experimental Psychology: Learning, Memory, and Cognition"
+  ],
+  "publisher": "American Psychological Association (APA)",
+  "year": "2008"
+ },
+ "DEV-RPP-028": {
+  "doi": "10.1037/0278-7393.34.1.167",
+  "title": "Decision making and learning while taking sequential risks.",
+  "authors": [
+   "Pleskac"
+  ],
+  "given": [
+   "Timothy J."
+  ],
+  "volume": "34",
+  "page": "167-185",
+  "journal": "Journal of Experimental Psychology: Learning, Memory, and Cognition",
+  "journal_short": [
+   "Journal of Experimental Psychology: Learning, Memory, and Cognition"
+  ],
+  "publisher": "American Psychological Association (APA)",
+  "year": "2008"
+ },
+ "DEV-RPP-029": {
+  "doi": "10.1037/0022-3514.95.1.76",
+  "title": "The rejection of moral rebels: Resenting those who do the right thing.",
+  "authors": [
+   "Monin",
+   "Sawyer",
+   "Marquez"
+  ],
+  "given": [
+   "Beno\u00eet",
+   "Pamela J.",
+   "Matthew J."
+  ],
+  "volume": "95",
+  "page": "76-93",
+  "journal": "Journal of Personality and Social Psychology",
+  "journal_short": [
+   "Journal of Personality and Social Psychology"
+  ],
+  "publisher": "American Psychological Association (APA)",
+  "year": "2008"
+ },
+ "DEV-RPP-030": {
+  "doi": "10.1037/0022-3514.94.1.16",
+  "title": "Why do implicit and explicit attitude tests diverge? The role of structural fit.",
+  "authors": [
+   "Payne",
+   "Burkley",
+   "Stokes"
+  ],
+  "given": [
+   "B. Keith",
+   "Melissa A.",
+   "Mark B."
+  ],
+  "volume": "94",
+  "page": "16-31",
+  "journal": "Journal of Personality and Social Psychology",
+  "journal_short": [
+   "Journal of Personality and Social Psychology"
+  ],
+  "publisher": "American Psychological Association (APA)",
+  "year": "2008"
+ },
+ "DEV-RPP-031": {
+  "doi": "10.1037/0022-3514.94.4.718",
+  "title": "The developmental psychometrics of big five self-reports: Acquiescence, factor structure, coherence, and differentiation from ages 10 to 20.",
+  "authors": [
+   "Soto",
+   "John",
+   "Gosling",
+   "Potter"
+  ],
+  "given": [
+   "Christopher J.",
+   "Oliver P.",
+   "Samuel D.",
+   "Jeff"
+  ],
+  "volume": "94",
+  "page": "718-737",
+  "journal": "Journal of Personality and Social Psychology",
+  "journal_short": [
+   "Journal of Personality and Social Psychology"
+  ],
+  "publisher": "American Psychological Association (APA)",
+  "year": "2008"
+ },
+ "DEV-RPP-032": {
+  "doi": "10.1037/0022-3514.94.4.696",
+  "title": "Terror management and adults' attachment to their parents: The safe haven remains.",
+  "authors": [
+   "Cox",
+   "Arndt",
+   "Pyszczynski",
+   "Greenberg",
+   "Abdollahi",
+   "Solomon"
+  ],
+  "given": [
+   "Cathy R.",
+   "Jamie",
+   "Tom",
+   "Jeff",
+   "Abdolhossein",
+   "Sheldon"
+  ],
+  "volume": "94",
+  "page": "696-717",
+  "journal": "Journal of Personality and Social Psychology",
+  "journal_short": [
+   "Journal of Personality and Social Psychology"
+  ],
+  "publisher": "American Psychological Association (APA)",
+  "year": "2008"
+ },
+ "DEV-RPP-033": {
+  "doi": "10.1037/a0012833",
+  "title": "Increasing and decreasing motor and cognitive output: A model of general action and inaction goals.",
+  "authors": [
+   "Albarrac\u00edn",
+   "Handley",
+   "Noguchi",
+   "McCulloch",
+   "Li",
+   "Leeper",
+   "Brown",
+   "Earl",
+   "Hart"
+  ],
+  "given": [
+   "Dolores",
+   "Ian M.",
+   "Kenji",
+   "Kathleen C.",
+   "Hong",
+   "Joshua",
+   "Rick D.",
+   "Allison",
+   "William P."
+  ],
+  "volume": "95",
+  "page": "510-523",
+  "journal": "Journal of Personality and Social Psychology",
+  "journal_short": [
+   "Journal of Personality and Social Psychology"
+  ],
+  "publisher": "American Psychological Association (APA)",
+  "year": "2008"
+ },
+ "DEV-RPP-035": {
+  "doi": "10.1037/0022-3514.94.4.560",
+  "title": "Affective incoherence: When affective concepts and embodied reactions clash.",
+  "authors": [
+   "Centerbar",
+   "Schnall",
+   "Clore",
+   "Garvin"
+  ],
+  "given": [
+   "David B.",
+   "Simone",
+   "Gerald L.",
+   "Erika D."
+  ],
+  "volume": "94",
+  "page": "560-578",
+  "journal": "Journal of Personality and Social Psychology",
+  "journal_short": [
+   "Journal of Personality and Social Psychology"
+  ],
+  "publisher": "American Psychological Association (APA)",
+  "year": "2008"
+ },
+ "DEV-RPP-036": {
+  "doi": "10.1037/0022-3514.94.1.60",
+  "title": "Individual differences in the regulation of intergroup bias: The role of conflict monitoring and neural signals for control.",
+  "authors": [
+   "Amodio",
+   "Devine",
+   "Harmon-Jones"
+  ],
+  "given": [
+   "David M.",
+   "Patricia G.",
+   "Eddie"
+  ],
+  "volume": "94",
+  "page": "60-74",
+  "journal": "Journal of Personality and Social Psychology",
+  "journal_short": [
+   "Journal of Personality and Social Psychology"
+  ],
+  "publisher": "American Psychological Association (APA)",
+  "year": "2008"
+ },
+ "DEV-RPP-037": {
+  "doi": "10.1037/0022-3514.94.1.1",
+  "title": "Left frontal cortical activation and spreading of alternatives: Tests of the action-based model of dissonance.",
+  "authors": [
+   "Harmon-Jones",
+   "Harmon-Jones",
+   "Fearn",
+   "Sigelman",
+   "Johnson"
+  ],
+  "given": [
+   "Eddie",
+   "Cindy",
+   "Meghan",
+   "Jonathan D.",
+   "Peter"
+  ],
+  "volume": "94",
+  "page": "1-15",
+  "journal": "Journal of Personality and Social Psychology",
+  "journal_short": [
+   "Journal of Personality and Social Psychology"
+  ],
+  "publisher": "American Psychological Association (APA)",
+  "year": "2008"
+ },
+ "DEV-RPP-038": {
+  "doi": "10.1037/0022-3514.94.4.600",
+  "title": "A social functional approach to emotions in bargaining: When communicating anger pays and when it backfires.",
+  "authors": [
+   "van Dijk",
+   "van Kleef",
+   "Steinel",
+   "van Beest"
+  ],
+  "given": [
+   "Eric",
+   "Gerben A.",
+   "Wolfgang",
+   "Ilja"
+  ],
+  "volume": "94",
+  "page": "600-614",
+  "journal": "Journal of Personality and Social Psychology",
+  "journal_short": [
+   "Journal of Personality and Social Psychology"
+  ],
+  "publisher": "American Psychological Association (APA)",
+  "year": "2008"
+ },
+ "DEV-RPP-039": {
+  "doi": "10.1037/0022-3514.95.2.420",
+  "title": "\"Walking on eggshells\": How expressing relationship insecurities perpetuates them.",
+  "authors": [
+   "Lemay",
+   "Clark"
+  ],
+  "given": [
+   "Edward P.",
+   "Margaret S."
+  ],
+  "volume": "95",
+  "page": "420-441",
+  "journal": "Journal of Personality and Social Psychology",
+  "journal_short": [
+   "Journal of Personality and Social Psychology"
+  ],
+  "publisher": "American Psychological Association (APA)",
+  "year": "2008"
+ },
+ "DEV-RPP-040": {
+  "doi": "10.1037/0022-3514.94.4.647",
+  "title": "How the head liberates the heart: Projection of communal responsiveness guides relationship promotion.",
+  "authors": [
+   "Lemay",
+   "Clark"
+  ],
+  "given": [
+   "Edward P.",
+   "Margaret S."
+  ],
+  "volume": "94",
+  "page": "647-671",
+  "journal": "Journal of Personality and Social Psychology",
+  "journal_short": [
+   "Journal of Personality and Social Psychology"
+  ],
+  "publisher": "American Psychological Association (APA)",
+  "year": "2008"
+ },
+ "DEV-RPP-041": {
+  "doi": "10.1037/0022-3514.94.1.158",
+  "title": "Poignancy: Mixed emotional experience in the face of meaningful endings.",
+  "authors": [
+   "Ersner-Hershfield",
+   "Mikels",
+   "Sullivan",
+   "Carstensen"
+  ],
+  "given": [
+   "Hal",
+   "Joseph A.",
+   "Sarah J.",
+   "Laura L."
+  ],
+  "volume": "94",
+  "page": "158-167",
+  "journal": "Journal of Personality and Social Psychology",
+  "journal_short": [
+   "Journal of Personality and Social Psychology"
+  ],
+  "publisher": "American Psychological Association (APA)",
+  "year": "2008"
+ },
+ "DEV-RPP-042": {
+  "doi": "10.1037/0022-3514.94.1.48",
+  "title": "1/f noise and effort on implicit measures of bias.",
+  "authors": [
+   "Correll"
+  ],
+  "given": [
+   "Joshua"
+  ],
+  "volume": "94",
+  "page": "48-59",
+  "journal": "Journal of Personality and Social Psychology",
+  "journal_short": [
+   "Journal of Personality and Social Psychology"
+  ],
+  "publisher": "American Psychological Association (APA)",
+  "year": "2008"
+ },
+ "DEV-RPP-043": {
+  "doi": "10.1037/0022-3514.94.4.579",
+  "title": "The effect of global versus local processing styles on assimilation versus contrast in social judgment.",
+  "authors": [
+   "F\u00f6rster",
+   "Liberman",
+   "Kuschel"
+  ],
+  "given": [
+   "Jens",
+   "Nira",
+   "Stefanie"
+  ],
+  "volume": "94",
+  "page": "579-599",
+  "journal": "Journal of Personality and Social Psychology",
+  "journal_short": [
+   "Journal of Personality and Social Psychology"
+  ],
+  "publisher": "American Psychological Association (APA)",
+  "year": "2008"
+ },
+ "DEV-RPP-044": {
+  "doi": "10.1037/0022-3514.94.3.495",
+  "title": "Not so innocent: Does seeing one's own capability for wrongdoing predict forgiveness?",
+  "authors": [
+   "Exline",
+   "Baumeister",
+   "Zell",
+   "Kraft",
+   "Witvliet"
+  ],
+  "given": [
+   "Julie Juola",
+   "Roy F.",
+   "Anne L.",
+   "Amy J.",
+   "Charlotte V. O."
+  ],
+  "volume": "94",
+  "page": "495-515",
+  "journal": "Journal of Personality and Social Psychology",
+  "journal_short": [
+   "Journal of Personality and Social Psychology"
+  ],
+  "publisher": "American Psychological Association (APA)",
+  "year": "2008"
+ },
+ "DEV-RPP-045": {
+  "doi": "10.1037/0022-3514.95.2.293",
+  "title": "Why people are reluctant to tempt fate.",
+  "authors": [
+   "Risen",
+   "Gilovich"
+  ],
+  "given": [
+   "Jane L.",
+   "Thomas"
+  ],
+  "volume": "95",
+  "page": "293-307",
+  "journal": "Journal of Personality and Social Psychology",
+  "journal_short": [
+   "Journal of Personality and Social Psychology"
+  ],
+  "publisher": "American Psychological Association (APA)",
+  "year": "2008"
+ },
+ "DEV-RPP-046": {
+  "doi": "10.1037/0022-3514.94.3.516",
+  "title": "The nonverbal expression of pride: Evidence for cross-cultural recognition.",
+  "authors": [
+   "Tracy",
+   "Robins"
+  ],
+  "given": [
+   "Jessica L.",
+   "Richard W."
+  ],
+  "volume": "94",
+  "page": "516-530",
+  "journal": "Journal of Personality and Social Psychology",
+  "journal_short": [
+   "Journal of Personality and Social Psychology"
+  ],
+  "publisher": "American Psychological Association (APA)",
+  "year": "2008"
+ },
+ "DEV-RPP-047": {
+  "doi": "10.1037/0022-3514.94.4.672",
+  "title": "On the relative independence of thinking biases and cognitive ability.",
+  "authors": [
+   "Stanovich",
+   "West"
+  ],
+  "given": [
+   "Keith E.",
+   "Richard F."
+  ],
+  "volume": "94",
+  "page": "672-695",
+  "journal": "Journal of Personality and Social Psychology",
+  "journal_short": [
+   "Journal of Personality and Social Psychology"
+  ],
+  "publisher": "American Psychological Association (APA)",
+  "year": "2008"
+ },
+ "DEV-RPP-048": {
+  "doi": "10.1037/0022-3514.94.2.94.2.196",
+  "title": "Opening the mind to close it: Considering a message in light of important values increases message processing and later resistance to change.",
+  "authors": [
+   "Blankenship",
+   "Wegener"
+  ],
+  "given": [
+   "Kevin L.",
+   "Duane T."
+  ],
+  "volume": "94",
+  "page": "196-213",
+  "journal": "Journal of Personality and Social Psychology",
+  "journal_short": [
+   "Journal of Personality and Social Psychology"
+  ],
+  "publisher": "American Psychological Association (APA)",
+  "year": "2008"
+ },
+ "DEV-RPP-049": {
+  "doi": "10.1037/0022-3514.94.5.871",
+  "title": "Distinguishing between silent and vocal minorities: Not all deviants feel marginal.",
+  "authors": [
+   "Morrison",
+   "Miller"
+  ],
+  "given": [
+   "Kimberly Rios",
+   "Dale T."
+  ],
+  "volume": "94",
+  "page": "871-882",
+  "journal": "Journal of Personality and Social Psychology",
+  "journal_short": [
+   "Journal of Personality and Social Psychology"
+  ],
+  "publisher": "American Psychological Association (APA)",
+  "year": "2008"
+ },
+ "DEV-RPP-050": {
+  "doi": "10.1037/0022-3514.94.2.183",
+  "title": "Dynamics of self-regulation: How (un)accomplished goal actions affect motivation.",
+  "authors": [
+   "Koo",
+   "Fishbach"
+  ],
+  "given": [
+   "Minjung",
+   "Ayelet"
+  ],
+  "volume": "94",
+  "page": "183-195",
+  "journal": "Journal of Personality and Social Psychology",
+  "journal_short": [
+   "Journal of Personality and Social Psychology"
+  ],
+  "publisher": "American Psychological Association (APA)",
+  "year": "2008"
+ },
+ "DEV-RPP-051": {
+  "doi": "10.1037/0022-3514.94.3.396",
+  "title": "The effects of an implemental mind-set on attitude strength.",
+  "authors": [
+   "Henderson",
+   "de Liver",
+   "Gollwitzer"
+  ],
+  "given": [
+   "Marlone D.",
+   "Ya\u00ebl",
+   "Peter M."
+  ],
+  "volume": "94",
+  "page": "396-411",
+  "journal": "Journal of Personality and Social Psychology",
+  "journal_short": [
+   "Journal of Personality and Social Psychology"
+  ],
+  "publisher": "American Psychological Association (APA)",
+  "year": "2008"
+ },
+ "DEV-RPP-052": {
+  "doi": "10.1037/0022-3514.94.1.116",
+  "title": "A needs-based model of reconciliation: Satisfying the differential emotional needs of victim and perpetrator as a key to promoting reconciliation.",
+  "authors": [
+   "Shnabel",
+   "Nadler"
+  ],
+  "given": [
+   "Nurit",
+   "Arie"
+  ],
+  "volume": "94",
+  "page": "116-132",
+  "journal": "Journal of Personality and Social Psychology",
+  "journal_short": [
+   "Journal of Personality and Social Psychology"
+  ],
+  "publisher": "American Psychological Association (APA)",
+  "year": "2008"
+ },
+ "DEV-RPP-054": {
+  "doi": "10.1037/0022-3514.94.2.94.2.231",
+  "title": "Selective exposure and information quantity: How different information quantities moderate decision makers' preference for consistent and inconsistent information.",
+  "authors": [
+   "Fischer",
+   "Schulz-Hardt",
+   "Frey"
+  ],
+  "given": [
+   "Peter",
+   "Stefan",
+   "Dieter"
+  ],
+  "volume": "94",
+  "page": "231-244",
+  "journal": "Journal of Personality and Social Psychology",
+  "journal_short": [
+   "Journal of Personality and Social Psychology"
+  ],
+  "publisher": "American Psychological Association (APA)",
+  "year": "2008"
+ },
+ "DEV-RPP-055": {
+  "doi": "10.1037/0022-3514.94.3.382",
+  "title": "Self-regulation and selective exposure: The impact of depleted self-regulation resources on confirmatory information processing.",
+  "authors": [
+   "Fischer",
+   "Greitemeyer",
+   "Frey"
+  ],
+  "given": [
+   "Peter",
+   "Tobias",
+   "Dieter"
+  ],
+  "volume": "94",
+  "page": "382-395",
+  "journal": "Journal of Personality and Social Psychology",
+  "journal_short": [
+   "Journal of Personality and Social Psychology"
+  ],
+  "publisher": "American Psychological Association (APA)",
+  "year": "2008"
+ },
+ "DEV-RPP-056": {
+  "doi": "10.1037/0022-3514.94.1.91",
+  "title": "The space between us: Stereotype threat and distance in interracial contexts.",
+  "authors": [
+   "Goff",
+   "Steele",
+   "Davies"
+  ],
+  "given": [
+   "Phillip Atiba",
+   "Claude M.",
+   "Paul G."
+  ],
+  "volume": "94",
+  "page": "91-107",
+  "journal": "Journal of Personality and Social Psychology",
+  "journal_short": [
+   "Journal of Personality and Social Psychology"
+  ],
+  "publisher": "American Psychological Association (APA)",
+  "year": "2008"
+ },
+ "DEV-RPP-057": {
+  "doi": "10.1037/0022-3514.94.2.245",
+  "title": "Sex differences in mate preferences revisited: Do people know what they initially desire in a romantic partner?",
+  "authors": [
+   "Eastwick",
+   "Finkel"
+  ],
+  "given": [
+   "Paul W.",
+   "Eli J."
+  ],
+  "volume": "94",
+  "page": "245-264",
+  "journal": "Journal of Personality and Social Psychology",
+  "journal_short": [
+   "Journal of Personality and Social Psychology"
+  ],
+  "publisher": "American Psychological Association (APA)",
+  "year": "2008"
+ },
+ "DEV-RPP-058": {
+  "doi": "10.1037/0022-3514.94.3.429",
+  "title": "Balancing connectedness and self-protection goals in close relationships: A levels-of-processing perspective on risk regulation.",
+  "authors": [
+   "Murray",
+   "Derrick",
+   "Leder",
+   "Holmes"
+  ],
+  "given": [
+   "Sandra L.",
+   "Jaye L.",
+   "Sadie",
+   "John G."
+  ],
+  "volume": "94",
+  "page": "429-459",
+  "journal": "Journal of Personality and Social Psychology",
+  "journal_short": [
+   "Journal of Personality and Social Psychology"
+  ],
+  "publisher": "American Psychological Association (APA)",
+  "year": "2008"
+ },
+ "DEV-RPP-059": {
+  "doi": "10.1037/0022-3514.95.2.274",
+  "title": "Self-handicapping, excuse making, and counterfactual thinking: Consequences for self-esteem and future motivation.",
+  "authors": [
+   "McCrea"
+  ],
+  "given": [
+   "Sean M."
+  ],
+  "volume": "95",
+  "page": "274-292",
+  "journal": "Journal of Personality and Social Psychology",
+  "journal_short": [
+   "Journal of Personality and Social Psychology"
+  ],
+  "publisher": "American Psychological Association (APA)",
+  "year": "2008"
+ },
+ "DEV-RPP-060": {
+  "doi": "10.1037/0022-3514.94.4.615",
+  "title": "Social identity contingencies: How diversity cues signal threat or safety for African Americans in mainstream institutions.",
+  "authors": [
+   "Purdie-Vaughns",
+   "Steele",
+   "Davies",
+   "Ditlmann",
+   "Crosby"
+  ],
+  "given": [
+   "Valerie",
+   "Claude M.",
+   "Paul G.",
+   "Ruth",
+   "Jennifer Randall"
+  ],
+  "volume": "94",
+  "page": "615-630",
+  "journal": "Journal of Personality and Social Psychology",
+  "journal_short": [
+   "Journal of Personality and Social Psychology"
+  ],
+  "publisher": "American Psychological Association (APA)",
+  "year": "2008"
+ },
+ "DEV-RPP-061": {
+  "doi": "10.1111/j.1467-9280.2008.02062.x",
+  "title": "Effects of Fluency on Psychological Distance and Mental Construal (or Why New York Is a Large City, but\n                    <i>New York</i>\n                    Is a Civilized Jungle)",
+  "authors": [
+   "Alter",
+   "Oppenheimer"
+  ],
+  "given": [
+   "Adam L.",
+   "Daniel M."
+  ],
+  "volume": "19",
+  "page": "161-167",
+  "journal": "Psychological Science",
+  "journal_short": [
+   "Psychol Sci"
+  ],
+  "publisher": "SAGE Publications",
+  "year": "2008"
+ },
+ "DEV-RPP-062": {
+  "doi": "10.1111/j.1467-9280.2008.02066.x",
+  "title": "More Than Meets the Eye",
+  "authors": [
+   "Dessalegn",
+   "Landau"
+  ],
+  "given": [
+   "Banchiamlack",
+   "Barbara"
+  ],
+  "volume": "19",
+  "page": "189-195",
+  "journal": "Psychological Science",
+  "journal_short": [
+   "Psychol Sci"
+  ],
+  "publisher": "SAGE Publications",
+  "year": "2008"
+ },
+ "DEV-RPP-063": {
+  "doi": "10.1111/j.1467-9280.2008.02078.x",
+  "title": "Nonconscious Goal Pursuit in Novel Environments",
+  "authors": [
+   "Eitam",
+   "Hassin",
+   "Schul"
+  ],
+  "given": [
+   "Baruch",
+   "Ran R.",
+   "Yaacov"
+  ],
+  "volume": "19",
+  "page": "261-267",
+  "journal": "Psychological Science",
+  "journal_short": [
+   "Psychol Sci"
+  ],
+  "publisher": "SAGE Publications",
+  "year": "2008"
+ },
+ "DEV-RPP-064": {
+  "doi": "10.1111/j.1467-9280.2008.02092.x",
+  "title": "Perceptual Mechanisms That Characterize Gender Differences in Decoding Women's Sexual Intent",
+  "authors": [
+   "Farris",
+   "Treat",
+   "Viken",
+   "McFall"
+  ],
+  "given": [
+   "Coreen",
+   "Teresa A.",
+   "Richard J.",
+   "Richard M."
+  ],
+  "volume": "19",
+  "page": "348-354",
+  "journal": "Psychological Science",
+  "journal_short": [
+   "Psychol Sci"
+  ],
+  "publisher": "SAGE Publications",
+  "year": "2008"
+ },
+ "DEV-RPP-065": {
+  "doi": "10.1111/j.1467-9280.2008.02057.x",
+  "title": "Precision of the Anchor Influences the Amount of Adjustment",
+  "authors": [
+   "Janiszewski",
+   "Uy"
+  ],
+  "given": [
+   "Chris",
+   "Dan"
+  ],
+  "volume": "19",
+  "page": "121-127",
+  "journal": "Psychological Science",
+  "journal_short": [
+   "Psychol Sci"
+  ],
+  "publisher": "SAGE Publications",
+  "year": "2008"
+ },
+ "DEV-RPP-066": {
+  "doi": "10.1111/j.1467-9280.2008.02041.x",
+  "title": "Action Dynamics Reveal Parallel Competition in Decision Making",
+  "authors": [
+   "McKinstry",
+   "Dale",
+   "Spivey"
+  ],
+  "given": [
+   "Chris",
+   "Rick",
+   "Michael J."
+  ],
+  "volume": "19",
+  "page": "22-24",
+  "journal": "Psychological Science",
+  "journal_short": [
+   "Psychol Sci"
+  ],
+  "publisher": "SAGE Publications",
+  "year": "2008"
+ },
+ "DEV-RPP-067": {
+  "doi": "10.1111/j.1467-9280.2008.02089.x",
+  "title": "Prescribed Optimism: Is It Right to Be Wrong About the Future?",
+  "authors": [
+   "Armor",
+   "Massey",
+   "Sackett"
+  ],
+  "given": [
+   "David A.",
+   "Cade",
+   "Aaron M."
+  ],
+  "volume": "19",
+  "page": "329-331",
+  "journal": "Psychological Science",
+  "journal_short": [
+   "Psychol Sci"
+  ],
+  "publisher": "SAGE Publications",
+  "year": "2008"
+ },
+ "DEV-RPP-068": {
+  "doi": "10.1111/j.1467-9280.2008.02043.x",
+  "title": "Age-Related Changes in the Episodic Simulation of Future Events",
+  "authors": [
+   "Addis",
+   "Wong",
+   "Schacter"
+  ],
+  "given": [
+   "Donna Rose",
+   "Alana T.",
+   "Daniel L."
+  ],
+  "volume": "19",
+  "page": "33-41",
+  "journal": "Psychological Science",
+  "journal_short": [
+   "Psychol Sci"
+  ],
+  "publisher": "SAGE Publications",
+  "year": "2008"
+ },
+ "DEV-RPP-069": {
+  "doi": "10.1111/j.1467-9280.2008.02069.x",
+  "title": "Preschoolers' Perspective Taking in Word Learning",
+  "authors": [
+   "Nurmsoo",
+   "Bloom"
+  ],
+  "given": [
+   "Erika",
+   "Paul"
+  ],
+  "volume": "19",
+  "page": "211-215",
+  "journal": "Psychological Science",
+  "journal_short": [
+   "Psychol Sci"
+  ],
+  "publisher": "SAGE Publications",
+  "year": "2008"
+ },
+ "DEV-RPP-070": {
+  "doi": "10.1111/j.1467-9280.2008.02136.x",
+  "title": "Measuring the Crowd Within",
+  "authors": [
+   "Vul",
+   "Pashler"
+  ],
+  "given": [
+   "Edward",
+   "Harold"
+  ],
+  "volume": "19",
+  "page": "645-647",
+  "journal": "Psychological Science",
+  "journal_short": [
+   "Psychol Sci"
+  ],
+  "publisher": "SAGE Publications",
+  "year": "2008"
+ },
+ "DEV-RPP-071": {
+  "doi": "10.1111/j.1467-9280.2008.02046.x",
+  "title": "Temporal Selection is Suppressed, Delayed, and Diffused During the Attentional Blink",
+  "authors": [
+   "Vul",
+   "Nieuwenstein",
+   "Kanwisher"
+  ],
+  "given": [
+   "Edward",
+   "Mark",
+   "Nancy"
+  ],
+  "volume": "19",
+  "page": "55-61",
+  "journal": "Psychological Science",
+  "journal_short": [
+   "Psychol Sci"
+  ],
+  "publisher": "SAGE Publications",
+  "year": "2008"
+ },
+ "DEV-RPP-072": {
+  "doi": "10.1111/j.1467-9280.2008.02077.x",
+  "title": "Toward a Physiology of Dual-Process Reasoning and Judgment: Lemonade, Willpower, and Expensive Rule-Based Analysis",
+  "authors": [
+   "Masicampo",
+   "Baumeister"
+  ],
+  "given": [
+   "E.J.",
+   "Roy F."
+  ],
+  "volume": "19",
+  "page": "255-260",
+  "journal": "Psychological Science",
+  "journal_short": [
+   "Psychol Sci"
+  ],
+  "publisher": "SAGE Publications",
+  "year": "2008"
+ },
+ "DEV-RPP-073": {
+  "doi": "10.1111/j.1467-9280.2008.02053.x",
+  "title": "Errors Are Aversive",
+  "authors": [
+   "Hajcak",
+   "Foti"
+  ],
+  "given": [
+   "Greg",
+   "Dan"
+  ],
+  "volume": "19",
+  "page": "103-108",
+  "journal": "Psychological Science",
+  "journal_short": [
+   "Psychol Sci"
+  ],
+  "publisher": "SAGE Publications",
+  "year": "2008"
+ },
+ "DEV-RPP-074": {
+  "doi": "10.1111/j.1467-9280.2008.02091.x",
+  "title": "The Sunny Side of Fairness",
+  "authors": [
+   "Tabibnia",
+   "Satpute",
+   "Lieberman"
+  ],
+  "given": [
+   "Golnaz",
+   "Ajay B.",
+   "Matthew D."
+  ],
+  "volume": "19",
+  "page": "339-347",
+  "journal": "Psychological Science",
+  "journal_short": [
+   "Psychol Sci"
+  ],
+  "publisher": "SAGE Publications",
+  "year": "2008"
+ },
+ "DEV-RPP-075": {
+  "doi": "10.1111/j.1467-9280.2008.02098.x",
+  "title": "The Representation of Simple Ensemble Visual Features Outside the Focus of Attention",
+  "authors": [
+   "Alvarez",
+   "Oliva"
+  ],
+  "given": [
+   "George A.",
+   "Aude"
+  ],
+  "volume": "19",
+  "page": "392-398",
+  "journal": "Psychological Science",
+  "journal_short": [
+   "Psychol Sci"
+  ],
+  "publisher": "SAGE Publications",
+  "year": "2008"
+ },
+ "DEV-RPP-076": {
+  "doi": "10.1111/j.1467-9280.2008.02040.x",
+  "title": "Loving Those Who Justify Inequality",
+  "authors": [
+   "Lau",
+   "Kay",
+   "Spencer"
+  ],
+  "given": [
+   "Grace P.",
+   "Aaron C.",
+   "Steven J."
+  ],
+  "volume": "19",
+  "page": "20-21",
+  "journal": "Psychological Science",
+  "journal_short": [
+   "Psychol Sci"
+  ],
+  "publisher": "SAGE Publications",
+  "year": "2008"
+ },
+ "DEV-RPP-077": {
+  "doi": "10.1111/j.1467-9280.2008.02080.x",
+  "title": "A Motion Aftereffect From Still Photographs Depicting Motion",
+  "authors": [
+   "Winawer",
+   "Huk",
+   "Boroditsky"
+  ],
+  "given": [
+   "Jonathan",
+   "Alexander C.",
+   "Lera"
+  ],
+  "volume": "19",
+  "page": "276-283",
+  "journal": "Psychological Science",
+  "journal_short": [
+   "Psychol Sci"
+  ],
+  "publisher": "SAGE Publications",
+  "year": "2008"
+ },
+ "DEV-RPP-078": {
+  "doi": "10.1111/j.1467-9280.2008.02052.x",
+  "title": "The Threat of Appearing Prejudiced and Race-Based Attentional Biases",
+  "authors": [
+   "Richeson",
+   "Trawalter"
+  ],
+  "given": [
+   "Jennifer A.",
+   "Sophie"
+  ],
+  "volume": "19",
+  "page": "98-102",
+  "journal": "Psychological Science",
+  "journal_short": [
+   "Psychol Sci"
+  ],
+  "publisher": "SAGE Publications",
+  "year": "2008"
+ },
+ "DEV-RPP-079": {
+  "doi": "10.1111/j.1467-9280.2008.02072.x",
+  "title": "Where Do We Look During Potentially Offensive Behavior?",
+  "authors": [
+   "Crosby",
+   "Monin",
+   "Richardson"
+  ],
+  "given": [
+   "Jennifer Randall",
+   "Beno\u00eet",
+   "Daniel"
+  ],
+  "volume": "19",
+  "page": "226-228",
+  "journal": "Psychological Science",
+  "journal_short": [
+   "Psychol Sci"
+  ],
+  "publisher": "SAGE Publications",
+  "year": "2008"
+ },
+ "DEV-RPP-080": {
+  "doi": "10.1111/j.1467-9280.2008.02064.x",
+  "title": "Adaptive Memory",
+  "authors": [
+   "Nairne",
+   "Pandeirada",
+   "Thompson"
+  ],
+  "given": [
+   "James S.",
+   "Josefa N.S.",
+   "Sarah R."
+  ],
+  "volume": "19",
+  "page": "176-180",
+  "journal": "Psychological Science",
+  "journal_short": [
+   "Psychol Sci"
+  ],
+  "publisher": "SAGE Publications",
+  "year": "2008"
+ },
+ "DEV-RPP-081": {
+  "doi": "10.1111/j.1467-9280.2008.02095.x",
+  "title": "Is Happiness Having What You Want, Wanting What You Have, or Both?",
+  "authors": [
+   "Larsen",
+   "McKibban"
+  ],
+  "given": [
+   "Jeff T.",
+   "Amie R."
+  ],
+  "volume": "19",
+  "page": "371-377",
+  "journal": "Psychological Science",
+  "journal_short": [
+   "Psychol Sci"
+  ],
+  "publisher": "SAGE Publications",
+  "year": "2008"
+ },
+ "DEV-RPP-082": {
+  "doi": "10.1111/j.1467-9280.2008.02076.x",
+  "title": "Implicit Attitude Generalization Occurs Immediately; Explicit Attitude Generalization Takes Time",
+  "authors": [
+   "Ranganath",
+   "Nosek"
+  ],
+  "given": [
+   "Kate A.",
+   "Brian A."
+  ],
+  "volume": "19",
+  "page": "249-254",
+  "journal": "Psychological Science",
+  "journal_short": [
+   "Psychol Sci"
+  ],
+  "publisher": "SAGE Publications",
+  "year": "2008"
+ },
+ "DEV-RPP-083": {
+  "doi": "10.1111/j.1467-9280.2008.02045.x",
+  "title": "The Value of Believing in Free Will",
+  "authors": [
+   "Vohs",
+   "Schooler"
+  ],
+  "given": [
+   "Kathleen D.",
+   "Jonathan W."
+  ],
+  "volume": "19",
+  "page": "49-54",
+  "journal": "Psychological Science",
+  "journal_short": [
+   "Psychol Sci"
+  ],
+  "publisher": "SAGE Publications",
+  "year": "2008"
+ },
+ "DEV-RPP-084": {
+  "doi": "10.1111/j.1467-9280.2008.02050.x",
+  "title": "Auditory Change Detection: Simple Sounds Are Not Memorized Better Than Complex Sounds",
+  "authors": [
+   "Demany",
+   "Trost",
+   "Serman",
+   "Semal"
+  ],
+  "given": [
+   "Laurent",
+   "Wiebke",
+   "Maja",
+   "Catherine"
+  ],
+  "volume": "19",
+  "page": "85-91",
+  "journal": "Psychological Science",
+  "journal_short": [
+   "Psychol Sci"
+  ],
+  "publisher": "SAGE Publications",
+  "year": "2008"
+ },
+ "DEV-RPP-085": {
+  "doi": "10.1111/j.1467-9280.2008.02084.x",
+  "title": "Keeping One's Distance",
+  "authors": [
+   "Williams",
+   "Bargh"
+  ],
+  "given": [
+   "Lawrence E.",
+   "John A."
+  ],
+  "volume": "19",
+  "page": "302-308",
+  "journal": "Psychological Science",
+  "journal_short": [
+   "Psychol Sci"
+  ],
+  "publisher": "SAGE Publications",
+  "year": "2008"
+ },
+ "DEV-RPP-086": {
+  "doi": "10.1111/j.1467-9280.2008.02088.x",
+  "title": "Hedonic and Instrumental Motives in Anger Regulation",
+  "authors": [
+   "Tamir",
+   "Mitchell",
+   "Gross"
+  ],
+  "given": [
+   "Maya",
+   "Christopher",
+   "James J."
+  ],
+  "volume": "19",
+  "page": "324-328",
+  "journal": "Psychological Science",
+  "journal_short": [
+   "Psychol Sci"
+  ],
+  "publisher": "SAGE Publications",
+  "year": "2008"
+ },
+ "DEV-RPP-087": {
+  "doi": "10.1111/j.1467-9280.2008.02056.x",
+  "title": "Creating Social Connection Through Inferential Reproduction",
+  "authors": [
+   "Epley",
+   "Akalis",
+   "Waytz",
+   "Cacioppo"
+  ],
+  "given": [
+   "Nicholas",
+   "Scott",
+   "Adam",
+   "John T."
+  ],
+  "volume": "19",
+  "page": "114-120",
+  "journal": "Psychological Science",
+  "journal_short": [
+   "Psychol Sci"
+  ],
+  "publisher": "SAGE Publications",
+  "year": "2008"
+ },
+ "DEV-RPP-088": {
+  "doi": "10.1111/j.1467-9280.2008.02100.x",
+  "title": "\u201cIn-Group Love\u201d and \u201cOut-Group Hate\u201d as Motives for Individual Participation in Intergroup Conflict",
+  "authors": [
+   "Halevy",
+   "Bornstein",
+   "Sagiv"
+  ],
+  "given": [
+   "Nir",
+   "Gary",
+   "Lilach"
+  ],
+  "volume": "19",
+  "page": "405-411",
+  "journal": "Psychological Science",
+  "journal_short": [
+   "Psychol Sci"
+  ],
+  "publisher": "SAGE Publications",
+  "year": "2008"
+ },
+ "DEV-RPP-089": {
+  "doi": "10.1111/j.1467-9280.2008.02070.x",
+  "title": "A Word-Order Constraint on Phonological Activation",
+  "authors": [
+   "Janssen",
+   "Alario",
+   "Caramazza"
+  ],
+  "given": [
+   "Niels",
+   "F.-Xavier",
+   "Alfonso"
+  ],
+  "volume": "19",
+  "page": "216-220",
+  "journal": "Psychological Science",
+  "journal_short": [
+   "Psychol Sci"
+  ],
+  "publisher": "SAGE Publications",
+  "year": "2008"
+ },
+ "DEV-RPP-090": {
+  "doi": "10.1111/j.1467-9280.2008.02060.x",
+  "title": "The Best Men Are (Not Always) Already Taken",
+  "authors": [
+   "Bressan",
+   "Stranieri"
+  ],
+  "given": [
+   "Paola",
+   "Debora"
+  ],
+  "volume": "19",
+  "page": "145-151",
+  "journal": "Psychological Science",
+  "journal_short": [
+   "Psychol Sci"
+  ],
+  "publisher": "SAGE Publications",
+  "year": "2008"
+ },
+ "DEV-RPP-092": {
+  "doi": "10.1111/j.1467-9280.2008.02044.x",
+  "title": "Sensitivity to Object Viewpoint and Action Instructions During Search for Targets in the Lower Visual Field",
+  "authors": [
+   "Forti",
+   "Humphreys"
+  ],
+  "given": [
+   "Sara",
+   "Glyn W."
+  ],
+  "volume": "19",
+  "page": "42-47",
+  "journal": "Psychological Science",
+  "journal_short": [
+   "Psychol Sci"
+  ],
+  "publisher": "SAGE Publications",
+  "year": "2008"
+ },
+ "DEV-RPP-093": {
+  "doi": "10.1111/j.1467-9280.2008.02227.x",
+  "title": "With a Clean Conscience",
+  "authors": [
+   "Schnall",
+   "Benton",
+   "Harvey"
+  ],
+  "given": [
+   "Simone",
+   "Jennifer",
+   "Sophie"
+  ],
+  "volume": "19",
+  "page": "1219-1222",
+  "journal": "Psychological Science",
+  "journal_short": [
+   "Psychol Sci"
+  ],
+  "publisher": "SAGE Publications",
+  "year": "2008"
+ },
+ "DEV-RPP-094": {
+  "doi": "10.1111/j.1467-9280.2008.02049.x",
+  "title": "Extremal Edge",
+  "authors": [
+   "Palmer",
+   "Ghose"
+  ],
+  "given": [
+   "Stephen E.",
+   "Tandra"
+  ],
+  "volume": "19",
+  "page": "77-83",
+  "journal": "Psychological Science",
+  "journal_short": [
+   "Psychol Sci"
+  ],
+  "publisher": "SAGE Publications",
+  "year": "2008"
+ },
+ "DEV-RPP-095": {
+  "doi": "10.1111/j.1467-9280.2008.02085.x",
+  "title": "What Do Cross-National Comparisons of Personality Traits Tell Us?",
+  "authors": [
+   "Heine",
+   "Buchtel",
+   "Norenzayan"
+  ],
+  "given": [
+   "Steven J.",
+   "Emma E.",
+   "Ara"
+  ],
+  "volume": "19",
+  "page": "309-313",
+  "journal": "Psychological Science",
+  "journal_short": [
+   "Psychol Sci"
+  ],
+  "publisher": "SAGE Publications",
+  "year": "2008"
+ },
+ "DEV-RPP-096": {
+  "doi": "10.1111/j.1467-9280.2008.02093.x",
+  "title": "Personality Dominance and Preferential Use of the Vertical Dimension of Space",
+  "authors": [
+   "Moeller",
+   "Robinson",
+   "Zabelina"
+  ],
+  "given": [
+   "Sara K.",
+   "Michael D.",
+   "Darya L."
+  ],
+  "volume": "19",
+  "page": "355-361",
+  "journal": "Psychological Science",
+  "journal_short": [
+   "Psychol Sci"
+  ],
+  "publisher": "SAGE Publications",
+  "year": "2008"
+ },
+ "DEV-RPP-097": {
+  "doi": "10.1111/j.1467-9280.2008.02042.x",
+  "title": "Conflict-Triggered Goal Shielding",
+  "authors": [
+   "Goschke",
+   "Dreisbach"
+  ],
+  "given": [
+   "Thomas",
+   "Gesine"
+  ],
+  "volume": "19",
+  "page": "25-32",
+  "journal": "Psychological Science",
+  "journal_short": [
+   "Psychol Sci"
+  ],
+  "publisher": "SAGE Publications",
+  "year": "2008"
+ },
+ "DEV-RPP-098": {
+  "doi": "10.1111/j.1467-9280.2008.02081.x",
+  "title": "Detecting the Snake in the Grass",
+  "authors": [
+   "LoBue",
+   "DeLoache"
+  ],
+  "given": [
+   "Vanessa",
+   "Judy S."
+  ],
+  "volume": "19",
+  "page": "284-289",
+  "journal": "Psychological Science",
+  "journal_short": [
+   "Psychol Sci"
+  ],
+  "publisher": "SAGE Publications",
+  "year": "2008"
+ },
+ "DEV-RPP-099": {
+  "doi": "10.1111/j.1467-9280.2008.02039.x",
+  "title": "The Value Heuristic in Judgments of Relative Frequency",
+  "authors": [
+   "Dai",
+   "Wertenbroch",
+   "Brendl"
+  ],
+  "given": [
+   "Xianchi",
+   "Klaus",
+   "C. Miguel"
+  ],
+  "volume": "19",
+  "page": "18-19",
+  "journal": "Psychological Science",
+  "journal_short": [
+   "Psychol Sci"
+  ],
+  "publisher": "SAGE Publications",
+  "year": "2008"
+ },
+ "DEV-RPP-100": {
+  "doi": "10.1111/j.1467-9280.2008.02051.x",
+  "title": "Head Up, Foot Down",
+  "authors": [
+   "Estes",
+   "Verges",
+   "Barsalou"
+  ],
+  "given": [
+   "Zachary",
+   "Michelle",
+   "Lawrence W."
+  ],
+  "volume": "19",
+  "page": "93-97",
+  "journal": "Psychological Science",
+  "journal_short": [
+   "Psychol Sci"
+  ],
+  "publisher": "SAGE Publications",
+  "year": "2008"
+ }
+}

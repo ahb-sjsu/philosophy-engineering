@@ -122,30 +122,55 @@ Articles are presented with title, authors, journal, year, and DOI removed, and
 with reference lists removed. Blinding is imperfect for famous studies, and the
 contamination probe below measures how imperfect.
 
-**Implemented 2026-10-17: `k2_blinding.py`** (stdlib only). `redact()` removes
-the fields; `leaks()` is gate I3 and runs on whatever text an auditor will
-actually see, not trusting the redaction. Leak kinds: any DOI-shaped string,
-the title or any 6 consecutive title words (also across a hyphenated line
-break), an author surname as a whole word, the journal's full name, the
-publication year as a token, any URL or e-mail address, and **any in-text
-citation with a year**. The last is added because removing the reference list
-does not remove dating: the newest cited year bounds the publication year, so
-redaction strips in-text citations whole. **Witness** (`k2_blinding_test.py`,
-on Atlas, result `k2_blinding_test_result.json`): the real titles, authors,
-journals and years of the 132 development-set articles (136 rows) with a
-synthetic methods paragraph. PASS: on every row each planted leak kind is
-found, the redacted text leaks nothing, and the clean paragraph leaks nothing.
-The paragraph carries one deliberate trap, "1998 trials", and for the one
-article published in 1998 the year rule fires on it, as written. That is the
-rule's stated cost: a number equal to the publication year is redacted along
-with the year. **Limits:** the body is synthetic and the leaks are planted in
-shapes the check was written for, by the author of the check, so the witness
-shows the check works on real metadata, not that it catches what real
-articles carry. Not checked: journal abbreviations, running heads that
-abbreviate, publisher names and copyright lines beyond their year,
-institutions, grant numbers, and acknowledgments. The first real-article run
-(the pilot, 7.4) is read by a person for leaks the check missed, and each miss
-becomes a check before sealing.
+**Implemented 2026-10-17: `k2_blinding.py`** (stdlib only), with intake
+`k2_intake.py` (PDF text by poppler's pdftotext, reference list cut at the
+last references heading, redaction, check). `redact()` removes the fields;
+`leaks()` is gate I3 and runs on the text each auditor will see, not trusting
+the redaction. An article with any residual leak, no references heading, or
+letter-spaced scanned type is quarantined for a person and never released.
+The rule list and its stated limits are in the module's docstring.
+
+**Version 1 passed its own test and failed on real articles.** Its witness
+used the 132 development-set articles' real metadata with a synthetic
+paragraph and passed. Then the open-access copies were fetched
+(`k2_fulltext_fetch.py`: of the 30 that OpenAlex lists as open, a script
+could download **7** as PDFs; 15 links were web pages and 8 failed), run
+through intake, and the blinded text read. Version 1 had missed: a journal
+name stored with an HTML entity ("Memory &amp; Cognition"), surnames in
+capitals and all given names, affiliations, volume and page ranges,
+repository cover pages carrying a full citation, running heads with and
+without a label, a cover-page title differing by one word and a typo, a
+working-paper year one off the issue year, citations without a comma
+("Bless 1990"), letter-spaced scanned type, and a stylized header with broken
+spacing ("PS YC HOLOGICA L SC IENCE"). Version 2 adds a rule for each, and a
+planted case for each in `k2_blinding_test.py`, which passes on all 132
+records (`k2_blinding_test_result.json`). In-text citations with years count
+as leaks because the newest cited year bounds the publication year.
+
+**Over-redaction is a cost to coders and is measured.** The first version 2
+run applied partial and fuzzy title matching to the whole text and blanked
+one article's construct about 46 times, because its title names the
+construct a coder must see to score the manipulation-check item. Partial and
+fuzzy title matching now applies only to the first 4,000 characters; the
+full title is removed anywhere. The share of words redacted is in the intake
+manifest (`devset/intake_manifest.csv`, hashes and counts only): 0.6% to 2.1%
+on the six released articles. The year rule removes any number within two
+years of publication, by design.
+
+**Result on the 7 real articles:** 6 released with no residual leak; 1 (a
+scanned 1990 working paper, single-letter share 0.11 against 0.05 to 0.074 for
+the born-digital six) quarantined. **Not caught, stated limits:** place names
+("Princeton, New Jersey"), institutes named only by acronym or city, grant
+numbers, and what the study itself makes recognizable. A person reads every
+article of the pilot (7.4) for misses before release, and each miss becomes a
+rule and a planted case before sealing. Seven articles are too few to bound
+the miss rate.
+
+**Versions matter as well as access.** Of the 30 open copies, 24 are listed as
+the submitted manuscript, not the published article. A manuscript can differ
+from what reviewers and readers saw (added analyses, a changed manipulation
+check), so the version coded is recorded per article and the published
+version is preferred where one is available.
 
 ### 4.2 Contamination
 
@@ -380,13 +405,14 @@ Rajtmajer et al., osf.io/bdmte).
   so subdiscipline itself bundles design differences. A reply exists (Van Bavel
   et al. 2016, *PNAS*, doi:10.1073/pnas.1609700113, "Reply to Inbar:
   Contextual sensitivity helps explain the reproducibility gap between social
-  and cognitive psychology"; PMC5003241, not open access). **The reply, read
-  2026-10-17 through a fetch tool's summary and its exact short quotes, not
-  the PDF** (PMC, Europe PMC and PNAS all refused a direct download; the
-  quotes below should be checked against the PDF before sealing). It reports a
-  hierarchical regression (its Table 1, Step 2) with original effect size,
-  original n, replication power, replication similarity, the two surprisingness
-  ratings, subdiscipline and contextual sensitivity entered together. In that
+  and cognitive psychology"; PMC5003241, not open access). **The reply, read in
+  full 2026-10-17** (first through a fetch tool's summary and quotes, then the
+  PMC page itself in the owner's browser; every quote below checked against
+  it). It reports a hierarchical regression (its Table 1, Step 2) with original
+  effect size, original n, replication power, replication similarity, the two
+  surprisingness ratings, subdiscipline and contextual sensitivity entered
+  together; the subdiscipline coefficient falls from b = −1.45 (SE 0.72) in
+  Step 1 to −0.66 (SE 0.88), Nagelkerke R² 0.60 to 0.62. In that
   model "subdiscipline no longer predicts reproducibility once context is added
   to the model (P = 0.453", and contextual sensitivity is not significant
   either (P = 0.132). Without context, subdiscipline "predicts reproducibility
@@ -405,7 +431,15 @@ Rajtmajer et al., osf.io/bdmte).
   primary model, because K-2's claim is the predictive increment beyond the
   known predictors, not the causal effect of the gates. And B3 must be coded
   from a stated source with more than two levels where the data allow (Section
-  5), not from an unreported binary split. **Van Bavel et al.'s coding design**, read in
+  5), not from an unreported binary split. **One further difference:** that
+  model also conditions on properties of the replication (its power, P = 0.020
+  in Step 2, and how surprising its result was), which are not known before
+  replication. K-2's baselines are all properties of the original (B1 to B5),
+  because the claim is prediction from the original article. A gate that
+  tracks replication power (for example, small originals given larger
+  replications) would be credited for it, so replication N or power, where
+  SCORE releases it, enters a registered sensitivity analysis that grades
+  nothing. **Van Bavel et al.'s coding design**, read in
   full (PMC4988618): three coders, ratings from the abstract (methods when no
   abstract, 5 of 100), raters "unaware of the results of replication attempts";
   25 studies coded by all three (reliability α = 0.86, ICC(2,3), the

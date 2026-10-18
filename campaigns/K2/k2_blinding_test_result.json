@@ -1,11 +1,16 @@
 {
- "articles": 136,
+ "version": 2,
+ "articles": 132,
  "clean_false_leaks": [],
  "planted_missed": [],
+ "fuzzy_missed": [],
+ "fuzzy_not_applicable": 17,
+ "spaced_missed": [],
  "redacted_residual": [],
  "year_trap_fired": [
-  "DEV-ML-027"
+  "DEV-ML-027",
+  "DEV-ML-035"
  ],
- "distinct_dois": 132,
+ "metadata_errors": [],
  "verdict": "PASS"
 }
