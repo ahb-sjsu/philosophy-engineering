@@ -45,7 +45,10 @@ What counts as a leak:
                  "Downloaded from", "©"); the whole line is removed. Also a
                  short line repeated on 3+ lines (a running head without a
                  label) and a whole page carrying 2+ repository cover markers
-                 ("General rights", "Take down", "Nutzungsbedingungen", ...)
+                 ("General rights", "Take down", "Nutzungsbedingungen", ...),
+                 and a correspondence footnote ("Address correspondence to",
+                 "Corresponding author", ...) to its paragraph's end, at most
+                 6 lines
 
 Every rule also runs on a copy with letter-spaced runs joined ("N o r b e r
 t" -> "Norbert", scanned type), and the title and journal (two or more
@@ -97,6 +100,14 @@ COVER = re.compile(
     r"author\s+manuscript|available\s+in\s+pmc|nih-pa|hhs\s+public\s+access|"
     r"europe\s+pmc\s+funders).*$",
     re.I | re.M)
+# a correspondence footnote, to the paragraph's end (at most 6 lines): its
+# street address and city outlive the name rules (DEV-RPP-070, whose page-2
+# footnote reached the coding unit through the Method lead, 2026-10-18)
+CORRESPONDENCE = re.compile(
+    r"^.*(?:address\s+correspondence|correspondence\s+(?:concerning|should|to|"
+    r"regarding|may)|corresponding\s+author|reprint\s+requests|requests\s+for\s+reprints)"
+    r".*(?:\n(?!\s*\n).*){0,5}",
+    re.I | re.M)
 # what redaction leaves around a removed name: a surname particle ("Van
 # [REDACTED]", "van der [REDACTED]") or initials ("A. B. [REDACTED]",
 # "[REDACTED], A. B."); built per mark in _name_residue
@@ -106,7 +117,10 @@ INITIALS = r"(?:[A-Z]\.\s?){1,3}"
 
 def _name_residue(mark: str) -> re.Pattern:
     m = re.escape(mark)
-    return re.compile(rf"\b{PARTICLES}{m}|\b{INITIALS}\s?{m}|{m},?\s{INITIALS}(?=[,;&)]|\s|$)")
+    # a capitalized part hyphen-joined to a mark is the rest of a hyphenated
+    # name too short for the name rules ("Chen-Bo" -> "[REDACTED]-BO")
+    return re.compile(rf"\b{PARTICLES}{m}|\b{INITIALS}\s?{m}|{m},?\s{INITIALS}(?=[,;&)]|\s|$)"
+                      rf"|{m}-[A-Z][\w']*|\b[A-Z][\w']*-{m}")
 
 
 # curly quotes as straight ones: "Thaler’s (1985)" must match the citation
@@ -156,7 +170,7 @@ def _rules(meta: dict) -> list[tuple[str, re.Pattern]]:
     """Every regex rule, in the order redact() applies them."""
     # title and journal before citations: "Memory & Cognition 1993" must go
     # as a journal name, not leave "Memory &" behind a citation match
-    rules: list[tuple[str, re.Pattern]] = [("cover", COVER)]
+    rules: list[tuple[str, re.Pattern]] = [("cover", CORRESPONDENCE), ("cover", COVER)]
     # the full title anywhere; partial and fuzzy title matches only in the
     # front matter (_front_title_spans), because a title often names the
     # study's construct and the body must keep it for coders
@@ -314,6 +328,27 @@ def leaks(text: str, meta: dict) -> list[tuple[str, str]]:
     return found
 
 
+def _drop_author_blocks(text: str, mark: str) -> str:
+    """An author block after redaction: a line of marks only, and under it up
+    to two affiliation lines that begin with a mark and go on in capitalized
+    words only ("[REDACTED], San Diego"). The city outlives the institution
+    rule (DEV-RPP-070, page 2, reached the unit through the Method lead)."""
+    m = re.escape(mark)
+    names = re.compile(rf"^[\s,&]*(?:(?:{m}|and)[\s,.&-]*)+$")
+    affil = re.compile(rf"^\s*{m}(?:[\s,&]+(?:{m}|[A-Z][\w.'\-]*|of|at|and|de))*[\s,.]*$")
+    lines, out, i = text.split("\n"), [], 0
+    while i < len(lines):
+        if names.match(lines[i]) and mark in lines[i]:
+            i += 1
+            for _ in range(2):
+                if i < len(lines) and affil.match(lines[i]):
+                    i += 1
+            continue
+        out.append(lines[i])
+        i += 1
+    return "\n".join(out)
+
+
 def redact(text: str, meta: dict, mark: str = "[REDACTED]") -> str:
     """Remove what leaks() looks for: repository cover pages and repeated
     running heads first, then cover lines, title and journal, then citations
@@ -337,6 +372,7 @@ def redact(text: str, meta: dict, mark: str = "[REDACTED]") -> str:
     rx = _name_residue(mark)
     while rx.search(out):
         out = rx.sub(mark, out)
+    out = _drop_author_blocks(out, mark)
     # a running head longer than 8 words ("D.M. Name et al. / Journal of ...
     # 45 (2009) 867-872") only becomes short enough to count as repeated once
     # its fields are redacted, and its initials stay behind; drop such lines

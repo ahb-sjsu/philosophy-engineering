@@ -119,10 +119,15 @@ excluded from the primary analysis and counted (A4 applied to this design).
 ### 4.1 Blinding
 
 **Coding unit (adopted by the owner 2026-10-18): the Method and Results
-sections of every study in the article, nothing else.** Front matter,
-abstract, introductions, discussions and reference lists are dropped, not
-redacted (`k2_sections.py`); title, authors, journal, year and DOI are then
-redacted from what remains. An article without a Method-type and a
+sections of every study in the article, and the lead before each Method
+heading; nothing else.** The lead is up to 2,000 characters of whole lines
+before a Method heading, where a study's predictions are usually stated (added
+by the owner the same day, for A1; below). It stops at any heading, at a kept
+stretch and at the end of page 1, so it does not run into the front matter or
+a previous study's discussion; an "Experiment N" heading that bounds it is
+kept. Front matter, abstract, the rest of the introductions, discussions and
+reference lists are dropped, not redacted (`k2_sections.py`); title, authors,
+journal, year and DOI are then redacted from what remains. An article without a Method-type and a
 Results-type heading goes to a person. Blinding is imperfect for famous
 studies, and the contamination probe below measures how imperfect.
 
@@ -235,13 +240,33 @@ scoreable from the unit. **A1 is not, as written**: "a hypothesis stated only
 post hoc" needs where the hypothesis was first stated, and that is mostly
 outside the unit. A2 is weakened. Word counts say where evidence words sit,
 not what a coder would score; the pilot (7.4) codes a subset both from the
-unit and from the full text to measure the difference. **Open for the
-owner:** keep the unit and let A1 be scored U more often (its U rate is
-reported per check, Section 4), or add the stretch before each Method heading
-to the unit, which this proxy says doubles A1's kept evidence to about 50%,
-at the cost of more introduction text (citations, which redaction handles).
-Until the pilot, intake status "blinded" means only "passed the automated
-check", and nothing is released to a coder.
+unit and from the full text to measure the difference. Offered keeping the
+unit (A1 scored U more often) or adding the stretch before each Method
+heading, the owner chose the second (2026-10-18).
+
+**The lead, measured.** The unbounded 2,000-character window had suggested
+about 50% for A1. Bounded as above, the unit keeps A1 40% (117 of 290;
+articles with none of it, 3 of 23 instead of 10), A2 47% (3 of 14 lose all),
+A3 76%, A4 66%, and 23% to 70% of each body. The bounds cost the difference:
+an unbounded lead reached page 1 and brought in two leaks, an Elsevier
+first-page ISSN line (it names the journal) and an author's correspondence
+address. With page 1 excluded, the address still came in from DEV-RPP-070,
+whose page 1 is a cover sheet: its correspondence footnote and author block
+sit on page 2 ("77 Massachusetts Ave. ..., Cambridge, MA", "[REDACTED], San
+Diego"). Two rules close that, each with a planted case (the committed code
+fails the correspondence case on all 132 records; the author-block case was
+not run against it separately): a correspondence footnote ("Address
+correspondence to", "Corresponding author", ...) is removed to its
+paragraph's end, at most 6 lines; and a line of redaction marks only is
+dropped with up to two following lines that begin with a mark and go on in
+capitalized words only (an author block's affiliation and city). A
+capitalized part hyphen-joined to a mark ("[REDACTED]-BO", from "Chen-Bo") is
+now part of it. On the 22 real units the author-block rule dropped only
+mark-only lines and DEV-RPP-070's affiliation lines. Residue in the unit is
+back to the same 2 false alarms; whole-body residue falls from 19 articles to
+17. A1 remains the weakest check, so its U rate is reported per check
+(Section 4). Until the pilot, intake status "blinded" means only "passed the
+automated check", and nothing is released to a coder.
 
 ### 4.2 Contamination
 

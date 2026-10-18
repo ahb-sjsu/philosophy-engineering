@@ -5,22 +5,22 @@
   "DEV-ML-016"
  ],
  "kept_share_range": [
-  0.1637,
-  0.6426
+  0.2285,
+  0.6956
  ],
  "by_check": {
   "A1 Nonvacuity": {
-   "marker_sentences_kept": 71,
+   "marker_sentences_kept": 117,
    "marker_sentences_total": 290,
-   "share_kept": 0.245,
-   "articles_with_markers_all_outside_unit": 10,
+   "share_kept": 0.403,
+   "articles_with_markers_all_outside_unit": 3,
    "articles_with_markers": 23
   },
   "A2 Identification": {
-   "marker_sentences_kept": 46,
+   "marker_sentences_kept": 49,
    "marker_sentences_total": 104,
-   "share_kept": 0.442,
-   "articles_with_markers_all_outside_unit": 4,
+   "share_kept": 0.471,
+   "articles_with_markers_all_outside_unit": 3,
    "articles_with_markers": 14
   },
   "A3 Intervention": {
@@ -41,7 +41,7 @@
  "per_article": {
   "DEV-ML-001": {
    "sections_found": true,
-   "kept_share": 0.4377,
+   "kept_share": 0.4406,
    "A1 Nonvacuity": [
     0,
     1
@@ -61,13 +61,13 @@
   },
   "DEV-ML-004": {
    "sections_found": true,
-   "kept_share": 0.3741,
+   "kept_share": 0.5476,
    "A1 Nonvacuity": [
-    0,
+    2,
     3
    ],
    "A2 Identification": [
-    2,
+    4,
     5
    ],
    "A3 Intervention": [
@@ -81,7 +81,7 @@
   },
   "DEV-ML-015": {
    "sections_found": true,
-   "kept_share": 0.3596,
+   "kept_share": 0.3951,
    "A1 Nonvacuity": [
     6,
     10
@@ -121,9 +121,9 @@
   },
   "DEV-ML-031": {
    "sections_found": true,
-   "kept_share": 0.3937,
+   "kept_share": 0.4251,
    "A1 Nonvacuity": [
-    0,
+    2,
     17
    ],
    "A2 Identification": [
@@ -141,7 +141,7 @@
   },
   "DEV-ML-034": {
    "sections_found": true,
-   "kept_share": 0.5343,
+   "kept_share": 0.6286,
    "A1 Nonvacuity": [
     0,
     1
@@ -161,9 +161,9 @@
   },
   "DEV-RPP-003": {
    "sections_found": true,
-   "kept_share": 0.3218,
+   "kept_share": 0.3915,
    "A1 Nonvacuity": [
-    2,
+    7,
     17
    ],
    "A2 Identification": [
@@ -181,7 +181,7 @@
   },
   "DEV-RPP-006": {
    "sections_found": true,
-   "kept_share": 0.6426,
+   "kept_share": 0.6797,
    "A1 Nonvacuity": [
     16,
     19
@@ -201,9 +201,9 @@
   },
   "DEV-RPP-010": {
    "sections_found": true,
-   "kept_share": 0.1925,
+   "kept_share": 0.2285,
    "A1 Nonvacuity": [
-    0,
+    1,
     9
    ],
    "A2 Identification": [
@@ -221,9 +221,9 @@
   },
   "DEV-RPP-013": {
    "sections_found": true,
-   "kept_share": 0.2389,
+   "kept_share": 0.3651,
    "A1 Nonvacuity": [
-    4,
+    10,
     65
    ],
    "A2 Identification": [
@@ -241,7 +241,7 @@
   },
   "DEV-RPP-022": {
    "sections_found": true,
-   "kept_share": 0.3285,
+   "kept_share": 0.331,
    "A1 Nonvacuity": [
     0,
     18
@@ -261,9 +261,9 @@
   },
   "DEV-RPP-033": {
    "sections_found": true,
-   "kept_share": 0.3703,
+   "kept_share": 0.4538,
    "A1 Nonvacuity": [
-    12,
+    15,
     25
    ],
    "A2 Identification": [
@@ -281,9 +281,9 @@
   },
   "DEV-RPP-035": {
    "sections_found": true,
-   "kept_share": 0.4195,
+   "kept_share": 0.4913,
    "A1 Nonvacuity": [
-    13,
+    20,
     39
    ],
    "A2 Identification": [
@@ -301,9 +301,9 @@
   },
   "DEV-RPP-038": {
    "sections_found": true,
-   "kept_share": 0.3888,
+   "kept_share": 0.4568,
    "A1 Nonvacuity": [
-    3,
+    4,
     5
    ],
    "A2 Identification": [
@@ -321,9 +321,9 @@
   },
   "DEV-RPP-041": {
    "sections_found": true,
-   "kept_share": 0.4919,
+   "kept_share": 0.5363,
    "A1 Nonvacuity": [
-    2,
+    4,
     8
    ],
    "A2 Identification": [
@@ -341,9 +341,9 @@
   },
   "DEV-RPP-051": {
    "sections_found": true,
-   "kept_share": 0.4027,
+   "kept_share": 0.4657,
    "A1 Nonvacuity": [
-    0,
+    1,
     9
    ],
    "A2 Identification": [
@@ -361,9 +361,9 @@
   },
   "DEV-RPP-059": {
    "sections_found": true,
-   "kept_share": 0.1637,
+   "kept_share": 0.2443,
    "A1 Nonvacuity": [
-    1,
+    9,
     14
    ],
    "A2 Identification": [
@@ -381,7 +381,7 @@
   },
   "DEV-RPP-064": {
    "sections_found": true,
-   "kept_share": 0.4386,
+   "kept_share": 0.5056,
    "A1 Nonvacuity": [
     1,
     2
@@ -401,9 +401,9 @@
   },
   "DEV-RPP-070": {
    "sections_found": true,
-   "kept_share": 0.4872,
+   "kept_share": 0.6956,
    "A1 Nonvacuity": [
-    0,
+    2,
     2
    ],
    "A2 Identification": [
@@ -421,13 +421,13 @@
   },
   "DEV-RPP-071": {
    "sections_found": true,
-   "kept_share": 0.5627,
+   "kept_share": 0.6416,
    "A1 Nonvacuity": [
     1,
     1
    ],
    "A2 Identification": [
-    0,
+    1,
     1
    ],
    "A3 Intervention": [
@@ -441,9 +441,9 @@
   },
   "DEV-RPP-075": {
    "sections_found": true,
-   "kept_share": 0.4632,
+   "kept_share": 0.6312,
    "A1 Nonvacuity": [
-    0,
+    1,
     2
    ],
    "A2 Identification": [
@@ -461,9 +461,9 @@
   },
   "DEV-RPP-085": {
    "sections_found": true,
-   "kept_share": 0.4655,
+   "kept_share": 0.5387,
    "A1 Nonvacuity": [
-    9,
+    12,
     14
    ],
    "A2 Identification": [
@@ -481,9 +481,9 @@
   },
   "DEV-RPP-093": {
    "sections_found": true,
-   "kept_share": 0.5219,
+   "kept_share": 0.6027,
    "A1 Nonvacuity": [
-    1,
+    2,
     3
    ],
    "A2 Identification": [
@@ -501,9 +501,9 @@
   },
   "DEV-RPP-100": {
    "sections_found": true,
-   "kept_share": 0.3136,
+   "kept_share": 0.4219,
    "A1 Nonvacuity": [
-    0,
+    1,
     6
    ],
    "A2 Identification": [

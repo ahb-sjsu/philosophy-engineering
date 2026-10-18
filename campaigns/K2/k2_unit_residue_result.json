@@ -6,9 +6,9 @@
    "particle": 0,
    "issn_price": 4,
    "repository_label": 32,
-   "phone_fax": 8,
-   "address": 38,
-   "institution_stem": 8
+   "phone_fax": 2,
+   "address": 19,
+   "institution_stem": 9
   },
   "unit": {
    "initials": 0,
@@ -21,7 +21,7 @@
   }
  },
  "articles_with_any": {
-  "whole": 19,
+  "whole": 17,
   "unit": 2
  },
  "per_article": {
@@ -91,8 +91,8 @@
     "particle": 0,
     "issn_price": 0,
     "repository_label": 12,
-    "phone_fax": 3,
-    "address": 3,
+    "phone_fax": 2,
+    "address": 1,
     "institution_stem": 0
    },
    "unit": {
@@ -172,7 +172,7 @@
     "issn_price": 0,
     "repository_label": 1,
     "phone_fax": 0,
-    "address": 2,
+    "address": 0,
     "institution_stem": 0
    },
    "unit": {
@@ -213,7 +213,7 @@
     "repository_label": 1,
     "phone_fax": 0,
     "address": 0,
-    "institution_stem": 0
+    "institution_stem": 2
    },
    "unit": {
     "initials": 0,
@@ -226,6 +226,26 @@
    }
   },
   "DEV-RPP-033": {
+   "whole": {
+    "initials": 0,
+    "particle": 0,
+    "issn_price": 0,
+    "repository_label": 1,
+    "phone_fax": 0,
+    "address": 0,
+    "institution_stem": 0
+   },
+   "unit": {
+    "initials": 0,
+    "particle": 0,
+    "issn_price": 0,
+    "repository_label": 0,
+    "phone_fax": 0,
+    "address": 0,
+    "institution_stem": 0
+   }
+  },
+  "DEV-RPP-035": {
    "whole": {
     "initials": 0,
     "particle": 0,
@@ -245,34 +265,14 @@
     "institution_stem": 0
    }
   },
-  "DEV-RPP-035": {
-   "whole": {
-    "initials": 0,
-    "particle": 0,
-    "issn_price": 0,
-    "repository_label": 1,
-    "phone_fax": 1,
-    "address": 5,
-    "institution_stem": 0
-   },
-   "unit": {
-    "initials": 0,
-    "particle": 0,
-    "issn_price": 0,
-    "repository_label": 0,
-    "phone_fax": 0,
-    "address": 0,
-    "institution_stem": 0
-   }
-  },
   "DEV-RPP-038": {
    "whole": {
     "initials": 0,
     "particle": 0,
     "issn_price": 0,
     "repository_label": 1,
-    "phone_fax": 2,
-    "address": 3,
+    "phone_fax": 0,
+    "address": 2,
     "institution_stem": 0
    },
    "unit": {
@@ -292,7 +292,7 @@
     "issn_price": 0,
     "repository_label": 1,
     "phone_fax": 0,
-    "address": 1,
+    "address": 0,
     "institution_stem": 1
    },
    "unit": {
@@ -312,7 +312,7 @@
     "issn_price": 0,
     "repository_label": 0,
     "phone_fax": 0,
-    "address": 2,
+    "address": 0,
     "institution_stem": 0
    },
    "unit": {
@@ -352,7 +352,7 @@
     "issn_price": 0,
     "repository_label": 1,
     "phone_fax": 0,
-    "address": 1,
+    "address": 0,
     "institution_stem": 0
    },
    "unit": {
@@ -372,8 +372,8 @@
     "issn_price": 1,
     "repository_label": 1,
     "phone_fax": 0,
-    "address": 1,
-    "institution_stem": 2
+    "address": 0,
+    "institution_stem": 1
    },
    "unit": {
     "initials": 0,
@@ -392,7 +392,7 @@
     "issn_price": 0,
     "repository_label": 0,
     "phone_fax": 0,
-    "address": 1,
+    "address": 0,
     "institution_stem": 0
    },
    "unit": {
@@ -411,8 +411,8 @@
     "particle": 0,
     "issn_price": 0,
     "repository_label": 2,
-    "phone_fax": 2,
-    "address": 2,
+    "phone_fax": 0,
+    "address": 0,
     "institution_stem": 0
    },
    "unit": {
@@ -432,7 +432,7 @@
     "issn_price": 0,
     "repository_label": 1,
     "phone_fax": 0,
-    "address": 1,
+    "address": 0,
     "institution_stem": 1
    },
    "unit": {

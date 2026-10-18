@@ -24,7 +24,9 @@ capitalized surnames, institutions, volume and pages, cover and running-head
 lines, near years, "Name YEAR" citations, entity-encoded journal names, and
 fuzzy titles. A long running head with author initials (more than 8 words,
 so repeated only after redaction) was added after the second intake
-(2026-10-18, 24 articles). The body is synthetic, so this shows each rule works on real
+(2026-10-18, 24 articles), and a correspondence footnote with a street
+address and an author block with a city after the Method lead was added to
+the coding unit. The body is synthetic, so this shows each rule works on real
 metadata; the real-article read is the check on what the rules miss.
 
     python k2_blinding_test.py
@@ -80,6 +82,12 @@ def planted(m):
     parts += [f"see van der {sur} and Q. R. {sur}, also {sur}, Q. R., and others",
               "the task follows Thaler’s (1985) beer pricing study",
               "J Exp Psychol. Author manuscript; available in PMC 2010 May 1."]
+    # a correspondence footnote over three lines: the street and city carry no
+    # name, so only the footnote rule removes them (DEV-RPP-070, 2026-10-18)
+    parts += [f"Address correspondence to {given} {sur}, Department",
+              "of Brain Science, 77 Elm Street", "Springfield, MA 01101.", "",
+              # an author block whose city survives the institution rule
+              f"{given.upper()} {sur.upper()}", "University of Waterloo, Port Mesa", ""]
     return ("Repository copy\nGeneral rights: see the portal.\nTake down policy: "
             "contact us.\f" + "\n".join(parts))
 
@@ -144,7 +152,10 @@ def main() -> int:
             broken = " ".join(jw[i:i + 3].upper() for i in range(0, len(jw), 3))
             if "title_or_journal" not in {k for k, _ in leaks(broken, m)}:
                 report["spaced_missed"].append([dev, broken])
-        r = leaks(redact(t + "\n" + f + "\n" + " ".join(sur) + "\n" + broken, m), m)
+        red = redact(t + "\n" + f + "\n" + " ".join(sur) + "\n" + broken, m)
+        r = leaks(red, m)
+        r += [("correspondence", x) for x in ("Elm Street", "Springfield", "Port Mesa")
+              if x in red]
         if r:
             report["redacted_residual"].append([dev, r])
     ok = not any(report[k] for k in ("clean_false_leaks", "planted_missed",
