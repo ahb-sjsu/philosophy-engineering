@@ -1,0 +1,212 @@
+{
+ "world": {
+  "n_papers": 164,
+  "extra_claims_poisson": 0.67,
+  "intercept": 0.25,
+  "baseline_slopes": [
+   0.9,
+   0.6,
+   -0.5
+  ],
+  "paper_sd": 0.6,
+  "gate_p_mean": 0.3
+ },
+ "n_checks": 4,
+ "reps": 200,
+ "boot": 300,
+ "seed": 20261020,
+ "cells": [
+  {
+   "gate_slope": 0.75,
+   "flip_prob": 0.0,
+   "icc_single": 1.0,
+   "icc_single_sd": 0.0,
+   "pass_true": 0.86,
+   "fail_true": 0.02,
+   "pass_one": 0.86,
+   "fail_one": 0.02,
+   "pass_mean": 0.86,
+   "fail_mean": 0.02
+  },
+  {
+   "gate_slope": 0.75,
+   "flip_prob": 0.03,
+   "icc_single": 0.9032673311354632,
+   "icc_single_sd": 0.015762078129959226,
+   "pass_true": 0.84,
+   "fail_true": 0.04,
+   "pass_one": 0.76,
+   "fail_one": 0.08,
+   "pass_mean": 0.785,
+   "fail_mean": 0.06
+  },
+  {
+   "gate_slope": 0.75,
+   "flip_prob": 0.05,
+   "icc_single": 0.8402446663085824,
+   "icc_single_sd": 0.02304282858530344,
+   "pass_true": 0.82,
+   "fail_true": 0.04,
+   "pass_one": 0.775,
+   "fail_one": 0.065,
+   "pass_mean": 0.785,
+   "fail_mean": 0.06
+  },
+  {
+   "gate_slope": 0.75,
+   "flip_prob": 0.08,
+   "icc_single": 0.743359349359722,
+   "icc_single_sd": 0.03452901862383772,
+   "pass_true": 0.8,
+   "fail_true": 0.05,
+   "pass_one": 0.65,
+   "fail_one": 0.14,
+   "pass_mean": 0.75,
+   "fail_mean": 0.095
+  },
+  {
+   "gate_slope": 0.75,
+   "flip_prob": 0.1,
+   "icc_single": 0.6848910672369363,
+   "icc_single_sd": 0.037124801555240686,
+   "pass_true": 0.755,
+   "fail_true": 0.06,
+   "pass_one": 0.515,
+   "fail_one": 0.245,
+   "pass_mean": 0.61,
+   "fail_mean": 0.13
+  },
+  {
+   "gate_slope": 0.75,
+   "flip_prob": 0.15,
+   "icc_single": 0.5401856556204041,
+   "icc_single_sd": 0.04629860522145211,
+   "pass_true": 0.835,
+   "fail_true": 0.035,
+   "pass_one": 0.43,
+   "fail_one": 0.35,
+   "pass_mean": 0.625,
+   "fail_mean": 0.15
+  },
+  {
+   "gate_slope": 0.75,
+   "flip_prob": 0.2,
+   "icc_single": 0.4078175521034779,
+   "icc_single_sd": 0.05532140371014596,
+   "pass_true": 0.84,
+   "fail_true": 0.05,
+   "pass_one": 0.255,
+   "fail_one": 0.47,
+   "pass_mean": 0.505,
+   "fail_mean": 0.275
+  },
+  {
+   "gate_slope": 0.75,
+   "flip_prob": 0.3,
+   "icc_single": 0.18751725730739227,
+   "icc_single_sd": 0.059912716502283,
+   "pass_true": 0.835,
+   "fail_true": 0.055,
+   "pass_one": 0.06,
+   "fail_one": 0.84,
+   "pass_mean": 0.17,
+   "fail_mean": 0.62
+  },
+  {
+   "gate_slope": 1.0,
+   "flip_prob": 0.0,
+   "icc_single": 1.0,
+   "icc_single_sd": 0.0,
+   "pass_true": 0.985,
+   "fail_true": 0.0,
+   "pass_one": 0.985,
+   "fail_one": 0.0,
+   "pass_mean": 0.985,
+   "fail_mean": 0.0
+  },
+  {
+   "gate_slope": 1.0,
+   "flip_prob": 0.03,
+   "icc_single": 0.9032938130480567,
+   "icc_single_sd": 0.016411763814135668,
+   "pass_true": 0.995,
+   "fail_true": 0.0,
+   "pass_one": 0.99,
+   "fail_one": 0.0,
+   "pass_mean": 1.0,
+   "fail_mean": 0.0
+  },
+  {
+   "gate_slope": 1.0,
+   "flip_prob": 0.05,
+   "icc_single": 0.8393740002934935,
+   "icc_single_sd": 0.02373229157989489,
+   "pass_true": 0.975,
+   "fail_true": 0.0,
+   "pass_one": 0.955,
+   "fail_one": 0.0,
+   "pass_mean": 0.975,
+   "fail_mean": 0.0
+  },
+  {
+   "gate_slope": 1.0,
+   "flip_prob": 0.08,
+   "icc_single": 0.7475167518126381,
+   "icc_single_sd": 0.034409393938378885,
+   "pass_true": 0.98,
+   "fail_true": 0.0,
+   "pass_one": 0.895,
+   "fail_one": 0.02,
+   "pass_mean": 0.955,
+   "fail_mean": 0.0
+  },
+  {
+   "gate_slope": 1.0,
+   "flip_prob": 0.1,
+   "icc_single": 0.6887665343684233,
+   "icc_single_sd": 0.03331977012585401,
+   "pass_true": 0.98,
+   "fail_true": 0.0,
+   "pass_one": 0.875,
+   "fail_one": 0.025,
+   "pass_mean": 0.945,
+   "fail_mean": 0.0
+  },
+  {
+   "gate_slope": 1.0,
+   "flip_prob": 0.15,
+   "icc_single": 0.5503268453065229,
+   "icc_single_sd": 0.04186064820755,
+   "pass_true": 0.995,
+   "fail_true": 0.0,
+   "pass_one": 0.79,
+   "fail_one": 0.045,
+   "pass_mean": 0.92,
+   "fail_mean": 0.005
+  },
+  {
+   "gate_slope": 1.0,
+   "flip_prob": 0.2,
+   "icc_single": 0.4054300047196041,
+   "icc_single_sd": 0.04928166823402936,
+   "pass_true": 0.99,
+   "fail_true": 0.0,
+   "pass_one": 0.57,
+   "fail_one": 0.18,
+   "pass_mean": 0.8,
+   "fail_mean": 0.05
+  },
+  {
+   "gate_slope": 1.0,
+   "flip_prob": 0.3,
+   "icc_single": 0.1944222203765236,
+   "icc_single_sd": 0.06109237435650238,
+   "pass_true": 0.995,
+   "fail_true": 0.0,
+   "pass_one": 0.14,
+   "fail_one": 0.63,
+   "pass_mean": 0.42,
+   "fail_mean": 0.295
+  }
+ ]
+}

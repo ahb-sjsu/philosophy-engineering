@@ -215,7 +215,7 @@ predicts replication, or because a gate could proxy it:
 |---|---|---|
 | B1 | original effect size, p-value, N (log) | Altmejd et al. 2019; the statistical-inference rival (Branch 2019; Stanley et al. 2018) lives here |
 | B2 | experimental or not; main effect or interaction | Youyou et al. 2023 (experiments replicate less) and Altmejd et al. 2019 (interactions); A3 applies only to experiments, so without B2 an A3 increment can be the design type |
-| B3 | discipline, and subfield within psychology (covariates, never an interaction test in their place) | Inbar 2016: Van Bavel et al.'s coded feature lost its association once subdiscipline was a covariate (OR = 0.85, P = 0.51); in RP:P, cognitive studies replicated 53% and social-personality 28% |
+| B3 | discipline, and subfield within psychology (covariates, never an interaction test in their place) | Inbar 2016: Van Bavel et al.'s coded feature lost its association once subdiscipline was a covariate (OR = 0.85, P = 0.51); in RP:P, cognitive studies replicated 53% and social-personality 28%. Van Bavel et al.'s reply: with both entered, neither is significant (P = 0.453 and 0.132), and the RP:P's own subdiscipline coding is unreported and binary. **Coding source:** the discipline and subfield fields SCORE releases, else the journal's subject category, fixed before sealing and never recoded after outcomes are seen |
 | B4 | recall-free text score (the 4.2 reference model) | Yang et al. 2020: text alone predicts |
 | B5 | forecasts (markets, surveys), where present on the same claims | strongest known human baseline |
 
@@ -247,7 +247,7 @@ fixed now.*
 
 | Gate | Passes when |
 |---|---|
-| I1 Rubric reliability | Inter-rater agreement on the gate score at or above a bar fixed from the reliability probe |
+| I1 Rubric reliability | Single-coder ICC(2,1) of the gate score, computed on the run's own double codes (every article is coded twice), at or above 0.80 (draft bar, set from the Section 7.2 witness, not from the probe it gates) |
 | I2 Contamination | Section 4.2 probe within its bar for every auditor stream used in the primary analysis |
 | I3 Blinding leak | Redaction leaves none of title, author, journal, year or DOI, by automated check |
 | I4 Coverage | Fewer than a fixed fraction of studies excluded for U or recognition |
@@ -333,8 +333,32 @@ Rajtmajer et al., osf.io/bdmte).
   so subdiscipline itself bundles design differences. A reply exists (Van Bavel
   et al. 2016, *PNAS*, doi:10.1073/pnas.1609700113, "Reply to Inbar:
   Contextual sensitivity helps explain the reproducibility gap between social
-  and cognitive psychology"; verified as published, NOT read: the fetch hit a
-  captcha; read before sealing). **Van Bavel et al.'s coding design**, read in
+  and cognitive psychology"; PMC5003241, not open access). **The reply, read
+  2026-10-17 through a fetch tool's summary and its exact short quotes, not
+  the PDF** (PMC, Europe PMC and PNAS all refused a direct download; the
+  quotes below should be checked against the PDF before sealing). It reports a
+  hierarchical regression (its Table 1, Step 2) with original effect size,
+  original n, replication power, replication similarity, the two surprisingness
+  ratings, subdiscipline and contextual sensitivity entered together. In that
+  model "subdiscipline no longer predicts reproducibility once context is added
+  to the model (P = 0.453", and contextual sensitivity is not significant
+  either (P = 0.132). Without context, subdiscipline "predicts reproducibility
+  (P = 0.044) even after adjusting for methodological factors". The authors
+  read this as "multicollinearity" that "makes it inappropriate to categorize
+  one as a confound", and argue the causal order runs from subdiscipline
+  through context ("Contextual sensitivity cannot cause a change in
+  subdiscipline"). They also note that the RP:P did not report how it coded
+  subdiscipline and that a binary social/cognitive split misfits fields such
+  as social cognition. **What this adds for K-2:** with both variables in one
+  model neither survives, so the RP:P data could not separate the coded
+  feature from subfield in either direction. K-2's Section 6 rule is graded on
+  the ΔAUC interval, so collinearity with B3 shows up as width: it can move a
+  result from pass to `unresolved` but cannot produce a `fail`, which needs the
+  upper end below the SESOI. The causal-order argument does not change the
+  primary model, because K-2's claim is the predictive increment beyond the
+  known predictors, not the causal effect of the gates. And B3 must be coded
+  from a stated source with more than two levels where the data allow (Section
+  5), not from an unreported binary split. **Van Bavel et al.'s coding design**, read in
   full (PMC4988618): three coders, ratings from the abstract (methods when no
   abstract, 5 of 100), raters "unaware of the results of replication attempts";
   25 studies coded by all three (reliability α = 0.86, ICC(2,3), the
@@ -528,7 +552,56 @@ claim list is available.
 
 ### 7.2 Reliability probe
 
-Not run.
+Probe on real coders: not run. **Where the bar sits (simulation, run
+2026-10-17/18 on Atlas):** `k2_reliability_witness.py` takes the Section 7.5
+signal world, has two coders read each of the 4 checks and record it wrongly
+with probability e (independent, symmetric), and runs the registered analysis
+on the true score, on one coder's score, and on the mean of both (a
+conservative stand-in for the reconciled consensus). 200 datasets per cell,
+300 bootstrap draws, seed 20261020; result in
+`k2_reliability_witness_result.json`. The ICC check reproduces Shrout and
+Fleiss's (1979) worked example (ICC(2,1) = 0.29).
+
+At the design slope 0.75 (the true score passes 76 to 86% of the time across cells):
+
+| Flip e | Single-coder ICC | pass, one coder | fail, one coder | pass, two-coder mean | fail, two-coder mean |
+|---:|---:|---:|---:|---:|---:|
+| 0 | 1.00 | 0.86 | 0.02 | 0.86 | 0.02 |
+| 0.03 | 0.90 | 0.76 | 0.08 | 0.79 | 0.06 |
+| 0.05 | 0.84 | 0.78 | 0.07 | 0.79 | 0.06 |
+| 0.08 | 0.74 | 0.65 | 0.14 | 0.75 | 0.10 |
+| 0.10 | 0.68 | 0.52 | 0.25 | 0.61 | 0.13 |
+| 0.15 | 0.54 | 0.43 | 0.35 | 0.63 | 0.15 |
+| 0.20 | 0.41 | 0.26 | 0.47 | 0.51 | 0.28 |
+| 0.30 | 0.19 | 0.06 | 0.84 | 0.17 | 0.62 |
+
+The true-score fail rate in the same cells is 0.02 to 0.06. Monte Carlo
+standard error on each rate is about 0.03.
+
+**What it shows.** Coder error does not only cost power. It turns a real
+effect into a graded `fail`, because noise pulls ΔAUC toward zero and the
+interval then lies below the SESOI: at single-coder ICC 0.54 one coder fails a
+true effect 35% of the time, against 4% for the true score. That is the
+failure Section 6 must not mistake for physics, so I1 is an instrument gate
+(a miss voids the run) and its bar is set where the two-coder mean's fail rate
+stays near the true score's: **0.80**, between the 0.74 cell (fail 0.10) and
+the 0.84 cell (fail 0.06). At slope 1.0 the same bar holds pass at or above
+0.95. Double coding every article is worth the cost: at ICC 0.54 the mean
+cuts one coder's false-fail rate by more than half (0.15 against 0.35).
+
+**Against the precedent.** Van Bavel et al.'s reported α = 0.86 is ICC(2,3),
+the reliability of a three-coder mean. Inverting Spearman-Brown,
+0.86 / (3 − 2 × 0.86) ≈ 0.67 for one coder (derived here, not reported by
+them). Coders of that reliability would miss this I1 bar.
+
+**Limits.** The error model is an assumption. Coders who share a misreading
+(the same ambiguous rubric item read the same wrong way) raise the ICC without
+making the score more valid, so a high I1 does not certify the score; the
+planted-defect calibration of Section 4.3 is the check on validity. The bar is
+on the point estimate from the full run's double codes (about 270 claims,
+simulation SD of the estimate 0.02 to 0.06); the ~40-claim development probe
+estimates it far less precisely and is used to decide whether to proceed, not
+to pass I1.
 
 ### 7.3 Contamination probe
 

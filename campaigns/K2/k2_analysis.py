@@ -153,6 +153,22 @@ def placebo(y, base, gate, groups, strata, *, reps=400, k=5, n_boot=500,
             "strata_leak": bool(rate > 0.05)}
 
 
+def icc_single(scores: np.ndarray) -> float:
+    """Gate I1: ICC(2,1), two-way random effects, absolute agreement, the
+    reliability of ONE coder's score (Shrout and Fleiss 1979). `scores` is
+    articles x coders. Van Bavel et al. 2016 reported ICC(2,3), the
+    reliability of a three-coder mean, which is higher for the same coders;
+    the registered bar is on this single-coder value."""
+    x = np.asarray(scores, dtype=float)
+    n, k = x.shape
+    grand = x.mean()
+    msr = k * ((x.mean(axis=1) - grand) ** 2).sum() / (n - 1)
+    msc = n * ((x.mean(axis=0) - grand) ** 2).sum() / (k - 1)
+    resid = x - x.mean(axis=1, keepdims=True) - x.mean(axis=0) + grand
+    mse = (resid ** 2).sum() / ((n - 1) * (k - 1))
+    return float((msr - mse) / (msr + (k - 1) * mse + k * (msc - mse) / n))
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("csv")
