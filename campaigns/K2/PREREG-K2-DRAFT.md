@@ -122,6 +122,31 @@ Articles are presented with title, authors, journal, year, and DOI removed, and
 with reference lists removed. Blinding is imperfect for famous studies, and the
 contamination probe below measures how imperfect.
 
+**Implemented 2026-10-17: `k2_blinding.py`** (stdlib only). `redact()` removes
+the fields; `leaks()` is gate I3 and runs on whatever text an auditor will
+actually see, not trusting the redaction. Leak kinds: any DOI-shaped string,
+the title or any 6 consecutive title words (also across a hyphenated line
+break), an author surname as a whole word, the journal's full name, the
+publication year as a token, any URL or e-mail address, and **any in-text
+citation with a year**. The last is added because removing the reference list
+does not remove dating: the newest cited year bounds the publication year, so
+redaction strips in-text citations whole. **Witness** (`k2_blinding_test.py`,
+on Atlas, result `k2_blinding_test_result.json`): the real titles, authors,
+journals and years of the 132 development-set articles (136 rows) with a
+synthetic methods paragraph. PASS: on every row each planted leak kind is
+found, the redacted text leaks nothing, and the clean paragraph leaks nothing.
+The paragraph carries one deliberate trap, "1998 trials", and for the one
+article published in 1998 the year rule fires on it, as written. That is the
+rule's stated cost: a number equal to the publication year is redacted along
+with the year. **Limits:** the body is synthetic and the leaks are planted in
+shapes the check was written for, by the author of the check, so the witness
+shows the check works on real metadata, not that it catches what real
+articles carry. Not checked: journal abbreviations, running heads that
+abbreviate, publisher names and copyright lines beyond their year,
+institutions, grant numbers, and acknowledgments. The first real-article run
+(the pilot, 7.4) is read by a person for leaks the check missed, and each miss
+becomes a check before sealing.
+
 ### 4.2 Contamination
 
 The replication outcomes of the large projects are widely known, and language
@@ -143,6 +168,28 @@ measures memory, not design.
   signal is recorded and is not gated: the guess's discrimination on claims
   whose outcomes were public before the model's training cutoff, against those
   made public after it (SCORE, 2026-04-01).
+- **What "recall-free" requires of the reference (added 2026-10-17).** The
+  reference is fit on development-set outcomes, so it must have no component
+  that could carry those or SCORE's outcomes from elsewhere: no pretrained
+  language model and no pretrained embedding whose training corpus is undated
+  or postdates 2015 (the RP:P's publication). Features are learned from the
+  development texts themselves, or come from a corpus with a stated date before
+  that. Yang et al. 2020 used word2vec, and its corpus is not checked here.
+- **Known limit of this reference: competence, not recall (added 2026-10-17).**
+  A text model fit on the development set (132 articles) is a weak reader. A strong
+  auditor stream can beat it by reading better, with no recall at all, and the
+  probe as written would then void a clean stream. The direction is safe (it
+  voids, it never admits a contaminated stream), and the cost is that the
+  retrospective arm may grade nothing (Section 11). The comparison that
+  separates recall from competence is the stream against **itself**: its
+  no-rubric guess on claims whose outcomes it cannot have seen (made public
+  after its training cutoff, or the prospective arm) against claims whose
+  outcomes it could have. **Recommended, not adopted:** where at least one
+  such set exists with enough claims, that self-contrast is the I2 gate and the
+  text-model comparison is reported beside it; where none exists, the
+  text-model comparison stands as written. Either way the margin is stated in
+  standard errors of the AUC difference at the realized N (about 0.03 for one
+  AUC near 0.7 on 270 claims), not as a bare number.
 - **Recognition exclusion.** Articles an auditor reports recognizing are coded by
   a different auditor, or excluded, and the count is reported.
 - **Prospective arm.** Studies whose replication outcomes are not yet public at
@@ -249,7 +296,7 @@ fixed now.*
 |---|---|
 | I1 Rubric reliability | Single-coder ICC(2,1) of the gate score, computed on the run's own double codes (every article is coded twice), at or above 0.80 (draft bar, set from the Section 7.2 witness, not from the probe it gates) |
 | I2 Contamination | Section 4.2 probe within its bar for every auditor stream used in the primary analysis |
-| I3 Blinding leak | Redaction leaves none of title, author, journal, year or DOI, by automated check |
+| I3 Blinding leak | `k2_blinding.leaks()` finds nothing in the text each auditor sees: title, author, journal, year, DOI, in-text citations with years, URLs, e-mail (4.1) |
 | I4 Coverage | Fewer than a fixed fraction of studies excluded for U or recognition |
 | I5 Power | The minimum detectable ΔAUC at the realized N is stated and is below a value fixed before sealing; if it is not, the run is reported as underpowered and grades nothing |
 
@@ -691,7 +738,9 @@ None yet.
   article shows, which is what a reviewer sees, and the claim is scoped to that.
 - **Retrospective contamination may be unremovable.** If I2 fails for every
   auditor stream, the retrospective arm grades nothing and the prospective arm
-  carries the claim alone.
+  carries the claim alone. The text-model reference makes this more likely than
+  contamination alone would, because a stream can beat a weak reference by
+  reading well (4.2, competence limit).
 - **Domain.** The large replication projects are mostly social and behavioral
   science. A pass is scoped there.
 - **A pass can credit a proxy.** If the baselines measure a cause of
@@ -700,9 +749,13 @@ None yet.
   reliability 0.3). B4, B5 and the per-check pattern reduce this; nothing here
   removes it.
 - **The development set is the most-studied set in the field.** Yang et al.
-  trained on it, Van Bavel et al. recoded it, and its outcomes are famous. It is
-  used for reliability and calibration only, never for outcomes, and that rule
-  is what keeps its fame from mattering.
+  trained on it, Van Bavel et al. recoded it, and its outcomes are famous. Its
+  outcomes never choose, weight, or cut a rubric item (7.1, item 5), and that
+  rule is what keeps its fame out of the gate score. They are used, by design,
+  in two places that are not the rubric: to fit the recall-free reference text
+  model (4.2, B4) and to calibrate the contamination probe (7.1, item 4).
+  *Corrected 2026-10-17:* this bullet said "never for outcomes", which
+  contradicted both.
 
 ## 12. What a pass would and would not mean
 

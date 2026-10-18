@@ -1,0 +1,11 @@
+{
+ "articles": 136,
+ "clean_false_leaks": [],
+ "planted_missed": [],
+ "redacted_residual": [],
+ "year_trap_fired": [
+  "DEV-ML-027"
+ ],
+ "distinct_dois": 132,
+ "verdict": "PASS"
+}
