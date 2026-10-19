@@ -19,6 +19,7 @@ measure of failure.
 | [`k2_pilot_code.py`](k2_pilot_code.py), [`k2_pilot_summary.py`](k2_pilot_summary.py), `k2_pilot_summary_result.json` | model-coder pilot (prereg 7.4, 2026-10-19): gpt-oss and minimax-m2 each coded the 22 blinded units twice plus 6 whole bodies; gate agreement between the two families ICC 0.11 (within each 0.66 and 0.63) against the 0.80 bar, so RUBRIC-v0 needs revision before sealing; scores only, raw responses stay on Atlas |
 | [`RUBRIC-v1.md`](RUBRIC-v1.md), [`k2_rubric_split.py`](k2_rubric_split.py), `k2_rubric_split.json`, [`k2_dev_claims.py`](k2_dev_claims.py), `devset/claims_dev.csv` | rubric v1 (prereg 7.4.1): written from the v0 disagreements on a revise half of the 22 units, split and committed before any reasoning was read; scores the claim's focal test; coders now get the claim (RP:P original-side description and test, never a replication column); v1 pilot measured on the held-out half (`k2_pilot_v1_summary_result.json`): **v1 fails**, between-family gate ICC −0.31 on 9 held-out articles (0.61 on the revise half), A1 the main obstacle |
 | [`k2_quote_check.py`](k2_quote_check.py), `k2_quote_check_v0_result.json`, `k2_quote_check_v1_result.json` | traces each quoted evidence string to the text the coder saw: v0 gpt-oss 170 of 191 found allowing for layout, v1 203 of 238; counts only |
+| [`k2_score_doi_match.py`](k2_score_doi_match.py), `k2_score_doi_match_result.json` | SCORE archive (OSF BZFGY, CC0; data package `analysis data and code package 15 Dec 2025 1708.zip`, sha256 `80a221f0…7af2`, matches OSF; `analyst data.RData` sha256 `5e2ac8e7…6b`) read on Atlas with `rdata` 1.1.0: dataset shapes and column names, and the development set matched to SCORE by DOI. 1 of 132 matches (DEV-ML-013, SCORE paper 88xa, 1 new-data replication report; its outcome NOT opened). SCORE's papers are from 2009–2018 plus 100 from 2020, and RP:P's originals are from 2008. Only identifier and design columns of `repli_outcomes` are touched; no outcome value is read or stored |
 | [`k2_devset_access.py`](k2_devset_access.py), `devset/access.csv` | open-access status of the 132 dev-set DOIs (OpenAlex): 30 open, 102 closed |
 | [`k2_devset_rpp.py`](k2_devset_rpp.py), [`k2_devset_ml.py`](k2_devset_ml.py), [`devset/`](devset/) | development set, assembled from the projects' GitHub mirrors with Crossref-verified DOIs; no outcomes in the files (prereg 7.1) |
 
@@ -32,7 +33,11 @@ measure of failure.
 
 ## Next, in order
 
-1. After OSF's migration window closes (2026-10-19 09:00 EDT): list the archived SCORE repository (doi:10.17605/OSF.IO/BZFGY), confirm the per-claim outcome table, its license, the restricted fraction, and forecast coverage.
+1. After OSF's migration window closes (2026-10-19 09:00 EDT): list the archived SCORE repository (doi:10.17605/OSF.IO/BZFGY), confirm the per-claim outcome table, its license, the restricted fraction, and forecast coverage. **Partly done 2026-10-19:**
+   - The license is CC0, and the code is MIT.
+   - A per-claim outcome table exists: `repli_outcomes`, 427 replication reports keyed by `claim_id`. `orig_outcomes` has 825 claims, and `paper_metadata` has 4,000 papers.
+   - The development-set overlap is 1 article (`k2_score_doi_match_result.json`).
+   - **Still open.** No variable marks restricted data, so the restricted fraction is unknown. The package has no prediction-market or survey forecasts, so the market baseline needs another source (G5SNY or Replication Markets, not yet checked). The count of distinct claims with a version-of-record outcome is also not yet taken.
 2. ~~META-REP check~~ done 2026-10-17: no results published (poster only); overlaps A2 and part of A4. Re-check at sealing.
 3. ~~A1 witness~~ done 2026-10-17: `k2_witness.py` on `k2_analysis.py`, PASS (null 0/400, proxy 1/400). Power: 80% at true ΔAUC ~0.055.
 4. ~~Development list~~ assembled 2026-10-17: RP:P 99/100 DOIs, ML1 11/12, ML2 25/26, ML4 1/1; 132 distinct articles. Open: ML3 (OSF only), DEV-RPP-053 (RP:P row contradicts itself), DOI-match against SCORE (after Oct 19).

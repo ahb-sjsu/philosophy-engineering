@@ -1,0 +1,366 @@
+{
+ "rda": "../raw/score_bzfgy/analyst data.RData",
+ "shapes": {
+  "repli_outcomes": {
+   "rows": 427,
+   "columns": [
+    "paper_id",
+    "claim_id",
+    "rr_id",
+    "report_id",
+    "repli_sample_size_units",
+    "repli_sample_size_value",
+    "repli_sample_structure",
+    "repli_analysis_type",
+    "repli_stat_interaction",
+    "repli_stat_type",
+    "repli_stat_value",
+    "repli_stat_dof_1",
+    "repli_stat_dof_2",
+    "repli_coef_type",
+    "repli_coef_value",
+    "repli_coef_se",
+    "repli_p_value_confirmed",
+    "repli_p_value",
+    "repli_effect_size_text_raw",
+    "repli_effect_size_type_raw",
+    "repli_effect_size_value_raw",
+    "repli_pattern_criteria",
+    "repli_pattern_description",
+    "repli_pattern_criteria_met",
+    "repli_effect_direction",
+    "repli_interpret_supported",
+    "repli_interpret_support_notes",
+    "repli_total_model_params",
+    "is_covid",
+    "repli_effective_df1",
+    "repli_effective_sample_size",
+    "repli_score_criteria_met",
+    "repli_effect_size_type",
+    "repli_effect_size_value",
+    "repli_effect_size_ci_ub",
+    "repli_effect_size_ci_lb",
+    "repli_pearsons_r_value",
+    "repli_pearsons_r_ci_ub",
+    "repli_pearsons_r_ci_lb",
+    "repli_effect_size_pi_ub",
+    "repli_effect_size_pi_lb",
+    "repli_power_threshold_small",
+    "repli_power_threshold_medium",
+    "repli_power_for_50_effect",
+    "repli_power_for_75_effect",
+    "rr_power_100_original_effect",
+    "rr_power_50_original_effect_alpha_.025",
+    "rr_power_75_original_effect_alpha_.025",
+    "rr_power_100_original_effect_alpha_.025",
+    "rr_power_50_original_effect_design",
+    "rr_power_75_original_effect_design",
+    "rr_power_100_original_effect_design",
+    "rr_power_50_original_effect_alpha_.025_design",
+    "rr_power_75_original_effect_alpha_.025_design",
+    "rr_power_100_original_effect_alpha_.025_design",
+    "repli_type",
+    "power_for_effect_size",
+    "is_manylabs",
+    "manylabs_type",
+    "type_internal",
+    "single_trace_equivalent",
+    "repli_version_of_record",
+    "repli_is_generalizability",
+    "repli_pearsons_r_defined",
+    "repli_conv_r",
+    "repli_conv_r_lb",
+    "repli_conv_r_ub",
+    "combined_power_50",
+    "combined_power_75",
+    "combined_power_100",
+    "repli_start_phase"
+   ]
+  },
+  "orig_outcomes": {
+   "rows": 825,
+   "columns": [
+    "paper_id",
+    "claim_id",
+    "orig_analysis_type",
+    "orig_total_model_params",
+    "orig_sample_size_50_for_100",
+    "orig_sample_size_90_for_75",
+    "orig_sample_size_90_for_50",
+    "is_covid",
+    "orig_stat_type_for_repli",
+    "orig_pearsons_r_defined",
+    "orig_pearsons_r_value",
+    "orig_pearsons_r_ci_lb",
+    "orig_pearsons_r_ci_ub",
+    "orig_effect_size_type_repli",
+    "orig_effect_size_value_repli",
+    "orig_effect_size_ci_lb",
+    "orig_effect_size_ci_ub",
+    "orig_power_threshold_small",
+    "orig_power_threshold_medium",
+    "orig_power_for_50_effect",
+    "orig_power_for_75_effect",
+    "original_effective_df1_reference",
+    "original_effective_sample_size",
+    "orig_sample_size_value",
+    "orig_sample_size_units",
+    "orig_stat_type",
+    "orig_stat_dof_1",
+    "orig_stat_dof_2",
+    "orig_stat_value",
+    "orig_stat_interaction",
+    "orig_effect_size_text",
+    "orig_effect_size_type_repro",
+    "orig_effect_size_value_repro",
+    "orig_coef_type",
+    "orig_coef_value",
+    "orig_coef_se",
+    "orig_p_value_type",
+    "orig_p_value",
+    "orig_p_value_tails",
+    "bushel_complex",
+    "orig_conv_r",
+    "orig_conv_r_lb",
+    "orig_conv_r_ub"
+   ]
+  },
+  "paper_metadata": {
+   "rows": 4000,
+   "columns": [
+    "paper_id",
+    "title",
+    "author_last",
+    "author_first",
+    "author_address",
+    "author_email",
+    "abstract",
+    "keywords",
+    "volume",
+    "issue",
+    "pg",
+    "published",
+    "pub_year",
+    "DOI",
+    "reprint_address",
+    "type",
+    "language",
+    "funding",
+    "open_access",
+    "publisher",
+    "publisher_address",
+    "ISSN",
+    "is_covid",
+    "publication_standard",
+    "eISSN",
+    "COS_pub_category",
+    "COS_pub_expanded",
+    "Top Factor",
+    "Data Citation",
+    "Data Transparency",
+    "Analysis Code Transparency",
+    "Materials Transparency",
+    "Design & Analysis Reporting Guidelines",
+    "Study Preregistration",
+    "Analysis Plan Preregistration",
+    "Replication",
+    "Registered Reports & Publicaton Bias",
+    "Open Science Badges",
+    "citation"
+   ]
+  },
+  "paper_status_tracking": {
+   "rows": 62043,
+   "columns": [
+    "paper_id",
+    "prepool",
+    "pool",
+    "presample",
+    "sample",
+    "rejected",
+    "RR",
+    "p1_delivery",
+    "p2_presample",
+    "p2_sample",
+    "p2_delivery",
+    "bushel"
+   ]
+  },
+  "rr_internal_tracking": {
+   "rows": 559,
+   "columns": [
+    "rr_id",
+    "paper_id",
+    "project_guid",
+    "field",
+    "type",
+    "outcome",
+    "results_available",
+    "registrations",
+    "prereg_completion",
+    "osf_activity",
+    "all_types"
+   ]
+  },
+  "repli_binary": {
+   "rows": 274,
+   "columns": [
+    "report_id",
+    "repli_binary_analyst",
+    "repli_binary_orig_wthn",
+    "repli_binary_rep_wthn",
+    "repli_binary_meta_success",
+    "repli_binary_wthn_pi",
+    "repli_binary_sum_p",
+    "repli_binary_telescopes",
+    "repli_binary_bayes_rep",
+    "repli_binary_bma_result",
+    "repli_binary_skep_p",
+    "repli_binary_correspondence",
+    "repli_binary_bf_result"
+   ]
+  },
+  "claims_non_significant_bushels": {
+   "rows": 3066,
+   "columns": [
+    "paper_id",
+    "claim4_id",
+    "coded_stat_evidence",
+    "nonsig"
+   ]
+  },
+  "rr_type_key": {
+   "rows": 677,
+   "columns": [
+    "rr_id",
+    "paper_id",
+    "type"
+   ]
+  },
+  "repli_all_cases": {
+   "rows": 446,
+   "columns": [
+    "rr_id",
+    "paper_id",
+    "rr_type_internal",
+    "report_id",
+    "rr_repl_exact_replicated_reference"
+   ]
+  },
+  "repli_case_exclusions": {
+   "rows": 19,
+   "columns": [
+    "report_id",
+    "exclude_reason",
+    "rr_id"
+   ]
+  },
+  "rr_project_dates": {
+   "rows": 211,
+   "columns": [
+    "rr_id",
+    "project_guid",
+    "type",
+    "started",
+    "reg_date",
+    "completed"
+   ]
+  },
+  "papers_not_sourced": {
+   "rows": 380,
+   "columns": [
+    "paper_id",
+    "dr_plausible",
+    "dr_reason",
+    "dar_plausible",
+    "dar_reason"
+   ]
+  },
+  "claims_ser_power": {
+   "rows": 89,
+   "columns": [
+    "claim_id",
+    "rr_sample_size_50_for_100",
+    "rr_sample_size_90_for_75",
+    "rr_sample_size_90_for_50"
+   ]
+  },
+  "claims_traditional_power": {
+   "rows": 19,
+   "columns": [
+    "claim_id",
+    "rr_sample_size_50_for_100",
+    "rr_sample_size_90_for_75",
+    "rr_sample_size_90_for_50"
+   ]
+  },
+  "llm_method_data": {
+   "rows": 20,
+   "columns": [
+    "llm_category",
+    "llm_descriptive",
+    "llm_score",
+    "n_abstracts",
+    "se",
+    "llm_score_lb",
+    "llm_score_ub",
+    "llm_category2"
+   ]
+  },
+  "llm_research_question_table": {
+   "rows": 13,
+   "columns": [
+    "llm_research_question_id",
+    "N",
+    "llm_research_question_label"
+   ]
+  },
+  "llm_theory_data": {
+   "rows": 31,
+   "columns": [
+    "llm_category",
+    "llm_descriptive",
+    "llm_score",
+    "n_abstracts",
+    "se",
+    "llm_score_lb",
+    "llm_score_ub",
+    "llm_category2"
+   ]
+  }
+ },
+ "score_distinct_dois": 4000,
+ "dev_articles": 132,
+ "dev_with_doi": 132,
+ "matched": 1,
+ "matched_with_replication_report": 1,
+ "matches": [
+  {
+   "dev_id": "DEV-ML-013",
+   "doi": "10.1177/0956797609359908",
+   "score_paper_ids": [
+    "88xa"
+   ],
+   "score_claims": 6,
+   "score_replication_reports": 1,
+   "repli_type": {
+    "new data": 1
+   },
+   "is_manylabs": {
+    "not manylabs": 1
+   }
+  }
+ ],
+ "score_manylabs_reports": {
+  "not manylabs": 363,
+  "split": 6,
+  "posthoc": 43,
+  "traditional": 15
+ },
+ "score_manylabs_types": {
+  "nan": 363,
+  "count": 43,
+  "aggregation": 18,
+  "instance_primary": 3
+ }
+}
