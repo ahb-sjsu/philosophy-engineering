@@ -863,10 +863,9 @@ Owner's decisions and deviations, recorded before any score was read:
 **Limits.** minimax-m2's 5 failed codings each ran to the token limit on all
 4 tries; its kept codings come only from tries that finished, which may favour
 shorter reasoning. 37 of its 82 tries ran to the limit. gpt-oss's quoted
-evidence is found verbatim only 41% of the time; whether
-that is line-break and hyphenation residue or invented quotes has not been
-checked, and A1 to A4 scores whose evidence is invented would not be
-evidence-backed in the rubric's sense. Six whole-body codings are too few for
+evidence is found verbatim only 41% of the time; 7.4.1 item 5 traces most of
+the rest to layout (line breaks, page numbers, ellipses) and some to reworded
+sentences inside quotation marks. Six whole-body codings are too few for
 the unit-vs-body comparison to bound anything.
 
 **Human coders (owner, 2026-10-19):** none are available at this time. The
@@ -915,7 +914,65 @@ it as follows, in this order.
    **held-out half**; the revise half is reported beside it and is expected to
    be higher.
 
-Result: pending.
+**Result (run 2026-10-19, 15:07 to 17:04 UTC; gpt-oss done 15:31).** `k2_pilot_v1_summary_result.json`;
+the v0 rows by half are in `k2_pilot_summary_result.json` (regenerated with the
+split file; its other rows are unchanged). gpt-oss scored 50 of 50 codings;
+minimax-m2 42 of 50 (42 extra tries; both codings of DEV-RPP-006 and of
+DEV-RPP-035 failed).
+
+| Gate agreement, ICC(2,1) (articles) | v0 revise | v0 held-out | v1 revise | **v1 held-out** |
+|---|---:|---:|---:|---:|
+| gpt-oss vs minimax-m2, coding 1 | 0.41 (8) | −0.07 (11) | 0.61 (10) | **−0.31 (9)** |
+| gpt-oss, coding 1 vs 2 | 0.79 (11) | 0.50 (11) | 0.84 (11) | 0.22 (11) |
+| minimax-m2, coding 1 vs 2 | 0.59 (7) | 0.68 (10) | 0.75 (9) | −0.52 (8) |
+
+| Check agreement between families, held-out | A1 | A2 | A3 | A4 |
+|---|---:|---:|---:|---:|
+| v0 | 36% | 73% | 78% | 73% |
+| v1 | 44% | 89% | 83% | 78% |
+
+1. **v1 fails.** On the held-out half the two families do not agree on the
+   gate (ICC −0.31 on 9 articles), and gpt-oss does not agree with itself
+   (0.22). The gains on the revise half did not carry over, which is what a
+   revision fitted to the articles it was written from would do; with 8 to 11
+   articles per cell, chance is the other explanation, and these rows cannot
+   separate the two. No reading of them reaches the 0.80 bar.
+2. **What did change.** The ceiling is gone: gpt-oss's gate mean fell from
+   3.46 to 1.84 and minimax-m2's from 2.56 to 1.62, and the families' failure
+   rates moved closer on every check but A1 (gpt-oss / minimax-m2, v0 then
+   v1: A1 75/41 then 39/16, A2 89/64 then 46/41, A3 84/77 then 71/81, A4
+   98/74 then 30/24%). Check-level agreement between families rose on the
+   held-out half for every check, and the gate ICC fell anyway; with 9
+   articles this session cannot say why.
+3. **A1 is the obstacle.** Held-out A1 agreement is 44% between families, and
+   gpt-oss agrees with itself on held-out A1 only 36% of the time (91% in
+   v0). Rewriting A1.2 as "outcomes that disagree" made it a harder judgment,
+   not an easier one. This is the v0 rubric's own known gap (A1.3, A1.4 and
+   now A1.2).
+4. **The claim text leaked.** With claim wording, gpt-oss said it knew the
+   replication outcome on 3 codings (none in v0): DEV-ML-001 rep 2, whose
+   target text named "Many Labs 1" (written into `devset/claims_dev.csv` by
+   this session, a defect: the target must not name the replication project),
+   and both codings of DEV-RPP-093. By the Recognition rule those 3 codings
+   should not count; all three units are in the revise half, so the held-out
+   rows are unaffected, and the revise-half rows above include them.
+5. **Quotes.** `k2_quote_check.py` traces each quoted evidence string to the
+   text the coder saw. v0 gpt-oss: 170 of 191 found once ligatures, page-number
+   lines, line-break hyphens and ellipses are allowed for, 5 partly, 16 not;
+   the not-found ones compared by eye (DEV-ML-034, DEV-RPP-006) were reworded
+   real sentences, not invented content, and the rest were not checked. v1
+   gpt-oss, after "quote the text exactly": 203 of 238 found, 11 partly, 24
+   not, so the rule did not help. minimax-m2 quoted in double quotes once in
+   v1 (13 times in v0); its evidence is located absences and paraphrase.
+
+**What this means for the design.** Model coders on this rubric do not reach
+I1, before or after a revision, and the held-out half is now spent: any v2
+measured on these 22 units would be measured on units that shaped it. A v2
+needs fresh development articles (the 102 closed-access articles need the
+license decision in 7.1), or a different coder arrangement (human coders, or
+the mean of several codings per family, which raises within-family
+reliability but not agreement between families). Decided by the owner, not
+here.
 
 ### 7.5 A1 witness, construction check, and power (simulation, run 2026-10-17)
 

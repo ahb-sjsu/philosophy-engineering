@@ -1,0 +1,20 @@
+{
+ "gpt-oss": {
+  "quoted_strings": 191,
+  "verbatim": 78,
+  "formatting": 43,
+  "elided": 49,
+  "redaction": 0,
+  "partial": 5,
+  "not_found": 16
+ },
+ "minimax-m2": {
+  "quoted_strings": 13,
+  "verbatim": 8,
+  "formatting": 4,
+  "elided": 1,
+  "redaction": 0,
+  "partial": 0,
+  "not_found": 0
+ }
+}
