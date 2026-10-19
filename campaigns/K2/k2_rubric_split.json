@@ -1,0 +1,30 @@
+{
+ "seed": 20261019,
+ "units": 22,
+ "revise": [
+  "DEV-ML-001",
+  "DEV-ML-004",
+  "DEV-RPP-006",
+  "DEV-RPP-013",
+  "DEV-RPP-038",
+  "DEV-RPP-041",
+  "DEV-RPP-059",
+  "DEV-RPP-071",
+  "DEV-RPP-075",
+  "DEV-RPP-093",
+  "DEV-RPP-100"
+ ],
+ "held_out": [
+  "DEV-ML-031",
+  "DEV-ML-034",
+  "DEV-RPP-003",
+  "DEV-RPP-010",
+  "DEV-RPP-022",
+  "DEV-RPP-033",
+  "DEV-RPP-035",
+  "DEV-RPP-051",
+  "DEV-RPP-064",
+  "DEV-RPP-070",
+  "DEV-RPP-085"
+ ]
+}
