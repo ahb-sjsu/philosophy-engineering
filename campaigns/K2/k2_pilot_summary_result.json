@@ -1,0 +1,278 @@
+{
+ "calls": 102,
+ "scored": 95,
+ "failed": [
+  "deepseek-v4-flash/DEV-ML-001_unit_r1",
+  "deepseek-v4-flash/DEV-ML-001_unit_r2",
+  "minimax-m2/DEV-ML-004_unit_r1",
+  "minimax-m2/DEV-ML-031_unit_r2",
+  "minimax-m2/DEV-RPP-013_unit_r1",
+  "minimax-m2/DEV-RPP-038_unit_r1",
+  "minimax-m2/DEV-RPP-059_unit_r2"
+ ],
+ "operations": {
+  "deepseek-v4-flash": {
+   "calls": 2,
+   "scored": 0,
+   "extra_attempts": 6,
+   "models_returned": [
+    "deepseek-ai/DeepSeek-V4-Flash-Vision-Exp"
+   ],
+   "finish_reasons": [
+    "length"
+   ],
+   "median_seconds": 440.2,
+   "median_prompt_tokens": 5381.0,
+   "median_completion_tokens": 48000.0
+  },
+  "gpt-oss": {
+   "calls": 50,
+   "scored": 50,
+   "extra_attempts": 0,
+   "models_returned": [
+    "openai/gpt-oss-120b"
+   ],
+   "finish_reasons": [
+    "stop"
+   ],
+   "median_seconds": 50.6,
+   "median_prompt_tokens": 6694.5,
+   "median_completion_tokens": 2093.0
+  },
+  "minimax-m2": {
+   "calls": 50,
+   "scored": 45,
+   "extra_attempts": 32,
+   "models_returned": [
+    "MiniMaxAI/MiniMax-M2.7"
+   ],
+   "finish_reasons": [
+    "length",
+    "stop"
+   ],
+   "median_seconds": 29.7,
+   "median_prompt_tokens": 6521.5,
+   "median_completion_tokens": 2377.0
+  }
+ },
+ "by_stream": {
+  "gpt-oss": {
+   "codings": 44,
+   "A1": {
+    "1": 0.75,
+    "0": 0.25,
+    "U": 0.0,
+    "na": 0.0
+   },
+   "A2": {
+    "1": 0.886,
+    "0": 0.114,
+    "U": 0.0,
+    "na": 0.0
+   },
+   "A3": {
+    "1": 0.841,
+    "0": 0.045,
+    "U": 0.0,
+    "na": 0.114
+   },
+   "A4": {
+    "1": 0.977,
+    "0": 0.023,
+    "U": 0.0,
+    "na": 0.0
+   },
+   "gate_distribution": {
+    "0": 0,
+    "1": 1,
+    "2": 3,
+    "3": 15,
+    "4": 25
+   },
+   "gate_mean": 3.455,
+   "gate_variance": 0.521,
+   "more_than_two_U": 0,
+   "item_U_share": {
+    "A1.1": 0.0,
+    "A1.2": 0.0,
+    "A1.3": 0.0,
+    "A1.4": 0.0,
+    "A2.1": 0.0,
+    "A2.2": 0.0,
+    "A2.3": 0.0,
+    "A2.4": 0.0,
+    "A3.1": 0.0,
+    "A3.2": 0.091,
+    "A3.3": 0.0,
+    "A3.4": 0.0,
+    "A4.1": 0.0,
+    "A4.2": 0.045,
+    "A4.3": 0.0,
+    "A4.4": 0.0,
+    "A4.5": 0.0
+   }
+  },
+  "minimax-m2": {
+   "codings": 39,
+   "A1": {
+    "1": 0.41,
+    "0": 0.59,
+    "U": 0.0,
+    "na": 0.0
+   },
+   "A2": {
+    "1": 0.641,
+    "0": 0.359,
+    "U": 0.0,
+    "na": 0.0
+   },
+   "A3": {
+    "1": 0.769,
+    "0": 0.179,
+    "U": 0.0,
+    "na": 0.051
+   },
+   "A4": {
+    "1": 0.744,
+    "0": 0.256,
+    "U": 0.0,
+    "na": 0.0
+   },
+   "gate_distribution": {
+    "0": 4,
+    "1": 6,
+    "2": 5,
+    "3": 12,
+    "4": 12
+   },
+   "gate_mean": 2.564,
+   "gate_variance": 1.784,
+   "more_than_two_U": 0,
+   "item_U_share": {
+    "A1.1": 0.0,
+    "A1.2": 0.0,
+    "A1.3": 0.0,
+    "A1.4": 0.0,
+    "A2.1": 0.0,
+    "A2.2": 0.0,
+    "A2.3": 0.0,
+    "A2.4": 0.0,
+    "A3.1": 0.0,
+    "A3.2": 0.128,
+    "A3.3": 0.0,
+    "A3.4": 0.0,
+    "A4.1": 0.0,
+    "A4.2": 0.179,
+    "A4.3": 0.0,
+    "A4.4": 0.0,
+    "A4.5": 0.0
+   }
+  }
+ },
+ "reliability": {
+  "within deepseek-v4-flash (rep1 vs rep2)": {
+   "n": 0
+  },
+  "within gpt-oss (rep1 vs rep2)": {
+   "n": 22,
+   "gate_icc21": 0.663,
+   "gate_exact": 0.773,
+   "checks": {
+    "A1": 0.864,
+    "A2": 0.955,
+    "A3": 1.0,
+    "A4": 0.955
+   }
+  },
+  "within minimax-m2 (rep1 vs rep2)": {
+   "n": 17,
+   "gate_icc21": 0.628,
+   "gate_exact": 0.294,
+   "checks": {
+    "A1": 0.706,
+    "A2": 0.824,
+    "A3": 0.875,
+    "A4": 0.706
+   }
+  },
+  "between deepseek-v4-flash and gpt-oss (rep1)": {
+   "n": 0
+  },
+  "between deepseek-v4-flash and minimax-m2 (rep1)": {
+   "n": 0
+  },
+  "between gpt-oss and minimax-m2 (rep1)": {
+   "n": 19,
+   "gate_icc21": 0.108,
+   "gate_exact": 0.316,
+   "checks": {
+    "A1": 0.421,
+    "A2": 0.737,
+    "A3": 0.812,
+    "A4": 0.737
+   }
+  },
+  "unit vs fulltext, deepseek-v4-flash": {
+   "n": 0
+  },
+  "unit vs fulltext, gpt-oss": {
+   "n": 6,
+   "gate_icc21": 0.643,
+   "gate_exact": 0.667,
+   "checks": {
+    "A1": 0.667,
+    "A2": 1.0,
+    "A3": 1.0,
+    "A4": 1.0
+   }
+  },
+  "unit vs fulltext, minimax-m2": {
+   "n": 6,
+   "gate_icc21": 0.59,
+   "gate_exact": 0.333,
+   "checks": {
+    "A1": 0.667,
+    "A2": 0.833,
+    "A3": 0.667,
+    "A4": 0.667
+   }
+  }
+ },
+ "recognition": {
+  "deepseek-v4-flash": {
+   "codings": 0,
+   "says_recognizes": 0,
+   "guess_names_article": 0,
+   "says_knows_replication_outcome": 0
+  },
+  "gpt-oss": {
+   "codings": 50,
+   "says_recognizes": 3,
+   "guess_names_article": 1,
+   "says_knows_replication_outcome": 0
+  },
+  "minimax-m2": {
+   "codings": 45,
+   "says_recognizes": 0,
+   "guess_names_article": 0,
+   "says_knows_replication_outcome": 0
+  }
+ },
+ "evidence_quotes_unit": {
+  "deepseek-v4-flash": {
+   "quoted_strings": 0,
+   "found_verbatim": 0,
+   "share": null
+  },
+  "gpt-oss": {
+   "quoted_strings": 191,
+   "found_verbatim": 78,
+   "share": 0.408
+  },
+  "minimax-m2": {
+   "quoted_strings": 13,
+   "found_verbatim": 8,
+   "share": 0.615
+  }
+ }
+}

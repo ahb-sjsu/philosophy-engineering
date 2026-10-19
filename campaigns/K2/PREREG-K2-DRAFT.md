@@ -782,12 +782,92 @@ to pass I1.
 
 ### 7.3 Contamination probe
 
-Not run.
+Not run. The pilot's recognition self-report (7.4) is not this probe.
 
 ### 7.4 Pilot
 
-Not run. Purpose: realized N, U rate, recognition rate, and the variance needed
-to size the I5 power bar and the physics bar.
+Purpose: realized N, U rate, recognition rate, and the variance needed to size
+the I5 power bar and the physics bar.
+
+**Model-coder pilot (run 2026-10-19 on Atlas, against the NRP ELLM gateway).**
+`k2_pilot_code.py` gave RUBRIC-v0 sections 0 and A1 to A4 (check order shuffled
+per call, 4.3 rule 7) and one blinded coding unit (4.1) to each model coder;
+the 22 development-set units that passed intake were each coded twice per
+model, and a seeded subset of 6 was coded once more from the redacted whole
+body. Temperature 0.2, JSON output, "reason briefly" in the system prompt, up
+to 4 tries per coding. Scores only in `k2_pilot_summary_result.json`
+(`k2_pilot_summary.py`); raw responses hold article quotes and stay on Atlas.
+No replication outcome was read (7.1 consequence 5).
+
+Owner's decisions and deviations, recorded before any score was read:
+
+- Coders: two model families, each coding every unit twice. glm-5 and then
+  deepseek-v4-flash were dropped because they reasoned to the token limit
+  without answering (deepseek's 2 failed codings remain in the record);
+  qwen3 was smoke-tested and not used. The streams are gpt-oss (returned
+  `openai/gpt-oss-120b`, limit 48,000 tokens, 02:26 to 03:08 UTC) and
+  minimax-m2 (returned `MiniMaxAI/MiniMax-M2.7`, limit 8,000 tokens, 10:48 to
+  12:10 UTC). Hosted aliases: neither revision can be pinned (4.3 rule 5).
+- The target claim was given as the study only (RP:P study number, Many Labs
+  effect name), not as claim wording: a deviation from RUBRIC-v0 section 0.
+- Model coders saw the texts before the person's leak read (4.1); that read
+  still precedes any human coder. No human coder has coded.
+
+| | gpt-oss | minimax-m2 |
+|---|---:|---:|
+| Codings scored | 50 of 50 | 45 of 50 |
+| Extra tries | 0 | 32 |
+| Median seconds, median completion tokens (last try) | 51, 2,093 | 30, 2,377 |
+| Unit codings fail A1 / A2 / A3 / A4 | 75 / 89 / 84 / 98% | 41 / 64 / 77 / 74% |
+| Gate mean (0 to 4), variance | 3.46, 0.52 | 2.56, 1.78 |
+| Gate distribution 0/1/2/3/4 | 0/1/3/15/25 | 4/6/5/12/12 |
+| Says it recognizes the study / guess names the article | 3 / 1 of 50 | 0 / 0 of 45 |
+| Says it knows the replication outcome | 0 | 0 |
+| Quoted evidence found verbatim in the unit | 78 of 191 | 8 of 13 |
+
+| Agreement on the gate | Articles | ICC(2,1) | Exact | Check agreement A1 / A2 / A3 / A4 |
+|---|---:|---:|---:|---|
+| gpt-oss, coding 1 vs 2 | 22 | 0.66 | 77% | 86 / 95 / 100 / 95% |
+| minimax-m2, coding 1 vs 2 | 17 | 0.63 | 29% | 71 / 82 / 88 / 71% |
+| **gpt-oss vs minimax-m2, coding 1** | 19 | **0.11** | 32% | 42 / 74 / 81 / 74% |
+| Unit vs whole body, gpt-oss | 6 | 0.64 | 4 of 6 | 67 / 100 / 100 / 100% |
+| Unit vs whole body, minimax-m2 | 6 | 0.59 | 2 of 6 | 67 / 83 / 67 / 67% |
+
+**What it shows.**
+
+1. **RUBRIC-v0 does not give one score across coders.** Two runs of one
+   family count once (4.3 rule 4), so the agreement that bears on I1 is
+   between families, and it is ICC 0.11 against the 0.80 bar (7.2). Each
+   family also misses the bar against itself. The lowest cell of the 7.2
+   simulation, single-coder ICC 0.19, fails a true effect 84% of the time
+   with one coder and 62% with the two-coder mean; 0.11 is below that cell.
+   The rubric must be revised and re-piloted before sealing; A1 (42%
+   check agreement between families) and A4 disagree most.
+2. **gpt-oss's ceiling is partly the coder.** gpt-oss put 25 of 44 unit
+   codings at gate 4 (variance 0.52); minimax-m2 used the whole range
+   (variance 1.78). Two coders cannot say which reading of the rubric is
+   right; the planted-defect calibration (4.3 rule 1) is the check on that,
+   and it has not run.
+3. **U rate:** no coding of either stream had more than two U checks, and U
+   appeared only on items A3.2 (gpt-oss 9%, minimax-m2 13% of codings) and
+   A4.2 (5%, 18%). Neither model used U as a way out of a hard item.
+4. **Recognition:** low on these units (1 correct identification in 95
+   scored codings, none claiming an outcome). This is self-report, not the
+   contamination probe (7.3), which has not run.
+5. **Realized N:** 22 of the 132 development articles reached coding (intake,
+   4.1); this pilot says nothing yet about N on the test set.
+6. **Variance for the bars:** not usable yet. The two streams' gate
+   variances differ more than threefold, so a power bar sized from either
+   would describe the coder, not the articles.
+
+**Limits.** minimax-m2's 5 failed codings each ran to the token limit on all
+4 tries; its kept codings come only from tries that finished, which may favour
+shorter reasoning. 37 of its 82 tries ran to the limit. gpt-oss's quoted
+evidence is found verbatim only 41% of the time; whether
+that is line-break and hyphenation residue or invented quotes has not been
+checked, and A1 to A4 scores whose evidence is invented would not be
+evidence-backed in the rubric's sense. Six whole-body codings are too few for
+the unit-vs-body comparison to bound anything.
 
 ### 7.5 A1 witness, construction check, and power (simulation, run 2026-10-17)
 
