@@ -1,0 +1,99 @@
+{
+ "forecast_files": {
+  "KeyW_CS_2020-10-19.csv": {
+   "papers": 3000,
+   "papers_with_any_cs": 3000,
+   "cs_columns": 12
+  },
+  "anon_p1_singletrace_confidence_scores.csv": {
+   "papers": 3000,
+   "methods": 38,
+   "papers_with_any_cs": 3000
+  }
+ },
+ "score_claims": 331,
+ "score_papers": 212,
+ "claims_by_trace": {
+  "single-trace": 207,
+  "bushel": 124
+ },
+ "keyw_any": {
+  "claims": 331,
+  "claims_with_forecast": 267
+ },
+ "anon_any": {
+  "claims": 331,
+  "claims_with_forecast": 267
+ },
+ "either": {
+  "claims": 331,
+  "claims_with_forecast": 267
+ },
+ "both": {
+  "claims": 331,
+  "claims_with_forecast": 267
+ },
+ "keyw_any_single_trace": {
+  "claims": 207,
+  "claims_with_forecast": 143
+ },
+ "keyw_any_bushel": {
+  "claims": 124,
+  "claims_with_forecast": 124
+ },
+ "keyw_any_version_of_record": {
+  "claims": 309,
+  "claims_with_forecast": 249
+ },
+ "keyw_any_by_repli_type": {
+  "new data": {
+   "claims": 146,
+   "claims_with_forecast": 118
+  },
+  "original and secondary data": {
+   "claims": 24,
+   "claims_with_forecast": 17
+  },
+  "secondary data": {
+   "claims": 161,
+   "claims_with_forecast": 132
+  }
+ },
+ "keyw_any_by_manylabs": {
+  "not manylabs": {
+   "claims": 310,
+   "claims_with_forecast": 247
+  },
+  "posthoc": {
+   "claims": 16,
+   "claims_with_forecast": 15
+  },
+  "split": {
+   "claims": 2,
+   "claims_with_forecast": 2
+  },
+  "traditional": {
+   "claims": 3,
+   "claims_with_forecast": 3
+  }
+ },
+ "keyw_per_column": {
+  "cs_m1": 267,
+  "cs_m2": 267,
+  "cs_m3": 267,
+  "cs_m4": 267,
+  "cs_m5": 267,
+  "cs_m6": 267,
+  "cs_m7": 267,
+  "cs_m8": 267,
+  "cs_m9": 267,
+  "cs_m10": 267,
+  "cs_m11": 267,
+  "cs_m12": 267
+ },
+ "anon_per_method_min_max": [
+  267,
+  267
+ ],
+ "score_papers_not_in_phase1_forecasts": 64
+}
