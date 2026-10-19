@@ -893,7 +893,11 @@ it as follows, in this order.
    test. The table at the end of `RUBRIC-v1.md` lists each change and the
    finding it answers.
 3. **RUBRIC-v1** ([`RUBRIC-v1.md`](RUBRIC-v1.md)), committed with this
-   paragraph and before any v1 coding returned. Scores the focal test, needs a
+   paragraph in 60e556b (15:08:16 UTC). That commit's message says it came
+   before any v1 coding returned; it did not, by 12 seconds: the first coding
+   (gpt-oss, DEV-ML-001 rep 1) was written at 15:08:04, unread. The file is
+   unchanged since the run started (15:07:18), and every coding record carries
+   its hash. Scores the focal test, needs a
    failure that can be pointed to, defines scope and a threshold where v0 had
    none (A2.1, A2.2, A2.3, A3.2, A3.3, A4.1 to A4.5), and leaves A1.1, A1.3,
    A1.4, A2.4, A3.1 and A3.4 as in v0. A3.1's treatment of directly perceived
