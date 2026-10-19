@@ -869,6 +869,50 @@ checked, and A1 to A4 scores whose evidence is invented would not be
 evidence-backed in the rubric's sense. Six whole-body codings are too few for
 the unit-vs-body comparison to bound anything.
 
+**Human coders (owner, 2026-10-19):** none are available at this time. The
+coders are the two model families until that changes. The steps that need a
+person stay open: the person's leak read (4.1), the third coder of the
+Adjudication rule, and any human stream for I1.
+
+#### 7.4.1 Rubric v1 and its pilot
+
+The owner left the next step to the drafting session (2026-10-19), which took
+it as follows, in this order.
+
+1. **Split before reading reasons** (commit 3ae8320). The 22 units were split,
+   seeded and stratified by source, into a revise half (11) and a held-out half
+   (11), `k2_rubric_split.json`, before any item code or coder reasoning was
+   read. Aggregate check and item rates over all 22 and per-article gate scores
+   had been seen. On the v0 codings the between-family gate ICC is 0.41 on the
+   revise half (8 articles with both rep-1 codings) and **−0.07 on the held-out
+   half (11)**.
+2. **Diagnosis on the revise half only.** Item scores and evidence of both
+   families on the 11 revise units. Most cross-family splits were over what an
+   item covers, not over what the text says: one family scored any test,
+   outcome or measure anywhere in the article, the other scored the claim's own
+   test. The table at the end of `RUBRIC-v1.md` lists each change and the
+   finding it answers.
+3. **RUBRIC-v1** ([`RUBRIC-v1.md`](RUBRIC-v1.md)), committed with this
+   paragraph and before any v1 coding returned. Scores the focal test, needs a
+   failure that can be pointed to, defines scope and a threshold where v0 had
+   none (A2.1, A2.2, A2.3, A3.2, A3.3, A4.1 to A4.5), and leaves A1.1, A1.3,
+   A1.4, A2.4, A3.1 and A3.4 as in v0. A3.1's treatment of directly perceived
+   stimulus manipulations is a validity question left open there.
+4. **Claims restored.** v1 coders get the claim as RUBRIC section 0 specifies,
+   ending the v0 pilot's study-number deviation: for RP:P, the original-side
+   `Description.of.effect.O` and `Test.statistic.O` (no `.R` column is read,
+   7.1 consequence 5); for Many Labs, the effect label and, for Many Labs 1,
+   the comparison as its codebook states it (`k2_dev_claims.py`,
+   `devset/claims_dev.csv`).
+5. **v1 pilot.** The same two coders and settings as v0 (gpt-oss at 48,000
+   tokens, minimax-m2 at 8,000, temperature 0.2, same check orders), all 22
+   units twice plus the 6 whole bodies, output `/archive/experiments/k2/pilot_v1`.
+   The number that counts for v1 is the between-family gate ICC on the
+   **held-out half**; the revise half is reported beside it and is expected to
+   be higher.
+
+Result: pending.
+
 ### 7.5 A1 witness, construction check, and power (simulation, run 2026-10-17)
 
 `k2_witness.py` draws synthetic SCORE-shaped data (assumptions in its `WORLD`

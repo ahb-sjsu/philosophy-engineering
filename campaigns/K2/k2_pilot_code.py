@@ -14,10 +14,12 @@ Owner's decisions, 2026-10-18:
     model coders get the texts now, and each records recognition first
   - the claim is given as the target study only (RP:P study number, Many Labs
     effect name), not as claim wording: a stated pilot deviation from RUBRIC-v0
-    section 0
+    section 0. The v1 pilot (K2_RUBRIC=RUBRIC-v1.md) gives the claim
+    statement from devset/claims_dev.csv instead, as section 0 specifies
 
-The prompt is RUBRIC-v0 sections 0 and A1 to A4 verbatim (Adjudication and
-Known gaps are not coder instructions), with the four checks in an order
+The prompt is the rubric's (K2_RUBRIC, default RUBRIC-v0.md) sections 0 and
+A1 to A4 verbatim (Adjudication, Changes and Known gaps are not coder
+instructions), with the four checks in an order
 shuffled per call (4.3 rule 7). Item scores come from the model; check and
 gate scores are computed here by the rubric's rules, and an item scored 1
 without evidence is recoded U (the adjudicator rule). No replication outcome
@@ -68,6 +70,12 @@ TEMPERATURE = 0.2
 MAX_TOKENS = int(os.environ.get("K2_PILOT_MAX_TOKENS", "48000"))
 SEED = 20261018
 LIMIT = int(os.environ.get("K2_PILOT_LIMIT", "0"))  # smoke runs: calls per model
+# The v0 pilot ran RUBRIC-v0 with study-number targets. RUBRIC-v1 restores the
+# claim statement its section 0 names (devset/claims_dev.csv, k2_dev_claims.py).
+RUBRIC = os.environ.get("K2_RUBRIC", "RUBRIC-v0.md")
+CLAIM_TARGETS = RUBRIC != "RUBRIC-v0.md"
+CLAIMS = ({r["dev_id"]: r for r in csv.DictReader(open(HERE / "devset" / "claims_dev.csv", encoding="utf-8"))}
+          if CLAIM_TARGETS else {})
 ITEMS = {"A1": ["A1.1", "A1.2", "A1.3", "A1.4"],
          "A2": ["A2.1", "A2.2", "A2.3", "A2.4"],
          "A3": ["A3.1", "A3.2", "A3.3", "A3.4"],
@@ -100,10 +108,14 @@ Return exactly this JSON shape:
  "items": {"A1.1": {"score": "0|1|U|na", "evidence": "..."}, ... one entry for
            each of A1.1-A1.4, A2.1-A2.4, A3.1-A3.4, A4.1-A4.5}}
 """
+if CLAIM_TARGETS:  # RUBRIC-v1 allows na on A3.2 and other items that say so
+    OUTPUT = OUTPUT.replace('"na" (A3 items only, when the study has no manipulation)',
+                            '"na" (only where the rubric allows it)')
+    OUTPUT = OUTPUT.replace("code every item for the target study", "code every item for the target claim")
 
 
 def rubric_sections() -> tuple[str, dict[str, str]]:
-    text = (HERE / "RUBRIC-v0.md").read_text(encoding="utf-8")
+    text = (HERE / RUBRIC).read_text(encoding="utf-8")
     parts = re.split(r"(?m)^## ", text)
     sec0 = next(p for p in parts if p.startswith("0."))
     checks = {p[:2]: p for p in parts if re.match(r"A[1-4] ", p)}
@@ -112,6 +124,13 @@ def rubric_sections() -> tuple[str, dict[str, str]]:
 
 
 def target(dev: str, rpp: dict, ml: dict) -> str:
+    if CLAIM_TARGETS:
+        c = CLAIMS[dev]
+        where = (f"Study {c['study']} of this article (if the article reports a single "
+                 f"study, that study)") if c["study"] else "the study in this article that tests it"
+        test = f" The original focal test: {c['focal_test']}." if c["focal_test"] else ""
+        return (f"The replication targeted this claim, in {where}: {c['claim']}{test} "
+                f"Code that claim.")
     if dev in rpp:
         n = rpp[dev]["study_number"]
         return (f"The replication targeted Study {n} of this article (if the article "
@@ -207,7 +226,8 @@ def job(args):
     rec = {"dev_id": dev, "model_requested": model, "rep": rep, "input": kind,
            "check_order": order, "temperature": TEMPERATURE, "max_tokens": MAX_TOKENS,
            "prompt_sha256": hashlib.sha256(user.encode()).hexdigest(),
-           "rubric_sha256": hashlib.sha256((HERE / "RUBRIC-v0.md").read_bytes()).hexdigest(),
+           "rubric": RUBRIC,
+           "rubric_sha256": hashlib.sha256((HERE / RUBRIC).read_bytes()).hexdigest(),
            "attempts": []}
     for attempt in range(4):
         t0 = time.time()
@@ -283,7 +303,7 @@ def main() -> int:
                          token, out / "raw" / model / f"{dev}_fulltext_r1.json"))
     out.mkdir(parents=True, exist_ok=True)
     (out / f"plan_{'_'.join(MODELS)}.json").write_text(json.dumps(
-        {"units": devs, "models": MODELS, "reps": REPS, "max_tokens": MAX_TOKENS,
+        {"units": devs, "models": MODELS, "reps": REPS, "max_tokens": MAX_TOKENS, "rubric": RUBRIC,
          "fulltext_subset": subset,
          "fulltext_skipped_for_leaks": skipped, "calls": len(jobs)}, indent=1))
     print(f"{len(jobs)} calls; fulltext subset {subset}; skipped {skipped}", flush=True)

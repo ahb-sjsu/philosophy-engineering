@@ -20,7 +20,10 @@ Reported:
   - evidence check: share of quoted evidence strings found verbatim in the
     text the model saw (whitespace-normalized)
 
-    python3 k2_pilot_summary.py /archive/experiments/k2/pilot /archive/experiments/k2/raw/fulltext out.json
+    python3 k2_pilot_summary.py /archive/experiments/k2/pilot /archive/experiments/k2/raw/fulltext out.json [k2_rubric_split.json]
+
+With the split file, every reliability row is also reported on the revise and
+held-out halves; the held-out half is the number for a revised rubric.
 """
 from __future__ import annotations
 
@@ -108,8 +111,17 @@ def main() -> int:
 
     devs = sorted({r["dev_id"] for r in unit})
     rel = {}
+    halves = {}  # optional 4th argument: k2_rubric_split.json (revise / held-out)
+    if len(sys.argv) > 4:
+        sp = json.loads(Path(sys.argv[4]).read_text(encoding="utf-8"))
+        halves = {"revise": set(sp["revise"]), "held_out": set(sp["held_out"])}
 
     def pair(a, b, label):
+        for h, keep in halves.items():
+            pair_on([d for d in devs if d in keep], a, b, f"{label} [{h}]")
+        pair_on(devs, a, b, label)
+
+    def pair_on(devs, a, b, label):
         both = [d for d in devs if a(d) and b(d)]
         if len(both) < 3:
             rel[label] = {"n": len(both)}
