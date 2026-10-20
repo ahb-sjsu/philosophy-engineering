@@ -1,0 +1,30 @@
+{
+ "repli_binary_rows": 274,
+ "matched_reports": 274,
+ "unmatched_report_ids": 0,
+ "claims": 274,
+ "papers": 164,
+ "by_type_internal": {
+  "bushel": {
+   "claims": 115,
+   "on_forecast_paper": 115
+  },
+  "p1": {
+   "claims": 134,
+   "on_forecast_paper": 134
+  },
+  "p2": {
+   "claims": 25,
+   "on_forecast_paper": 0
+  }
+ },
+ "claims_on_forecast_paper": 249,
+ "papers_with_forecast": 139,
+ "markets_equals_replicats_papers": true,
+ "is_manylabs": {
+  "not manylabs": 257,
+  "posthoc": 12,
+  "split": 2,
+  "traditional": 3
+ }
+}

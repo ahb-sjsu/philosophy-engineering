@@ -51,7 +51,7 @@ yet verified, and MUST be verified before sealing).**
 
 | Role | Dataset | Size | Baselines on the same studies |
 |---|---|---|---|
-| Primary | **SCORE** replication set: Tyner et al., *Nature* 652:143–150 (2026), doi:10.1038/s41586-025-10078-y. Data: living repository doi:10.17605/OSF.IO/G5SNY; **archived as-published version doi:10.17605/OSF.IO/BZFGY** (the version this registration will name) | 274 claims of positive results from 164 papers (2009–2018, 54 journals). Replicated: 151/274 claims (55.1%), 80.8/164 papers weighted (49.3%), significance-in-original-pattern criterion | Human forecasts (repliCATS, Replication Markets) and machine scores are reported in separate SCORE preprints, not in the Nature paper; per-claim coverage **not confirmed** |
+| Primary | **SCORE** replication set: Tyner et al., *Nature* 652:143–150 (2026), doi:10.1038/s41586-025-10078-y. Data: living repository doi:10.17605/OSF.IO/G5SNY; **archived as-published version doi:10.17605/OSF.IO/BZFGY** (the version this registration will name) | 274 claims of positive results from 164 papers (2009–2018, 54 journals). Replicated: 151/274 claims (55.1%), 80.8/164 papers weighted (49.3%), significance-in-original-pattern criterion | Human forecasts (repliCATS, Replication Markets) and machine scores are reported in separate SCORE preprints, not in the Nature paper. **Coverage confirmed 2026-10-19 (7.0):** the forecasts are per paper, on the phase-1 claim. 249 of the 274 claims are on forecasted papers, but only the 134 phase-1 claims are the claim that was forecast |
 | Secondary | Pooled markets: Gordon et al., *PLOS ONE* (2021), doi:10.1371/journal.pone.0248780, R package `pooledmaRket` (RP:P, EE-RP, ML2, SSRP), **restricted to EE-RP and SSRP**: RP:P and Many Labs are the rubric development set (7.1, owner decision 2026-10-17) and MUST NOT be test data | ~39 findings (EE-RP 18, Camerer et al. 2016, Science, doi:10.1126/science.aaf0918; SSRP 21, Camerer et al. 2018, Nat. Hum. Behav., doi:10.1038/s41562-018-0399-z; counts verified 2026-10-17); too few to grade alone, reported as secondary | Market prices and surveys (73% correct; r = 0.581 for prices); Altmejd et al. 2019 ML scores on an overlapping set† |
 | Not primary | RP:CB (Errington et al., *eLife* 2021) | 50 experiments from 23 papers | Few; too few papers to cluster |
 | Not primary | Brazilian Reproducibility Initiative (*eLife* 2026, reviewed preprint) | 45 experiments, 3 methods | DOI, license, original identification not confirmed |
@@ -375,8 +375,8 @@ Primary: the difference in out-of-sample AUC (ΔAUC) between logistic models
 - M0: replication outcome ~ baseline predictors
 - M1: M0 + gate score
 
-**Baseline set (draft 2026-10-17, owner to confirm; availability on SCORE
-claims unconfirmed until OSF returns).** Each enters because prior work shows it
+**Baseline set (draft 2026-10-17, owner to confirm; B5's availability on SCORE
+claims confirmed 2026-10-19, see 7.0).** Each enters because prior work shows it
 predicts replication, or because a gate could proxy it:
 
 | | Baseline | Why |
@@ -385,9 +385,19 @@ predicts replication, or because a gate could proxy it:
 | B2 | experimental or not; main effect or interaction | Youyou et al. 2023 (experiments replicate less) and Altmejd et al. 2019 (interactions); A3 applies only to experiments, so without B2 an A3 increment can be the design type |
 | B3 | discipline, and subfield within psychology (covariates, never an interaction test in their place) | Inbar 2016: Van Bavel et al.'s coded feature lost its association once subdiscipline was a covariate (OR = 0.85, P = 0.51); in RP:P, cognitive studies replicated 53% and social-personality 28%. Van Bavel et al.'s reply: with both entered, neither is significant (P = 0.453 and 0.132), and the RP:P's own subdiscipline coding is unreported and binary. **Coding source:** the discipline and subfield fields SCORE releases, else the journal's subject category, fixed before sealing and never recoded after outcomes are seen |
 | B4 | recall-free text score (the 4.2 reference model) | Yang et al. 2020: text alone predicts |
-| B5 | forecasts (markets, surveys), where present on the same claims | strongest known human baseline |
+| B5 | forecasts (markets, surveys), where present on the same claims. On SCORE: the Replication Markets final market price (`cs_m1` of `KeyW_CS_2020-10-19.csv`, OSF tcfb9), with its survey (`cs_m11`) and the repliCATS aggregate (`ArMean` of `anon_p1_singletrace_confidence_scores.csv`) as secondaries. The column names are fixed from tcfb9's own analysis scripts. The other ten `cs_m*` columns are undocumented in what was read and are not used | strongest known human baseline |
 
-The primary M0 is B1 to B3 plus B5 where available. **M0+B4 is a registered
+The primary M0 is B1 to B3 plus B5 where available. **"Where available" splits
+the SCORE set (7.0):** B5 exists for at most 134 of the 274 claims, the phase-1
+claims. The 115 bushel claims sit on forecasted papers, but their forecast was
+made for a different claim, so using it would compare the gate against a forecast
+of something else. The 25 phase-2 claims have none. A single M0 over all 274
+cannot include B5. **Owner decision, before sealing:** either (a) the primary test
+runs on all 274 claims with B1 to B3, plus a registered B5 test on the phase-1
+subset; or (b) the primary test is the phase-1 subset with B5. Option (a) keeps the
+power of Section 7.5, which was simulated at 274 claims and 164 papers. Option (b)
+tests the gate against the strongest baseline, at roughly half the claims; its
+power has not been simulated. **M0+B4 is a registered
 secondary test:** the gates beyond a text model is a stronger claim than the
 gates beyond known features, and both are reported. Which of the two is primary
 is an owner decision, recorded before sealing.
@@ -450,6 +460,65 @@ license, and the restricted fraction are still unconfirmed.** After the window:
 list BZFGY's files, confirm a per-claim outcome table and its license, count the
 restricted claims, and locate the forecast data (Mody et al., osf.io/vgyed;
 Rajtmajer et al., osf.io/bdmte).
+
+**Done 2026-10-19, after the window.** Only file listings, column names,
+identifiers and counts were read. No replication outcome and no forecast value
+was opened. Scripts and results are in the campaign folder: `k2_score_doi_match`,
+`k2_forecast_coverage`, `k2_forecast_coverage_274` and `k2_forecast_scripts`.
+
+- **Layout and license.** BZFGY is CC0. Its data package (`analysis data and code
+  package 15 Dec 2025 1708.zip`, sha256 matches OSF) holds the analysis code (MIT)
+  and one R data file of 17 tables. G5SNY, also CC0, holds the same package, a
+  figures archive, and a component of per-attempt effect-size conversions. It
+  has no forecasts.
+- **Outcome table.** `repli_outcomes` has 427 replication reports on 331 claims.
+  `repli_binary` holds the success measures for exactly **274 reports, on 274
+  claims from 164 papers**, which is the Nature paper's analysis set. Every one
+  of its report identifiers is present in `repli_outcomes`.
+- **Restricted fraction.** For the analysis set it is **zero at the record
+  level**: all 274 analysed claims are in the public data. Whether every field
+  of each record is present has not been checked. The availability statement's
+  "shared without restriction" may refer to raw replication data, not these
+  records.
+- **Development-set overlap.** Of the 132 development-set articles, 1 is in
+  SCORE, DEV-ML-013 (SCORE paper 88xa, one new-data replication). SCORE's papers
+  are from 2009–2018 plus 100 COVID papers from 2020. It is already outside
+  the test pool, and its SCORE outcome is never opened (7.1).
+- **Forecasts.** Both pointers are preprints.
+  - Mody et al. (vgyed, version 2, 2026-10-15) is the human forecasts. Its data
+    links are tcfb9 (CC BY 4.0), d9x6s (repliCATS phase-one data, CC BY 4.0) and
+    w4xsk (not public). tcfb9's analysis scripts name the files.
+    `KeyW_CS_2020-10-19.csv` is Replication Markets (`cs_m1` market price,
+    `cs_m11` survey), and `anon_p1_singletrace_confidence_scores.csv` is repliCATS
+    (main aggregate `ArMean`, 38 methods). Both are keyed by **paper** and cover
+    the same 3,000 phase-1 papers.
+  - Rajtmajer et al. (bdmte) is the machine assessment. It links only to the
+    programme page dtzx4, and no per-claim machine scores were found.
+- **Coverage on the analysis set.**
+
+  | | Claims | Of these, on a forecasted paper |
+  |---|---|---|
+  | Phase 1 | 134 | 134 (this claim is the one forecast) |
+  | Bushel | 115 | 115 (a different claim was forecast) |
+  | Phase 2 | 25 | 0 |
+  | **Total** | **274** (164 papers) | **249** (139 papers) |
+
+  The forecast files carry no claim identifier, so whether each phase-1 claim in
+  `repli_outcomes` is exactly the claim forecast is inferred from the design
+  (one claim per paper in phase 1), not checked row by row. The B5 consequence is
+  in Section 5.
+- **The baseline's own validation is small.** The Mody et al. abstract
+  reports forecast accuracy validated against **n = 37** independent high-power
+  replications: AUC 0.76 [0.72–0.82] for Replication Markets and 0.76
+  [0.68–0.81] for repliCATS, with classification accuracy 73% and 68%. The 37
+  are selected in tcfb9's scripts by `TA2_include_singletrace_*` flags in an
+  outcomes file not opened here. A comparison against B5 on up to 134 claims
+  would be about 3.6 times the size of the forecasts' own published validation.
+- **Supplement source (7.1.1).** The forecasts cover 3,000 phase-1 papers, of
+  which 139 are in the analysis set. That leaves 2,861 sampled, forecast and
+  not replicated, the preferred supplement frame. Their claim statements are in
+  d9x6s (`phase_one_singletrace_claims_anonymised.csv`, not opened). Restricting
+  them to non-psychology disciplines and the SCORE journals is still to do.
 
 ### 7.0.1 Prior art that this design must cite and distinguish
 
@@ -563,7 +632,8 @@ Rajtmajer et al., osf.io/bdmte).
   0.73; "sample and effect sizes in original papers, and whether reported
   effects are single-variable main effects or two-variable interactions, are
   predictive"); Yang, Youyou & Uzzi 2020 (below); SCORE forecasters (76–78%
-  best-metric). **The increment is measured against the strongest baseline
+  best-metric; the Mody et al. preprint, read 2026-10-19, gives AUC 0.76 for
+  both teams on n = 37 replications, see 7.0). **The increment is measured against the strongest baseline
   available on the same claims, not the weakest.**
 - **Yang, Youyou & Uzzi 2020**, *PNAS* 117(20):10762–10768,
   doi:10.1073/pnas.1909046117 (verified; full text read via PMC7245108): a
@@ -698,7 +768,8 @@ any project used here. Same journals and years means the supplement differs from
 the test set only in not having been replicated, which is the property wanted.
 Preferred source, to verify when OSF returns: if SCORE's data include claims
 that were sampled and forecast but not replicated, draw from those, because
-their claim statements already exist in SCORE's own format. Otherwise, draw
+their claim statements already exist in SCORE's own format (confirmed
+2026-10-19: 2,861 such phase-1 papers, claims in OSF d9x6s; see 7.0). Otherwise, draw
 articles from the journal list and pick the claim by SCORE's documented
 claim-selection procedure, or failing documentation, the first finding stated
 in the abstract with an inferential test.
