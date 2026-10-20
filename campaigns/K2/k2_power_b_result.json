@@ -1,0 +1,330 @@
+{
+ "world": {
+  "n_papers": 164,
+  "extra_claims_poisson": 0.67,
+  "intercept": 0.25,
+  "baseline_slopes": [
+   0.9,
+   0.6,
+   -0.5
+  ],
+  "paper_sd": 0.6,
+  "gate_p_mean": 0.3
+ },
+ "shape": {
+  "papers": 133,
+  "claims": 134
+ },
+ "forecast_noise_sd": 0.7987916702359144,
+ "reps": 400,
+ "boot": 500,
+ "sesoi": 0.05,
+ "seed": 20261020,
+ "target_forecast_auc": 0.76,
+ "scenarios": {
+  "b5_w0.0_0.5": {
+   "scenario": "signal",
+   "gate_slope": 0.5,
+   "overlap_w": 0.0,
+   "b5_in_m0": true,
+   "rates": {
+    "pass": 0.1325,
+    "fail": 0.3675,
+    "unresolved": 0.5
+   },
+   "mean_delta_auc": 0.02517957917728818,
+   "mean_auc_m0": 0.7420722615803479,
+   "mean_auc_forecast_alone": 0.7501543799670071
+  },
+  "b5_w0.0_0.75": {
+   "scenario": "signal",
+   "gate_slope": 0.75,
+   "overlap_w": 0.0,
+   "b5_in_m0": true,
+   "rates": {
+    "pass": 0.4325,
+    "fail": 0.0975,
+    "unresolved": 0.47
+   },
+   "mean_delta_auc": 0.05274235726525833,
+   "mean_auc_m0": 0.7317660999889456,
+   "mean_auc_forecast_alone": 0.7409604216373841
+  },
+  "b5_w0.0_1.0": {
+   "scenario": "signal",
+   "gate_slope": 1.0,
+   "overlap_w": 0.0,
+   "b5_in_m0": true,
+   "rates": {
+    "pass": 0.775,
+    "fail": 0.0025,
+    "unresolved": 0.2225
+   },
+   "mean_delta_auc": 0.08975635626563644,
+   "mean_auc_m0": 0.7156002771661911,
+   "mean_auc_forecast_alone": 0.7259940557483531
+  },
+  "b5_w0.0_1.25": {
+   "scenario": "signal",
+   "gate_slope": 1.25,
+   "overlap_w": 0.0,
+   "b5_in_m0": true,
+   "rates": {
+    "pass": 0.9525,
+    "fail": 0.0,
+    "unresolved": 0.0475
+   },
+   "mean_delta_auc": 0.13622760027102665,
+   "mean_auc_m0": 0.6908232510262735,
+   "mean_auc_forecast_alone": 0.7088984502690551
+  },
+  "b5_w0.0_1.5": {
+   "scenario": "signal",
+   "gate_slope": 1.5,
+   "overlap_w": 0.0,
+   "b5_in_m0": true,
+   "rates": {
+    "pass": 0.9975,
+    "fail": 0.0,
+    "unresolved": 0.0025
+   },
+   "mean_delta_auc": 0.17304792662095467,
+   "mean_auc_m0": 0.6744827228022934,
+   "mean_auc_forecast_alone": 0.6963546164854074
+  },
+  "b5_w0.5_0.5": {
+   "scenario": "signal",
+   "gate_slope": 0.5,
+   "overlap_w": 0.5,
+   "b5_in_m0": true,
+   "rates": {
+    "pass": 0.0675,
+    "fail": 0.595,
+    "unresolved": 0.3375
+   },
+   "mean_delta_auc": 0.013379792058266287,
+   "mean_auc_m0": 0.7567789231703818,
+   "mean_auc_forecast_alone": 0.7684033892231281
+  },
+  "b5_w0.5_0.75": {
+   "scenario": "signal",
+   "gate_slope": 0.75,
+   "overlap_w": 0.5,
+   "b5_in_m0": true,
+   "rates": {
+    "pass": 0.1775,
+    "fail": 0.3175,
+    "unresolved": 0.505
+   },
+   "mean_delta_auc": 0.028726296396891848,
+   "mean_auc_m0": 0.7534396081457883,
+   "mean_auc_forecast_alone": 0.7749440037844029
+  },
+  "b5_w0.5_1.0": {
+   "scenario": "signal",
+   "gate_slope": 1.0,
+   "overlap_w": 0.5,
+   "b5_in_m0": true,
+   "rates": {
+    "pass": 0.2675,
+    "fail": 0.1625,
+    "unresolved": 0.57
+   },
+   "mean_delta_auc": 0.03898459426942261,
+   "mean_auc_m0": 0.7645597716385235,
+   "mean_auc_forecast_alone": 0.7886193451714445
+  },
+  "b5_w0.5_1.25": {
+   "scenario": "signal",
+   "gate_slope": 1.25,
+   "overlap_w": 0.5,
+   "b5_in_m0": true,
+   "rates": {
+    "pass": 0.5125,
+    "fail": 0.0675,
+    "unresolved": 0.42
+   },
+   "mean_delta_auc": 0.05404807221758893,
+   "mean_auc_m0": 0.7761175222413556,
+   "mean_auc_forecast_alone": 0.8011672599195672
+  },
+  "b5_w0.5_1.5": {
+   "scenario": "signal",
+   "gate_slope": 1.5,
+   "overlap_w": 0.5,
+   "b5_in_m0": true,
+   "rates": {
+    "pass": 0.5375,
+    "fail": 0.07,
+    "unresolved": 0.3925
+   },
+   "mean_delta_auc": 0.053907805927322465,
+   "mean_auc_m0": 0.7933388834044723,
+   "mean_auc_forecast_alone": 0.8160371535912972
+  },
+  "b5_w1.0_0.5": {
+   "scenario": "signal",
+   "gate_slope": 0.5,
+   "overlap_w": 1.0,
+   "b5_in_m0": true,
+   "rates": {
+    "pass": 0.015,
+    "fail": 0.7825,
+    "unresolved": 0.2025
+   },
+   "mean_delta_auc": 0.0050348454385358175,
+   "mean_auc_m0": 0.7629196766193084,
+   "mean_auc_forecast_alone": 0.776745510656561
+  },
+  "b5_w1.0_0.75": {
+   "scenario": "signal",
+   "gate_slope": 0.75,
+   "overlap_w": 1.0,
+   "b5_in_m0": true,
+   "rates": {
+    "pass": 0.035,
+    "fail": 0.7,
+    "unresolved": 0.265
+   },
+   "mean_delta_auc": 0.009113289588628708,
+   "mean_auc_m0": 0.7752229112094785,
+   "mean_auc_forecast_alone": 0.7916462443630633
+  },
+  "b5_w1.0_1.0": {
+   "scenario": "signal",
+   "gate_slope": 1.0,
+   "overlap_w": 1.0,
+   "b5_in_m0": true,
+   "rates": {
+    "pass": 0.0325,
+    "fail": 0.6725,
+    "unresolved": 0.295
+   },
+   "mean_delta_auc": 0.010677452778252392,
+   "mean_auc_m0": 0.7966477315892834,
+   "mean_auc_forecast_alone": 0.8167945389839928
+  },
+  "b5_w1.0_1.25": {
+   "scenario": "signal",
+   "gate_slope": 1.25,
+   "overlap_w": 1.0,
+   "b5_in_m0": true,
+   "rates": {
+    "pass": 0.06,
+    "fail": 0.645,
+    "unresolved": 0.295
+   },
+   "mean_delta_auc": 0.01229623328896236,
+   "mean_auc_m0": 0.8101246838440415,
+   "mean_auc_forecast_alone": 0.8301159733019864
+  },
+  "b5_w1.0_1.5": {
+   "scenario": "signal",
+   "gate_slope": 1.5,
+   "overlap_w": 1.0,
+   "b5_in_m0": true,
+   "rates": {
+    "pass": 0.055,
+    "fail": 0.7175,
+    "unresolved": 0.2275
+   },
+   "mean_delta_auc": 0.011300813494855313,
+   "mean_auc_m0": 0.837322296218667,
+   "mean_auc_forecast_alone": 0.8563248561952932
+  },
+  "nob5_0.5": {
+   "scenario": "signal",
+   "gate_slope": 0.5,
+   "overlap_w": 0.0,
+   "b5_in_m0": false,
+   "rates": {
+    "pass": 0.1125,
+    "fail": 0.3475,
+    "unresolved": 0.54
+   },
+   "mean_delta_auc": 0.02458741342529564,
+   "mean_auc_m0": 0.7346524566256452
+  },
+  "nob5_0.75": {
+   "scenario": "signal",
+   "gate_slope": 0.75,
+   "overlap_w": 0.0,
+   "b5_in_m0": false,
+   "rates": {
+    "pass": 0.4175,
+    "fail": 0.0575,
+    "unresolved": 0.525
+   },
+   "mean_delta_auc": 0.05606596142864697,
+   "mean_auc_m0": 0.7231913338689965
+  },
+  "nob5_1.0": {
+   "scenario": "signal",
+   "gate_slope": 1.0,
+   "overlap_w": 0.0,
+   "b5_in_m0": false,
+   "rates": {
+    "pass": 0.7725,
+    "fail": 0.0075,
+    "unresolved": 0.22
+   },
+   "mean_delta_auc": 0.09106290733089555,
+   "mean_auc_m0": 0.7086314590721159
+  },
+  "nob5_1.25": {
+   "scenario": "signal",
+   "gate_slope": 1.25,
+   "overlap_w": 0.0,
+   "b5_in_m0": false,
+   "rates": {
+    "pass": 0.9425,
+    "fail": 0.0,
+    "unresolved": 0.0575
+   },
+   "mean_delta_auc": 0.13013390739056166,
+   "mean_auc_m0": 0.6907880450329661
+  },
+  "nob5_1.5": {
+   "scenario": "signal",
+   "gate_slope": 1.5,
+   "overlap_w": 0.0,
+   "b5_in_m0": false,
+   "rates": {
+    "pass": 0.995,
+    "fail": 0.0,
+    "unresolved": 0.005
+   },
+   "mean_delta_auc": 0.17450549452900652,
+   "mean_auc_m0": 0.67279229364899
+  },
+  "null": {
+   "scenario": "null",
+   "gate_slope": 0.0,
+   "overlap_w": 0.0,
+   "b5_in_m0": true,
+   "rates": {
+    "pass": 0.0025,
+    "fail": 0.965,
+    "unresolved": 0.0325
+   },
+   "mean_delta_auc": -0.004641698088801002,
+   "mean_auc_m0": 0.7549270664256409,
+   "mean_auc_forecast_alone": 0.7589057329010483
+  },
+  "proxy": {
+   "scenario": "proxy",
+   "gate_slope": 0.0,
+   "overlap_w": 0.0,
+   "b5_in_m0": true,
+   "rates": {
+    "pass": 0.005,
+    "fail": 0.9625,
+    "unresolved": 0.0325
+   },
+   "mean_delta_auc": -0.0036755254895263554,
+   "mean_auc_m0": 0.7540518120191904,
+   "mean_auc_forecast_alone": 0.757440116651596
+  }
+ },
+ "a1_witness_at_b_shape": "PASS"
+}

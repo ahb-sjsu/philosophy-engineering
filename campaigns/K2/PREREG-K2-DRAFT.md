@@ -396,8 +396,10 @@ cannot include B5. **Owner decision, before sealing:** either (a) the primary te
 runs on all 274 claims with B1 to B3, plus a registered B5 test on the phase-1
 subset; or (b) the primary test is the phase-1 subset with B5. Option (a) keeps the
 power of Section 7.5, which was simulated at 274 claims and 164 papers. Option (b)
-tests the gate against the strongest baseline, at roughly half the claims; its
-power has not been simulated. **M0+B4 is a registered
+tests the gate against the strongest baseline, at roughly half the claims. Its
+power, simulated 2026-10-20 (7.5.1), reaches 80% only at a true ΔAUC near 0.09 to
+0.10 rather than ~0.055, and only if the forecasters do not already see the
+design signal the gates measure. **M0+B4 is a registered
 secondary test:** the gates beyond a text model is a stronger claim than the
 gates beyond known features, and both are reported. Which of the two is primary
 is an owner decision, recorded before sealing.
@@ -1093,6 +1095,42 @@ because a text model and forecasters can absorb what the noisy features miss;
 (3) the per-check secondary results matter, because a proxy for power should
 load on A4 and not on A1 or A3. Not a witness failure; a limit, stated before
 the run.
+
+### 7.5.1 Power at the option (b) shape (simulation, run 2026-10-20)
+
+`k2_power_b.py` reruns the 7.5 world at the phase-1 shape of Section 5 option
+(b): 134 claims on 133 papers (132 with one claim, one with two), 400 draws per
+scenario, 500 bootstrap draws each, seed 20261020, SESOI 0.05, through the same
+`k2_analysis.py`. It ran twice with identical per-scenario seeds, once on Atlas
+and once as 22 NRP Jobs (`k2_power_b_nrp.py`); the two results agree exactly.
+Result committed as `k2_power_b_result.json`.
+
+The forecast column is an **assumption**, not evidence: f = (replication
+log-odds without the gate's own signal) + w × (the gate's signal) + noise, with
+the noise set so that f alone has AUC ~0.76 in the null world, the value the
+forecasts reached on their n = 37 validation (7.0). w is how much of the design
+signal the forecasters already see: 0 none, 1 all.
+
+**A1 witness at this shape: PASS.** Null passes 0.003, proxy 0.005 (with B5 in M0).
+
+Pass rate (mean ΔAUC in brackets) by gate slope:
+
+| M0 | slope 0.5 | 0.75 | 1.0 | 1.25 | 1.5 |
+|---|---:|---:|---:|---:|---:|
+| B1–B3 (no forecast) | 0.11 (0.025) | 0.42 (0.056) | 0.77 (0.091) | 0.94 (0.130) | 1.00 (0.175) |
+| B1–B3 + B5, w = 0 | 0.13 (0.025) | 0.43 (0.053) | 0.78 (0.090) | 0.95 (0.136) | 1.00 (0.173) |
+| B1–B3 + B5, w = 0.5 | 0.07 (0.013) | 0.18 (0.029) | 0.27 (0.039) | 0.51 (0.054) | 0.54 (0.054) |
+| B1–B3 + B5, w = 1 | 0.02 (0.005) | 0.04 (0.009) | 0.03 (0.011) | 0.06 (0.012) | 0.06 (0.011) |
+
+**Reading.** (1) Halving the sample costs about half the sensitivity: at slope
+0.75 (ΔAUC ~0.055) the pass rate falls from 0.84 at 274 claims (7.5) to 0.42 at
+134; 80% power needs a true ΔAUC near 0.09 to 0.10. (2) If the forecasters
+already see half of what the gates measure, the pass rate stays at or below 0.54
+across the slopes run. If they see all of it, the gate cannot pass (≤ 0.06) and
+the test usually returns `fail` (0.65 to 0.78), which is the correct verdict for
+a gate that adds nothing beyond the forecast. (3) Which w holds on SCORE is not
+known; the simulation shows how much option (b)'s result depends on it, not what
+it is.
 
 ## 8. Compute
 
