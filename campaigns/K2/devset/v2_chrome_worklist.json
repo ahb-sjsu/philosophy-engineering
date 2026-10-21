@@ -1,0 +1,1251 @@
+{
+ "dev_seed": 20261022,
+ "papers": [
+  {
+   "role": "dev",
+   "order": "",
+   "paper_id": "5KYx",
+   "doi": "10.1007/s13524-015-0392-3",
+   "urls": [
+    {
+     "version": "publishedVersion",
+     "pdf_url": "https://read.dukeupress.edu/demography/article-pdf/52/3/787/877573/787behrman.pdf",
+     "landing_page_url": "https://doi.org/10.1007/s13524-015-0392-3"
+    }
+   ]
+  },
+  {
+   "role": "dev",
+   "order": "",
+   "paper_id": "BPXj",
+   "doi": "10.1007/s13524-017-0640-9",
+   "urls": [
+    {
+     "version": "publishedVersion",
+     "pdf_url": "https://read.dukeupress.edu/demography/article-pdf/55/1/83/840426/83mikolai.pdf",
+     "landing_page_url": "https://doi.org/10.1007/s13524-017-0640-9"
+    }
+   ]
+  },
+  {
+   "role": "dev",
+   "order": "",
+   "paper_id": "el4m",
+   "doi": "10.1016/j.jfineco.2016.01.027",
+   "urls": [
+    {
+     "version": "publishedVersion",
+     "pdf_url": "",
+     "landing_page_url": "https://doi.org/10.2139/ssrn.2208249"
+    }
+   ]
+  },
+  {
+   "role": "dev",
+   "order": "",
+   "paper_id": "34Rd",
+   "doi": "10.1007/s11747-010-0229-y",
+   "urls": [
+    {
+     "version": "publishedVersion",
+     "pdf_url": "https://link.springer.com/content/pdf/10.1007/s11747-010-0229-y.pdf",
+     "landing_page_url": "https://doi.org/10.1007/s11747-010-0229-y"
+    }
+   ]
+  },
+  {
+   "role": "dev",
+   "order": "",
+   "paper_id": "K8XW",
+   "doi": "10.1287/orsc.1100.0533",
+   "urls": [
+    {
+     "version": "publishedVersion",
+     "pdf_url": "",
+     "landing_page_url": "https://doi.org/10.2139/ssrn.1557704"
+    }
+   ]
+  },
+  {
+   "role": "dev",
+   "order": "",
+   "paper_id": "OXbO",
+   "doi": "10.1111/jofi.12141",
+   "urls": [
+    {
+     "version": "publishedVersion",
+     "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1111/jofi.12141",
+     "landing_page_url": "https://doi.org/10.1111/jofi.12141"
+    }
+   ]
+  },
+  {
+   "role": "dev",
+   "order": "",
+   "paper_id": "P9Vr",
+   "doi": "10.1111/j.1741-3737.2009.00684.x",
+   "urls": [
+    {
+     "version": "publishedVersion",
+     "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1111/j.1741-3737.2009.00684.x",
+     "landing_page_url": "https://doi.org/10.1111/j.1741-3737.2009.00684.x"
+    }
+   ]
+  },
+  {
+   "role": "dev",
+   "order": "",
+   "paper_id": "mPN4",
+   "doi": "10.1017/s0043887117000351",
+   "urls": [
+    {
+     "version": "publishedVersion",
+     "pdf_url": "https://muse.jhu.edu/pub/122/article/691089",
+     "landing_page_url": "https://doi.org/10.1017/s0043887117000351"
+    }
+   ]
+  },
+  {
+   "role": "dev",
+   "order": "",
+   "paper_id": "13Nv",
+   "doi": "10.1093/esr/jcr043",
+   "urls": [
+    {
+     "version": "publishedVersion",
+     "pdf_url": "",
+     "landing_page_url": "https://research.rug.nl/en/publications/b6bedda2-3efb-459a-8706-9dddcdb75090"
+    }
+   ]
+  },
+  {
+   "role": "dev",
+   "order": "",
+   "paper_id": "A2lr",
+   "doi": "10.1287/mnsc.1110.1379",
+   "urls": [
+    {
+     "version": "acceptedVersion",
+     "pdf_url": "",
+     "landing_page_url": "https://doi.org/10.2139/ssrn.1333795"
+    }
+   ]
+  },
+  {
+   "role": "dev",
+   "order": "",
+   "paper_id": "W4De",
+   "doi": "10.1111/j.1540-5907.2011.00562.x",
+   "urls": [
+    {
+     "version": "publishedVersion",
+     "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1111/j.1540-5907.2011.00562.x",
+     "landing_page_url": "https://doi.org/10.1111/j.1540-5907.2011.00562.x"
+    }
+   ]
+  },
+  {
+   "role": "dev",
+   "order": "",
+   "paper_id": "Krvd",
+   "doi": "10.1111/jomf.12224",
+   "urls": [
+    {
+     "version": "publishedVersion",
+     "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1111/jomf.12224",
+     "landing_page_url": "https://doi.org/10.1111/jomf.12224"
+    }
+   ]
+  },
+  {
+   "role": "heldout",
+   "order": "1",
+   "paper_id": "dNkl",
+   "doi": "10.1093/qje/qjy011",
+   "urls": [
+    {
+     "version": "publishedVersion",
+     "pdf_url": "https://academic.oup.com/qje/article-pdf/133/4/2037/25985677/qjy011.pdf",
+     "landing_page_url": "https://doi.org/10.1093/qje/qjy011"
+    }
+   ]
+  },
+  {
+   "role": "heldout",
+   "order": "2",
+   "paper_id": "pNjB",
+   "doi": "10.1509/jmr.13.0503",
+   "urls": [
+    {
+     "version": "acceptedVersion",
+     "pdf_url": "",
+     "landing_page_url": "https://doi.org/10.2139/ssrn.2029496"
+    }
+   ]
+  },
+  {
+   "role": "heldout",
+   "order": "3",
+   "paper_id": "zDyr",
+   "doi": "10.1111/jofi.12157",
+   "urls": [
+    {
+     "version": "publishedVersion",
+     "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1111/jofi.12157",
+     "landing_page_url": "https://doi.org/10.1111/jofi.12157"
+    }
+   ]
+  },
+  {
+   "role": "heldout",
+   "order": "4",
+   "paper_id": "qQ9Z",
+   "doi": "10.1007/s13524-015-0419-9",
+   "urls": [
+    {
+     "version": "publishedVersion",
+     "pdf_url": "https://read.dukeupress.edu/demography/article-pdf/52/5/1751/866807/1751desmond.pdf",
+     "landing_page_url": "https://doi.org/10.1007/s13524-015-0419-9"
+    }
+   ]
+  },
+  {
+   "role": "heldout",
+   "order": "5",
+   "paper_id": "7K4L",
+   "doi": "10.1093/rfs/hhu011",
+   "urls": [
+    {
+     "version": "publishedVersion",
+     "pdf_url": "",
+     "landing_page_url": "https://doi.org/10.2139/ssrn.1699272"
+    }
+   ]
+  },
+  {
+   "role": "heldout",
+   "order": "6",
+   "paper_id": "E1Gx",
+   "doi": "10.1093/jopart/mus047",
+   "urls": [
+    {
+     "version": "publishedVersion",
+     "pdf_url": "https://academic.oup.com/jpart/article-pdf/23/3/581/2787641/mus047.pdf",
+     "landing_page_url": "https://doi.org/10.1093/jopart/mus047"
+    }
+   ]
+  },
+  {
+   "role": "heldout",
+   "order": "7",
+   "paper_id": "pGDj",
+   "doi": "10.1007/s13524-013-0214-4",
+   "urls": [
+    {
+     "version": "publishedVersion",
+     "pdf_url": "https://read.dukeupress.edu/demography/article-pdf/50/5/1715/878121/1715yeatman.pdf",
+     "landing_page_url": "https://doi.org/10.1007/s13524-013-0214-4"
+    }
+   ]
+  },
+  {
+   "role": "heldout",
+   "order": "8",
+   "paper_id": "93dL",
+   "doi": "10.1093/esr/jct031",
+   "urls": [
+    {
+     "version": "publishedVersion",
+     "pdf_url": "https://academic.oup.com/esr/article-pdf/30/3/275/1361187/jct031.pdf",
+     "landing_page_url": "https://doi.org/10.1093/esr/jct031"
+    }
+   ]
+  },
+  {
+   "role": "heldout",
+   "order": "9",
+   "paper_id": "qYyZ",
+   "doi": "10.1111/j.1540-6261.2009.01476.x",
+   "urls": [
+    {
+     "version": "publishedVersion",
+     "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1111/j.1540-6261.2009.01476.x",
+     "landing_page_url": "https://doi.org/10.1111/j.1540-6261.2009.01476.x"
+    },
+    {
+     "version": "acceptedVersion",
+     "pdf_url": "",
+     "landing_page_url": "https://doi.org/10.2139/ssrn.962131"
+    }
+   ]
+  },
+  {
+   "role": "heldout",
+   "order": "10",
+   "paper_id": "w4bG",
+   "doi": "10.1111/jofi.12026",
+   "urls": [
+    {
+     "version": "publishedVersion",
+     "pdf_url": "",
+     "landing_page_url": "https://doi.org/10.2139/ssrn.1785295"
+    }
+   ]
+  },
+  {
+   "role": "heldout",
+   "order": "11",
+   "paper_id": "BqKX",
+   "doi": "10.1093/esr/jcy010",
+   "urls": [
+    {
+     "version": "publishedVersion",
+     "pdf_url": "",
+     "landing_page_url": "https://research.manchester.ac.uk/en/publications/eb5db1fb-cff6-4c76-8e9c-d3d1173bbc7f"
+    }
+   ]
+  },
+  {
+   "role": "heldout",
+   "order": "12",
+   "paper_id": "GOzz",
+   "doi": "10.1257/aer.20101199",
+   "urls": [
+    {
+     "version": "publishedVersion",
+     "pdf_url": "https://www.aeaweb.org/articles/pdf/doi/10.1257/aer.20101199",
+     "landing_page_url": "https://doi.org/10.1257/aer.20101199"
+    }
+   ]
+  },
+  {
+   "role": "heldout",
+   "order": "13",
+   "paper_id": "7132",
+   "doi": "10.1007/s13524-013-0268-3",
+   "urls": [
+    {
+     "version": "publishedVersion",
+     "pdf_url": "https://read.dukeupress.edu/demography/article-pdf/51/2/387/865536/387helleringer.pdf",
+     "landing_page_url": "https://doi.org/10.1007/s13524-013-0268-3"
+    }
+   ]
+  },
+  {
+   "role": "heldout",
+   "order": "14",
+   "paper_id": "RqZv",
+   "doi": "10.1257/app.4.1.136",
+   "urls": [
+    {
+     "version": "publishedVersion",
+     "pdf_url": "https://www.aeaweb.org/articles/pdf/doi/10.1257/app.4.1.136",
+     "landing_page_url": "https://doi.org/10.1257/app.4.1.136"
+    }
+   ]
+  },
+  {
+   "role": "heldout",
+   "order": "15",
+   "paper_id": "Dper",
+   "doi": "10.1016/j.jfineco.2014.05.011",
+   "urls": [
+    {
+     "version": "acceptedVersion",
+     "pdf_url": "",
+     "landing_page_url": "https://doi.org/10.2139/ssrn.2024229"
+    }
+   ]
+  },
+  {
+   "role": "heldout",
+   "order": "16",
+   "paper_id": "5kbm",
+   "doi": "10.1093/jopart/mux023",
+   "urls": [
+    {
+     "version": "publishedVersion",
+     "pdf_url": "",
+     "landing_page_url": "https://researchprofiles.ku.dk/da/publications/8ae0fdc0-d9e4-4a55-995b-44ec92cf5ff7"
+    }
+   ]
+  },
+  {
+   "role": "heldout",
+   "order": "17",
+   "paper_id": "y75w",
+   "doi": "10.1287/mnsc.1120.1611",
+   "urls": [
+    {
+     "version": "acceptedVersion",
+     "pdf_url": "",
+     "landing_page_url": "https://doi.org/10.2139/ssrn.1783054"
+    }
+   ]
+  },
+  {
+   "role": "heldout",
+   "order": "19",
+   "paper_id": "GYlw",
+   "doi": "10.1111/jofi.12466",
+   "urls": [
+    {
+     "version": "acceptedVersion",
+     "pdf_url": "",
+     "landing_page_url": "https://doi.org/10.2139/ssrn.2375262"
+    }
+   ]
+  },
+  {
+   "role": "heldout",
+   "order": "20",
+   "paper_id": "ky5z",
+   "doi": "10.1093/esr/jcr054",
+   "urls": [
+    {
+     "version": "publishedVersion",
+     "pdf_url": "https://academic.oup.com/esr/article-pdf/29/2/179/16833053/jcr054.pdf",
+     "landing_page_url": "https://doi.org/10.1093/esr/jcr054"
+    },
+    {
+     "version": "acceptedVersion",
+     "pdf_url": "https://www.zora.uzh.ch/id/eprint/55139/1/schlueter_davidov__contextual.pdf",
+     "landing_page_url": "https://www.zora.uzh.ch/id/eprint/55139/1/schlueter_davidov__contextual.pdf"
+    }
+   ]
+  },
+  {
+   "role": "heldout",
+   "order": "21",
+   "paper_id": "gvm4",
+   "doi": "10.1177/0003122412451728",
+   "urls": [
+    {
+     "version": "publishedVersion",
+     "pdf_url": "https://journals.sagepub.com/doi/pdf/10.1177/0003122412451728?download=true",
+     "landing_page_url": "https://doi.org/10.1177/0003122412451728"
+    }
+   ]
+  },
+  {
+   "role": "heldout",
+   "order": "22",
+   "paper_id": "gdlO",
+   "doi": "10.1257/aer.101.2.493",
+   "urls": [
+    {
+     "version": "publishedVersion",
+     "pdf_url": "https://www.aeaweb.org/articles/pdf/doi/10.1257/aer.101.2.493",
+     "landing_page_url": "https://doi.org/10.1257/aer.101.2.493"
+    }
+   ]
+  },
+  {
+   "role": "heldout",
+   "order": "23",
+   "paper_id": "9XjL",
+   "doi": "10.1111/ajps.12221",
+   "urls": [
+    {
+     "version": "publishedVersion",
+     "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1111/ajps.12221",
+     "landing_page_url": "https://doi.org/10.1111/ajps.12221"
+    }
+   ]
+  },
+  {
+   "role": "heldout",
+   "order": "24",
+   "paper_id": "B2GE",
+   "doi": "10.1111/j.1540-6261.2010.01562.x",
+   "urls": [
+    {
+     "version": "acceptedVersion",
+     "pdf_url": "",
+     "landing_page_url": "https://doi.org/10.2139/ssrn.1090156"
+    },
+    {
+     "version": "acceptedVersion",
+     "pdf_url": "",
+     "landing_page_url": "https://doi.org/10.2139/ssrn.1340865"
+    },
+    {
+     "version": "acceptedVersion",
+     "pdf_url": "",
+     "landing_page_url": "https://doi.org/10.2139/ssrn.1362480"
+    }
+   ]
+  },
+  {
+   "role": "heldout",
+   "order": "25",
+   "paper_id": "R5WV",
+   "doi": "10.1257/aer.103.5.1925",
+   "urls": [
+    {
+     "version": "publishedVersion",
+     "pdf_url": "https://www.aeaweb.org/articles/pdf/doi/10.1257/aer.103.5.1925",
+     "landing_page_url": "https://doi.org/10.1257/aer.103.5.1925"
+    }
+   ]
+  },
+  {
+   "role": "heldout",
+   "order": "26",
+   "paper_id": "XXBY",
+   "doi": "10.1111/jofi.12047",
+   "urls": [
+    {
+     "version": "acceptedVersion",
+     "pdf_url": "",
+     "landing_page_url": "https://doi.org/10.2139/ssrn.1475663"
+    }
+   ]
+  },
+  {
+   "role": "heldout",
+   "order": "28",
+   "paper_id": "k4Az",
+   "doi": "10.1111/jofi.12262",
+   "urls": [
+    {
+     "version": "publishedVersion",
+     "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1111/jofi.12262",
+     "landing_page_url": "https://doi.org/10.1111/jofi.12262"
+    }
+   ]
+  },
+  {
+   "role": "heldout",
+   "order": "30",
+   "paper_id": "2bxG",
+   "doi": "10.1111/1745-9125.12180",
+   "urls": [
+    {
+     "version": "publishedVersion",
+     "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1111/1745-9125.12180",
+     "landing_page_url": "https://doi.org/10.1111/1745-9125.12180"
+    },
+    {
+     "version": "publishedVersion",
+     "pdf_url": "https://www.crimrxiv.com/pub/67lxxy3l/download/pdf",
+     "landing_page_url": "http://dx.doi.org/10.21428/cb6ab371.770a30ad"
+    }
+   ]
+  },
+  {
+   "role": "heldout",
+   "order": "31",
+   "paper_id": "1k10",
+   "doi": "10.1287/mnsc.1120.1542",
+   "urls": [
+    {
+     "version": "acceptedVersion",
+     "pdf_url": "",
+     "landing_page_url": "https://doi.org/10.2139/ssrn.1814989"
+    }
+   ]
+  },
+  {
+   "role": "heldout",
+   "order": "32",
+   "paper_id": "RlVV",
+   "doi": "10.1093/rfs/hhv006",
+   "urls": [
+    {
+     "version": "acceptedVersion",
+     "pdf_url": "",
+     "landing_page_url": "https://doi.org/10.2139/ssrn.2264468"
+    }
+   ]
+  },
+  {
+   "role": "heldout",
+   "order": "33",
+   "paper_id": "1l10",
+   "doi": "10.1093/jopart/muw058",
+   "urls": [
+    {
+     "version": "publishedVersion",
+     "pdf_url": "https://academic.oup.com/jpart/article-pdf/27/1/150/10017102/muw058.pdf",
+     "landing_page_url": "https://doi.org/10.1093/jopart/muw058"
+    }
+   ]
+  },
+  {
+   "role": "heldout",
+   "order": "34",
+   "paper_id": "1ODW",
+   "doi": "10.1093/rfs/hhv067",
+   "urls": [
+    {
+     "version": "publishedVersion",
+     "pdf_url": "",
+     "landing_page_url": "https://doi.org/10.2139/ssrn.2313220"
+    }
+   ]
+  },
+  {
+   "role": "heldout",
+   "order": "35",
+   "paper_id": "VGym",
+   "doi": "10.1509/jmkr.47.3.415",
+   "urls": [
+    {
+     "version": "publishedVersion",
+     "pdf_url": "",
+     "landing_page_url": "https://doi.org/10.2139/ssrn.1345497"
+    }
+   ]
+  },
+  {
+   "role": "heldout",
+   "order": "36",
+   "paper_id": "LmVx",
+   "doi": "10.1257/app.6.4.110",
+   "urls": [
+    {
+     "version": "publishedVersion",
+     "pdf_url": "https://www.aeaweb.org/articles/pdf/doi/10.1257/app.6.4.110",
+     "landing_page_url": "https://doi.org/10.1257/app.6.4.110"
+    }
+   ]
+  },
+  {
+   "role": "heldout",
+   "order": "37",
+   "paper_id": "4pAB",
+   "doi": "10.1016/j.jfineco.2015.09.001",
+   "urls": [
+    {
+     "version": "acceptedVersion",
+     "pdf_url": "",
+     "landing_page_url": "https://doi.org/10.2139/ssrn.2014367"
+    }
+   ]
+  },
+  {
+   "role": "heldout",
+   "order": "38",
+   "paper_id": "V8z1",
+   "doi": "10.1016/j.worlddev.2012.09.016",
+   "urls": [
+    {
+     "version": "publishedVersion",
+     "pdf_url": "https://www.sciencedirect.com/science/article/pii/S0305750X1200232X",
+     "landing_page_url": "https://doi.org/10.1016/j.worlddev.2012.09.016"
+    }
+   ]
+  },
+  {
+   "role": "heldout",
+   "order": "39",
+   "paper_id": "jq74",
+   "doi": "10.1093/rfs/hhy022",
+   "urls": [
+    {
+     "version": "publishedVersion",
+     "pdf_url": "",
+     "landing_page_url": "https://doi.org/10.1093/rfs/hhy022"
+    }
+   ]
+  },
+  {
+   "role": "heldout",
+   "order": "40",
+   "paper_id": "5v32",
+   "doi": "10.1017/s0003055417000119",
+   "urls": [
+    {
+     "version": "acceptedVersion",
+     "pdf_url": "",
+     "landing_page_url": "https://doi.org/10.2139/ssrn.2632714"
+    }
+   ]
+  },
+  {
+   "role": "heldout",
+   "order": "41",
+   "paper_id": "5Ebl",
+   "doi": "10.1111/j.1540-6261.2011.01652.x",
+   "urls": [
+    {
+     "version": "acceptedVersion",
+     "pdf_url": "",
+     "landing_page_url": "https://doi.org/10.2139/ssrn.970644"
+    }
+   ]
+  },
+  {
+   "role": "heldout",
+   "order": "43",
+   "paper_id": "ZaZK",
+   "doi": "10.1287/mnsc.2017.2811",
+   "urls": [
+    {
+     "version": "acceptedVersion",
+     "pdf_url": "",
+     "landing_page_url": "https://doi.org/10.2139/ssrn.2115093"
+    }
+   ]
+  },
+  {
+   "role": "heldout",
+   "order": "46",
+   "paper_id": "xgxj",
+   "doi": "10.1257/aer.20160613",
+   "urls": [
+    {
+     "version": "publishedVersion",
+     "pdf_url": "https://pubs.aeaweb.org/doi/pdfplus/10.1257/aer.20160613",
+     "landing_page_url": "https://doi.org/10.1257/aer.20160613"
+    }
+   ]
+  },
+  {
+   "role": "heldout",
+   "order": "47",
+   "paper_id": "72X2",
+   "doi": "10.3982/ecta10104",
+   "urls": [
+    {
+     "version": "publishedVersion",
+     "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.3982/ECTA10104",
+     "landing_page_url": "https://doi.org/10.3982/ecta10104"
+    }
+   ]
+  },
+  {
+   "role": "heldout",
+   "order": "48",
+   "paper_id": "jQ3K",
+   "doi": "10.1017/s0003055410000535",
+   "urls": [
+    {
+     "version": "acceptedVersion",
+     "pdf_url": "",
+     "landing_page_url": "https://doi.org/10.2139/ssrn.1434616"
+    }
+   ]
+  },
+  {
+   "role": "heldout",
+   "order": "49",
+   "paper_id": "7BE9",
+   "doi": "10.1093/jopart/mur010",
+   "urls": [
+    {
+     "version": "publishedVersion",
+     "pdf_url": "https://academic.oup.com/jpart/article-pdf/22/2/219/2700934/mur010.pdf",
+     "landing_page_url": "https://doi.org/10.1093/jopart/mur010"
+    }
+   ]
+  },
+  {
+   "role": "heldout",
+   "order": "50",
+   "paper_id": "OlAN",
+   "doi": "10.1093/rfs/hhs061",
+   "urls": [
+    {
+     "version": "acceptedVersion",
+     "pdf_url": "",
+     "landing_page_url": "https://doi.org/10.2139/ssrn.1757025"
+    }
+   ]
+  },
+  {
+   "role": "heldout",
+   "order": "52",
+   "paper_id": "Rjpb",
+   "doi": "10.1111/ajps.12372",
+   "urls": [
+    {
+     "version": "publishedVersion",
+     "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1111/ajps.12372",
+     "landing_page_url": "https://doi.org/10.1111/ajps.12372"
+    },
+    {
+     "version": "acceptedVersion",
+     "pdf_url": "",
+     "landing_page_url": "https://doi.org/10.31235/osf.io/tcrhq"
+    }
+   ]
+  },
+  {
+   "role": "heldout",
+   "order": "53",
+   "paper_id": "Px3J",
+   "doi": "10.1093/qje/qjt020",
+   "urls": [
+    {
+     "version": "acceptedVersion",
+     "pdf_url": "",
+     "landing_page_url": "https://doi.org/10.2139/ssrn.1961211"
+    }
+   ]
+  },
+  {
+   "role": "heldout",
+   "order": "54",
+   "paper_id": "j3y4",
+   "doi": "10.1007/s10683-013-9358-8",
+   "urls": [
+    {
+     "version": "acceptedVersion",
+     "pdf_url": "",
+     "landing_page_url": "https://doi.org/10.2139/ssrn.1838591"
+    }
+   ]
+  },
+  {
+   "role": "heldout",
+   "order": "55",
+   "paper_id": "EA9j",
+   "doi": "10.1007/s13524-013-0216-2",
+   "urls": [
+    {
+     "version": "publishedVersion",
+     "pdf_url": "https://read.dukeupress.edu/demography/article-pdf/50/5/1687/878410/1687kulu.pdf",
+     "landing_page_url": "https://doi.org/10.1007/s13524-013-0216-2"
+    }
+   ]
+  },
+  {
+   "role": "heldout",
+   "order": "56",
+   "paper_id": "RmO9",
+   "doi": "10.1017/s0003055415000155",
+   "urls": [
+    {
+     "version": "acceptedVersion",
+     "pdf_url": "",
+     "landing_page_url": "https://doi.org/10.2139/ssrn.2427983"
+    }
+   ]
+  },
+  {
+   "role": "heldout",
+   "order": "57",
+   "paper_id": "xgEL",
+   "doi": "10.1353/dem.0.0101",
+   "urls": [
+    {
+     "version": "publishedVersion",
+     "pdf_url": "https://read.dukeupress.edu/demography/article-pdf/47/2/327/880297/327liu.pdf",
+     "landing_page_url": "https://doi.org/10.1353/dem.0.0101"
+    }
+   ]
+  },
+  {
+   "role": "heldout",
+   "order": "58",
+   "paper_id": "w7Wp",
+   "doi": "10.1086/662962",
+   "urls": [
+    {
+     "version": "publishedVersion",
+     "pdf_url": "",
+     "landing_page_url": "https://doi.org/10.2139/ssrn.1521585"
+    }
+   ]
+  },
+  {
+   "role": "heldout",
+   "order": "59",
+   "paper_id": "dleV",
+   "doi": "10.1093/rfs/hht037",
+   "urls": [
+    {
+     "version": "publishedVersion",
+     "pdf_url": "https://academic.oup.com/rfs/article-pdf/26/12/3068/24431354/hht037.pdf",
+     "landing_page_url": "https://doi.org/10.1093/rfs/hht037"
+    },
+    {
+     "version": "acceptedVersion",
+     "pdf_url": "",
+     "landing_page_url": "https://doi.org/10.2139/ssrn.1104765"
+    }
+   ]
+  },
+  {
+   "role": "heldout",
+   "order": "60",
+   "paper_id": "KR7d",
+   "doi": "10.1086/699210",
+   "urls": [
+    {
+     "version": "acceptedVersion",
+     "pdf_url": "",
+     "landing_page_url": "https://research-information.bris.ac.uk/en/publications/4b1e9d3a-2604-4a1e-9732-bcf7c40f710a"
+    }
+   ]
+  },
+  {
+   "role": "heldout",
+   "order": "61",
+   "paper_id": "X47z",
+   "doi": "10.1017/s000305541500057x",
+   "urls": [
+    {
+     "version": "acceptedVersion",
+     "pdf_url": "",
+     "landing_page_url": "https://doi.org/10.2139/ssrn.2570680"
+    }
+   ]
+  },
+  {
+   "role": "heldout",
+   "order": "62",
+   "paper_id": "yA1R",
+   "doi": "10.1007/s13524-018-0719-y",
+   "urls": [
+    {
+     "version": "publishedVersion",
+     "pdf_url": "https://read.dukeupress.edu/demography/article-pdf/55/6/2283/842477/2283pilkauskas.pdf",
+     "landing_page_url": "https://doi.org/10.1007/s13524-018-0719-y"
+    }
+   ]
+  },
+  {
+   "role": "heldout",
+   "order": "63",
+   "paper_id": "y73m",
+   "doi": "10.1016/j.jfineco.2008.05.004",
+   "urls": [
+    {
+     "version": "acceptedVersion",
+     "pdf_url": "",
+     "landing_page_url": "https://doi.org/10.2139/ssrn.934857"
+    }
+   ]
+  },
+  {
+   "role": "heldout",
+   "order": "64",
+   "paper_id": "Jr4e",
+   "doi": "10.1111/ajps.12305",
+   "urls": [
+    {
+     "version": "publishedVersion",
+     "pdf_url": "",
+     "landing_page_url": "https://doi.org/10.2139/ssrn.2795336"
+    }
+   ]
+  },
+  {
+   "role": "heldout",
+   "order": "66",
+   "paper_id": "DDmy",
+   "doi": "10.1093/qje/qjv003",
+   "urls": [
+    {
+     "version": "publishedVersion",
+     "pdf_url": "https://academic.oup.com/qje/article-pdf/130/2/759/30699315/qjv003.pdf",
+     "landing_page_url": "https://doi.org/10.1093/qje/qjv003"
+    }
+   ]
+  },
+  {
+   "role": "heldout",
+   "order": "67",
+   "paper_id": "jrdg",
+   "doi": "10.1016/j.jfineco.2017.04.003",
+   "urls": [
+    {
+     "version": "acceptedVersion",
+     "pdf_url": "",
+     "landing_page_url": "https://doi.org/10.2139/ssrn.2517513"
+    }
+   ]
+  },
+  {
+   "role": "heldout",
+   "order": "68",
+   "paper_id": "Z8k4",
+   "doi": "10.1007/s13524-012-0125-9",
+   "urls": [
+    {
+     "version": "publishedVersion",
+     "pdf_url": "https://read.dukeupress.edu/demography/article-pdf/49/4/1185/881863/1185costa.pdf",
+     "landing_page_url": "https://doi.org/10.1007/s13524-012-0125-9"
+    }
+   ]
+  },
+  {
+   "role": "heldout",
+   "order": "69",
+   "paper_id": "YROp",
+   "doi": "10.1287/mnsc.2016.2465",
+   "urls": [
+    {
+     "version": "publishedVersion",
+     "pdf_url": "",
+     "landing_page_url": "https://doi.org/10.2139/ssrn.2046190"
+    }
+   ]
+  },
+  {
+   "role": "heldout",
+   "order": "70",
+   "paper_id": "7p01",
+   "doi": "10.1016/j.jfineco.2013.02.003",
+   "urls": [
+    {
+     "version": "publishedVersion",
+     "pdf_url": "",
+     "landing_page_url": "https://doi.org/10.2139/ssrn.2214972"
+    },
+    {
+     "version": "acceptedVersion",
+     "pdf_url": "",
+     "landing_page_url": "https://doi.org/10.2139/ssrn.1868761"
+    }
+   ]
+  },
+  {
+   "role": "heldout",
+   "order": "71",
+   "paper_id": "qX97",
+   "doi": "10.1093/esr/jcq070",
+   "urls": [
+    {
+     "version": "publishedVersion",
+     "pdf_url": "https://academic.oup.com/esr/article-pdf/28/3/366/1449848/jcq070.pdf",
+     "landing_page_url": "https://doi.org/10.1093/esr/jcq070"
+    }
+   ]
+  },
+  {
+   "role": "heldout",
+   "order": "72",
+   "paper_id": "kVp2",
+   "doi": "10.1287/mnsc.2013.1732",
+   "urls": [
+    {
+     "version": "acceptedVersion",
+     "pdf_url": "",
+     "landing_page_url": "https://doi.org/10.2139/ssrn.1680618"
+    }
+   ]
+  },
+  {
+   "role": "heldout",
+   "order": "73",
+   "paper_id": "4Q2L",
+   "doi": "10.1017/s0043887110000183",
+   "urls": [
+    {
+     "version": "publishedVersion",
+     "pdf_url": "https://muse.jhu.edu/pub/122/article/403348",
+     "landing_page_url": "https://doi.org/10.1017/s0043887110000183"
+    }
+   ]
+  },
+  {
+   "role": "heldout",
+   "order": "74",
+   "paper_id": "XXP8",
+   "doi": "10.1093/jopart/mus009",
+   "urls": [
+    {
+     "version": "publishedVersion",
+     "pdf_url": "https://academic.oup.com/jpart/article-pdf/23/1/103/11817353/mus009.pdf",
+     "landing_page_url": "https://doi.org/10.1093/jopart/mus009"
+    }
+   ]
+  },
+  {
+   "role": "heldout",
+   "order": "75",
+   "paper_id": "Aa7J",
+   "doi": "10.1111/jofi.12123",
+   "urls": [
+    {
+     "version": "publishedVersion",
+     "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1111/jofi.12123",
+     "landing_page_url": "https://doi.org/10.1111/jofi.12123"
+    },
+    {
+     "version": "acceptedVersion",
+     "pdf_url": "",
+     "landing_page_url": "https://doi.org/10.2139/ssrn.1668437"
+    }
+   ]
+  },
+  {
+   "role": "heldout",
+   "order": "76",
+   "paper_id": "BlaE",
+   "doi": "10.1086/658088",
+   "urls": [
+    {
+     "version": "acceptedVersion",
+     "pdf_url": "",
+     "landing_page_url": "https://doi.org/10.2139/ssrn.1145926"
+    }
+   ]
+  },
+  {
+   "role": "heldout",
+   "order": "77",
+   "paper_id": "0dr8",
+   "doi": "10.3982/ecta9035",
+   "urls": [
+    {
+     "version": "publishedVersion",
+     "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.3982/ECTA9035",
+     "landing_page_url": "https://doi.org/10.3982/ecta9035"
+    }
+   ]
+  },
+  {
+   "role": "heldout",
+   "order": "78",
+   "paper_id": "yAX4",
+   "doi": "10.1007/s13524-013-0277-2",
+   "urls": [
+    {
+     "version": "publishedVersion",
+     "pdf_url": "https://read.dukeupress.edu/demography/article-pdf/51/2/563/865575/563dillender.pdf",
+     "landing_page_url": "https://doi.org/10.1007/s13524-013-0277-2"
+    }
+   ]
+  },
+  {
+   "role": "heldout",
+   "order": "79",
+   "paper_id": "kgA2",
+   "doi": "10.1257/aer.20141419",
+   "urls": [
+    {
+     "version": "publishedVersion",
+     "pdf_url": "https://www.aeaweb.org/articles/pdf/doi/10.1257/aer.20141419",
+     "landing_page_url": "https://doi.org/10.1257/aer.20141419"
+    }
+   ]
+  },
+  {
+   "role": "heldout",
+   "order": "80",
+   "paper_id": "1OWE",
+   "doi": "10.1093/rfs/hhx135",
+   "urls": [
+    {
+     "version": "acceptedVersion",
+     "pdf_url": "",
+     "landing_page_url": "https://doi.org/10.2139/ssrn.2423525"
+    }
+   ]
+  },
+  {
+   "role": "heldout",
+   "order": "81",
+   "paper_id": "LX8G",
+   "doi": "10.1287/orsc.2015.0980",
+   "urls": [
+    {
+     "version": "publishedVersion",
+     "pdf_url": "https://pubsonline.informs.org/doi/pdf/10.1287/orsc.2015.0980",
+     "landing_page_url": "https://doi.org/10.1287/orsc.2015.0980"
+    }
+   ]
+  },
+  {
+   "role": "heldout",
+   "order": "83",
+   "paper_id": "mObR",
+   "doi": "10.1093/rfs/hhx055",
+   "urls": [
+    {
+     "version": "acceptedVersion",
+     "pdf_url": "",
+     "landing_page_url": "https://doi.org/10.2139/ssrn.2403608"
+    }
+   ]
+  },
+  {
+   "role": "heldout",
+   "order": "84",
+   "paper_id": "OY3B",
+   "doi": "10.1093/esr/jcr037",
+   "urls": [
+    {
+     "version": "publishedVersion",
+     "pdf_url": "https://academic.oup.com/esr/article-pdf/29/1/32/1411574/jcr037.pdf",
+     "landing_page_url": "https://doi.org/10.1093/esr/jcr037"
+    },
+    {
+     "version": "publishedVersion",
+     "pdf_url": "",
+     "landing_page_url": "https://cris.maastrichtuniversity.nl/en/publications/296dc8f9-f5b6-4f27-8f9c-721461335979"
+    }
+   ]
+  },
+  {
+   "role": "heldout",
+   "order": "85",
+   "paper_id": "r32d",
+   "doi": "10.1017/s0003055412000494",
+   "urls": [
+    {
+     "version": "publishedVersion",
+     "pdf_url": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/DACDC6C041FE980B47E31D501225B7CA/S0003055412000494a.pdf/div-class-title-who-gets-a-swiss-passport-a-natural-experiment-in-immigrant-discrimination-div.pdf",
+     "landing_page_url": "https://doi.org/10.1017/s0003055412000494"
+    }
+   ]
+  },
+  {
+   "role": "heldout",
+   "order": "86",
+   "paper_id": "QAQV",
+   "doi": "10.1257/app.3.2.119",
+   "urls": [
+    {
+     "version": "acceptedVersion",
+     "pdf_url": "",
+     "landing_page_url": "https://doi.org/10.2139/ssrn.1621537"
+    }
+   ]
+  },
+  {
+   "role": "heldout",
+   "order": "87",
+   "paper_id": "LRkG",
+   "doi": "10.1007/s13524-011-0022-7",
+   "urls": [
+    {
+     "version": "publishedVersion",
+     "pdf_url": "https://read.dukeupress.edu/demography/article-pdf/48/2/593/880692/593dariotis.pdf",
+     "landing_page_url": "https://doi.org/10.1007/s13524-011-0022-7"
+    }
+   ]
+  },
+  {
+   "role": "heldout",
+   "order": "89",
+   "paper_id": "Ed5X",
+   "doi": "10.1007/bf03213738",
+   "urls": [
+    {
+     "version": "publishedVersion",
+     "pdf_url": "https://read.dukeupress.edu/demography/article-pdf/47/4/1035/879719/1035kirby.pdf",
+     "landing_page_url": "https://doi.org/10.1007/bf03213738"
+    }
+   ]
+  },
+  {
+   "role": "heldout",
+   "order": "90",
+   "paper_id": "d2Am",
+   "doi": "10.1177/0003122414531435",
+   "urls": [
+    {
+     "version": "publishedVersion",
+     "pdf_url": "https://journals.sagepub.com/doi/pdf/10.1177/0003122414531435?download=true",
+     "landing_page_url": "https://doi.org/10.1177/0003122414531435"
+    }
+   ]
+  }
+ ]
+}
