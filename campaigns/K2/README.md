@@ -10,6 +10,7 @@ measure of failure.
 | [`PREREG-K2-DRAFT.md`](PREREG-K2-DRAFT.md) | DRAFT, NOT SEALED (2026-10-17) |
 | [`k2_analysis.py`](k2_analysis.py) | registered estimator (numpy only): blocked-CV ΔAUC, paper-cluster bootstrap, verdict |
 | [`k2_witness.py`](k2_witness.py), `k2_witness_result.json` | A1 witness + power simulation, run on Atlas |
+| [`RUBRIC-v2-PLAN.md`](RUBRIC-v2-PLAN.md) | Plan for a v2 rubric after v1 failed its held-out half: owner decisions D1-D5 and the procedure (draft, nothing adopted) |
 | [`k2_power_b.py`](k2_power_b.py), [`k2_power_b_nrp.py`](k2_power_b_nrp.py), `k2_power_b_result.json` | Power of the B5 secondary test (134 phase-1 claims, forecast in M0), prereg 7.5.1; run on Atlas and on NRP, identical. Owner chose option (a) 2026-10-21: primary = all 274 claims with B1-B3 |
 | `k2_witness_noisy_result.json` | noisy-proxy scenario (`--noisy`): a gate tracking what the baselines measure with error passes 7% at reliability 0.5, 22% at 0.3 (prereg 7.5) |
 | [`k2_placebo_witness.py`](k2_placebo_witness.py), `k2_placebo_witness_result.json`, `k2_placebo_witness_run1.json` | placebo-gate witness (prereg 4.3 item 2): run 1 FAILED on its own design (leak too weak to credit), run 2 PASSED (quiet on signal and adjusted strata, fires on an unadjusted leak) |
