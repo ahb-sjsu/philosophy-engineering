@@ -1,6 +1,7 @@
 # K2 rubric v2: plan (DRAFT, 2026-10-21)
 
-**Decided (owner, 2026-10-21): D1 (b) and D4 (b).** D2, D3 and D5 are open.
+**Decided (owner, 2026-10-21): D1 (b) and D4 (b).** D2 computed (the owner
+picks n); D3 and D5 are open.
 
 What it would take to get a rubric that passes I1 (single-coder gate
 ICC(2,1) ≥ 0.80 between independent coders, registration 7.2) without
@@ -43,14 +44,63 @@ The drafting session recommended (b), or (c) if the license allows; (b) is the o
 where the held-out articles cannot have a known replication outcome, and the
 supplement is already registered as development data.
 
-### D2 How large the held-out set must be (computed, then Owner)
+### D2 How large the held-out set must be (computed 2026-10-21; Owner picks n)
 
-9 to 11 articles could not distinguish a fitted rubric from chance. Before any
-draw, a simulation (Atlas, not CPU 0, or NRP) should give, for a true
-between-family ICC of 0.80 to 0.90, the number of double-coded articles at
-which the 95% interval on the estimate is narrow enough to tell 0.80 from
-0.60. The held-out size is then fixed from that number and committed before
-the draw. No figure is given here because none has been computed.
+`k2_d2_sizing.py`, run on NRP (`k2_d2_nrp.py`: a timing Job, then one run Job,
+exempt class), 4,000 draws per cell, seed 20261021, result
+`k2_d2_sizing_result.json`. Model (an assumption, registration 7.2's): true
+gate = Binomial(4, p) with p varying by article as in the k2_witness world;
+each of two coders misreads each check independently with probability e,
+calibrated so the population ICC(2,1) hits each target; a second set of cells
+adds a bias (coder 2 turns a passed check into a failure 5% of the time),
+which changed nothing that matters below.
+
+**Spread of the estimate** (no bias; 95% of estimates fall in the range):
+
+| Articles | true 0.60 | true 0.80 | true 0.85 |
+|---:|---|---|---|
+| 10 | 0.00 to 0.89 | 0.37 to 0.97 | 0.46 to 1.00 |
+| 20 | 0.22 to 0.83 | 0.54 to 0.94 | 0.62 to 0.96 |
+| 40 | 0.36 to 0.77 | 0.63 to 0.90 | 0.71 to 0.93 |
+| 60 | 0.41 to 0.75 | 0.67 to 0.89 | 0.74 to 0.92 |
+| 100 | 0.45 to 0.72 | 0.71 to 0.87 | 0.77 to 0.91 |
+
+**A go rule.** Proceed with v2 if the held-out estimate reaches t_n, set so
+that a rubric whose true ICC is 0.60 goes ahead only 5% of the time:
+
+| Articles | t_n | go if true 0.70 | go if true 0.80 | go if true 0.85 | go if true 0.90 |
+|---:|---:|---:|---:|---:|---:|
+| 10 | 0.86 | 0.15 | 0.34 | 0.51 | 0.71 |
+| 20 | 0.81 | 0.17 | 0.49 | 0.71 | 0.90 |
+| 30 | 0.77 | 0.22 | 0.65 | 0.86 | 0.98 |
+| 40 | 0.75 | 0.28 | 0.77 | 0.93 | 0.99 |
+| 60 | 0.73 | 0.35 | 0.88 | 0.99 | 1.00 |
+| 80 | 0.71 | 0.44 | 0.95 | 1.00 | 1.00 |
+
+**What it shows.**
+
+1. **v1's held-out half was too small to pass anything,** as feared: at 10
+   articles even a rubric at true 0.85 clears the 5%-error bar half the time.
+   It was not too small to fail, though: under this model, an estimate of
+   −0.31 on 9 articles lies below the 2.5th percentile even at a true 0.60
+   (0.00), so v1's result points to true agreement well under 0.60, not to
+   bad luck. That sharpens 7.4.1 item 1, under this model's assumptions.
+2. **Using 0.80 itself as the go bar is a coin flip** at a true 0.80 (51 to
+   53% at every n), so the go rule needs a margin set from n, as above.
+3. **About 40 held-out articles** (t = 0.75) go ahead 93% of the time at a true
+   0.85 and 77% at 0.80, and 5% at 0.60. **About 60** (t = 0.73) raise those to
+   99% and 88%. Telling 0.70 from 0.80 needs far more: at 80 articles a true
+   0.70 still goes ahead 44% of the time. The held-out measurement can screen
+   out a rubric that fails badly, not certify I1, which stays on the full run's
+   double codes (7.2).
+4. **Cost.** Each held-out article is coded four times (two families, two
+   codings): 160 codings at 40, 240 at 60, at 30 to 50 s each through the
+   gateway at 2 calls at a time. The draw has to be larger than n by the
+   share of articles whose full text cannot be obtained, which is unmeasured
+   for the supplement.
+
+The owner picks n (and so t_n) before the draw; the choice and the seed are
+committed together.
 
 ### D3 Coders (Owner)
 

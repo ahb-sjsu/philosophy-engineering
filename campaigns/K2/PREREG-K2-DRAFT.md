@@ -1017,7 +1017,11 @@ DEV-RPP-035 failed).
    (0.22). The gains on the revise half did not carry over, which is what a
    revision fitted to the articles it was written from would do; with 8 to 11
    articles per cell, chance is the other explanation, and these rows cannot
-   separate the two. No reading of them reaches the 0.80 bar.
+   separate the two. (Added 2026-10-21: the D2 sizing simulation in
+   `RUBRIC-v2-PLAN.md` bears on the chance reading. Under the 7.2 coder model,
+   an estimate of −0.31 on 9 articles is below the 2.5th percentile even at a
+   true single-coder ICC of 0.60, so chance alone is an unlikely account of a
+   rubric that good.) No reading of them reaches the 0.80 bar.
 2. **What did change.** The ceiling is gone: gpt-oss's gate mean fell from
    3.46 to 1.84 and minimax-m2's from 2.56 to 1.62, and the families' failure
    rates moved closer on every check but A1 (gpt-oss / minimax-m2, v0 then
