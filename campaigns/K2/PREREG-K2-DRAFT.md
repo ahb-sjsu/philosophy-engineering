@@ -816,7 +816,15 @@ Experimental Political Science* (23, 1). **Result: 325 eligible papers in 34
 journals** (228 published, 97 accepted versions): business and economics 192
 (including the mixed economics categories), government, law, international
 relations and public administration 67, demography 36, sociology 25,
-criminology 4, education 1. Still development data: no
+criminology 4, education 1.
+
+*Draw (owner, 2026-10-21; `k2_v2_draw.py`).* 90 papers, strata proportional to
+the eligible pool (largest-remainder allocation), **seed 20261021**, frame
+pinned by hash; the seed, rule and hash were committed before the draw was
+run. The 90 are put in one seeded order, and the held-out set is the first 60
+in that order whose text is obtained and passes intake; usable papers after
+the 60th are revise material. Held-out texts are handled by script only until
+v2 is committed. Still development data: no
 replication outcome exists for these claims.
 
 *Disjointness.* Every supplement article is matched by DOI against SCORE's
