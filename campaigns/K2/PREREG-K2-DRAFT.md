@@ -788,8 +788,19 @@ supplement articles. The held-out part is drawn by seed, split off and set
 aside unread before v2 is written. **Its size is 60 articles (owner,
 2026-10-21, from the D2 sizing simulation), and v2 goes ahead only if the
 between-family gate ICC(2,1) on them is at least 0.73.** The draw is larger
-than 60 by the share whose full text cannot be obtained; that share is not
-yet measured. Still development data: no
+than 60 by the share whose full text cannot be obtained.
+
+*Frame and access, measured 2026-10-21* (`k2_d9x6s_frame.py`,
+`k2_frame_access.py`; OpenAlex records, not verified downloads). The d9x6s
+claims file covers SCORE's 3,000 phase-one papers; removing the 148 SCORE
+replicated and 1 development-set DOI leaves 2,852 papers in 62 journals,
+2009 to 2018. Of these, 1,052 (37%) have an open copy on record, but the best
+open copy is the published version for only 345 (12%); 569 are submitted
+manuscripts and 124 accepted manuscripts. Without any psychology category,
+and counting the 305 papers with no category, the frame is 1,924 papers, 713
+(37%) open on record and 242 (13%) open as published. On the development set,
+17 of 23 records marked open were obtained and 22 of 24 obtained texts passed
+intake (4.1), small samples that make any oversampling factor a rough one. Still development data: no
 replication outcome exists for these claims.
 
 *Disjointness.* Every supplement article is matched by DOI against SCORE's

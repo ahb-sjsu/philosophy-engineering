@@ -1,0 +1,191 @@
+{
+ "frame": 2852,
+ "found_in_openalex": 2840,
+ "failed_batches": 0,
+ "all": {
+  "papers": 2852,
+  "is_oa": 1052,
+  "oa_share": 0.369,
+  "oa_published_version": 345,
+  "published_share": 0.121
+ },
+ "oa_status": {
+  "closed": 1788,
+  "green": 744,
+  "bronze": 184,
+  "hybrid": 112,
+  "none": 12,
+  "gold": 12
+ },
+ "best_oa_version": {
+  "submittedVersion": 569,
+  "publishedVersion": 345,
+  "acceptedVersion": 124,
+  "none": 14
+ },
+ "oa_with_pdf_link": 383,
+ "by_category": {
+  "Business & Economics": {
+   "papers": 722,
+   "is_oa": 300,
+   "oa_share": 0.416,
+   "oa_published_version": 89,
+   "published_share": 0.123
+  },
+  "Psychology": {
+   "papers": 477,
+   "is_oa": 215,
+   "oa_share": 0.451,
+   "oa_published_version": 61,
+   "published_share": 0.128
+  },
+  "NA": {
+   "papers": 305,
+   "is_oa": 105,
+   "oa_share": 0.344,
+   "oa_published_version": 30,
+   "published_share": 0.098
+  },
+  "Government & Law": {
+   "papers": 187,
+   "is_oa": 58,
+   "oa_share": 0.31,
+   "oa_published_version": 22,
+   "published_share": 0.118
+  },
+  "Sociology": {
+   "papers": 171,
+   "is_oa": 59,
+   "oa_share": 0.345,
+   "oa_published_version": 13,
+   "published_share": 0.076
+  },
+  "Psychology; Business & Economics": {
+   "papers": 140,
+   "is_oa": 35,
+   "oa_share": 0.25,
+   "oa_published_version": 9,
+   "published_share": 0.064
+  },
+  "International Relations; Government & Law": {
+   "papers": 97,
+   "is_oa": 24,
+   "oa_share": 0.247,
+   "oa_published_version": 13,
+   "published_share": 0.134
+  },
+  "Business & Economics; Psychology": {
+   "papers": 86,
+   "is_oa": 20,
+   "oa_share": 0.233,
+   "oa_published_version": 9,
+   "published_share": 0.105
+  },
+  "Education & Educational Research": {
+   "papers": 80,
+   "is_oa": 7,
+   "oa_share": 0.087,
+   "oa_published_version": 1,
+   "published_share": 0.013
+  },
+  "Government & Law; Psychology": {
+   "papers": 50,
+   "is_oa": 9,
+   "oa_share": 0.18,
+   "oa_published_version": 1,
+   "published_share": 0.02
+  },
+  "Government & Law; Public Administration": {
+   "papers": 50,
+   "is_oa": 18,
+   "oa_share": 0.36,
+   "oa_published_version": 12,
+   "published_share": 0.24
+  },
+  "Environmental Sciences & Ecology; Psychology": {
+   "papers": 48,
+   "is_oa": 15,
+   "oa_share": 0.312,
+   "oa_published_version": 5,
+   "published_share": 0.104
+  },
+  "Family Studies; Sociology": {
+   "papers": 48,
+   "is_oa": 27,
+   "oa_share": 0.562,
+   "oa_published_version": 3,
+   "published_share": 0.062
+  },
+  "Public Administration": {
+   "papers": 48,
+   "is_oa": 18,
+   "oa_share": 0.375,
+   "oa_published_version": 8,
+   "published_share": 0.167
+  },
+  "Criminology & Penology": {
+   "papers": 46,
+   "is_oa": 10,
+   "oa_share": 0.217,
+   "oa_published_version": 4,
+   "published_share": 0.087
+  },
+  "Education & Educational Research; Rehabilitation": {
+   "papers": 46,
+   "is_oa": 7,
+   "oa_share": 0.152,
+   "oa_published_version": 0,
+   "published_share": 0.0
+  },
+  "Psychology; Behavioral Sciences; Biomedical Social Sciences": {
+   "papers": 45,
+   "is_oa": 15,
+   "oa_share": 0.333,
+   "oa_published_version": 4,
+   "published_share": 0.089
+  },
+  "Demography": {
+   "papers": 42,
+   "is_oa": 42,
+   "oa_share": 1.0,
+   "oa_published_version": 35,
+   "published_share": 0.833
+  },
+  "Psychology; Psychiatry": {
+   "papers": 41,
+   "is_oa": 20,
+   "oa_share": 0.488,
+   "oa_published_version": 10,
+   "published_share": 0.244
+  },
+  "Business & Economics; Operations Research & Management Science": {
+   "papers": 41,
+   "is_oa": 22,
+   "oa_share": 0.537,
+   "oa_published_version": 6,
+   "published_share": 0.146
+  },
+  "Education & Educational Research; Psychology": {
+   "papers": 41,
+   "is_oa": 10,
+   "oa_share": 0.244,
+   "oa_published_version": 4,
+   "published_share": 0.098
+  },
+  "Business & Economics; Mathematics; Mathematical Methods In Social Sciences": {
+   "papers": 30,
+   "is_oa": 12,
+   "oa_share": 0.4,
+   "oa_published_version": 5,
+   "published_share": 0.167
+  },
+  "Development Studies; Business & Economics": {
+   "papers": 11,
+   "is_oa": 4,
+   "oa_share": 0.364,
+   "oa_published_version": 1,
+   "published_share": 0.091
+  }
+ },
+ "note": "OpenAlex records, not verified downloads"
+}
