@@ -98,7 +98,7 @@ article is coded (Section 7.1).
 
 | Check | Scored as a failure when the original article shows… |
 |---|---|
-| A1 Nonvacuity | No outcome reported or reportable would have been taken against the hypothesis: flexible or unstated primary outcome, a hypothesis stated only post hoc, components fit after the data that can absorb any result |
+| A1 Nonvacuity | No outcome reported or reportable would have been taken against the hypothesis: flexible or unstated primary outcome, a hypothesis stated only post hoc, components fit after the data that can absorb any result. **As gated (owner decision 2026-10-21, `RUBRIC-v2-PLAN.md` D4(b)): only a prediction stated after the results (rubric A1.1).** The other A1 items are scored and reported as secondary items, not counted in the gate, because no coder pair has read them alike (7.4.1) |
 | A2 Identification | A key measure or construct used without validity or reliability evidence fit for its role, or calibrated on the same data it evaluates |
 | A3 Intervention | No manipulation check, a manipulation check that fails or is not reported, or a manipulation that plausibly produces the measured response by construction (demand, stimulus identity with the outcome) |
 | A4 Inference | Estimand, exclusions or denominator not fixed; exclusions that depend on condition; treatment-dependent attrition unaddressed; selected among analysis conventions |
@@ -782,6 +782,13 @@ science and the rest spread across SCORE's other non-psychology disciplines,
 in proportion to SCORE's own mix. Seeded draw; the seed is committed before the
 draw. Two independent coders, as for the main development set.
 
+*Also the v2 measurement pool (owner decision 2026-10-21, `RUBRIC-v2-PLAN.md`
+D1(b)).* RUBRIC-v1's held-out half is spent (7.4.1), so v2 is measured on
+supplement articles. The held-out part is drawn by seed, split off and set
+aside unread before v2 is written; its size comes from the D2 sizing
+simulation and may exceed the ~30 above. Still development data: no
+replication outcome exists for these claims.
+
 *Disjointness.* Every supplement article is matched by DOI against SCORE's
 replicated claims and against the secondary arm (EE-RP, SSRP); any match is
 redrawn. The supplement is development data permanently and never test data.
@@ -1191,4 +1198,7 @@ Kuhnian crisis requires, on the predecessor's own instrument. It would not mean
 that the gates improve research going forward (that is K-3's prospective
 multi-team study), that Philosophy Engineering is a paradigm (community and
 incommensurability are untouched), or that the result holds outside the domains
-sampled.
+sampled. Nor would it cover PE-CLS-1.0 §7.5 A1 as a whole: the gate scores A1
+only as a prediction stated before the results (Section 4, owner decision
+2026-10-21), so outcome switching, absorbing components and unfalsifiable
+framing are reported, not tested.

@@ -1,4 +1,6 @@
-# K2 rubric v2: plan (DRAFT, 2026-10-21; nothing here is adopted)
+# K2 rubric v2: plan (DRAFT, 2026-10-21)
+
+**Decided (owner, 2026-10-21): D1 (b) and D4 (b).** D2, D3 and D5 are open.
 
 What it would take to get a rubric that passes I1 (single-coder gate
 ICC(2,1) ≥ 0.80 between independent coders, registration 7.2) without
@@ -27,7 +29,7 @@ drafting session's, not a decision.
 
 ## 2. The decisions
 
-### D1 Articles to measure v2 on (Owner)
+### D1 Articles to measure v2 on: DECIDED (b), owner 2026-10-21 (registration 7.1.1)
 
 A fresh held-out set is needed; the question is where it comes from.
 
@@ -37,7 +39,7 @@ A fresh held-out set is needed; the question is where it comes from.
 | (b) Non-psychology supplement (7.1.1) | Draw from the 2,861 forecast-but-unreplicated SCORE phase-1 papers (claims in OSF d9x6s, not yet opened) | Fresh by construction and never replicated, so no outcome can leak; also fills the discipline gap 7.1 consequence 3 left open; open-access rate unmeasured; claim statements come in SCORE's own format |
 | (c) Both | (b) as the held-out set, (a) or the spent 22 as revise material | Most work |
 
-**Recommendation: (b), or (c) if the license allows.** (b) is the only pool
+The drafting session recommended (b), or (c) if the license allows; (b) is the only pool
 where the held-out articles cannot have a known replication outcome, and the
 supplement is already registered as development data.
 
@@ -61,7 +63,7 @@ the draw. No figure is given here because none has been computed.
 
 Model calls go through the NRP ELLM gateway at no more than 2 at a time.
 
-### D4 What to do with A1 (Owner)
+### D4 What to do with A1: DECIDED (b), owner 2026-10-21 (registration 4 and 12)
 
 | Option | Effect on the registration |
 |---|---|
@@ -69,9 +71,9 @@ Model calls go through the NRP ELLM gateway at no more than 2 at a time.
 | (b) Keep A1.1 only in the gate (prediction stated before Results: closest to a locatable fact); A1.2 to A1.4 become reported secondary items | The gate still has four checks; A1 is narrower than PE-CLS §7.5 A1, which Section 12 must say |
 | (c) Drop A1 from the gate (gate 0 to 3), report it separately | Changes the claim in Section 1: K2 then tests A2 to A4, not P5 as a whole |
 
-**Recommendation: (b) for this round, with the narrowing stated in Section 12.**
-It keeps the claim's shape and removes the items no coder pair has read the
-same way.
+Chosen: (b). The gate's A1 is A1.1 only; A1.2 to A1.4 are scored and
+reported as secondary items. The narrowing is stated in registration Sections
+4 and 12.
 
 ### D5 Extraction before judgment (drafting change; Owner may veto)
 
