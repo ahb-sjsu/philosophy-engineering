@@ -387,19 +387,20 @@ predicts replication, or because a gate could proxy it:
 | B4 | recall-free text score (the 4.2 reference model) | Yang et al. 2020: text alone predicts |
 | B5 | forecasts (markets, surveys), where present on the same claims. On SCORE: the Replication Markets final market price (`cs_m1` of `KeyW_CS_2020-10-19.csv`, OSF tcfb9), with its survey (`cs_m11`) and the repliCATS aggregate (`ArMean` of `anon_p1_singletrace_confidence_scores.csv`) as secondaries. The column names are fixed from tcfb9's own analysis scripts. The other ten `cs_m*` columns are undocumented in what was read and are not used | strongest known human baseline |
 
-The primary M0 is B1 to B3 plus B5 where available. **"Where available" splits
+The primary M0 is B1 to B3 (owner decision below). **B5 "where available" splits
 the SCORE set (7.0):** B5 exists for at most 134 of the 274 claims, the phase-1
 claims. The 115 bushel claims sit on forecasted papers, but their forecast was
 made for a different claim, so using it would compare the gate against a forecast
 of something else. The 25 phase-2 claims have none. A single M0 over all 274
-cannot include B5. **Owner decision, before sealing:** either (a) the primary test
-runs on all 274 claims with B1 to B3, plus a registered B5 test on the phase-1
-subset; or (b) the primary test is the phase-1 subset with B5. Option (a) keeps the
-power of Section 7.5, which was simulated at 274 claims and 164 papers. Option (b)
-tests the gate against the strongest baseline, at roughly half the claims. Its
-power, simulated 2026-10-20 (7.5.1), reaches 80% only at a true ΔAUC near 0.09 to
-0.10 rather than ~0.055, and only if the forecasters do not already see the
-design signal the gates measure. **M0+B4 is a registered
+cannot include B5. **Owner decision, 2026-10-21: option (a).** The primary test
+runs on all 274 claims with M0 = B1 to B3, which keeps the power of Section 7.5
+(simulated at 274 claims and 164 papers). **The B5 test is a registered
+secondary test** on the 134 phase-1 claims, with M0 = B1 to B3 plus B5
+(`cs_m1`), the same estimator and the same verdict rules; it is reported beside
+the primary verdict and does not replace it. Its power is that of 7.5.1: 80% only
+at a true ΔAUC near 0.09 to 0.10, and lower if the forecasters already see the
+design signal the gates measure. The option not taken, (b), made the phase-1
+subset with B5 the primary test. **M0+B4 is a registered
 secondary test:** the gates beyond a text model is a stronger claim than the
 gates beyond known features, and both are reported. Which of the two is primary
 is an owner decision, recorded before sealing.
@@ -1098,8 +1099,9 @@ the run.
 
 ### 7.5.1 Power at the option (b) shape (simulation, run 2026-10-20)
 
-`k2_power_b.py` reruns the 7.5 world at the phase-1 shape of Section 5 option
-(b): 134 claims on 133 papers (132 with one claim, one with two), 400 draws per
+The owner chose option (a) on 2026-10-21 (Section 5), so this is the power of
+the registered B5 secondary test, not of the primary. `k2_power_b.py` reruns the
+7.5 world at the phase-1 shape: 134 claims on 133 papers (132 with one claim, one with two), 400 draws per
 scenario, 500 bootstrap draws each, seed 20261020, SESOI 0.05, through the same
 `k2_analysis.py`. It ran twice with identical per-scenario seeds, once on Atlas
 and once as 22 NRP Jobs (`k2_power_b_nrp.py`); the two results agree exactly.
