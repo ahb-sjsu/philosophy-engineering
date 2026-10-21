@@ -1,0 +1,11 @@
+dev_id,pdf_sha256,chars_raw,chars_blinded,references_cut,sections_found,method_headings,results_headings,lead_chars,kept_share,leaks_before,leak_kinds_before,residual_leaks,residual_kinds,single_letter_share,scan_flag,redacted_share,status
+5AKw,8ed768c23be169bde957cb25d4c1c2d679ab674a71e1bbccdd5830d5e57f3578,71156,24237,True,False,0,1,0,0.4528,45,"{""citation"": 45}",0,[],0.0308,False,0.0037,quarantine
+9Ybm,bf20cad27b6462e6a75a8d0672c99d55083ed5655bceea011e1eb771eab7dfb9,79360,0,True,False,0,0,0,0.0,0,{},0,[],0.0804,False,0.0,quarantine
+9l2a,cf521e1192bf157d596fe25e6884b02273499af45fecb68a249c79fbfe196c7e,128098,0,True,False,0,0,0,0.0,0,{},0,[],0.0719,False,0.0,quarantine
+EV4N,159bbc2efd0c553c64dd641ca661c5942967242e9b3bfeac09118c2faa4fc8aa,94353,0,True,False,0,0,0,0.0,0,{},0,[],0.0581,False,0.0,quarantine
+EVPr,6f2a2de1aa9214780a2a28e487cee48346ecc6e3e452d74f220d092de2c06f08,121246,0,True,False,0,0,0,0.0,0,{},0,[],0.0545,False,0.0,quarantine
+RmRb,c8cdb997c70b63a49caaf003ff4b487303eb342e0159debae78778ce1369364b,99509,13414,True,False,0,1,0,0.1637,66,"{""biblio"": 6, ""citation"": 27, ""cover"": 6, ""doi"": 6, ""institution"": 6, ""journal"": 3, ""title_or_journal"": 3, ""url"": 6, ""year"": 3}",0,[],0.0336,False,0.005,quarantine
+ek4K,93140466411fd93362013d0e5a2a90758b8f7c7b2b628aa43ca66e0a47ccabc3,134581,0,True,False,0,0,0,0.0,0,{},0,[],0.0446,False,0.0,quarantine
+kgrX,0c8b5f91977454a5b9ebac710b3d81524c9128bad76ec83cf23905d6ed049c0d,53419,0,True,False,0,0,0,0.0,0,{},0,[],0.0328,False,0.0,quarantine
+qdrw,82b119255ba8636cf44c0a552e4440efa2ec5a3bde6fd211274c3154f1a1cb6e,48690,0,True,False,0,0,0,0.0,0,{},0,[],0.0584,False,0.0,quarantine
+v7QG,fe84ec5bab0a6f86c271c3fd92777d1558b8edf5e40a5acccd19b2726699960c,195033,0,True,False,0,0,0,0.0,0,{},0,[],0.0457,False,0.0,quarantine

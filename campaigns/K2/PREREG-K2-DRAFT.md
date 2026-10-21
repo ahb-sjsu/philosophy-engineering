@@ -828,7 +828,18 @@ v2 is committed. **Drawn 2026-10-21 22:24:36 UTC on Atlas** (`devset/v2_draw.csv
 after the seed commit (535dd86, 22:23:48 UTC) and a correction of the frame
 hash constant (d08e8f0, 22:24:23 UTC; the first run had stopped at the hash
 check without drawing): economics 53, politics 19, demography 10, sociology 7,
-criminology 1, education 0; 63 published and 27 accepted versions. Still development data: no
+criminology 1, education 0; 63 published and 27 accepted versions.
+
+*Fetch and intake, run 2026-10-21 on Atlas* (`k2_v2_fetch.py`,
+`k2_v2_fetch_meta.py`, `k2_intake.py`; logs in `devset/`). Only published or
+accepted open locations were tried. **10 of 90 PDFs obtained** (8 published, 2
+accepted; draw orders 18, 27, 29, 42, 44, 45, 51, 65, 82, 88). For 70 papers
+the first open location answered a script with HTTP 403 (publisher bot
+protection, not worked around); 11 answered with a web page, one of which led
+to the PDF through its `citation_pdf_url` tag. **All 10 were quarantined at
+intake: none has a Method-type heading**, so the 4.1 coding unit (Method and
+Results, built on psychology articles) finds nothing to keep; one also has
+residual leaks. The texts were handled by script only and were not read. Still development data: no
 replication outcome exists for these claims.
 
 *Disjointness.* Every supplement article is matched by DOI against SCORE's

@@ -1,0 +1,686 @@
+{
+ "by_host": {
+  "doi.org": 38,
+  "academic.oup.com": 11,
+  "read.dukeupress.edu": 10,
+  "onlinelibrary.wiley.com": 9,
+  "www.aeaweb.org": 6,
+  "journals.sagepub.com": 2,
+  "research.manchester.ac.uk": 1,
+  "researchprofiles.ku.dk": 1,
+  "www.zora.uzh.ch": 1,
+  "www.crimrxiv.com": 1,
+  "www.sciencedirect.com": 1,
+  "pubs.aeaweb.org": 1,
+  "research-information.bris.ac.uk": 1,
+  "www.ecgi.global": 1,
+  "muse.jhu.edu": 1,
+  "pubsonline.informs.org": 1,
+  "cris.maastrichtuniversity.nl": 1,
+  "www.cambridge.org": 1
+ },
+ "first_status": {
+  "403": 70,
+  "200": 11
+ },
+ "papers": [
+  {
+   "order": "1",
+   "paper_id": "dNkl",
+   "hosts": [
+    "academic.oup.com"
+   ],
+   "first_status": "403"
+  },
+  {
+   "order": "2",
+   "paper_id": "pNjB",
+   "hosts": [
+    "doi.org"
+   ],
+   "first_status": "403"
+  },
+  {
+   "order": "3",
+   "paper_id": "zDyr",
+   "hosts": [
+    "onlinelibrary.wiley.com"
+   ],
+   "first_status": "403"
+  },
+  {
+   "order": "4",
+   "paper_id": "qQ9Z",
+   "hosts": [
+    "read.dukeupress.edu"
+   ],
+   "first_status": "403"
+  },
+  {
+   "order": "5",
+   "paper_id": "7K4L",
+   "hosts": [
+    "doi.org"
+   ],
+   "first_status": "403"
+  },
+  {
+   "order": "6",
+   "paper_id": "E1Gx",
+   "hosts": [
+    "academic.oup.com"
+   ],
+   "first_status": "403"
+  },
+  {
+   "order": "7",
+   "paper_id": "pGDj",
+   "hosts": [
+    "read.dukeupress.edu"
+   ],
+   "first_status": "403"
+  },
+  {
+   "order": "8",
+   "paper_id": "93dL",
+   "hosts": [
+    "academic.oup.com"
+   ],
+   "first_status": "403"
+  },
+  {
+   "order": "9",
+   "paper_id": "qYyZ",
+   "hosts": [
+    "onlinelibrary.wiley.com",
+    "doi.org"
+   ],
+   "first_status": "403"
+  },
+  {
+   "order": "10",
+   "paper_id": "w4bG",
+   "hosts": [
+    "doi.org"
+   ],
+   "first_status": "403"
+  },
+  {
+   "order": "11",
+   "paper_id": "BqKX",
+   "hosts": [
+    "research.manchester.ac.uk"
+   ],
+   "first_status": "200"
+  },
+  {
+   "order": "12",
+   "paper_id": "GOzz",
+   "hosts": [
+    "www.aeaweb.org"
+   ],
+   "first_status": "200"
+  },
+  {
+   "order": "13",
+   "paper_id": "7132",
+   "hosts": [
+    "read.dukeupress.edu"
+   ],
+   "first_status": "403"
+  },
+  {
+   "order": "14",
+   "paper_id": "RqZv",
+   "hosts": [
+    "www.aeaweb.org"
+   ],
+   "first_status": "200"
+  },
+  {
+   "order": "15",
+   "paper_id": "Dper",
+   "hosts": [
+    "doi.org"
+   ],
+   "first_status": "403"
+  },
+  {
+   "order": "16",
+   "paper_id": "5kbm",
+   "hosts": [
+    "researchprofiles.ku.dk"
+   ],
+   "first_status": "200"
+  },
+  {
+   "order": "17",
+   "paper_id": "y75w",
+   "hosts": [
+    "doi.org"
+   ],
+   "first_status": "403"
+  },
+  {
+   "order": "19",
+   "paper_id": "GYlw",
+   "hosts": [
+    "doi.org"
+   ],
+   "first_status": "403"
+  },
+  {
+   "order": "20",
+   "paper_id": "ky5z",
+   "hosts": [
+    "academic.oup.com",
+    "www.zora.uzh.ch"
+   ],
+   "first_status": "403"
+  },
+  {
+   "order": "21",
+   "paper_id": "gvm4",
+   "hosts": [
+    "journals.sagepub.com"
+   ],
+   "first_status": "403"
+  },
+  {
+   "order": "22",
+   "paper_id": "gdlO",
+   "hosts": [
+    "www.aeaweb.org"
+   ],
+   "first_status": "200"
+  },
+  {
+   "order": "23",
+   "paper_id": "9XjL",
+   "hosts": [
+    "onlinelibrary.wiley.com"
+   ],
+   "first_status": "403"
+  },
+  {
+   "order": "24",
+   "paper_id": "B2GE",
+   "hosts": [
+    "doi.org",
+    "doi.org",
+    "doi.org"
+   ],
+   "first_status": "403"
+  },
+  {
+   "order": "25",
+   "paper_id": "R5WV",
+   "hosts": [
+    "www.aeaweb.org"
+   ],
+   "first_status": "200"
+  },
+  {
+   "order": "26",
+   "paper_id": "XXBY",
+   "hosts": [
+    "doi.org"
+   ],
+   "first_status": "403"
+  },
+  {
+   "order": "28",
+   "paper_id": "k4Az",
+   "hosts": [
+    "onlinelibrary.wiley.com"
+   ],
+   "first_status": "403"
+  },
+  {
+   "order": "30",
+   "paper_id": "2bxG",
+   "hosts": [
+    "onlinelibrary.wiley.com",
+    "www.crimrxiv.com"
+   ],
+   "first_status": "403"
+  },
+  {
+   "order": "31",
+   "paper_id": "1k10",
+   "hosts": [
+    "doi.org"
+   ],
+   "first_status": "403"
+  },
+  {
+   "order": "32",
+   "paper_id": "RlVV",
+   "hosts": [
+    "doi.org"
+   ],
+   "first_status": "403"
+  },
+  {
+   "order": "33",
+   "paper_id": "1l10",
+   "hosts": [
+    "academic.oup.com"
+   ],
+   "first_status": "403"
+  },
+  {
+   "order": "34",
+   "paper_id": "1ODW",
+   "hosts": [
+    "doi.org"
+   ],
+   "first_status": "403"
+  },
+  {
+   "order": "35",
+   "paper_id": "VGym",
+   "hosts": [
+    "doi.org"
+   ],
+   "first_status": "403"
+  },
+  {
+   "order": "36",
+   "paper_id": "LmVx",
+   "hosts": [
+    "www.aeaweb.org"
+   ],
+   "first_status": "200"
+  },
+  {
+   "order": "37",
+   "paper_id": "4pAB",
+   "hosts": [
+    "doi.org"
+   ],
+   "first_status": "403"
+  },
+  {
+   "order": "38",
+   "paper_id": "V8z1",
+   "hosts": [
+    "www.sciencedirect.com"
+   ],
+   "first_status": "403"
+  },
+  {
+   "order": "39",
+   "paper_id": "jq74",
+   "hosts": [
+    "doi.org"
+   ],
+   "first_status": "403"
+  },
+  {
+   "order": "40",
+   "paper_id": "5v32",
+   "hosts": [
+    "doi.org"
+   ],
+   "first_status": "403"
+  },
+  {
+   "order": "41",
+   "paper_id": "5Ebl",
+   "hosts": [
+    "doi.org"
+   ],
+   "first_status": "403"
+  },
+  {
+   "order": "43",
+   "paper_id": "ZaZK",
+   "hosts": [
+    "doi.org"
+   ],
+   "first_status": "403"
+  },
+  {
+   "order": "46",
+   "paper_id": "xgxj",
+   "hosts": [
+    "pubs.aeaweb.org"
+   ],
+   "first_status": "403"
+  },
+  {
+   "order": "47",
+   "paper_id": "72X2",
+   "hosts": [
+    "onlinelibrary.wiley.com"
+   ],
+   "first_status": "403"
+  },
+  {
+   "order": "48",
+   "paper_id": "jQ3K",
+   "hosts": [
+    "doi.org"
+   ],
+   "first_status": "403"
+  },
+  {
+   "order": "49",
+   "paper_id": "7BE9",
+   "hosts": [
+    "academic.oup.com"
+   ],
+   "first_status": "403"
+  },
+  {
+   "order": "50",
+   "paper_id": "OlAN",
+   "hosts": [
+    "doi.org"
+   ],
+   "first_status": "403"
+  },
+  {
+   "order": "52",
+   "paper_id": "Rjpb",
+   "hosts": [
+    "onlinelibrary.wiley.com",
+    "doi.org"
+   ],
+   "first_status": "403"
+  },
+  {
+   "order": "53",
+   "paper_id": "Px3J",
+   "hosts": [
+    "doi.org"
+   ],
+   "first_status": "403"
+  },
+  {
+   "order": "54",
+   "paper_id": "j3y4",
+   "hosts": [
+    "doi.org"
+   ],
+   "first_status": "403"
+  },
+  {
+   "order": "55",
+   "paper_id": "EA9j",
+   "hosts": [
+    "read.dukeupress.edu"
+   ],
+   "first_status": "403"
+  },
+  {
+   "order": "56",
+   "paper_id": "RmO9",
+   "hosts": [
+    "doi.org"
+   ],
+   "first_status": "403"
+  },
+  {
+   "order": "57",
+   "paper_id": "xgEL",
+   "hosts": [
+    "read.dukeupress.edu"
+   ],
+   "first_status": "403"
+  },
+  {
+   "order": "58",
+   "paper_id": "w7Wp",
+   "hosts": [
+    "doi.org"
+   ],
+   "first_status": "403"
+  },
+  {
+   "order": "59",
+   "paper_id": "dleV",
+   "hosts": [
+    "academic.oup.com",
+    "doi.org"
+   ],
+   "first_status": "403"
+  },
+  {
+   "order": "60",
+   "paper_id": "KR7d",
+   "hosts": [
+    "research-information.bris.ac.uk"
+   ],
+   "first_status": "200"
+  },
+  {
+   "order": "61",
+   "paper_id": "X47z",
+   "hosts": [
+    "doi.org"
+   ],
+   "first_status": "403"
+  },
+  {
+   "order": "62",
+   "paper_id": "yA1R",
+   "hosts": [
+    "read.dukeupress.edu"
+   ],
+   "first_status": "403"
+  },
+  {
+   "order": "63",
+   "paper_id": "y73m",
+   "hosts": [
+    "doi.org"
+   ],
+   "first_status": "403"
+  },
+  {
+   "order": "64",
+   "paper_id": "Jr4e",
+   "hosts": [
+    "doi.org"
+   ],
+   "first_status": "403"
+  },
+  {
+   "order": "65",
+   "paper_id": "v7QG",
+   "hosts": [
+    "www.ecgi.global"
+   ],
+   "first_status": "200"
+  },
+  {
+   "order": "66",
+   "paper_id": "DDmy",
+   "hosts": [
+    "academic.oup.com"
+   ],
+   "first_status": "403"
+  },
+  {
+   "order": "67",
+   "paper_id": "jrdg",
+   "hosts": [
+    "doi.org"
+   ],
+   "first_status": "403"
+  },
+  {
+   "order": "68",
+   "paper_id": "Z8k4",
+   "hosts": [
+    "read.dukeupress.edu"
+   ],
+   "first_status": "403"
+  },
+  {
+   "order": "69",
+   "paper_id": "YROp",
+   "hosts": [
+    "doi.org"
+   ],
+   "first_status": "403"
+  },
+  {
+   "order": "70",
+   "paper_id": "7p01",
+   "hosts": [
+    "doi.org",
+    "doi.org"
+   ],
+   "first_status": "403"
+  },
+  {
+   "order": "71",
+   "paper_id": "qX97",
+   "hosts": [
+    "academic.oup.com"
+   ],
+   "first_status": "403"
+  },
+  {
+   "order": "72",
+   "paper_id": "kVp2",
+   "hosts": [
+    "doi.org"
+   ],
+   "first_status": "403"
+  },
+  {
+   "order": "73",
+   "paper_id": "4Q2L",
+   "hosts": [
+    "muse.jhu.edu"
+   ],
+   "first_status": "200"
+  },
+  {
+   "order": "74",
+   "paper_id": "XXP8",
+   "hosts": [
+    "academic.oup.com"
+   ],
+   "first_status": "403"
+  },
+  {
+   "order": "75",
+   "paper_id": "Aa7J",
+   "hosts": [
+    "onlinelibrary.wiley.com",
+    "doi.org"
+   ],
+   "first_status": "403"
+  },
+  {
+   "order": "76",
+   "paper_id": "BlaE",
+   "hosts": [
+    "doi.org"
+   ],
+   "first_status": "403"
+  },
+  {
+   "order": "77",
+   "paper_id": "0dr8",
+   "hosts": [
+    "onlinelibrary.wiley.com"
+   ],
+   "first_status": "403"
+  },
+  {
+   "order": "78",
+   "paper_id": "yAX4",
+   "hosts": [
+    "read.dukeupress.edu"
+   ],
+   "first_status": "403"
+  },
+  {
+   "order": "79",
+   "paper_id": "kgA2",
+   "hosts": [
+    "www.aeaweb.org"
+   ],
+   "first_status": "403"
+  },
+  {
+   "order": "80",
+   "paper_id": "1OWE",
+   "hosts": [
+    "doi.org"
+   ],
+   "first_status": "403"
+  },
+  {
+   "order": "81",
+   "paper_id": "LX8G",
+   "hosts": [
+    "pubsonline.informs.org"
+   ],
+   "first_status": "403"
+  },
+  {
+   "order": "83",
+   "paper_id": "mObR",
+   "hosts": [
+    "doi.org"
+   ],
+   "first_status": "403"
+  },
+  {
+   "order": "84",
+   "paper_id": "OY3B",
+   "hosts": [
+    "academic.oup.com",
+    "cris.maastrichtuniversity.nl"
+   ],
+   "first_status": "403"
+  },
+  {
+   "order": "85",
+   "paper_id": "r32d",
+   "hosts": [
+    "www.cambridge.org"
+   ],
+   "first_status": "200"
+  },
+  {
+   "order": "86",
+   "paper_id": "QAQV",
+   "hosts": [
+    "doi.org"
+   ],
+   "first_status": "403"
+  },
+  {
+   "order": "87",
+   "paper_id": "LRkG",
+   "hosts": [
+    "read.dukeupress.edu"
+   ],
+   "first_status": "403"
+  },
+  {
+   "order": "89",
+   "paper_id": "Ed5X",
+   "hosts": [
+    "read.dukeupress.edu"
+   ],
+   "first_status": "403"
+  },
+  {
+   "order": "90",
+   "paper_id": "d2Am",
+   "hosts": [
+    "journals.sagepub.com"
+   ],
+   "first_status": "403"
+  }
+ ]
+}
