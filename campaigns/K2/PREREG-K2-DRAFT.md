@@ -800,7 +800,23 @@ manuscripts and 124 accepted manuscripts. Without any psychology category,
 and counting the 305 papers with no category, the frame is 1,924 papers, 713
 (37%) open on record and 242 (13%) open as published. On the development set,
 17 of 23 records marked open were obtained and 22 of 24 obtained texts passed
-intake (4.1), small samples that make any oversampling factor a rough one. Still development data: no
+intake (4.1), small samples that make any oversampling factor a rough one.
+
+*Eligibility (owner, 2026-10-21; `k2_frame_eligible.py`,
+`devset/frame_eligible.csv`).* (1) Only papers whose best open copy on record
+is the published or the accepted version, because SCORE's claim records locate
+the claim in the published article and a submitted manuscript can differ in
+what the rubric scores. (2) Any category naming psychology, alone or mixed, is
+excluded. (3) A paper with no Web of Science category takes its journal's most
+common category among the frame's categorized papers (187 classed, no ties).
+Three journals have no categorized paper in the frame, so their 118 papers
+stay unclassed and are excluded for now: *Computers & Education* (48 papers,
+5 eligible on access), *Social Science & Medicine* (47, 4) and *Journal of
+Experimental Political Science* (23, 1). **Result: 325 eligible papers in 34
+journals** (228 published, 97 accepted versions): business and economics 192
+(including the mixed economics categories), government, law, international
+relations and public administration 67, demography 36, sociology 25,
+criminology 4, education 1. Still development data: no
 replication outcome exists for these claims.
 
 *Disjointness.* Every supplement article is matched by DOI against SCORE's

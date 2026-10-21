@@ -1,0 +1,46 @@
+{
+ "frame": 2852,
+ "na_classed_by_journal": 187,
+ "na_journal_uncategorized": 118,
+ "na_journals_with_tied_categories": [],
+ "after_psychology_excluded": 1729,
+ "eligible_published_or_accepted": 325,
+ "eligible_by_version": {
+  "publishedVersion": 228,
+  "acceptedVersion": 97
+ },
+ "eligible_with_pdf_link": 188,
+ "eligible_by_category": {
+  "Business & Economics": 160,
+  "Demography": 36,
+  "Government & Law": 31,
+  "Sociology": 22,
+  "Business & Economics; Operations Research & Management Science": 20,
+  "International Relations; Government & Law": 14,
+  "Government & Law; Public Administration": 13,
+  "Public Administration": 9,
+  "Development Studies; Business & Economics": 6,
+  "Business & Economics; Mathematics; Mathematical Methods In Social Sciences": 6,
+  "Criminology & Penology": 4,
+  "Family Studies; Sociology": 3,
+  "Education & Educational Research": 1
+ },
+ "eligible_classed_from_na": 22,
+ "eligible_journals": 34,
+ "non_psych_by_category": {
+  "Business & Economics": 750,
+  "Sociology": 194,
+  "Government & Law": 187,
+  "International Relations; Government & Law": 98,
+  "Education & Educational Research": 92,
+  "Government & Law; Public Administration": 50,
+  "Public Administration": 50,
+  "Education & Educational Research; Rehabilitation": 49,
+  "Family Studies; Sociology": 48,
+  "Business & Economics; Operations Research & Management Science": 47,
+  "Criminology & Penology": 46,
+  "Development Studies; Business & Economics": 45,
+  "Demography": 43,
+  "Business & Economics; Mathematics; Mathematical Methods In Social Sciences": 30
+ }
+}
