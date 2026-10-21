@@ -10,7 +10,7 @@ measure of failure.
 | [`PREREG-K2-DRAFT.md`](PREREG-K2-DRAFT.md) | DRAFT, NOT SEALED (2026-10-17) |
 | [`k2_analysis.py`](k2_analysis.py) | registered estimator (numpy only): blocked-CV ΔAUC, paper-cluster bootstrap, verdict |
 | [`k2_witness.py`](k2_witness.py), `k2_witness_result.json` | A1 witness + power simulation, run on Atlas |
-| [`RUBRIC-v2-PLAN.md`](RUBRIC-v2-PLAN.md) | Plan for a v2 rubric after v1 failed its held-out half: D1(b) and D4(b) chosen by the owner 2026-10-21; D2 computed (owner picks n); D3, D5 open |
+| [`RUBRIC-v2-PLAN.md`](RUBRIC-v2-PLAN.md) | Plan for a v2 rubric after v1 failed its held-out half: owner chose D1(b), D2 n = 60 held-out (go at ICC ≥ 0.73), D4(b) on 2026-10-21; D3, D5 open |
 | [`k2_d2_sizing.py`](k2_d2_sizing.py), [`k2_d2_nrp.py`](k2_d2_nrp.py), `k2_d2_sizing_result.json` | D2: held-out size for the v2 measurement (ICC precision by number of articles), run on NRP |
 | [`k2_power_b.py`](k2_power_b.py), [`k2_power_b_nrp.py`](k2_power_b_nrp.py), `k2_power_b_result.json` | Power of the B5 secondary test (134 phase-1 claims, forecast in M0), prereg 7.5.1; run on Atlas and on NRP, identical. Owner chose option (a) 2026-10-21: primary = all 274 claims with B1-B3 |
 | `k2_witness_noisy_result.json` | noisy-proxy scenario (`--noisy`): a gate tracking what the baselines measure with error passes 7% at reliability 0.5, 22% at 0.3 (prereg 7.5) |

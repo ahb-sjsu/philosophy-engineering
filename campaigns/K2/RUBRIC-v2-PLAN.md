@@ -1,7 +1,7 @@
 # K2 rubric v2: plan (DRAFT, 2026-10-21)
 
-**Decided (owner, 2026-10-21): D1 (b) and D4 (b).** D2 computed (the owner
-picks n); D3 and D5 are open.
+**Decided (owner, 2026-10-21): D1 (b), D2 n = 60 (go at ICC ≥ 0.73), D4 (b).**
+D3 and D5 are open.
 
 What it would take to get a rubric that passes I1 (single-coder gate
 ICC(2,1) ≥ 0.80 between independent coders, registration 7.2) without
@@ -99,8 +99,10 @@ that a rubric whose true ICC is 0.60 goes ahead only 5% of the time:
    share of articles whose full text cannot be obtained, which is unmeasured
    for the supplement.
 
-The owner picks n (and so t_n) before the draw; the choice and the seed are
-committed together.
+**DECIDED (owner, 2026-10-21): n = 60 held-out articles, go threshold
+t = 0.73** (between-family gate ICC(2,1) on the held-out set; under the model,
+go 5% of the time at a true 0.60, 88% at 0.80, 99% at 0.85). The seed is
+committed with the draw frame (strata and the d9x6s source), before the draw.
 
 ### D3 Coders (Owner)
 

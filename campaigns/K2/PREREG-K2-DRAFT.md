@@ -785,8 +785,11 @@ draw. Two independent coders, as for the main development set.
 *Also the v2 measurement pool (owner decision 2026-10-21, `RUBRIC-v2-PLAN.md`
 D1(b)).* RUBRIC-v1's held-out half is spent (7.4.1), so v2 is measured on
 supplement articles. The held-out part is drawn by seed, split off and set
-aside unread before v2 is written; its size comes from the D2 sizing
-simulation and may exceed the ~30 above. Still development data: no
+aside unread before v2 is written. **Its size is 60 articles (owner,
+2026-10-21, from the D2 sizing simulation), and v2 goes ahead only if the
+between-family gate ICC(2,1) on them is at least 0.73.** The draw is larger
+than 60 by the share whose full text cannot be obtained; that share is not
+yet measured. Still development data: no
 replication outcome exists for these claims.
 
 *Disjointness.* Every supplement article is matched by DOI against SCORE's
