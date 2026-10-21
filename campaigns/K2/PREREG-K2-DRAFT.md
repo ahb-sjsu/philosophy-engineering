@@ -824,7 +824,11 @@ pinned by hash; the seed, rule and hash were committed before the draw was
 run. The 90 are put in one seeded order, and the held-out set is the first 60
 in that order whose text is obtained and passes intake; usable papers after
 the 60th are revise material. Held-out texts are handled by script only until
-v2 is committed. Still development data: no
+v2 is committed. **Drawn 2026-10-21 22:24:36 UTC on Atlas** (`devset/v2_draw.csv`),
+after the seed commit (535dd86, 22:23:48 UTC) and a correction of the frame
+hash constant (d08e8f0, 22:24:23 UTC; the first run had stopped at the hash
+check without drawing): economics 53, politics 19, demography 10, sociology 7,
+criminology 1, education 0; 63 published and 27 accepted versions. Still development data: no
 replication outcome exists for these claims.
 
 *Disjointness.* Every supplement article is matched by DOI against SCORE's
