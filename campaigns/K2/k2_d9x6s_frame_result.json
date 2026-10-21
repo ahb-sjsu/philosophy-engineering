@@ -1,0 +1,48 @@
+{
+ "rows": 3000,
+ "replicated_papers_in_file": 148,
+ "dev_doi_matches": 1,
+ "frame": 2852,
+ "frame_by_category": {
+  "Business & Economics": 722,
+  "Psychology": 477,
+  "NA": 305,
+  "Government & Law": 187,
+  "Sociology": 171,
+  "Psychology; Business & Economics": 140,
+  "International Relations; Government & Law": 97,
+  "Business & Economics; Psychology": 86,
+  "Education & Educational Research": 80,
+  "Government & Law; Psychology": 50,
+  "Government & Law; Public Administration": 50,
+  "Environmental Sciences & Ecology; Psychology": 48,
+  "Family Studies; Sociology": 48,
+  "Public Administration": 48,
+  "Criminology & Penology": 46,
+  "Education & Educational Research; Rehabilitation": 46,
+  "Psychology; Behavioral Sciences; Biomedical Social Sciences": 45,
+  "Demography": 42,
+  "Psychology; Psychiatry": 41,
+  "Business & Economics; Operations Research & Management Science": 41,
+  "Education & Educational Research; Psychology": 41,
+  "Business & Economics; Mathematics; Mathematical Methods In Social Sciences": 30,
+  "Development Studies; Business & Economics": 11
+ },
+ "frame_by_year": {
+  "2009": 267,
+  "2010": 280,
+  "2011": 275,
+  "2012": 282,
+  "2013": 293,
+  "2014": 287,
+  "2015": 300,
+  "2016": 293,
+  "2017": 292,
+  "2018": 283
+ },
+ "frame_journals": 62,
+ "version_values": {
+  "1": 2996,
+  "2": 4
+ }
+}

@@ -1,0 +1,478 @@
+{
+ "file": "phase_one_singletrace_claims_anonymised.csv",
+ "bytes": 17884318,
+ "sha256": "abf577d74b4b373a49bfdb5a1042a08f03991053f1505b00eb710f91d5c66ff1",
+ "osf_sha256_match": true,
+ "license_node": "d9x6s",
+ "rows": 3000,
+ "columns": [
+  {
+   "column": "title_CR",
+   "nonempty": 3000,
+   "distinct": 3000,
+   "max_len": 209
+  },
+  {
+   "column": "author_last_CR",
+   "nonempty": 3000,
+   "distinct": 2458,
+   "max_len": 22
+  },
+  {
+   "column": "author_first_CR",
+   "nonempty": 3000,
+   "distinct": 2269,
+   "max_len": 18
+  },
+  {
+   "column": "pub_year_CR",
+   "nonempty": 3000,
+   "distinct": 10,
+   "max_len": 4
+  },
+  {
+   "column": "DOI_CR",
+   "nonempty": 3000,
+   "distinct": 3000,
+   "max_len": 34
+  },
+  {
+   "column": "ISSN_CR",
+   "nonempty": 3000,
+   "distinct": 62,
+   "max_len": 9
+  },
+  {
+   "column": "publication_CR",
+   "nonempty": 3000,
+   "distinct": 65,
+   "max_len": 52
+  },
+  {
+   "column": "pub_short",
+   "nonempty": 3000,
+   "distinct": 62,
+   "max_len": 19
+  },
+  {
+   "column": "publication_standard",
+   "nonempty": 3000,
+   "distinct": 62,
+   "max_len": 52
+  },
+  {
+   "column": "paper_id",
+   "nonempty": 3000,
+   "distinct": 3000,
+   "max_len": 4
+  },
+  {
+   "column": "source_WOS",
+   "nonempty": 3000,
+   "distinct": 2,
+   "max_len": 5
+  },
+  {
+   "column": "author_full",
+   "nonempty": 3000,
+   "distinct": 2985,
+   "max_len": 463
+  },
+  {
+   "column": "title_WOS",
+   "nonempty": 3000,
+   "distinct": 2683,
+   "max_len": 209
+  },
+  {
+   "column": "publication_WOS",
+   "nonempty": 3000,
+   "distinct": 60,
+   "max_len": 52
+  },
+  {
+   "column": "language",
+   "nonempty": 3000,
+   "distinct": 2,
+   "max_len": 7
+  },
+  {
+   "column": "keywords",
+   "nonempty": 3000,
+   "distinct": 2011,
+   "max_len": 288
+  },
+  {
+   "column": "keywords_plus",
+   "nonempty": 3000,
+   "distinct": 2648,
+   "max_len": 255
+  },
+  {
+   "column": "abstract",
+   "nonempty": 3000,
+   "distinct": 3000,
+   "max_len": 4339
+  },
+  {
+   "column": "author_address",
+   "nonempty": 3000,
+   "distinct": 2654,
+   "max_len": 1217
+  },
+  {
+   "column": "reprint_address",
+   "nonempty": 3000,
+   "distinct": 2639,
+   "max_len": 635
+  },
+  {
+   "column": "author_email",
+   "nonempty": 3000,
+   "distinct": 2423,
+   "max_len": 216
+  },
+  {
+   "column": "funding",
+   "nonempty": 3000,
+   "distinct": 877,
+   "max_len": 1015
+  },
+  {
+   "column": "publisher",
+   "nonempty": 3000,
+   "distinct": 31,
+   "max_len": 40
+  },
+  {
+   "column": "publisher_address",
+   "nonempty": 3000,
+   "distinct": 33,
+   "max_len": 71
+  },
+  {
+   "column": "ISSN_WOS",
+   "nonempty": 3000,
+   "distinct": 60,
+   "max_len": 9
+  },
+  {
+   "column": "eISSN",
+   "nonempty": 3000,
+   "distinct": 63,
+   "max_len": 9
+  },
+  {
+   "column": "pub_year_WOS",
+   "nonempty": 3000,
+   "distinct": 21,
+   "max_len": 6
+  },
+  {
+   "column": "volume",
+   "nonempty": 3000,
+   "distinct": 294,
+   "max_len": 5
+  },
+  {
+   "column": "issue",
+   "nonempty": 3000,
+   "distinct": 32,
+   "max_len": 5
+  },
+  {
+   "column": "DOI_WOS",
+   "nonempty": 3000,
+   "distinct": 2669,
+   "max_len": 34
+  },
+  {
+   "column": "WOS_category",
+   "nonempty": 3000,
+   "distinct": 35,
+   "max_len": 119
+  },
+  {
+   "column": "category",
+   "nonempty": 3000,
+   "distinct": 23,
+   "max_len": 74
+  },
+  {
+   "column": "accession_number",
+   "nonempty": 3000,
+   "distinct": 2682,
+   "max_len": 19
+  },
+  {
+   "column": "pg",
+   "nonempty": 3000,
+   "distinct": 2896,
+   "max_len": 9
+  },
+  {
+   "column": "author_last_WOS",
+   "nonempty": 3000,
+   "distinct": 2190,
+   "max_len": 20
+  },
+  {
+   "column": "author_first_WOS",
+   "nonempty": 3000,
+   "distinct": 2007,
+   "max_len": 18
+  },
+  {
+   "column": "published",
+   "nonempty": 3000,
+   "distinct": 206,
+   "max_len": 12
+  },
+  {
+   "column": "pdf_filename",
+   "nonempty": 3000,
+   "distinct": 3000,
+   "max_len": 46
+  },
+  {
+   "column": "claim2_abstract",
+   "nonempty": 3000,
+   "distinct": 3000,
+   "max_len": 831
+  },
+  {
+   "column": "coded_claim2",
+   "nonempty": 3000,
+   "distinct": 3000,
+   "max_len": 630
+  },
+  {
+   "column": "claim2_pg",
+   "nonempty": 3000,
+   "distinct": 13,
+   "max_len": 13
+  },
+  {
+   "column": "claim2_start",
+   "nonempty": 3000,
+   "distinct": 1721,
+   "max_len": 25
+  },
+  {
+   "column": "claim2_box",
+   "nonempty": 3000,
+   "distinct": 3000,
+   "max_len": 187
+  },
+  {
+   "column": "claim3a_concretehyp",
+   "nonempty": 3000,
+   "distinct": 3000,
+   "max_len": 2676
+  },
+  {
+   "column": "coded_claim3a",
+   "nonempty": 3000,
+   "distinct": 3000,
+   "max_len": 1000
+  },
+  {
+   "column": "claim3a_pg",
+   "nonempty": 3000,
+   "distinct": 426,
+   "max_len": 20
+  },
+  {
+   "column": "claim3a_start",
+   "nonempty": 3000,
+   "distinct": 2620,
+   "max_len": 32
+  },
+  {
+   "column": "claim3a_box",
+   "nonempty": 3000,
+   "distinct": 3000,
+   "max_len": 247
+  },
+  {
+   "column": "claim3b_testspec",
+   "nonempty": 3000,
+   "distinct": 2998,
+   "max_len": 4783
+  },
+  {
+   "column": "coded_claim3b",
+   "nonempty": 3000,
+   "distinct": 3000,
+   "max_len": 2287
+  },
+  {
+   "column": "claim3b_pg",
+   "nonempty": 3000,
+   "distinct": 1581,
+   "max_len": 77
+  },
+  {
+   "column": "claim3b_start",
+   "nonempty": 3000,
+   "distinct": 2947,
+   "max_len": 122
+  },
+  {
+   "column": "claim3b_box",
+   "nonempty": 3000,
+   "distinct": 3000,
+   "max_len": 926
+  },
+  {
+   "column": "claim4_inftest",
+   "nonempty": 3000,
+   "distinct": 2998,
+   "max_len": 1512
+  },
+  {
+   "column": "coded_claim4",
+   "nonempty": 3000,
+   "distinct": 3000,
+   "max_len": 1183
+  },
+  {
+   "column": "claim4_pg",
+   "nonempty": 3000,
+   "distinct": 892,
+   "max_len": 77
+  },
+  {
+   "column": "claim4_start",
+   "nonempty": 3000,
+   "distinct": 2859,
+   "max_len": 102
+  },
+  {
+   "column": "claim4_box",
+   "nonempty": 3000,
+   "distinct": 3000,
+   "max_len": 791
+  },
+  {
+   "column": "sample_size",
+   "nonempty": 3000,
+   "distinct": 2820,
+   "max_len": 702
+  },
+  {
+   "column": "coded_sample_size",
+   "nonempty": 3000,
+   "distinct": 2809,
+   "max_len": 643
+  },
+  {
+   "column": "sample_size_pg",
+   "nonempty": 3000,
+   "distinct": 218,
+   "max_len": 47
+  },
+  {
+   "column": "sample_size_start",
+   "nonempty": 3000,
+   "distinct": 2187,
+   "max_len": 4
+  },
+  {
+   "column": "sample_size_box",
+   "nonempty": 3000,
+   "distinct": 2876,
+   "max_len": 525
+  },
+  {
+   "column": "effect_size",
+   "nonempty": 3000,
+   "distinct": 2342,
+   "max_len": 331
+  },
+  {
+   "column": "coded_effect_size",
+   "nonempty": 3000,
+   "distinct": 2399,
+   "max_len": 335
+  },
+  {
+   "column": "effect_size_pg",
+   "nonempty": 3000,
+   "distinct": 160,
+   "max_len": 32
+  },
+  {
+   "column": "effect_size_start",
+   "nonempty": 3000,
+   "distinct": 1903,
+   "max_len": 4
+  },
+  {
+   "column": "effect_size_box",
+   "nonempty": 3000,
+   "distinct": 2489,
+   "max_len": 346
+  },
+  {
+   "column": "p_value",
+   "nonempty": 3000,
+   "distinct": 1053,
+   "max_len": 121
+  },
+  {
+   "column": "coded_p_value",
+   "nonempty": 3000,
+   "distinct": 520,
+   "max_len": 101
+  },
+  {
+   "column": "p_value_pg",
+   "nonempty": 3000,
+   "distinct": 86,
+   "max_len": 17
+  },
+  {
+   "column": "p_value_start",
+   "nonempty": 3000,
+   "distinct": 1908,
+   "max_len": 4
+  },
+  {
+   "column": "p_value_box",
+   "nonempty": 3000,
+   "distinct": 2366,
+   "max_len": 194
+  },
+  {
+   "column": "corr_author",
+   "nonempty": 3000,
+   "distinct": 2849,
+   "max_len": 40
+  },
+  {
+   "column": "corr_email",
+   "nonempty": 3000,
+   "distinct": 2872,
+   "max_len": 113
+  },
+  {
+   "column": "version",
+   "nonempty": 3000,
+   "distinct": 2,
+   "max_len": 1
+  },
+  {
+   "column": "xml",
+   "nonempty": 3000,
+   "distinct": 3000,
+   "max_len": 62
+  },
+  {
+   "column": "pdf",
+   "nonempty": 3000,
+   "distinct": 3000,
+   "max_len": 62
+  }
+ ]
+}
