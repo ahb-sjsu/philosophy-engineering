@@ -31,7 +31,9 @@ import numpy as np
 
 SEED = 20261021
 N_DRAW = 90
-FRAME_SHA256_LF = "a7c50460274f46e5ba8cd038b98ef8c6dcf299ec5b74e28c90a39584e69ce2b6"
+# Corrected in the commit after 535dd86, before any draw ran: 535dd86 held a7c50460..., the hash of the laptop copy
+# with CRLF line endings, not of the LF-normalized text this script checks. Same frame (blob in d404f68).
+FRAME_SHA256_LF = "b5bb1d61edc936833c4bd44383c67fcd913dbcbae77c1211bda310e6eb9c96ab"
 STRATA = ("economics", "politics", "demography", "sociology", "criminology", "education")
 
 
