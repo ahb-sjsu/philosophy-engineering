@@ -842,6 +842,25 @@ Results, built on psychology articles) finds nothing to keep; one also has
 residual leaks. The texts were handled by script only and were not read. Still development data: no
 replication outcome exists for these claims.
 
+*SSRN copies excluded (owner, 2026-10-24).* For 36 of the 80 papers still
+missing, the only open location resolves to SSRN. OpenAlex labels these copies
+published or accepted, but SSRN copies are usually working papers, so they do
+not meet the published-or-accepted rule and are not fetched. The same rule
+drops 3 of the 12 development papers (el4m, K8XW, A2lr). After the exclusion
+at most 54 drawn papers can be obtained (the 10 in hand and 44 others), fewer
+than the 60 the held-out set needs.
+
+*Second fetch, through the owner's Chrome, 2026-10-24.* One request per host,
+made from a script running in a publisher or repository page. The owner had
+cleared the hosts' checks in their own tabs. Eight hosts were tried. Wiley
+and Duke still showed the check. Wiley, Oxford and the Bristol and Manchester
+repositories answered the scripted request with HTTP 403. Wiley, Cambridge and
+the AEA sent the reader to the abstract page, which means the copy is not open
+to this reader despite OpenAlex's open label. The Copenhagen repository links
+only to a time-limited Oxford copy. MUSE, SAGE, ScienceDirect, INFORMS and the
+Groningen repository were not tried. No PDF was obtained; nothing was worked
+around.
+
 *Disjointness.* Every supplement article is matched by DOI against SCORE's
 replicated claims and against the secondary arm (EE-RP, SSRP); any match is
 redrawn. The supplement is development data permanently and never test data.
