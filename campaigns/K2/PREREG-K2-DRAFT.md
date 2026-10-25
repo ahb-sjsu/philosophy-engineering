@@ -842,24 +842,40 @@ Results, built on psychology articles) finds nothing to keep; one also has
 residual leaks. The texts were handled by script only and were not read. Still development data: no
 replication outcome exists for these claims.
 
-*SSRN copies excluded (owner, 2026-10-24).* For 36 of the 80 papers still
-missing, the only open location resolves to SSRN. OpenAlex labels these copies
-published or accepted, but SSRN copies are usually working papers, so they do
-not meet the published-or-accepted rule and are not fetched. The same rule
-drops 3 of the 12 development papers (el4m, K8XW, A2lr). After the exclusion
-at most 54 drawn papers can be obtained (the 10 in hand and 44 others), fewer
-than the 60 the held-out set needs.
+*SSRN copies excluded (owner, 2026-10-24).* For 33 of the 80 drawn papers
+still missing, the only open location resolves to SSRN. OpenAlex labels these
+copies published or accepted, but SSRN copies are usually working papers, so
+they do not meet the published-or-accepted rule and are not fetched. The same
+rule drops 3 of the 12 development papers (el4m, K8XW, A2lr). (A first count,
+committed in a3aaa63, gave 36 and 54; it had included the 3 development
+papers.) After the exclusion at most 57 drawn papers can be obtained (the 10
+in hand and 47 others), fewer than the 60 the held-out set needs.
 
-*Second fetch, through the owner's Chrome, 2026-10-24.* One request per host,
-made from a script running in a publisher or repository page. The owner had
-cleared the hosts' checks in their own tabs. Eight hosts were tried. Wiley
-and Duke still showed the check. Wiley, Oxford and the Bristol and Manchester
-repositories answered the scripted request with HTTP 403. Wiley, Cambridge and
-the AEA sent the reader to the abstract page, which means the copy is not open
-to this reader despite OpenAlex's open label. The Copenhagen repository links
-only to a time-limited Oxford copy. MUSE, SAGE, ScienceDirect, INFORMS and the
-Groningen repository were not tried. No PDF was obtained; nothing was worked
-around.
+*Second fetch, through the owner's Chrome, 2026-10-24* (log
+`devset/v2_chrome_log.csv`). The owner cleared the hosts' bot checks by hand.
+I saved each PDF either by asking the publisher for a download (`?download=true`)
+or by a script running on the file host's own page; nothing was worked around,
+and the held-out texts were not displayed for reading. **9 more held-out PDFs
+obtained** (Wiley 4, Oxford 2, AEA 2, INFORMS 1), giving **19 of 90**. 30 of
+the 47 non-SSRN papers are not open to this reader despite OpenAlex's open
+label: the publisher sent the reader to the abstract page (Duke Demography
+10, Oxford 9, Wiley 5, AEA 5, Cambridge 1). 8 were not finished (SAGE 2,
+ScienceDirect, MUSE, Oxford through its DOI, and the Bristol, Manchester and
+Copenhagen repositories). Development PDFs on hand: 34Rd, 13Nv, BPXj (5 more
+paywalled, 1 behind MUSE's check).
+
+*Held-out set is the PDFs in hand (owner, 2026-10-25: "Work with what you
+have").* Fetching stopped. The held-out set is the drawn papers whose PDFs are
+on Atlas, in draw order, that pass intake: at most 19, not 60. The go
+threshold rule of 7.4.1 is unchanged (the ICC that a rubric at true 0.60
+exceeds only 5% of the time), so the threshold rises with the smaller n. At
+n = 20 the sizing run (`k2_d2_sizing_result.json`, no bias) gives a threshold
+of 0.81, and a rubric at true ICC 0.80 goes ahead 49% of the time (0.85: 71%;
+0.90: 90%); at n = 15, 0.83 and 43%. The exact threshold is computed at the
+final n once intake is done. Missing papers are not replaced, so the mix
+differs from the proportional allocation (economics 53, politics 19,
+demography 10, sociology 7, criminology 1): the 19 are economics 11, politics
+7, criminology 1, with no demography or sociology paper.
 
 *Disjointness.* Every supplement article is matched by DOI against SCORE's
 replicated claims and against the secondary arm (EE-RP, SSRP); any match is
