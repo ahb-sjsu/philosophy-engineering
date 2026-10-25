@@ -918,7 +918,7 @@ lists in all 132 development records: the old module left a first author in
 all 132, the fixed one in none, with no new false leaks on the clean body. v2
 intake rerun with the fix: same result (dev 3 of 3, held-out 17 of 19 pass;
 no co-author residue left in the dev units). The v1 intake texts were made
-with the old module and are not rerun.
+with the old module; rerun below.
 
 *Running page numbers removed (owner, 2026-10-25: "fix the page numbers
 too").* A bare page number places the article in its journal issue. It cannot
@@ -941,6 +941,22 @@ held-out 17 of 18 with a unit); the offsets equal the Crossref first page or
 one less (a cover page), except 5AKw (the manuscript's own numbering) and v7QG
 (no offset found; its numbering is not known without reading it). No
 in-range bare number is left in the dev units.
+
+*v1 intake rerun with both fixes (owner, 2026-10-25: "re-run the v1 intake
+with the fixed module").* `k2_intake.py` (the 24 open development articles,
+Method and Results unit) now drops each page's running number before the
+reference cut and section split, with the same two functions. Same PDFs (all
+24 hashes unchanged), same outcome: 22 released, 2 quarantined for the same
+reasons as before (DEV-ML-015 letter-spaced scan, DEV-ML-016 no Method or
+Results heading), no residual leak. Against the old texts, counted by script:
+co-author residue ("Name and [REDACTED]") 98 to 0, in 20 articles; bare lines
+equal to one of the article's running page numbers 107 to 16. None of the 16
+is its own page's number: in DEV-RPP-006 they are a numbered list (items 1-48
+on PDF pages 5-7) and table values, in DEV-ML-015 (quarantined) table values.
+10 articles have no running offset found and lost no line. The old texts are
+kept on Atlas (`raw/fulltext/blinded_pre1025`, `quarantine_pre1025`); anything
+already coded from them (the pilots) was coded from the old texts and is not
+rerun.
 
 *Held-out n after the fixes: 18.* With the page numbers gone, dNkl passes; its
 2 citation leaks were probably page numbers in the 2037-2096 range read as

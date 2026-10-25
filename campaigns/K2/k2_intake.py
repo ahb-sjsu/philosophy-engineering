@@ -4,7 +4,8 @@
 Registration 4.1. For each <dev_id>.pdf in the input directory:
 
     1. hash the PDF (sha256) and extract text with poppler's pdftotext
-    2. cut the reference list at the LAST line that is only a references
+    2. drop each page's running page number (k2_blinding.running_page_offset,
+       added 2026-10-25), then cut the reference list at the LAST line that is only a references
        heading in the back 40% of the text; if none is found the article is
        flagged, not guessed at
     3. k2_sections.extract: keep only Method and Results sections (the coding
@@ -33,7 +34,7 @@ import subprocess
 import sys
 from pathlib import Path
 
-from k2_blinding import leaks, redact
+from k2_blinding import drop_running_number, leaks, redact, running_page_offset
 from k2_sections import extract
 
 # share of one-letter words above which the text is treated as a letter-spaced
@@ -65,7 +66,12 @@ def main() -> int:
         m = meta[dev]
         raw = subprocess.run(["pdftotext", "-enc", "UTF-8", str(pdf), "-"],
                              capture_output=True, text=True, check=True).stdout
-        body, cut = cut_references(raw)
+        # running page numbers place the article in its journal issue (owner,
+        # 2026-10-25); dropped page by page before the pages are joined
+        pages = raw.split("\f")
+        offset = running_page_offset(pages)
+        pages, dropped = zip(*(drop_running_number(p, k, offset) for k, p in enumerate(pages)))
+        body, cut = cut_references("\f".join(pages))
         # the coding unit is Method and Results only (4.1, adopted
         # 2026-10-18); front matter is dropped, then the rest is redacted
         unit, sec = extract(body)
@@ -90,6 +96,7 @@ def main() -> int:
             "sections_found": sec["found"], "method_headings": sec["method_headings"],
             "results_headings": sec["results_headings"], "lead_chars": sec["lead_chars"],
             "kept_share": sec["kept_share"],
+            "running_offset": offset, "page_numbers_dropped": sum(dropped),
             "leaks_before": len(pre), "leak_kinds_before": json.dumps(kinds, sort_keys=True),
             "residual_leaks": len(residual),
             "residual_kinds": json.dumps(sorted({k for k, _ in residual})),
