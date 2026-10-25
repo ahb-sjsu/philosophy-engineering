@@ -877,6 +877,29 @@ differs from the proportional allocation (economics 53, politics 19,
 demography 10, sociology 7, criminology 1): the 19 are economics 11, politics
 7, criminology 1, with no demography or sociology paper.
 
+*Intake with the claim-location unit, 2026-10-25* (`k2_claimunit.py`,
+`k2_v2_intake.py`, committed in 810f8fc before any held-out run; manifest
+`devset/v2_intake_manifest_claimunit.csv`). The unit is the pages holding
+SCORE's quoted hypothesis, test and result passages, found by their text, with
+page 1 and reference lists dropped. On the 3 development papers all passages
+were placed and no leak remained. **Of the 19 held-out PDFs, 17 passed and 2
+were quarantined**: dNkl kept 2 citation leaks after redaction, and for ek4K
+none of SCORE's 6 quoted passages was found in our text (134,581 characters,
+not a scan). The 17 keep 6 to 37% of their text (2 to 7 pages). Placement by
+SCORE's page plus the median offset was used for 0 to 14 parts per paper;
+where an accepted manuscript's pagination drifts within the paper (offsets up
+to 6 pages), those parts can land on the wrong page, which no one has checked
+because the texts are not read. **The held-out n is therefore 17**, unless a
+person clears a quarantined paper; the go threshold at n = 17 lies between
+0.83 (n = 15) and 0.81 (n = 20) and is to be computed exactly at that n.
+
+*Residue the leak check passes (development papers, read by me).* In
+two-author citations only the second surname is redacted ("Hoang and
+[REDACTED]"), so cited first authors remain; they are not the paper's own
+authors. Bare running page numbers remain, which point to the paper's place in
+its journal issue. Both come from `k2_blinding`, not the new unit, and are left
+for the owner.
+
 *Disjointness.* Every supplement article is matched by DOI against SCORE's
 replicated claims and against the secondary arm (EE-RP, SSRP); any match is
 redrawn. The supplement is development data permanently and never test data.
