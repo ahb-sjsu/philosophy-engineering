@@ -905,8 +905,20 @@ true 0.60 through 5% of the time; what the smaller n costs is power.
 two-author citations only the second surname is redacted ("Hoang and
 [REDACTED]"), so cited first authors remain; they are not the paper's own
 authors. Bare running page numbers remain, which point to the paper's place in
-its journal issue. Both come from `k2_blinding`, not the new unit, and are left
-for the owner.
+its journal issue. Both come from `k2_blinding`, not the new unit.
+
+*Citation redaction fixed (owner, 2026-10-25: "fix the citation redaction").*
+The citation rule now takes the whole cited author list ("Hoang and
+Rothaermel (2005)", "Rabe, Lee, and Taylor 2010"), and a capitalized word
+joined to a redaction mark by "and" or "&" counts as name residue in both
+redaction and the leak check. Stated cost: a capitalized word before "and" in
+a citation goes with the list ("However, Smith and Lee (2005)" loses
+"However"). The I3 witness (`k2_blinding_test.py`, version 3) plants such
+lists in all 132 development records: the old module left a first author in
+all 132, the fixed one in none, with no new false leaks on the clean body. v2
+intake rerun with the fix: same result (dev 3 of 3, held-out 17 of 19 pass;
+no co-author residue left in the dev units). The v1 intake texts were made
+with the old module and are not rerun. Bare page numbers are not yet handled.
 
 *Disjointness.* Every supplement article is matched by DOI against SCORE's
 replicated claims and against the secondary arm (EE-RP, SSRP); any match is

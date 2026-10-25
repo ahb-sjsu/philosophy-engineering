@@ -26,7 +26,9 @@ fuzzy titles. A long running head with author initials (more than 8 words,
 so repeated only after redaction) was added after the second intake
 (2026-10-18, 24 articles), and a correspondence footnote with a street
 address and an author block with a city after the Method lead was added to
-the coding unit. The body is synthetic, so this shows each rule works on real
+the coding unit. Version 3 (2026-10-25) plants cited author lists ("Hoang and
+Rothaermel (2005)", "Rabe, Okafor, and Taylor 2010"), whose first authors the
+citation rule used to leave behind. The body is synthetic, so this shows each rule works on real
 metadata; the real-article read is the check on what the rules miss.
 
     python k2_blinding_test.py
@@ -88,6 +90,11 @@ def planted(m):
               "of Brain Science, 77 Elm Street", "Springfield, MA 01101.", "",
               # an author block whose city survives the institution rule
               f"{given.upper()} {sur.upper()}", "University of Waterloo, Port Mesa", ""]
+    # cited author lists: the first version removed only the name before the
+    # year and left "Hoang and [REDACTED]" (v2 development papers, 2026-10-25)
+    parts += ["as Hoang and Rothaermel (2005) showed (Anand and Khanna 2000;",
+              "Rabe, Okafor, and Taylor 2010; Portegijs & Keuzenkamp, 2008), and Washbrook",
+              "et al. (2014) agree"]
     return ("Repository copy\nGeneral rights: see the portal.\nTake down policy: "
             "contact us.\f" + "\n".join(parts))
 
@@ -102,7 +109,7 @@ def fuzzy(m):
 
 def main() -> int:
     meta = json.loads((HERE / "devset" / "crossref_meta.json").read_text(encoding="utf-8"))
-    report = {"version": 2, "articles": len(meta), "clean_false_leaks": [],
+    report = {"version": 3, "articles": len(meta), "clean_false_leaks": [],
               "planted_missed": [], "fuzzy_missed": [], "fuzzy_not_applicable": 0,
               "spaced_missed": [],
               "redacted_residual": [], "year_trap_fired": [], "metadata_errors": []}
@@ -156,6 +163,8 @@ def main() -> int:
         r = leaks(red, m)
         r += [("correspondence", x) for x in ("Elm Street", "Springfield", "Port Mesa")
               if x in red]
+        r += [("cited_author", x) for x in ("Hoang", "Anand", "Rabe", "Okafor", "Portegijs", "Washbrook")
+              if re.search(rf"\b{x}\b", red)]
         if r:
             report["redacted_residual"].append([dev, r])
     ok = not any(report[k] for k in ("clean_false_leaks", "planted_missed",

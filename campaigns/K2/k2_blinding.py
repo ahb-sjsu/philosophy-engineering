@@ -32,8 +32,12 @@ What counts as a leak:
                  online-first year differs from the issue year); cost: such
                  numbers are redacted from the body too
     citation     a capitalized word followed by a year ("Smith, 2005",
-                 "Bless 1990", "et al. (2005)", "August 2009"); the newest
-                 cited year bounds the publication year
+                 "Bless 1990", "et al. (2005)", "August 2009"), with the
+                 author list before it ("Hoang and Rothaermel (2005)",
+                 "Rabe, Lee, and Taylor 2010"); the newest cited year bounds
+                 the publication year
+    name_residue on redacted text, a particle, initials or a co-author ("Hoang
+                 and [REDACTED]") still beside a redaction mark
     biblio       the article's page range, "pp." with its first page, and
                  "Vol." / "Volume" with a number
     institution  "University of X", "X University", "Institute", "College"
@@ -82,8 +86,15 @@ DOI = re.compile(r"\b10\.\d{4,9}/\S+", re.I)
 URL = re.compile(r"\b(?:https?://|www\.)\S+|\b\S+\.(?:org|com|edu|io|de|nl|uk)/\S*", re.I)
 EMAIL = re.compile(r"\b[\w.+-]+@[\w-]+\.[\w.-]+\b")
 YEAR = r"(?:1[89]|20)\d\d[a-z]?"
+# a cited author list: "Hoang and Rothaermel (2005)", "Rabe, Lee, and Taylor
+# 2010", "Anand & Khanna 2000". Without it only the name before the year went
+# and the first authors stayed ("Hoang and [REDACTED]", v2 development papers,
+# 2026-10-25). Cost: a capitalized word before "and" goes with the list
+# ("However, Smith and Lee (2005)" loses "However")
+_CNAME = r"[A-Z][\w'\-]+"
+_CLIST = rf"(?:{_CNAME},\s+){{0,5}}{_CNAME},?\s+(?:and|&)\s+"
 CITATION = re.compile(
-    r"\b[A-Z][\w'\-]+(?:\s+et\s+al\.?)?,?\s+\(?\s*" + YEAR + r"\b"
+    rf"\b(?:{_CLIST})?{_CNAME}(?:\s+et\s+al\.?)?,?\s+\(?\s*" + YEAR + r"\b"
     r"|\(\s*[A-Z][^()]{0,80}?,\s*" + YEAR + r"\s*[;)]")
 INSTITUTION = re.compile(
     r"(?:\b[A-Z][\w.&'\-]*\s+){0,4}"
@@ -119,8 +130,11 @@ def _name_residue(mark: str) -> re.Pattern:
     m = re.escape(mark)
     # a capitalized part hyphen-joined to a mark is the rest of a hyphenated
     # name too short for the name rules ("Chen-Bo" -> "[REDACTED]-BO")
+    # a capitalized word joined to a mark by "and" / "&" is a co-author the
+    # citation rule missed ("Portegijs and [REDACTED]")
     return re.compile(rf"\b{PARTICLES}{m}|\b{INITIALS}\s?{m}|{m},?\s{INITIALS}(?=[,;&)]|\s|$)"
-                      rf"|{m}-[A-Z][\w']*|\b[A-Z][\w']*-{m}")
+                      rf"|{m}-[A-Z][\w']*|\b[A-Z][\w']*-{m}"
+                      rf"|\b{_CNAME},?\s+(?:and|&)\s+{m}")
 
 
 # curly quotes as straight ones: "Thaler’s (1985)" must match the citation
