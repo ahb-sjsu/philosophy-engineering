@@ -17,6 +17,8 @@ creationTimestamp fresh after; code shipped gzip+base64 with sha256 asserted; nu
   /home/claude/env/bin/python k2_d2_nrp.py --role run --i-have-checked-nrp-policy
   /home/claude/env/bin/python k2_d2_nrp.py --role run --collect         # k2_d2_sizing_result.json
   /home/claude/env/bin/python k2_d2_nrp.py --role run --cleanup         # finished Jobs only
+  /home/claude/env/bin/python k2_d2_nrp.py --role n17 --i-have-checked-nrp-policy   # held-out n only
+  /home/claude/env/bin/python k2_d2_nrp.py --role n17 --collect         # k2_d2_n17_result.json
 """
 from __future__ import annotations
 
@@ -39,7 +41,11 @@ from k2_power_b_nrp import ARG_LIMIT, BEGIN, END, IMAGE, PINS, created, kubectl,
 HERE = Path(__file__).resolve().parent
 FILES = ("k2_analysis.py", "k2_d2_sizing.py")
 SEED = 20261021
-ROLES = {"timing": {"reps": 100, "timeout_s": 3600}, "run": {"reps": 4000, "timeout_s": 4 * 3600}}
+ROLES = {"timing": {"reps": 100, "timeout_s": 3600}, "run": {"reps": 4000, "timeout_s": 4 * 3600},
+         # the held-out n after intake (owner 2026-10-25: "compute the threshold at 17"); a subset of run's grid,
+         # so run's measured footprint bounds it
+         "n17": {"reps": 4000, "timeout_s": 4 * 3600, "ns": "17"}}
+SIZED_FROM_TIMING = ("run", "n17")
 CPU, MEM, EPH, MEM_MB = "1", "1Gi", "1Gi", 1024
 BATCH = "k2-d2-sizing"
 
@@ -49,7 +55,7 @@ def job_name(role):
 
 
 def out_path(role):
-    return HERE / ("k2_d2_sizing_result.json" if role == "run" else "d2_timing.json")
+    return HERE / {"run": "k2_d2_sizing_result.json", "n17": "k2_d2_n17_result.json"}.get(role, "d2_timing.json")
 
 
 def command(role, blobs):
@@ -61,7 +67,8 @@ def command(role, blobs):
         lines += [f"echo '{b64}' | base64 -d | gunzip > {f}", f"echo '{sha}  {f}' | sha256sum -c - || exit 3"]
     lines += [f"pip install -q --no-cache-dir {PINS} 2>&1 | tail -1 || true",
               "python -c \"import numpy, sys; print('numpy', numpy.__version__, 'python', sys.version.split()[0])\"",
-              f"timeout {R['timeout_s']} python -u k2_d2_sizing.py --reps {R['reps']} --seed {SEED} --out part.json",
+              f"timeout {R['timeout_s']} python -u k2_d2_sizing.py --reps {R['reps']} --seed {SEED} --out part.json"
+              + (f" --ns {R['ns']}" if "ns" in R else ""),
               f"echo '{BEGIN}'", "gzip -c part.json | base64 -w0", "echo", f"echo '{END}'"]
     return "\n".join(lines) + "\n"
 
@@ -96,7 +103,7 @@ def preflight(d, role):
     if f"timeout {ROLES[role]['timeout_s']} python" not in body: problems.append("run not bounded by timeout")
     if d.backoff_limit != 0: problems.append("backoff_limit must be 0")
     if max(len(a.encode()) for a in d.command) > ARG_LIMIT: problems.append("command argument too long")
-    if role == "run": problems += measured_ok()
+    if role in SIZED_FROM_TIMING: problems += measured_ok()
     got = kubectl("get", "job", d.name, "-o", "name")
     if got.returncode == 0 and got.stdout.strip(): problems.append(f"Job {d.name} already exists")
     if problems:

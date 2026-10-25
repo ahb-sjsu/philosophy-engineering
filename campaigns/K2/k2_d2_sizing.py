@@ -75,11 +75,14 @@ def main() -> int:
     ap.add_argument("--reps", type=int, default=4000)
     ap.add_argument("--seed", type=int, required=True)
     ap.add_argument("--out", default="k2_d2_sizing_result.json")
+    # article counts to run (default the full grid); e.g. --ns 17 for the held-out n
+    ap.add_argument("--ns", default=",".join(map(str, NS)))
     args = ap.parse_args()
+    ns = tuple(int(x) for x in args.ns.split(","))
     t0 = time.time()
 
     rng = np.random.default_rng(args.seed)
-    report = {"reps": args.reps, "seed": args.seed, "n_checks": N_CHECKS,
+    report = {"reps": args.reps, "seed": args.seed, "n_checks": N_CHECKS, "ns": list(ns),
               "gate_model": "Binomial(4, p), logit p = logit(0.3) - 0.9 q",
               "cells": [], "sizing": []}
     est = {}
@@ -89,7 +92,7 @@ def main() -> int:
             if b > 0 and e <= 1e-6:
                 print(json.dumps({"bias": b, "target": t, "skipped": "bias alone is below target"}), flush=True)
                 continue
-            for n in NS:
+            for n in ns:
                 v = np.array([icc_single(scores(rng, n, e, b)) for _ in range(args.reps)])
                 v = v[np.isfinite(v)]
                 est[(b, t, n)] = v
@@ -101,7 +104,7 @@ def main() -> int:
                 report["cells"].append(row)
                 print(json.dumps(row), flush=True)
     for b in BIASES:
-        for n in NS:
+        for n in ns:
             if (b, 0.60, n) not in est:
                 continue
             t_n = float(np.percentile(est[(b, 0.60, n)], 95))

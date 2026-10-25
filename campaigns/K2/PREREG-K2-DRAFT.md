@@ -890,8 +890,16 @@ SCORE's page plus the median offset was used for 0 to 14 parts per paper;
 where an accepted manuscript's pagination drifts within the paper (offsets up
 to 6 pages), those parts can land on the wrong page, which no one has checked
 because the texts are not read. **The held-out n is therefore 17**, unless a
-person clears a quarantined paper; the go threshold at n = 17 lies between
-0.83 (n = 15) and 0.81 (n = 20) and is to be computed exactly at that n.
+person clears a quarantined paper. Both quarantined papers are economics, so
+the 17 are economics 9, politics 7, criminology 1.
+
+*Go threshold at n = 17, computed 2026-10-25 on NRP* (`k2_d2_sizing.py --ns 17`,
+same model, seed 20261021 and 4,000 replications as 7.4.1; one exempt-class
+Job, 58 s, 107 MiB; `k2_d2_n17_result.json`). **The v2 gate goes ahead if the
+between-family ICC on the 17 is at least 0.82** (0.821 without coder bias;
+0.818 with bias 0.05). A rubric whose true ICC is 0.80 goes ahead 44% of the
+time, 0.85 65%, 0.90 86%; at true 0.70, 16%. The rule still lets a rubric at
+true 0.60 through 5% of the time; what the smaller n costs is power.
 
 *Residue the leak check passes (development papers, read by me).* In
 two-author citations only the second surname is redacted ("Hoang and
