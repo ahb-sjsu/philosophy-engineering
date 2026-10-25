@@ -945,9 +945,15 @@ in-range bare number is left in the dev units.
 *Held-out n after the fixes: 18.* With the page numbers gone, dNkl passes; its
 2 citation leaks were probably page numbers in the 2037-2096 range read as
 years after a capitalized word (not verified: the text is not read). ek4K
-stays quarantined. The 18 are economics 10, politics 7, criminology 1. **The
-0.82 threshold above was computed for n = 17**; at n = 18 it lies between 0.82
-and 0.81 (n = 20) and is to be computed at 18.
+stays quarantined. The 18 are economics 10, politics 7, criminology 1. The
+0.82 threshold above was computed for n = 17 and is superseded.
+
+*Go threshold at n = 18, computed 2026-10-25 on NRP* (`k2_d2_nrp.py --role
+n18`: same model, seed 20261021 and 4,000 replications; one exempt-class Job,
+80 s, 107 MiB; `k2_d2_n18_result.json`). **The v2 gate goes ahead if the
+between-family ICC on the 18 is at least 0.81** (0.809 without coder bias;
+0.812 with bias 0.05). A rubric whose true ICC is 0.80 goes ahead 49% of the
+time, 0.85 69%, 0.90 88%; at true 0.70, 19%.
 
 *Disjointness.* Every supplement article is matched by DOI against SCORE's
 replicated claims and against the secondary arm (EE-RP, SSRP); any match is

@@ -44,8 +44,10 @@ SEED = 20261021
 ROLES = {"timing": {"reps": 100, "timeout_s": 3600}, "run": {"reps": 4000, "timeout_s": 4 * 3600},
          # the held-out n after intake (owner 2026-10-25: "compute the threshold at 17"); a subset of run's grid,
          # so run's measured footprint bounds it
-         "n17": {"reps": 4000, "timeout_s": 4 * 3600, "ns": "17"}}
-SIZED_FROM_TIMING = ("run", "n17")
+         "n17": {"reps": 4000, "timeout_s": 4 * 3600, "ns": "17"},
+         # n = 18 once the page-number fix let dNkl pass intake (owner 2026-10-25)
+         "n18": {"reps": 4000, "timeout_s": 4 * 3600, "ns": "18"}}
+SIZED_FROM_TIMING = ("run", "n17", "n18")
 CPU, MEM, EPH, MEM_MB = "1", "1Gi", "1Gi", 1024
 BATCH = "k2-d2-sizing"
 
@@ -55,7 +57,8 @@ def job_name(role):
 
 
 def out_path(role):
-    return HERE / {"run": "k2_d2_sizing_result.json", "n17": "k2_d2_n17_result.json"}.get(role, "d2_timing.json")
+    return HERE / {"run": "k2_d2_sizing_result.json", "n17": "k2_d2_n17_result.json",
+                   "n18": "k2_d2_n18_result.json"}.get(role, "d2_timing.json")
 
 
 def command(role, blobs):
