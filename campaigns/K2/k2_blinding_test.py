@@ -28,7 +28,11 @@ so repeated only after redaction) was added after the second intake
 address and an author block with a city after the Method lead was added to
 the coding unit. Version 3 (2026-10-25) plants cited author lists ("Hoang and
 Rothaermel (2005)", "Rabe, Okafor, and Taylor 2010"), whose first authors the
-citation rule used to leave behind. The body is synthetic, so this shows each rule works on real
+citation rule used to leave behind. Version 4 (2026-10-25) builds an 8-page
+article from each record's first page with running page numbers at the top,
+the bottom and mid-page (two columns): running_page_offset must find the
+offset, drop_running_number must remove each page's own number and leave a
+table's bare numbers, including other pages' numbers. The body is synthetic, so this shows each rule works on real
 metadata; the real-article read is the check on what the rules miss.
 
     python k2_blinding_test.py
@@ -40,7 +44,8 @@ import re
 import sys
 from pathlib import Path
 
-from k2_blinding import STOP, YEAR_WINDOW, _fuzzy_title_spans, _norm, leaks, redact
+from k2_blinding import (STOP, YEAR_WINDOW, _fuzzy_title_spans, _norm, drop_running_number, leaks, redact,
+                         running_page_offset)
 
 HERE = Path(__file__).resolve().parent
 KINDS = ["doi", "title", "author", "journal", "year", "citation", "url", "email",
@@ -99,6 +104,38 @@ def planted(m):
             "contact us.\f" + "\n".join(parts))
 
 
+def running(m):
+    """An 8-page article from the record's first page: page 0 a title page with
+    no number; then the running number at the top, the bottom, or mid-page
+    between blank lines (two columns); a table page whose bare numbers include
+    other pages' numbers. Returns what went wrong, or None (2026-10-25)."""
+    lead = re.match(r"\d+", str(m.get("page", "")).strip())
+    first = int(lead.group(0)) if lead else 1
+    pages = ["Title\n\nAbstract text\n"]
+    for k in range(1, 8):
+        n = str(first + k)
+        if k == 5:  # table page: bare numbers, two of them other pages' numbers
+            body = f"Table 2\n\n{first + 3}\n\n0.42\n\n{first + 6}\n\n17\n\n{BODY}\n"
+        else:
+            body = f"{BODY}\n\n{BODY}\n"
+        # a line that only begins with the number ("872 cases") must stay
+        body += f"{first + k} cases were dropped\n"
+        pages.append([f"{n}\n{body}", f"{body}\n{n}\n", f"{body}\n{n}\n\n{BODY}\n"][k % 3])
+    off = running_page_offset(pages)
+    if off != first:
+        return f"offset {off}, expected {first}"
+    for k, page in enumerate(pages):
+        out, _ = drop_running_number(page, k, off)
+        nums = re.findall(r"(?m)^[ \t]*(\d+)[ \t]*$", out)
+        if str(first + k) in nums:
+            return f"page {k}: running number {first + k} left"
+        if k == 5 and nums != [str(first + 3), str(first + 6), "17"]:
+            return f"table numbers changed: {nums}"
+        if k and f"{first + k} cases were dropped" not in out:
+            return f"page {k}: a text line beginning with the number was removed"
+    return None
+
+
 def fuzzy(m):
     w = _norm(m["title"]).split()
     i = max(range(len(w)), key=lambda k: len(w[k]))  # misspell the longest word
@@ -109,9 +146,9 @@ def fuzzy(m):
 
 def main() -> int:
     meta = json.loads((HERE / "devset" / "crossref_meta.json").read_text(encoding="utf-8"))
-    report = {"version": 3, "articles": len(meta), "clean_false_leaks": [],
+    report = {"version": 4, "articles": len(meta), "clean_false_leaks": [],
               "planted_missed": [], "fuzzy_missed": [], "fuzzy_not_applicable": 0,
-              "spaced_missed": [],
+              "spaced_missed": [], "running_numbers": [],
               "redacted_residual": [], "year_trap_fired": [], "metadata_errors": []}
     for dev, m in sorted(meta.items()):
         if "error" in m or not m.get("title") or not m.get("authors"):
@@ -140,6 +177,9 @@ def main() -> int:
         # passes the residual check; the curly-quote citation is checked by name
         if not any(k == "citation" and "Thaler" in v for k, v in found):
             want.add("citation: curly apostrophe")
+        problem = running(m)
+        if problem:
+            report["running_numbers"].append([dev, problem])
         if want - got:
             report["planted_missed"].append([dev, sorted(want - got)])
         f = fuzzy(m)
@@ -168,7 +208,7 @@ def main() -> int:
         if r:
             report["redacted_residual"].append([dev, r])
     ok = not any(report[k] for k in ("clean_false_leaks", "planted_missed",
-                                     "fuzzy_missed", "spaced_missed",
+                                     "fuzzy_missed", "spaced_missed", "running_numbers",
                                      "redacted_residual",
                                      "metadata_errors"))
     report["verdict"] = "PASS" if ok else "FAIL"

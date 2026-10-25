@@ -1,11 +1,12 @@
 {
- "version": 3,
+ "version": 4,
  "articles": 132,
  "clean_false_leaks": [],
  "planted_missed": [],
  "fuzzy_missed": [],
  "fuzzy_not_applicable": 17,
  "spaced_missed": [],
+ "running_numbers": [],
  "redacted_residual": [],
  "year_trap_fired": [
   "DEV-ML-027",

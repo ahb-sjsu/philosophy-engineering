@@ -39,7 +39,11 @@ What counts as a leak:
     name_residue on redacted text, a particle, initials or a co-author ("Hoang
                  and [REDACTED]") still beside a redaction mark
     biblio       the article's page range, "pp." with its first page, and
-                 "Vol." / "Volume" with a number
+                 "Vol." / "Volume" with a number. Running page numbers are
+                 not found here: a bare number is only known to be one from
+                 its PDF page's place in the whole article, so the coding-unit
+                 cutter removes them (running_page_offset,
+                 drop_running_number); leaks() cannot check them
     institution  "University of X", "X University", "Institute", "College"
                  and their German and French forms: affiliations narrow the
                  authors
@@ -242,6 +246,39 @@ def _repeated_lines(text: str) -> set[str]:
                 and not set(w) <= SECTION_WORDS):
             counts[key] = counts.get(key, 0) + 1
     return {k for k, n in counts.items() if n >= 3}
+
+
+# running page numbers: the offset between a PDF page's index and its printed
+# number must hold on at least this many pages (and a third of them)
+RUNNING_MIN_PAGES = 3
+_BARE = re.compile(r"^[ \t]*(\d{1,5})[ \t]*$", re.M)
+
+
+def running_page_offset(pages: list[str]) -> int | None:
+    """The printed page number of PDF page k (0-based) is k + offset; found as
+    the offset that the bare-number lines of most pages agree on, over the
+    whole article's pages in order (pdftotext output split at form feeds).
+    None when no offset holds on RUNNING_MIN_PAGES pages and a third of them.
+    The number places the article in its journal issue."""
+    counts: dict[int, int] = {}
+    for k, page in enumerate(pages):
+        for v in {int(x) for x in _BARE.findall(page)}:
+            counts[v - k] = counts.get(v - k, 0) + 1
+    if not counts:
+        return None
+    off, n = max(counts.items(), key=lambda kv: (kv[1], -kv[0]))
+    return off if n >= max(RUNNING_MIN_PAGES, len(pages) // 3) else None
+
+
+def drop_running_number(page: str, k: int, offset: int | None) -> tuple[str, int]:
+    """Remove from PDF page k the bare line holding its own printed number
+    (k + offset), wherever it sits: two-column layouts put it mid-page. Only
+    that exact value goes, so a table's bare numbers stay. Returns the page and
+    the number of lines removed."""
+    if offset is None:
+        return page, 0
+    rx = re.compile(rf"^[ \t]*{k + offset}[ \t]*(?:\n|\Z)", re.M)
+    return rx.subn("", page)
 
 
 def _cover_pages(text: str) -> list[int]:

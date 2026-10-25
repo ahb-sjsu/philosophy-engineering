@@ -24,6 +24,10 @@ The unit is the located pages, in page order, with:
   - on a page holding the reference heading, the text from the heading on
     dropped; later pages are kept only if a passage was placed on them (a
     table page after the references in an accepted manuscript)
+  - each page's running page number dropped (owner, 2026-10-25: it places the
+    article in its journal issue): the bare line equal to the page's own
+    printed number, from the offset between PDF page and printed number that
+    the whole article agrees on (k2_blinding.running_page_offset)
 An article with no hypothesis, test or result passage (claim3a, claim3b,
 claim4) placed off page 1 returns found=False and goes to a person; nothing
 is guessed.
@@ -35,6 +39,8 @@ from __future__ import annotations
 
 import re
 import statistics
+
+from k2_blinding import drop_running_number, running_page_offset
 
 TEXT_COLS = {"claim3a": "claim3a_concretehyp", "claim3b": "claim3b_testspec",
              "claim4": "claim4_inftest", "sample_size": "sample_size",
@@ -95,14 +101,18 @@ def cut(text: str, rows: list[dict]) -> tuple[str, dict]:
     keep = sorted({p for _, p in final if p > 0})
     heads = [m for m in REF_HEAD.finditer(text) if m.start() > 0.6 * len(text)]
     ref_page = text[:heads[-1].start()].count("\f") if heads else None
-    out = []
+    offset = running_page_offset(raw_pages)
+    out, dropped = [], 0
     for p in keep:
-        page = raw_pages[p]
+        page, n = drop_running_number(raw_pages[p], p, offset)
+        dropped += n
         if ref_page is not None and p == ref_page:
             m = list(REF_HEAD.finditer(page))
             page = page[:m[-1].start()] if m else page
         out.append(page.strip())
-    unit = "\n\n".join(out).strip()
+    # pages stay form-feed separated: redaction finds running page numbers by
+    # their place at a page's top or bottom
+    unit = "\f".join(out).strip()
     core_off_p1 = sum(f in CORE and p > 0 for f, p in final)
     info = {"found": core_off_p1 > 0,
             "parts": len(placed),
@@ -114,5 +124,6 @@ def cut(text: str, rows: list[dict]) -> tuple[str, dict]:
             "pages_kept": " ".join(str(p + 1) for p in keep),
             "pages_total": len(raw_pages),
             "references_cut": ref_page is not None,
+            "running_offset": offset, "page_numbers_dropped": dropped,
             "kept_share": round(len(unit) / max(1, len(text)), 4)}
     return unit, info

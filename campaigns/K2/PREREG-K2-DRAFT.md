@@ -918,7 +918,36 @@ lists in all 132 development records: the old module left a first author in
 all 132, the fixed one in none, with no new false leaks on the clean body. v2
 intake rerun with the fix: same result (dev 3 of 3, held-out 17 of 19 pass;
 no co-author residue left in the dev units). The v1 intake texts were made
-with the old module and are not rerun. Bare page numbers are not yet handled.
+with the old module and are not rerun.
+
+*Running page numbers removed (owner, 2026-10-25: "fix the page numbers
+too").* A bare page number places the article in its journal issue. It cannot
+be told from table data by its value or by its place alone (two-column pages
+put it mid-page in pdftotext output), so the unit cutter finds it from the
+whole article: the offset between PDF page index and printed number that the
+bare-number lines of at least 3 pages (and a third of them) agree on
+(`k2_blinding.running_page_offset`), then drops on each kept page only the line
+equal to that page's own number (`drop_running_number`). A first rule (bare
+in-range numbers at a page's top or bottom 3 lines) was replaced before
+commit: it missed mid-page numbers on 2 of the 3 development papers, and the
+leak check could not apply it to redacted text, which has lost its page
+breaks, so it raised false leaks. The leak check does not test page numbers;
+stated limit. The I3 witness (version 4) builds an 8-page article per
+development record with the number at top, bottom and mid-page and a table
+whose bare numbers include other pages' numbers: all 132 pass (offset found,
+each page's number gone, table numbers and a line beginning with the number
+kept). On the v2 papers every kept page lost exactly one number (dev 3 of 3,
+held-out 17 of 18 with a unit); the offsets equal the Crossref first page or
+one less (a cover page), except 5AKw (the manuscript's own numbering) and v7QG
+(no offset found; its numbering is not known without reading it). No
+in-range bare number is left in the dev units.
+
+*Held-out n after the fixes: 18.* With the page numbers gone, dNkl passes; its
+2 citation leaks were probably page numbers in the 2037-2096 range read as
+years after a capitalized word (not verified: the text is not read). ek4K
+stays quarantined. The 18 are economics 10, politics 7, criminology 1. **The
+0.82 threshold above was computed for n = 17**; at n = 18 it lies between 0.82
+and 0.81 (n = 20) and is to be computed at 18.
 
 *Disjointness.* Every supplement article is matched by DOI against SCORE's
 replicated claims and against the secondary arm (EE-RP, SSRP); any match is
