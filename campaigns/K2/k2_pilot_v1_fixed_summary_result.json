@@ -1,0 +1,154 @@
+{
+ "calls": 50,
+ "scored": 50,
+ "failed": [],
+ "operations": {
+  "gpt-oss": {
+   "calls": 50,
+   "scored": 50,
+   "extra_attempts": 0,
+   "models_returned": [
+    "openai/gpt-oss-120b"
+   ],
+   "finish_reasons": [
+    "stop"
+   ],
+   "median_seconds": 107.55000000000001,
+   "median_prompt_tokens": 7388.0,
+   "median_completion_tokens": 2223.5
+  }
+ },
+ "by_stream": {
+  "gpt-oss": {
+   "codings": 44,
+   "A1": {
+    "1": 0.273,
+    "0": 0.614,
+    "U": 0.114,
+    "na": 0.0
+   },
+   "A2": {
+    "1": 0.455,
+    "0": 0.545,
+    "U": 0.0,
+    "na": 0.0
+   },
+   "A3": {
+    "1": 0.705,
+    "0": 0.136,
+    "U": 0.0,
+    "na": 0.159
+   },
+   "A4": {
+    "1": 0.386,
+    "0": 0.568,
+    "U": 0.045,
+    "na": 0.0
+   },
+   "gate_distribution": {
+    "0": 6,
+    "1": 12,
+    "2": 15,
+    "3": 6,
+    "4": 5
+   },
+   "gate_mean": 1.818,
+   "gate_variance": 1.376,
+   "more_than_two_U": 0,
+   "item_U_share": {
+    "A1.1": 0.114,
+    "A1.2": 0.023,
+    "A1.3": 0.023,
+    "A1.4": 0.023,
+    "A2.1": 0.0,
+    "A2.2": 0.0,
+    "A2.3": 0.0,
+    "A2.4": 0.0,
+    "A3.1": 0.0,
+    "A3.2": 0.0,
+    "A3.3": 0.0,
+    "A3.4": 0.0,
+    "A4.1": 0.0,
+    "A4.2": 0.091,
+    "A4.3": 0.0,
+    "A4.4": 0.0,
+    "A4.5": 0.0
+   }
+  }
+ },
+ "reliability": {
+  "within gpt-oss (rep1 vs rep2) [revise]": {
+   "n": 11,
+   "gate_icc21": 0.741,
+   "gate_exact": 0.636,
+   "checks": {
+    "A1": 0.909,
+    "A2": 0.909,
+    "A3": 0.889,
+    "A4": 0.818
+   }
+  },
+  "within gpt-oss (rep1 vs rep2) [held_out]": {
+   "n": 11,
+   "gate_icc21": 0.566,
+   "gate_exact": 0.273,
+   "checks": {
+    "A1": 0.727,
+    "A2": 0.727,
+    "A3": 0.889,
+    "A4": 0.636
+   }
+  },
+  "within gpt-oss (rep1 vs rep2)": {
+   "n": 22,
+   "gate_icc21": 0.617,
+   "gate_exact": 0.455,
+   "checks": {
+    "A1": 0.818,
+    "A2": 0.818,
+    "A3": 0.889,
+    "A4": 0.727
+   }
+  },
+  "unit vs fulltext, gpt-oss [revise]": {
+   "n": 1
+  },
+  "unit vs fulltext, gpt-oss [held_out]": {
+   "n": 5,
+   "gate_icc21": 0.576,
+   "gate_exact": 0.2,
+   "checks": {
+    "A1": 0.6,
+    "A2": 0.8,
+    "A3": 1.0,
+    "A4": 0.6
+   }
+  },
+  "unit vs fulltext, gpt-oss": {
+   "n": 6,
+   "gate_icc21": 0.661,
+   "gate_exact": 0.167,
+   "checks": {
+    "A1": 0.667,
+    "A2": 0.833,
+    "A3": 0.8,
+    "A4": 0.667
+   }
+  }
+ },
+ "recognition": {
+  "gpt-oss": {
+   "codings": 50,
+   "says_recognizes": 4,
+   "guess_names_article": 2,
+   "says_knows_replication_outcome": 1
+  }
+ },
+ "evidence_quotes_unit": {
+  "gpt-oss": {
+   "quoted_strings": 281,
+   "found_verbatim": 95,
+   "share": 0.338
+  }
+ }
+}

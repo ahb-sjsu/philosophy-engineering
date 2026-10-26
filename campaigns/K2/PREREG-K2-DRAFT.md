@@ -1241,6 +1241,54 @@ the mean of several codings per family, which raises within-family
 reliability but not agreement between families). Decided by the owner, not
 here.
 
+#### 7.4.2 Pilots rerun on the fixed texts (2026-10-26)
+
+Owner, 2026-10-26: "re-run the pilot on the fixed texts", then "re-run the v0
+pilot too". `k2_pilot_code.py` unchanged except that the whole-body subset now
+drops running page numbers as intake does; inputs are the units from the v1
+intake rerun (7.1.1: citation and page-number fixes). Same rubric files
+(sha256 checked against the original records), claims, targets, seeds,
+temperature and token limits; same whole-body subset of 6, none skipped for
+leaks. Every unit prompt differs from its original (the texts changed).
+Outputs `/archive/experiments/k2/pilot_v0_fixed` and `pilot_v1_fixed`; the
+original runs are untouched.
+
+**Only gpt-oss was rerun.** The gateway alias `minimax-m2` now serves
+`MiniMaxAI/MiniMax-M3.1-Flash`, not the `MiniMax-M2.7` of both original
+pilots (every try of both runs records M2.7). On v1 it reasoned to the
+8,000-token limit on all 4 tries of its first coding (about 6 minutes a try);
+the owner stopped it after 11 v1 codings (2 failed) and before its v0 run
+started. Those 11 are kept on Atlas and not summarized: a different coder. So
+**no between-family row is rerun**, and the between-family numbers that decide
+v0 and v1 (7.4, 7.4.1) stand as measured on the old texts and cannot be
+remeasured with the original second coder (4.3 rule 5: hosted aliases cannot
+be pinned). gpt-oss returned `openai/gpt-oss-120b` on every try, 50 of 50
+codings per rubric, no extra tries. Summaries `k2_pilot_v0_fixed_summary_result.json`
+and `k2_pilot_v1_fixed_summary_result.json` (gpt-oss only, scores only).
+
+| gpt-oss, old texts -> fixed texts | v0 | v1 |
+|---|---|---|
+| Gate ICC(2,1), coding 1 vs 2, all 22 | 0.66 -> 0.46 | 0.60 -> 0.62 |
+| revise half (11) | 0.79 -> 0.47 | 0.84 -> 0.74 |
+| held-out half (11) | 0.50 -> 0.46 | 0.22 -> 0.57 |
+| Exact gate agreement, all 22 | 77 -> 59% | 50 -> 45% |
+| Unit vs whole body, gate ICC (6) | 0.64 -> 0.62 | 0.87 -> 0.66 |
+| Gate mean, variance (44 unit codings) | 3.46, 0.52 -> 3.32, 0.49 | 1.84, 1.27 -> 1.82, 1.38 |
+| Unit codings failing A1 / A2 / A3 / A4 | 25/11/5/2% -> 32/14/11/2% | 55/55/16/64% -> 61/55/14/57% |
+| Says it knows the replication outcome | 0 -> 0 | 3 -> 1 |
+| Quoted evidence found verbatim | 78/191 -> 79/191 | 113/238 -> 95/281 |
+
+**Reading.** The gate distribution and failure rates barely move; the fixes
+removed names and page numbers, not content a coder scores. The reliability
+rows move by as much as 0.35 in either direction (v1 held-out 0.22 to 0.57,
+v0 revise 0.79 to 0.47) with no consistent sign, which is what rerunning a
+temperature-0.2 coder on 11 articles does; this rerun cannot separate an
+effect of the fixes from run-to-run variation, and it gives a measure of that
+variation: the same coder, rubric and articles give within-family ICCs that
+differ by up to 0.35 between runs. No row reaches the 0.80 bar. The verbatim
+quote share here is the summary's strict match, not `k2_quote_check.py`'s
+layout-tolerant count (7.4.1 item 5), which was not rerun.
+
 ### 7.5 A1 witness, construction check, and power (simulation, run 2026-10-17)
 
 `k2_witness.py` draws synthetic SCORE-shaped data (assumptions in its `WORLD`

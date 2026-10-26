@@ -38,6 +38,10 @@ The recorded run: gpt-oss under the default model list, beside
 deepseek-v4-flash, at 48,000 tokens; then minimax-m2 alone with
 
     K2_PILOT_MODELS=minimax-m2 K2_PILOT_MAX_TOKENS=8000
+
+Rerun 2026-10-26 (owner: "re-run the pilot on the fixed texts"): RUBRIC-v1,
+the same coders, settings and claims, on the units from the intake rerun with
+the citation and running page-number fixes, to /archive/experiments/k2/pilot_v1_fixed.
 """
 from __future__ import annotations
 
@@ -262,7 +266,7 @@ def job(args):
 def main() -> int:
     root, out = Path(sys.argv[1]), Path(sys.argv[2])
     sys.path.insert(0, str(HERE))
-    from k2_blinding import leaks, redact
+    from k2_blinding import drop_running_number, leaks, redact, running_page_offset
     from k2_intake import cut_references
 
     token = None
@@ -292,7 +296,10 @@ def main() -> int:
     for dev in subset:
         raw = subprocess.run(["pdftotext", "-enc", "UTF-8", str(root / "pdf" / f"{dev}.pdf"), "-"],
                              capture_output=True, text=True, check=True).stdout
-        body, _ = cut_references(raw)
+        # running page numbers dropped as in intake (2026-10-25)
+        pages = raw.split("\f")
+        off = running_page_offset(pages)
+        body, _ = cut_references("\f".join(drop_running_number(p, k, off)[0] for k, p in enumerate(pages)))
         full = redact(body, meta[dev])
         res = leaks(full, meta[dev])
         if res:
