@@ -40,6 +40,7 @@ not code that claim.
 
 Each question has a fixed set of answers. Choose one. For the yes/no questions
 (Q2.2, Q3.2, Q4.3, Q5.4, Q6.1, Q6.2), "no" includes "the article does not say".
+Questions are answered in the order given; Q2.3 is asked with Q2.
 
 ### Q1 Design (decides which checks apply)
 
@@ -55,25 +56,38 @@ Each question has a fixed set of answers. Choose one. For the yes/no questions
 
 ### Q2 Prediction stated in advance (A1, gated item A1.1)
 
-- **Q2.1 Where does the article first state the direction of the claim's
-  predicted effect (or that no effect is predicted)?** `before_results` (in an
-  introduction, theory or hypothesis section, or a design section, before any
-  result of the claim's test is reported) · `with_or_after_results` (first
-  stated alongside or after the result) · `never` (only the result is reported,
-  no prediction)
+- **Q2.1 Quote the first sentence in the text that states what the authors
+  predicted, hypothesized or expected for the claim (its direction, or that no
+  effect was expected), worded as a prediction.** A sentence that reports what
+  was found is a finding, not a prediction, even when it says "as expected" or
+  "as predicted". `quoted` (give the quote) · `none` (no such sentence in the
+  text)
+- **Q2.3 Quote the first sentence in the text that reports a result of the
+  claim's test (a statistic, or a statement of what was found).** `quoted` ·
+  `none`. The rules compare where the two quotes sit in the text; you do not
+  judge which comes first.
 - **Q2.2 Does the article cite a preregistration or pre-analysis plan for this
   study?** `yes` (quote the registration statement) · `no`
 
 ### Q3 The claim's outcome measure (A2)
 
 - **Q3.1 What kind of measure is the outcome of the claim's test?**
-  `multi_item_scale` (several questionnaire items combined) ·
+  `multi_item_scale` (answers to several questions or rating items by the
+  participants, combined into one score, whatever the article calls it: scale,
+  index, composite, average of items) ·
   `single_item_report` (one question answered by participants or respondents) ·
-  `human_coded_or_rated` (people coded or rated responses or materials) ·
-  `constructed_index` (the authors combined several variables into one) ·
-  `behavior_or_performance` (choices, amounts, times, accuracy, counts of acts) ·
-  `record_or_physical` (administrative or archival values, prices, money,
-  votes, counts from records, physical or physiological quantities)
+  `human_coded_or_rated` (people other than the participants coded or rated
+  responses or materials) ·
+  `constructed_index` (the authors combined several variables that are not
+  questionnaire items, such as records or counts, into one) ·
+  `behavior_or_performance` (what the participants did in the study, and any
+  score computed from it: choices, amounts, times, accuracy, errors, rates,
+  proportions or means of their responses) ·
+  `record_or_physical` (data not produced by participants in the study:
+  administrative or archival values, prices, money, votes, counts from
+  records, and rates or ratios computed from them; physical or physiological
+  quantities) · `not_stated` (the text does not say what the outcome is
+  measured with)
 - **Q3.2 Does the article cite an earlier source for this measure, or a
   validation of it?** `yes` (quote the citation) · `no`
 - **Q3.3 Is a reliability coefficient for the outcome reported (alpha, omega,
@@ -92,16 +106,23 @@ Each question has a fixed set of answers. Choose one. For the yes/no questions
 
 ### Q5 Sample flow (A4)
 
+Units are participants, respondents or the dataset's rows (firms, regions).
+Dropping trials, responses or observations within a unit by a stated rule
+(response-time cutoffs, error trials, practice trials) is not an exclusion.
+
 - **Q5.1 How many units entered the study or dataset for the claim's test
-  (recruited, sampled, randomized)?** a whole number, or `not_stated`
-- **Q5.2 How many units are in the claim's test (from the reported N, or the
-  degrees of freedom)?** a whole number, or `not_stated`
-- **Q5.3 Were units excluded from the claim's test, and how is it reported?**
-  `none_excluded` (stated, or the two numbers above are equal, or no exclusion
-  is mentioned) ·
-  `counted_with_reasons` (every exclusion is counted and its reason given) ·
-  `excluded_without_count` (exclusions are mentioned, or Q5.2 is smaller than
-  Q5.1, but the numbers or reasons are not given)
+  (recruited, sampled, randomized)?** a whole number as the text states it, or
+  `not_stated`
+- **Q5.2 How many units are in the claim's test?** a whole number only where
+  the text states it as a count (N =, n =, "112 participants"); do not compute
+  it from degrees of freedom. Otherwise `not_stated`.
+- **Q5.3 Does the text say that units were excluded, removed or dropped from
+  the claim's test, and how?** `none_excluded` (it says none were, or it
+  mentions no exclusion) · `counted_with_reasons` (each exclusion's reason is
+  given, and the number excluded, or the numbers before and after, are given) ·
+  `excluded_without_count` (it says units were excluded, but not how many, or
+  not why). Answer from what the text says about exclusions only; the rules
+  compare Q5.1 and Q5.2 themselves.
 - **Q5.4 Were any units excluded because of their values on the claim's outcome
   (as outliers on the outcome) without a rule stated before the exclusion?**
   `yes` · `no`
@@ -124,7 +145,7 @@ of checks scored 1, 0 to 4, as in registration Section 4.
 
 | Check | 1 (fails) when | na when |
 |---|---|---|
-| A1 (A1.1) | Q2.1 is `with_or_after_results` or `never`, and Q2.2 is `no` | never |
+| A1 (A1.1) | Q2.2 is `no`, and Q2.1 is `none`, or Q2.1's quote sits after Q2.3's in the text. A Q2.1 quote holding a test statistic is a finding and is voided | never |
 | A2 | Q3.1 is `multi_item_scale`, `human_coded_or_rated` or `constructed_index` and Q3.2 is `no`; or Q3.1 is `multi_item_scale` or `human_coded_or_rated` and Q3.3 is `not_reported` or below 0.70 | Q3.1 is `single_item_report`, `behavior_or_performance` or `record_or_physical` (only the validity half can fail, and these carry none here) |
 | A3 | Q4.1 is `not_reported` and Q4.3 is `no`; or Q4.2 is `failed_or_mixed` | Q1.1 is `natural_or_policy_variation` or `observed_variation` |
 | A4 | Q5.3 is `excluded_without_count`; or Q5.4 is `yes`; or Q6.1 is `yes` and Q6.2 is `no` | never |
@@ -171,3 +192,21 @@ gpt-oss answers 110 to 43.
 | Q5.3 drops `not_stated`; "no exclusion mentioned" is `none_excluded` | the rules already scored the two alike; 4 of 23 pairs split between them |
 | Quote length limit raised from 40 to 120 words | 15 quotes found verbatim were voided for length alone |
 | Units: 3 more development papers shaped like the held-out set (`v2dev2`: L9OZ, m8V1, qWvQ; seeded draw `k2_v2dev_draw.py`) | 20 of the 23 compared units are psychology units cut to Method and Results, unlike the held-out unit |
+
+## 6. Changes from v2.2 (the disputed evidence, 2026-10-27)
+
+Owner, 2026-10-27: "read the disputed evidence and write rules". The drafting
+session read both families' answers and quotes on every development unit where
+their majority answers (three codings each, round 3) differed, for Q2.1, Q3.1,
+Q5.2 and Q5.3. The splits were systematic, and each rule below answers one.
+
+| Change | What the disputed evidence showed |
+|---|---|
+| Q2.1 becomes two quotes (the first prediction, the first result); code compares their positions; a "prediction" quote holding a test statistic is voided | 8 units split. qwen3-small quoted findings ("We found that...", "As expected, the condition effect was significant, F(2, 43)...") as predictions stated before the results; gpt-oss read "as expected" in a result as the prediction first stated with it. Judging before/after was the coder's job and neither did it the same way |
+| Q3.1: combined questionnaire items are `multi_item_scale` whatever the article calls them; `constructed_index` only for non-questionnaire variables; scores computed from what participants did are behavior; records are data participants did not produce; `not_stated` added | 11 units split: averaged items called a scale by one family and an index by the other (3 units); error rates, word percentages and report probabilities called behavior, index or record; a dependent variable named but not described |
+| Q5: trial-level dropping is not an exclusion; Q5.3 is what the text says about exclusions only; "counted" means the number excluded or the numbers before and after | 6 units split: spoiled trials (about 20% of data) read as excluded participants; exclusions inferred from the recruited N |
+| Q5.2: a number only where the text states the count; no conversion from degrees of freedom | 8 units split, several on converting degrees of freedom (t(62) to 64 or 63; F(1, 99) to 101 or 103) |
+| Not changed: which study the claim names (DEV-ML-034: 228 recruited against 80 analyzed in another study) | a target problem, not a rubric one |
+
+These rules were written from the development units they will be scored on
+next, so the next round overstates agreement; the held-out 18 measure it.

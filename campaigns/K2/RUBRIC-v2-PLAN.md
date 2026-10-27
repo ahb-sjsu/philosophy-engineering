@@ -334,3 +334,24 @@ majorities). (b) is not adopted. What would settle the systematic splits is
 knowing which reading is right on each disputed question: a read of the
 development units' evidence on the disputed answers, then a rule that says
 which reading the rubric means.
+
+**Rules from the disputed evidence (owner, 2026-10-27: "read the disputed
+evidence and write rules").** RUBRIC-v2 Section 6 (v2.3): Q2.1 becomes two
+quotes (first prediction, first result) ordered by code, with a guard that voids
+a "prediction" holding a test statistic; Q3.1 boundaries and `not_stated`;
+trial-level dropping is not an exclusion; Q5.2 only a stated count. Round 4,
+same 28 units, two codings each (`k2_v2_dev_r4_agree.json`):
+
+| Between families | Round 3 (v2.2) | Round 4 (v2.3) |
+|---|---:|---:|
+| Gate ICC, coding 1 / coding 2 | 0.43 / 0.47 | 0.58 / 0.61 |
+| Exact gate agreement, coding 1 | 56% | 54% |
+| Check agreement A1 / A2 / A3 / A4, coding 1 | 76/76/72/68% | 85/69/81/73% |
+| Q2.1, κ | 0.19 | 0.72 (prediction quote); 0.69 (the derived order) |
+| Q1.1 / Q5.3, κ | 0.68 / 0.27 | 0.82 / 0.36 (coding 2: 0.67) |
+
+The A1 rule worked as intended. The gate ICC rose by about 0.15, to 0.6,
+still well under 0.81, and these units are the ones the rules were written
+from, so the held-out figure would likely be lower. Remaining splits: Q5.2 (65%
+agreement on the stated N), Q3.1 (κ 0.55), Q6.1 (κ near 0: almost every unit is
+"no", so one split moves κ a lot) and Q4.2.

@@ -15,6 +15,7 @@ from k2_v2_rules import VOID, checks, clean
 TEXT = """Participants were randomly assigned to the gain or the loss frame.
 We predicted that the loss frame would increase risk taking (Hypothesis 1).
 Trust was measured with a six-item scale we developed for this study (alpha = .62).
+As expected, the loss frame increased risk taking, t(110) = 2.41, p = .018.
 The manipulation check showed that participants in the loss frame felt the stakes were higher.
 Of the 130 participants recruited, 112 were included in the analysis.
 Two participants were removed as outliers on the risk measure.
@@ -23,7 +24,7 @@ The study was preregistered at AsPredicted (#1234)."""
 
 BASE = {  # every check passes: an experiment with a validated, reliable scale and a clean sample
     "Q1.1": "researcher_assigned", "Q1.2": "collected_for_this_study",
-    "Q2.1": "before_results", "Q2.2": "no",
+    "Q2.1": "quoted", "Q2.2": "no", "Q2.3": "quoted", "Q2.order": "prediction_first",
     "Q3.1": "multi_item_scale", "Q3.2": "yes", "Q3.3": 0.85,
     "Q4.1": "reported", "Q4.2": "succeeded", "Q4.3": "no",
     "Q5.1": 120, "Q5.2": 120, "Q5.3": "none_excluded", "Q5.4": "no",
@@ -32,10 +33,12 @@ BASE = {  # every check passes: an experiment with a validated, reliable scale a
 
 CASES = [  # (name, changes to BASE, expected {check: score})
     ("all pass", {}, {"A1": "0", "A2": "0", "A3": "0", "A4": "0"}),
-    ("A1: prediction only with results, no registration", {"Q2.1": "with_or_after_results"}, {"A1": "1"}),
-    ("A1: no prediction, no registration", {"Q2.1": "never"}, {"A1": "1"}),
-    ("A1: no prediction but registered", {"Q2.1": "never", "Q2.2": "yes"}, {"A1": "0"}),
-    ("A1: void timing, not registered", {"Q2.1": VOID}, {"A1": "U"}),
+    ("A1: prediction after the first result, no registration", {"Q2.order": "result_first"}, {"A1": "1"}),
+    ("A1: no prediction, no registration", {"Q2.order": "no_prediction"}, {"A1": "1"}),
+    ("A1: no prediction but registered", {"Q2.order": "no_prediction", "Q2.2": "yes"}, {"A1": "0"}),
+    ("A1: prediction, no result located", {"Q2.order": "prediction_no_result"}, {"A1": "0"}),
+    ("A1: order void, not registered", {"Q2.order": VOID}, {"A1": "U"}),
+    ("A2: outcome not stated", {"Q3.1": "not_stated"}, {"A2": "U"}),
     ("A2: scale with no cited source", {"Q3.2": "no"}, {"A2": "1"}),
     ("A2: index with no cited source", {"Q3.1": "constructed_index", "Q3.2": "no"}, {"A2": "1"}),
     ("A2: cited index, no reliability needed", {"Q3.1": "constructed_index", "Q3.3": "not_reported"}, {"A2": "0"}),
@@ -65,7 +68,7 @@ CASES = [  # (name, changes to BASE, expected {check: score})
     ("A4: unsupportive test, correction void", {"Q6.1": "yes", "Q6.2": VOID}, {"A4": "U"}),
     ("A4: other-test answer void", {"Q6.1": VOID}, {"A4": "U"}),
     ("A4: void but outlier fail", {"Q6.1": VOID, "Q5.4": "yes"}, {"A4": "1"}),
-    ("gate counts failures", {"Q2.1": "never", "Q3.3": "not_reported", "Q5.4": "yes"},
+    ("gate counts failures", {"Q2.order": "no_prediction", "Q3.3": "not_reported", "Q5.4": "yes"},
      {"A1": "1", "A2": "1", "A3": "0", "A4": "1", "gate": 3}),
 ]
 
@@ -94,11 +97,22 @@ def quote_cases() -> list:
         "quote": "We predicted ... frame."}}, "Q1.1", VOID)
     run("short numeric quote kept", {"Q5.2": {"answer": 112, "quote": "112 were"}}, "Q5.2", 112)
     run("too-short quote voided", {"Q5.2": {"answer": 112, "quote": "112"}}, "Q5.2", VOID)
-    run("missing quote voided", {"Q2.1": {"answer": "before_results"}}, "Q2.1", VOID)
-    run("absence needs no quote", {"Q2.1": {"answer": "never"}}, "Q2.1", "never")
+    run("missing quote voided", {"Q2.1": {"answer": "quoted"}}, "Q2.1", VOID)
+    run("absence needs no quote", {"Q2.1": {"answer": "none"}}, "Q2.1", "none")
+    pred = {"answer": "quoted", "quote": "We predicted that the loss frame would increase risk taking"}
+    res = {"answer": "quoted", "quote": "The effect was significant for women but not for men."}
+    run("prediction before result", {"Q2.1": pred, "Q2.3": res}, "Q2.order", "prediction_first")
+    run("prediction after result", {"Q2.1": {"answer": "quoted", "quote": "The study was preregistered at AsPredicted"},
+        "Q2.3": {"answer": "quoted", "quote": "Of the 130 participants recruited, 112 were included"}}, "Q2.order", "result_first")
+    run("no prediction", {"Q2.1": {"answer": "none"}, "Q2.3": res}, "Q2.order", "no_prediction")
+    run("prediction, no result", {"Q2.1": pred, "Q2.3": {"answer": "none"}}, "Q2.order", "prediction_no_result")
+    run("result quote void", {"Q2.1": pred, "Q2.3": {"answer": "quoted", "quote": "not in the text at all here"}},
+        "Q2.order", VOID)
+    run("a finding quoted as a prediction is voided", {"Q2.1": {"answer": "quoted",
+        "quote": "As expected, the loss frame increased risk taking, t(110) = 2.41, p = .018."}}, "Q2.1", VOID)
     run("bad value voided", {"Q2.2": {"answer": "maybe"}}, "Q2.2", VOID)
     run("not_stated on a yes/no absence question is no", {"Q5.4": {"answer": "not_stated"}}, "Q5.4", "no")
-    run("not_stated where not allowed voided", {"Q3.1": {"answer": "not_stated"}}, "Q3.1", VOID)
+    run("not_stated where not allowed voided", {"Q4.1": {"answer": "not_stated"}}, "Q4.1", VOID)
     run("missing question voided", {}, "Q3.1", VOID)
     run("number with quote", {"Q5.1": {"answer": "130", "quote": "Of the 130 participants recruited"}}, "Q5.1", 130)
     run("non-whole count voided", {"Q5.1": {"answer": 130.5, "quote": "Of the 130 participants recruited"}},

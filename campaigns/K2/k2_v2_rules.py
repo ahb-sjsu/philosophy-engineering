@@ -26,10 +26,11 @@ NUMBER = "number"
 ALLOWED = {
     "Q1.1": {"researcher_assigned", "natural_or_policy_variation", "observed_variation", "not_stated"},
     "Q1.2": {"collected_for_this_study", "existing_dataset", "not_stated"},
-    "Q2.1": {"before_results", "with_or_after_results", "never"},
+    "Q2.1": {"quoted", "none"},
     "Q2.2": {"yes", "no"},
+    "Q2.3": {"quoted", "none"},
     "Q3.1": {"multi_item_scale", "single_item_report", "human_coded_or_rated", "constructed_index",
-             "behavior_or_performance", "record_or_physical"},
+             "behavior_or_performance", "record_or_physical", "not_stated"},
     "Q3.2": {"yes", "no"},
     "Q3.3": {NUMBER, "not_reported"},
     "Q4.1": {"reported", "not_reported"},
@@ -46,9 +47,10 @@ ALLOWED = {
 NEEDS_QUOTE = {
     "Q1.1": {"researcher_assigned", "natural_or_policy_variation", "observed_variation"},
     "Q1.2": {"collected_for_this_study", "existing_dataset"},
-    "Q2.1": {"before_results", "with_or_after_results"},
+    "Q2.1": {"quoted"},
     "Q2.2": {"yes"},
-    "Q3.1": ALLOWED["Q3.1"],
+    "Q2.3": {"quoted"},
+    "Q3.1": ALLOWED["Q3.1"] - {"not_stated"},
     "Q3.2": {"yes"},
     "Q3.3": {NUMBER},
     "Q4.1": {"reported"},
@@ -62,6 +64,12 @@ NEEDS_QUOTE = {
     "Q6.2": {"yes"},
 }
 QUESTIONS = list(ALLOWED)
+# derived in clean() from the quotes' positions in the text, not answered by the coder (v2.3)
+DERIVED = ["Q2.order"]
+# a "prediction" holding a test statistic is a finding (v2.3: qwen3-small quoted "As expected, the condition
+# effect was significant, F(2, 43) = 3.36" as a prediction stated before the results)
+STATISTIC = re.compile(r"\b[tFrzZ]\s*\(\s*\d|\bp\s*[<>=≤≥⬍⫽]|χ|\bchi-?square|\b[Ftz]\s*=\s*-?\d|η2|\bβ\s*=|"
+                       r"\bM\s*=\s*-?\d|\bSD\s*=")
 # yes/no questions about something the article may not mention: "no" is the absence, so a coder's
 # "not_stated" means "no" (RUBRIC-v2 Section 1; gpt-oss answered Q5.4 "not_stated", trial 2026-10-27)
 ABSENCE_NO = {"Q2.2", "Q3.2", "Q4.3", "Q5.4", "Q6.1", "Q6.2"}
@@ -101,6 +109,12 @@ def quote_found(quote: str, text_letters: str) -> bool:
     return len(q) >= MIN_QUOTE_CHARS and q in text_letters
 
 
+def _position(quote: str, text_letters: str) -> int:
+    parts = re.split(r"\.\.\.|…", quote)
+    frags = [letters(f) for f in parts if len(letters(f)) >= MIN_QUOTE_CHARS]
+    return text_letters.find(frags[0]) if frags else -1
+
+
 def clean(raw: dict, text: str) -> tuple[dict, dict]:
     """Coder answers -> {question: value or VOID}, and {question: why voided}."""
     tl = letters(text)
@@ -131,20 +145,38 @@ def clean(raw: dict, text: str) -> tuple[dict, dict]:
             out[q], why[q] = VOID, "quote not found in the text"
             continue
         out[q] = a
+    # Q2.order (v2.3): where the first prediction sits against the first result, decided by position
+    p, r = out["Q2.1"], out["Q2.3"]
+    if p == "quoted" and STATISTIC.search(str(raw["Q2.1"].get("quote", ""))):
+        out["Q2.1"] = p = VOID
+        why["Q2.1"] = "a finding, not a prediction"
+    if p == VOID:
+        order = VOID
+    elif p == "none":
+        order = "no_prediction"
+    elif r == "none":
+        order = "prediction_no_result"
+    elif r == VOID:
+        order = VOID
+    else:
+        pp, rp = _position(raw["Q2.1"]["quote"], tl), _position(raw["Q2.3"]["quote"], tl)
+        order = "prediction_first" if pp < rp else "result_first"
+    out["Q2.order"] = order
     return out, why
 
 
 def a1(x: dict) -> str:
-    if x["Q2.2"] == "yes" or x["Q2.1"] == "before_results":
+    order = x["Q2.order"]
+    if x["Q2.2"] == "yes" or order in ("prediction_first", "prediction_no_result"):
         return "0"
-    if x["Q2.1"] in ("with_or_after_results", "never") and x["Q2.2"] == "no":
+    if order in ("no_prediction", "result_first") and x["Q2.2"] == "no":
         return "1"
     return "U"
 
 
 def a2(x: dict) -> str:
     kind = x["Q3.1"]
-    if kind == VOID:
+    if kind in (VOID, "not_stated"):
         return "U"
     if kind not in VALIDITY_TYPES:
         return "na"

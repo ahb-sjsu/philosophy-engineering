@@ -54,7 +54,7 @@ SYSTEM = ("You extract facts from one published empirical article about one clai
 
 OUTPUT = """## Output
 
-Return exactly this JSON shape, one entry for every question Q1.1 to Q6.2 (answer Q4.1 to Q4.3 with
+Return exactly this JSON shape, one entry for every question Q1.1 to Q6.2, Q2.3 included (answer Q4.1 to Q4.3 with
 "not_reported", "na" and "no" when Q1.1 is not researcher_assigned):
 {"recognition": {"recognizes_study": true|false, "knows_replication_outcome": true|false},
  "answers": {"Q1.1": {"answer": "<one allowed answer>", "quote": "<exact quote, or empty for absences>"},

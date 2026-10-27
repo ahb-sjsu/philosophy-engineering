@@ -1,0 +1,1654 @@
+{
+ "operations": {
+  "gpt-oss": {
+   "codings": 56,
+   "scored": 56,
+   "models_returned": [
+    "openai/gpt-oss-120b"
+   ],
+   "finish": {
+    "stop": 56
+   },
+   "seconds": null,
+   "voided_answers": {
+    "quote not found in the text": 22
+   },
+   "median_seconds": 31.7
+  },
+  "qwen3-small": {
+   "codings": 56,
+   "scored": 56,
+   "models_returned": [
+    "Qwen/Qwen3.8-27B-FP8"
+   ],
+   "finish": {
+    "stop": 56
+   },
+   "seconds": null,
+   "voided_answers": {
+    "quote not found in the text": 12,
+    "a finding, not a prediction": 2
+   },
+   "median_seconds": 9.95
+  }
+ },
+ "failed": {},
+ "dropped_knows_outcome": {
+  "gpt-oss": 2,
+  "qwen3-small": 1
+ },
+ "distribution": {
+  "gpt-oss": {
+   "gate": {
+    "0": 17,
+    "1": 19,
+    "3": 4,
+    "2": 14
+   },
+   "A1": {
+    "U": 3,
+    "0": 37,
+    "1": 14
+   },
+   "A2": {
+    "U": 8,
+    "na": 37,
+    "1": 6,
+    "0": 3
+   },
+   "A3": {
+    "na": 12,
+    "1": 29,
+    "0": 6,
+    "U": 7
+   },
+   "A4": {
+    "0": 44,
+    "1": 10
+   }
+  },
+  "qwen3-small": {
+   "gate": {
+    "0": 18,
+    "3": 9,
+    "1": 18,
+    "2": 10
+   },
+   "A1": {
+    "0": 35,
+    "1": 16,
+    "U": 4
+   },
+   "A2": {
+    "na": 42,
+    "U": 3,
+    "1": 6,
+    "0": 4
+   },
+   "A3": {
+    "na": 11,
+    "1": 31,
+    "0": 11,
+    "U": 2
+   },
+   "A4": {
+    "0": 43,
+    "1": 12
+   }
+  }
+ },
+ "reliability": {
+  "between gpt-oss and qwen3-small (rep 1) [all]": {
+   "n": 26,
+   "questions": {
+    "Q1.1": {
+     "n": 26,
+     "agree": 0.923,
+     "kappa": 0.818
+    },
+    "Q1.2": {
+     "n": 26,
+     "agree": 0.923,
+     "kappa": 0.711
+    },
+    "Q2.1": {
+     "n": 26,
+     "agree": 0.885,
+     "kappa": 0.719
+    },
+    "Q2.2": {
+     "n": 26,
+     "agree": 1.0,
+     "kappa": null
+    },
+    "Q2.3": {
+     "n": 26,
+     "agree": 0.962,
+     "kappa": 0.785
+    },
+    "Q3.1": {
+     "n": 26,
+     "agree": 0.692,
+     "kappa": 0.547
+    },
+    "Q3.2": {
+     "n": 26,
+     "agree": 0.885,
+     "kappa": 0.598
+    },
+    "Q3.3": {
+     "n": 26,
+     "agree": 0.885
+    },
+    "Q4.1": {
+     "n": 18,
+     "agree": 0.889,
+     "kappa": 0.723
+    },
+    "Q4.2": {
+     "n": 18,
+     "agree": 0.722,
+     "kappa": 0.412
+    },
+    "Q4.3": {
+     "n": 18,
+     "agree": 1.0,
+     "kappa": null
+    },
+    "Q5.1": {
+     "n": 26,
+     "agree": 0.923
+    },
+    "Q5.2": {
+     "n": 26,
+     "agree": 0.654
+    },
+    "Q5.3": {
+     "n": 26,
+     "agree": 0.769,
+     "kappa": 0.361
+    },
+    "Q5.4": {
+     "n": 26,
+     "agree": 1.0,
+     "kappa": null
+    },
+    "Q6.1": {
+     "n": 26,
+     "agree": 0.846,
+     "kappa": -0.061
+    },
+    "Q6.2": {
+     "n": 26,
+     "agree": 1.0,
+     "kappa": null
+    },
+    "Q2.order": {
+     "n": 26,
+     "agree": 0.846,
+     "kappa": 0.685
+    }
+   },
+   "checks": {
+    "A1": 0.846,
+    "A2": 0.692,
+    "A3": 0.808,
+    "A4": 0.731
+   },
+   "gate_icc21": 0.577,
+   "gate_exact": 0.538
+  },
+  "between gpt-oss and qwen3-small (rep 2) [all]": {
+   "n": 27,
+   "questions": {
+    "Q1.1": {
+     "n": 27,
+     "agree": 0.926,
+     "kappa": 0.83
+    },
+    "Q1.2": {
+     "n": 27,
+     "agree": 0.889,
+     "kappa": 0.578
+    },
+    "Q2.1": {
+     "n": 27,
+     "agree": 0.815,
+     "kappa": 0.547
+    },
+    "Q2.2": {
+     "n": 27,
+     "agree": 1.0,
+     "kappa": null
+    },
+    "Q2.3": {
+     "n": 27,
+     "agree": 0.926,
+     "kappa": 0.635
+    },
+    "Q3.1": {
+     "n": 27,
+     "agree": 0.778,
+     "kappa": 0.638
+    },
+    "Q3.2": {
+     "n": 27,
+     "agree": 0.815,
+     "kappa": 0.442
+    },
+    "Q3.3": {
+     "n": 27,
+     "agree": 0.815
+    },
+    "Q4.1": {
+     "n": 19,
+     "agree": 0.842,
+     "kappa": 0.615
+    },
+    "Q4.2": {
+     "n": 19,
+     "agree": 0.789,
+     "kappa": 0.545
+    },
+    "Q4.3": {
+     "n": 19,
+     "agree": 0.947,
+     "kappa": 0.0
+    },
+    "Q5.1": {
+     "n": 27,
+     "agree": 0.815
+    },
+    "Q5.2": {
+     "n": 27,
+     "agree": 0.519
+    },
+    "Q5.3": {
+     "n": 27,
+     "agree": 0.852,
+     "kappa": 0.667
+    },
+    "Q5.4": {
+     "n": 27,
+     "agree": 1.0,
+     "kappa": null
+    },
+    "Q6.1": {
+     "n": 27,
+     "agree": 0.852,
+     "kappa": -0.059
+    },
+    "Q6.2": {
+     "n": 27,
+     "agree": 1.0,
+     "kappa": null
+    },
+    "Q2.order": {
+     "n": 27,
+     "agree": 0.815,
+     "kappa": 0.633
+    }
+   },
+   "checks": {
+    "A1": 0.852,
+    "A2": 0.815,
+    "A3": 0.815,
+    "A4": 0.741
+   },
+   "gate_icc21": 0.609,
+   "gate_exact": 0.556
+  },
+  "within gpt-oss (rep 1 vs 2) [all]": {
+   "n": 27,
+   "questions": {
+    "Q1.1": {
+     "n": 27,
+     "agree": 0.889,
+     "kappa": 0.755
+    },
+    "Q1.2": {
+     "n": 27,
+     "agree": 0.926,
+     "kappa": 0.744
+    },
+    "Q2.1": {
+     "n": 27,
+     "agree": 0.889,
+     "kappa": 0.701
+    },
+    "Q2.2": {
+     "n": 27,
+     "agree": 1.0,
+     "kappa": null
+    },
+    "Q2.3": {
+     "n": 27,
+     "agree": 0.926,
+     "kappa": 0.635
+    },
+    "Q3.1": {
+     "n": 27,
+     "agree": 0.852,
+     "kappa": 0.793
+    },
+    "Q3.2": {
+     "n": 27,
+     "agree": 0.926,
+     "kappa": 0.791
+    },
+    "Q3.3": {
+     "n": 27,
+     "agree": 0.926
+    },
+    "Q4.1": {
+     "n": 18,
+     "agree": 0.778,
+     "kappa": 0.433
+    },
+    "Q4.2": {
+     "n": 18,
+     "agree": 0.667,
+     "kappa": 0.312
+    },
+    "Q4.3": {
+     "n": 18,
+     "agree": 1.0,
+     "kappa": null
+    },
+    "Q5.1": {
+     "n": 27,
+     "agree": 0.852
+    },
+    "Q5.2": {
+     "n": 27,
+     "agree": 0.815
+    },
+    "Q5.3": {
+     "n": 27,
+     "agree": 0.889,
+     "kappa": 0.679
+    },
+    "Q5.4": {
+     "n": 27,
+     "agree": 1.0,
+     "kappa": null
+    },
+    "Q6.1": {
+     "n": 27,
+     "agree": 0.926,
+     "kappa": 0.625
+    },
+    "Q6.2": {
+     "n": 27,
+     "agree": 1.0,
+     "kappa": null
+    },
+    "Q2.order": {
+     "n": 27,
+     "agree": 0.852,
+     "kappa": 0.703
+    }
+   },
+   "checks": {
+    "A1": 0.889,
+    "A2": 0.889,
+    "A3": 0.667,
+    "A4": 0.852
+   },
+   "gate_icc21": 0.728,
+   "gate_exact": 0.63
+  },
+  "within qwen3-small (rep 1 vs 2) [all]": {
+   "n": 27,
+   "questions": {
+    "Q1.1": {
+     "n": 27,
+     "agree": 0.963,
+     "kappa": 0.905
+    },
+    "Q1.2": {
+     "n": 27,
+     "agree": 0.963,
+     "kappa": 0.839
+    },
+    "Q2.1": {
+     "n": 27,
+     "agree": 0.889,
+     "kappa": 0.763
+    },
+    "Q2.2": {
+     "n": 27,
+     "agree": 1.0,
+     "kappa": null
+    },
+    "Q2.3": {
+     "n": 27,
+     "agree": 0.963,
+     "kappa": 0.786
+    },
+    "Q3.1": {
+     "n": 27,
+     "agree": 0.963,
+     "kappa": 0.932
+    },
+    "Q3.2": {
+     "n": 27,
+     "agree": 1.0,
+     "kappa": 1.0
+    },
+    "Q3.3": {
+     "n": 27,
+     "agree": 0.963
+    },
+    "Q4.1": {
+     "n": 20,
+     "agree": 0.95,
+     "kappa": 0.875
+    },
+    "Q4.2": {
+     "n": 20,
+     "agree": 0.95,
+     "kappa": 0.875
+    },
+    "Q4.3": {
+     "n": 20,
+     "agree": 0.95,
+     "kappa": 0.0
+    },
+    "Q5.1": {
+     "n": 27,
+     "agree": 0.963
+    },
+    "Q5.2": {
+     "n": 27,
+     "agree": 0.741
+    },
+    "Q5.3": {
+     "n": 27,
+     "agree": 0.889,
+     "kappa": 0.748
+    },
+    "Q5.4": {
+     "n": 27,
+     "agree": 1.0,
+     "kappa": null
+    },
+    "Q6.1": {
+     "n": 27,
+     "agree": 1.0,
+     "kappa": 1.0
+    },
+    "Q6.2": {
+     "n": 27,
+     "agree": 1.0,
+     "kappa": null
+    },
+    "Q2.order": {
+     "n": 27,
+     "agree": 0.889,
+     "kappa": 0.783
+    }
+   },
+   "checks": {
+    "A1": 0.889,
+    "A2": 0.963,
+    "A3": 0.926,
+    "A4": 0.926
+   },
+   "gate_icc21": 0.907,
+   "gate_exact": 0.778
+  },
+  "between gpt-oss and qwen3-small (rep 1) [psych]": {
+   "n": 20,
+   "questions": {
+    "Q1.1": {
+     "n": 20,
+     "agree": 0.9,
+     "kappa": 0.0
+    },
+    "Q1.2": {
+     "n": 20,
+     "agree": 0.95,
+     "kappa": 0.0
+    },
+    "Q2.1": {
+     "n": 20,
+     "agree": 0.85,
+     "kappa": 0.659
+    },
+    "Q2.2": {
+     "n": 20,
+     "agree": 1.0,
+     "kappa": null
+    },
+    "Q2.3": {
+     "n": 20,
+     "agree": 1.0,
+     "kappa": 1.0
+    },
+    "Q3.1": {
+     "n": 20,
+     "agree": 0.7,
+     "kappa": 0.508
+    },
+    "Q3.2": {
+     "n": 20,
+     "agree": 0.9,
+     "kappa": 0.692
+    },
+    "Q3.3": {
+     "n": 20,
+     "agree": 0.85
+    },
+    "Q4.1": {
+     "n": 18,
+     "agree": 0.889,
+     "kappa": 0.723
+    },
+    "Q4.2": {
+     "n": 18,
+     "agree": 0.722,
+     "kappa": 0.412
+    },
+    "Q4.3": {
+     "n": 18,
+     "agree": 1.0,
+     "kappa": null
+    },
+    "Q5.1": {
+     "n": 20,
+     "agree": 0.95
+    },
+    "Q5.2": {
+     "n": 20,
+     "agree": 0.65
+    },
+    "Q5.3": {
+     "n": 20,
+     "agree": 0.85,
+     "kappa": 0.516
+    },
+    "Q5.4": {
+     "n": 20,
+     "agree": 1.0,
+     "kappa": null
+    },
+    "Q6.1": {
+     "n": 20,
+     "agree": 0.8,
+     "kappa": -0.081
+    },
+    "Q6.2": {
+     "n": 20,
+     "agree": 1.0,
+     "kappa": null
+    },
+    "Q2.order": {
+     "n": 20,
+     "agree": 0.85,
+     "kappa": 0.659
+    }
+   },
+   "checks": {
+    "A1": 0.85,
+    "A2": 0.7,
+    "A3": 0.75,
+    "A4": 0.8
+   },
+   "gate_icc21": 0.52,
+   "gate_exact": 0.55
+  },
+  "between gpt-oss and qwen3-small (rep 2) [psych]": {
+   "n": 21,
+   "questions": {
+    "Q1.1": {
+     "n": 21,
+     "agree": 0.905,
+     "kappa": 0.311
+    },
+    "Q1.2": {
+     "n": 21,
+     "agree": 0.905,
+     "kappa": 0.0
+    },
+    "Q2.1": {
+     "n": 21,
+     "agree": 0.762,
+     "kappa": 0.464
+    },
+    "Q2.2": {
+     "n": 21,
+     "agree": 1.0,
+     "kappa": null
+    },
+    "Q2.3": {
+     "n": 21,
+     "agree": 0.952,
+     "kappa": 0.65
+    },
+    "Q3.1": {
+     "n": 21,
+     "agree": 0.81,
+     "kappa": 0.632
+    },
+    "Q3.2": {
+     "n": 21,
+     "agree": 0.81,
+     "kappa": 0.494
+    },
+    "Q3.3": {
+     "n": 21,
+     "agree": 0.762
+    },
+    "Q4.1": {
+     "n": 19,
+     "agree": 0.842,
+     "kappa": 0.615
+    },
+    "Q4.2": {
+     "n": 19,
+     "agree": 0.789,
+     "kappa": 0.545
+    },
+    "Q4.3": {
+     "n": 19,
+     "agree": 0.947,
+     "kappa": 0.0
+    },
+    "Q5.1": {
+     "n": 21,
+     "agree": 0.857
+    },
+    "Q5.2": {
+     "n": 21,
+     "agree": 0.476
+    },
+    "Q5.3": {
+     "n": 21,
+     "agree": 0.952,
+     "kappa": 0.886
+    },
+    "Q5.4": {
+     "n": 21,
+     "agree": 1.0,
+     "kappa": null
+    },
+    "Q6.1": {
+     "n": 21,
+     "agree": 0.81,
+     "kappa": -0.077
+    },
+    "Q6.2": {
+     "n": 21,
+     "agree": 1.0,
+     "kappa": null
+    },
+    "Q2.order": {
+     "n": 21,
+     "agree": 0.762,
+     "kappa": 0.527
+    }
+   },
+   "checks": {
+    "A1": 0.81,
+    "A2": 0.857,
+    "A3": 0.762,
+    "A4": 0.81
+   },
+   "gate_icc21": 0.568,
+   "gate_exact": 0.571
+  },
+  "within gpt-oss (rep 1 vs 2) [psych]": {
+   "n": 21,
+   "questions": {
+    "Q1.1": {
+     "n": 21,
+     "agree": 0.857,
+     "kappa": 0.203
+    },
+    "Q1.2": {
+     "n": 21,
+     "agree": 0.952,
+     "kappa": 0.65
+    },
+    "Q2.1": {
+     "n": 21,
+     "agree": 0.857,
+     "kappa": 0.64
+    },
+    "Q2.2": {
+     "n": 21,
+     "agree": 1.0,
+     "kappa": null
+    },
+    "Q2.3": {
+     "n": 21,
+     "agree": 0.952,
+     "kappa": 0.65
+    },
+    "Q3.1": {
+     "n": 21,
+     "agree": 0.81,
+     "kappa": 0.715
+    },
+    "Q3.2": {
+     "n": 21,
+     "agree": 0.905,
+     "kappa": 0.774
+    },
+    "Q3.3": {
+     "n": 21,
+     "agree": 0.905
+    },
+    "Q4.1": {
+     "n": 18,
+     "agree": 0.778,
+     "kappa": 0.433
+    },
+    "Q4.2": {
+     "n": 18,
+     "agree": 0.667,
+     "kappa": 0.312
+    },
+    "Q4.3": {
+     "n": 18,
+     "agree": 1.0,
+     "kappa": null
+    },
+    "Q5.1": {
+     "n": 21,
+     "agree": 0.905
+    },
+    "Q5.2": {
+     "n": 21,
+     "agree": 0.81
+    },
+    "Q5.3": {
+     "n": 21,
+     "agree": 0.905,
+     "kappa": 0.708
+    },
+    "Q5.4": {
+     "n": 21,
+     "agree": 1.0,
+     "kappa": null
+    },
+    "Q6.1": {
+     "n": 21,
+     "agree": 0.905,
+     "kappa": 0.611
+    },
+    "Q6.2": {
+     "n": 21,
+     "agree": 1.0,
+     "kappa": null
+    },
+    "Q2.order": {
+     "n": 21,
+     "agree": 0.857,
+     "kappa": 0.69
+    }
+   },
+   "checks": {
+    "A1": 0.905,
+    "A2": 0.857,
+    "A3": 0.571,
+    "A4": 0.857
+   },
+   "gate_icc21": 0.683,
+   "gate_exact": 0.571
+  },
+  "within qwen3-small (rep 1 vs 2) [psych]": {
+   "n": 21,
+   "questions": {
+    "Q1.1": {
+     "n": 21,
+     "agree": 0.952,
+     "kappa": 0.0
+    },
+    "Q1.2": {
+     "n": 21,
+     "agree": 1.0,
+     "kappa": null
+    },
+    "Q2.1": {
+     "n": 21,
+     "agree": 0.857,
+     "kappa": 0.719
+    },
+    "Q2.2": {
+     "n": 21,
+     "agree": 1.0,
+     "kappa": null
+    },
+    "Q2.3": {
+     "n": 21,
+     "agree": 1.0,
+     "kappa": 1.0
+    },
+    "Q3.1": {
+     "n": 21,
+     "agree": 0.952,
+     "kappa": 0.886
+    },
+    "Q3.2": {
+     "n": 21,
+     "agree": 1.0,
+     "kappa": 1.0
+    },
+    "Q3.3": {
+     "n": 21,
+     "agree": 0.952
+    },
+    "Q4.1": {
+     "n": 20,
+     "agree": 0.95,
+     "kappa": 0.875
+    },
+    "Q4.2": {
+     "n": 20,
+     "agree": 0.95,
+     "kappa": 0.875
+    },
+    "Q4.3": {
+     "n": 20,
+     "agree": 0.95,
+     "kappa": 0.0
+    },
+    "Q5.1": {
+     "n": 21,
+     "agree": 0.952
+    },
+    "Q5.2": {
+     "n": 21,
+     "agree": 0.667
+    },
+    "Q5.3": {
+     "n": 21,
+     "agree": 0.905,
+     "kappa": 0.756
+    },
+    "Q5.4": {
+     "n": 21,
+     "agree": 1.0,
+     "kappa": null
+    },
+    "Q6.1": {
+     "n": 21,
+     "agree": 1.0,
+     "kappa": 1.0
+    },
+    "Q6.2": {
+     "n": 21,
+     "agree": 1.0,
+     "kappa": null
+    },
+    "Q2.order": {
+     "n": 21,
+     "agree": 0.857,
+     "kappa": 0.719
+    }
+   },
+   "checks": {
+    "A1": 0.857,
+    "A2": 0.952,
+    "A3": 0.905,
+    "A4": 0.952
+   },
+   "gate_icc21": 0.896,
+   "gate_exact": 0.762
+  },
+  "between gpt-oss and qwen3-small (rep 1) [v2dev]": {
+   "n": 3,
+   "questions": {
+    "Q1.1": {
+     "n": 3,
+     "agree": 1.0,
+     "kappa": null
+    },
+    "Q1.2": {
+     "n": 3,
+     "agree": 1.0,
+     "kappa": null
+    },
+    "Q2.1": {
+     "n": 3,
+     "agree": 1.0,
+     "kappa": null
+    },
+    "Q2.2": {
+     "n": 3,
+     "agree": 1.0,
+     "kappa": null
+    },
+    "Q2.3": {
+     "n": 3,
+     "agree": 0.667,
+     "kappa": 0.0
+    },
+    "Q3.1": {
+     "n": 3,
+     "agree": 0.667,
+     "kappa": 0.571
+    },
+    "Q3.2": {
+     "n": 3,
+     "agree": 0.667,
+     "kappa": 0.0
+    },
+    "Q3.3": {
+     "n": 3,
+     "agree": 1.0
+    },
+    "Q4.1": {
+     "n": 0
+    },
+    "Q4.2": {
+     "n": 0
+    },
+    "Q4.3": {
+     "n": 0
+    },
+    "Q5.1": {
+     "n": 3,
+     "agree": 0.667
+    },
+    "Q5.2": {
+     "n": 3,
+     "agree": 0.667
+    },
+    "Q5.3": {
+     "n": 3,
+     "agree": 0.667,
+     "kappa": 0.4
+    },
+    "Q5.4": {
+     "n": 3,
+     "agree": 1.0,
+     "kappa": null
+    },
+    "Q6.1": {
+     "n": 3,
+     "agree": 1.0,
+     "kappa": null
+    },
+    "Q6.2": {
+     "n": 3,
+     "agree": 1.0,
+     "kappa": null
+    },
+    "Q2.order": {
+     "n": 3,
+     "agree": 0.667,
+     "kappa": 0.0
+    }
+   },
+   "checks": {
+    "A1": 0.667,
+    "A2": 0.667,
+    "A3": 1.0,
+    "A4": 0.667
+   },
+   "gate_icc21": 0.0,
+   "gate_exact": 0.667
+  },
+  "between gpt-oss and qwen3-small (rep 2) [v2dev]": {
+   "n": 3,
+   "questions": {
+    "Q1.1": {
+     "n": 3,
+     "agree": 1.0,
+     "kappa": null
+    },
+    "Q1.2": {
+     "n": 3,
+     "agree": 0.667,
+     "kappa": 0.0
+    },
+    "Q2.1": {
+     "n": 3,
+     "agree": 1.0,
+     "kappa": null
+    },
+    "Q2.2": {
+     "n": 3,
+     "agree": 1.0,
+     "kappa": null
+    },
+    "Q2.3": {
+     "n": 3,
+     "agree": 1.0,
+     "kappa": null
+    },
+    "Q3.1": {
+     "n": 3,
+     "agree": 0.667,
+     "kappa": 0.571
+    },
+    "Q3.2": {
+     "n": 3,
+     "agree": 0.667,
+     "kappa": 0.0
+    },
+    "Q3.3": {
+     "n": 3,
+     "agree": 1.0
+    },
+    "Q4.1": {
+     "n": 0
+    },
+    "Q4.2": {
+     "n": 0
+    },
+    "Q4.3": {
+     "n": 0
+    },
+    "Q5.1": {
+     "n": 3,
+     "agree": 0.333
+    },
+    "Q5.2": {
+     "n": 3,
+     "agree": 0.667
+    },
+    "Q5.3": {
+     "n": 3,
+     "agree": 0.667,
+     "kappa": 0.4
+    },
+    "Q5.4": {
+     "n": 3,
+     "agree": 1.0,
+     "kappa": null
+    },
+    "Q6.1": {
+     "n": 3,
+     "agree": 1.0,
+     "kappa": null
+    },
+    "Q6.2": {
+     "n": 3,
+     "agree": 1.0,
+     "kappa": null
+    },
+    "Q2.order": {
+     "n": 3,
+     "agree": 1.0,
+     "kappa": null
+    }
+   },
+   "checks": {
+    "A1": 1.0,
+    "A2": 0.667,
+    "A3": 1.0,
+    "A4": 0.667
+   },
+   "gate_icc21": 0.0,
+   "gate_exact": 0.667
+  },
+  "within gpt-oss (rep 1 vs 2) [v2dev]": {
+   "n": 3,
+   "questions": {
+    "Q1.1": {
+     "n": 3,
+     "agree": 1.0,
+     "kappa": null
+    },
+    "Q1.2": {
+     "n": 3,
+     "agree": 0.667,
+     "kappa": 0.0
+    },
+    "Q2.1": {
+     "n": 3,
+     "agree": 1.0,
+     "kappa": null
+    },
+    "Q2.2": {
+     "n": 3,
+     "agree": 1.0,
+     "kappa": null
+    },
+    "Q2.3": {
+     "n": 3,
+     "agree": 0.667,
+     "kappa": 0.0
+    },
+    "Q3.1": {
+     "n": 3,
+     "agree": 1.0,
+     "kappa": 1.0
+    },
+    "Q3.2": {
+     "n": 3,
+     "agree": 1.0,
+     "kappa": null
+    },
+    "Q3.3": {
+     "n": 3,
+     "agree": 1.0
+    },
+    "Q4.1": {
+     "n": 0
+    },
+    "Q4.2": {
+     "n": 0
+    },
+    "Q4.3": {
+     "n": 0
+    },
+    "Q5.1": {
+     "n": 3,
+     "agree": 0.333
+    },
+    "Q5.2": {
+     "n": 3,
+     "agree": 0.667
+    },
+    "Q5.3": {
+     "n": 3,
+     "agree": 1.0,
+     "kappa": 1.0
+    },
+    "Q5.4": {
+     "n": 3,
+     "agree": 1.0,
+     "kappa": null
+    },
+    "Q6.1": {
+     "n": 3,
+     "agree": 1.0,
+     "kappa": null
+    },
+    "Q6.2": {
+     "n": 3,
+     "agree": 1.0,
+     "kappa": null
+    },
+    "Q2.order": {
+     "n": 3,
+     "agree": 0.667,
+     "kappa": 0.0
+    }
+   },
+   "checks": {
+    "A1": 0.667,
+    "A2": 1.0,
+    "A3": 1.0,
+    "A4": 1.0
+   },
+   "gate_icc21": 1.0,
+   "gate_exact": 1.0
+  },
+  "within qwen3-small (rep 1 vs 2) [v2dev]": {
+   "n": 3,
+   "questions": {
+    "Q1.1": {
+     "n": 3,
+     "agree": 1.0,
+     "kappa": null
+    },
+    "Q1.2": {
+     "n": 3,
+     "agree": 1.0,
+     "kappa": null
+    },
+    "Q2.1": {
+     "n": 3,
+     "agree": 1.0,
+     "kappa": null
+    },
+    "Q2.2": {
+     "n": 3,
+     "agree": 1.0,
+     "kappa": null
+    },
+    "Q2.3": {
+     "n": 3,
+     "agree": 1.0,
+     "kappa": null
+    },
+    "Q3.1": {
+     "n": 3,
+     "agree": 1.0,
+     "kappa": 1.0
+    },
+    "Q3.2": {
+     "n": 3,
+     "agree": 1.0,
+     "kappa": 1.0
+    },
+    "Q3.3": {
+     "n": 3,
+     "agree": 1.0
+    },
+    "Q4.1": {
+     "n": 0
+    },
+    "Q4.2": {
+     "n": 0
+    },
+    "Q4.3": {
+     "n": 0
+    },
+    "Q5.1": {
+     "n": 3,
+     "agree": 1.0
+    },
+    "Q5.2": {
+     "n": 3,
+     "agree": 1.0
+    },
+    "Q5.3": {
+     "n": 3,
+     "agree": 1.0,
+     "kappa": 1.0
+    },
+    "Q5.4": {
+     "n": 3,
+     "agree": 1.0,
+     "kappa": null
+    },
+    "Q6.1": {
+     "n": 3,
+     "agree": 1.0,
+     "kappa": null
+    },
+    "Q6.2": {
+     "n": 3,
+     "agree": 1.0,
+     "kappa": null
+    },
+    "Q2.order": {
+     "n": 3,
+     "agree": 1.0,
+     "kappa": null
+    }
+   },
+   "checks": {
+    "A1": 1.0,
+    "A2": 1.0,
+    "A3": 1.0,
+    "A4": 1.0
+   },
+   "gate_icc21": null,
+   "gate_exact": 1.0
+  },
+  "between gpt-oss and qwen3-small (rep 1) [v2dev2]": {
+   "n": 3,
+   "questions": {
+    "Q1.1": {
+     "n": 3,
+     "agree": 1.0,
+     "kappa": 1.0
+    },
+    "Q1.2": {
+     "n": 3,
+     "agree": 0.667,
+     "kappa": 0.0
+    },
+    "Q2.1": {
+     "n": 3,
+     "agree": 1.0,
+     "kappa": 1.0
+    },
+    "Q2.2": {
+     "n": 3,
+     "agree": 1.0,
+     "kappa": null
+    },
+    "Q2.3": {
+     "n": 3,
+     "agree": 1.0,
+     "kappa": 1.0
+    },
+    "Q3.1": {
+     "n": 3,
+     "agree": 0.667,
+     "kappa": 0.571
+    },
+    "Q3.2": {
+     "n": 3,
+     "agree": 1.0,
+     "kappa": null
+    },
+    "Q3.3": {
+     "n": 3,
+     "agree": 1.0
+    },
+    "Q4.1": {
+     "n": 0
+    },
+    "Q4.2": {
+     "n": 0
+    },
+    "Q4.3": {
+     "n": 0
+    },
+    "Q5.1": {
+     "n": 3,
+     "agree": 1.0
+    },
+    "Q5.2": {
+     "n": 3,
+     "agree": 0.667
+    },
+    "Q5.3": {
+     "n": 3,
+     "agree": 0.333,
+     "kappa": -0.5
+    },
+    "Q5.4": {
+     "n": 3,
+     "agree": 1.0,
+     "kappa": null
+    },
+    "Q6.1": {
+     "n": 3,
+     "agree": 1.0,
+     "kappa": null
+    },
+    "Q6.2": {
+     "n": 3,
+     "agree": 1.0,
+     "kappa": null
+    },
+    "Q2.order": {
+     "n": 3,
+     "agree": 1.0,
+     "kappa": 1.0
+    }
+   },
+   "checks": {
+    "A1": 1.0,
+    "A2": 0.667,
+    "A3": 1.0,
+    "A4": 0.333
+   },
+   "gate_icc21": 0.5,
+   "gate_exact": 0.333
+  },
+  "between gpt-oss and qwen3-small (rep 2) [v2dev2]": {
+   "n": 3,
+   "questions": {
+    "Q1.1": {
+     "n": 3,
+     "agree": 1.0,
+     "kappa": 1.0
+    },
+    "Q1.2": {
+     "n": 3,
+     "agree": 1.0,
+     "kappa": null
+    },
+    "Q2.1": {
+     "n": 3,
+     "agree": 1.0,
+     "kappa": 1.0
+    },
+    "Q2.2": {
+     "n": 3,
+     "agree": 1.0,
+     "kappa": null
+    },
+    "Q2.3": {
+     "n": 3,
+     "agree": 0.667,
+     "kappa": 0.4
+    },
+    "Q3.1": {
+     "n": 3,
+     "agree": 0.667,
+     "kappa": 0.571
+    },
+    "Q3.2": {
+     "n": 3,
+     "agree": 1.0,
+     "kappa": null
+    },
+    "Q3.3": {
+     "n": 3,
+     "agree": 1.0
+    },
+    "Q4.1": {
+     "n": 0
+    },
+    "Q4.2": {
+     "n": 0
+    },
+    "Q4.3": {
+     "n": 0
+    },
+    "Q5.1": {
+     "n": 3,
+     "agree": 1.0
+    },
+    "Q5.2": {
+     "n": 3,
+     "agree": 0.667
+    },
+    "Q5.3": {
+     "n": 3,
+     "agree": 0.333,
+     "kappa": 0.0
+    },
+    "Q5.4": {
+     "n": 3,
+     "agree": 1.0,
+     "kappa": null
+    },
+    "Q6.1": {
+     "n": 3,
+     "agree": 1.0,
+     "kappa": null
+    },
+    "Q6.2": {
+     "n": 3,
+     "agree": 1.0,
+     "kappa": null
+    },
+    "Q2.order": {
+     "n": 3,
+     "agree": 1.0,
+     "kappa": 1.0
+    }
+   },
+   "checks": {
+    "A1": 1.0,
+    "A2": 0.667,
+    "A3": 1.0,
+    "A4": 0.333
+   },
+   "gate_icc21": 0.6,
+   "gate_exact": 0.333
+  },
+  "within gpt-oss (rep 1 vs 2) [v2dev2]": {
+   "n": 3,
+   "questions": {
+    "Q1.1": {
+     "n": 3,
+     "agree": 1.0,
+     "kappa": 1.0
+    },
+    "Q1.2": {
+     "n": 3,
+     "agree": 1.0,
+     "kappa": null
+    },
+    "Q2.1": {
+     "n": 3,
+     "agree": 1.0,
+     "kappa": 1.0
+    },
+    "Q2.2": {
+     "n": 3,
+     "agree": 1.0,
+     "kappa": null
+    },
+    "Q2.3": {
+     "n": 3,
+     "agree": 1.0,
+     "kappa": 1.0
+    },
+    "Q3.1": {
+     "n": 3,
+     "agree": 1.0,
+     "kappa": 1.0
+    },
+    "Q3.2": {
+     "n": 3,
+     "agree": 1.0,
+     "kappa": null
+    },
+    "Q3.3": {
+     "n": 3,
+     "agree": 1.0
+    },
+    "Q4.1": {
+     "n": 0
+    },
+    "Q4.2": {
+     "n": 0
+    },
+    "Q4.3": {
+     "n": 0
+    },
+    "Q5.1": {
+     "n": 3,
+     "agree": 1.0
+    },
+    "Q5.2": {
+     "n": 3,
+     "agree": 1.0
+    },
+    "Q5.3": {
+     "n": 3,
+     "agree": 0.667,
+     "kappa": 0.0
+    },
+    "Q5.4": {
+     "n": 3,
+     "agree": 1.0,
+     "kappa": null
+    },
+    "Q6.1": {
+     "n": 3,
+     "agree": 1.0,
+     "kappa": null
+    },
+    "Q6.2": {
+     "n": 3,
+     "agree": 1.0,
+     "kappa": null
+    },
+    "Q2.order": {
+     "n": 3,
+     "agree": 1.0,
+     "kappa": 1.0
+    }
+   },
+   "checks": {
+    "A1": 1.0,
+    "A2": 1.0,
+    "A3": 1.0,
+    "A4": 0.667
+   },
+   "gate_icc21": 0.5,
+   "gate_exact": 0.667
+  },
+  "within qwen3-small (rep 1 vs 2) [v2dev2]": {
+   "n": 3,
+   "questions": {
+    "Q1.1": {
+     "n": 3,
+     "agree": 1.0,
+     "kappa": 1.0
+    },
+    "Q1.2": {
+     "n": 3,
+     "agree": 0.667,
+     "kappa": 0.0
+    },
+    "Q2.1": {
+     "n": 3,
+     "agree": 1.0,
+     "kappa": 1.0
+    },
+    "Q2.2": {
+     "n": 3,
+     "agree": 1.0,
+     "kappa": null
+    },
+    "Q2.3": {
+     "n": 3,
+     "agree": 0.667,
+     "kappa": 0.4
+    },
+    "Q3.1": {
+     "n": 3,
+     "agree": 1.0,
+     "kappa": 1.0
+    },
+    "Q3.2": {
+     "n": 3,
+     "agree": 1.0,
+     "kappa": null
+    },
+    "Q3.3": {
+     "n": 3,
+     "agree": 1.0
+    },
+    "Q4.1": {
+     "n": 0
+    },
+    "Q4.2": {
+     "n": 0
+    },
+    "Q4.3": {
+     "n": 0
+    },
+    "Q5.1": {
+     "n": 3,
+     "agree": 1.0
+    },
+    "Q5.2": {
+     "n": 3,
+     "agree": 1.0
+    },
+    "Q5.3": {
+     "n": 3,
+     "agree": 0.667,
+     "kappa": 0.4
+    },
+    "Q5.4": {
+     "n": 3,
+     "agree": 1.0,
+     "kappa": null
+    },
+    "Q6.1": {
+     "n": 3,
+     "agree": 1.0,
+     "kappa": null
+    },
+    "Q6.2": {
+     "n": 3,
+     "agree": 1.0,
+     "kappa": null
+    },
+    "Q2.order": {
+     "n": 3,
+     "agree": 1.0,
+     "kappa": 1.0
+    }
+   },
+   "checks": {
+    "A1": 1.0,
+    "A2": 1.0,
+    "A3": 1.0,
+    "A4": 0.667
+   },
+   "gate_icc21": 0.857,
+   "gate_exact": 0.667
+  }
+ }
+}

@@ -25,7 +25,7 @@ from pathlib import Path
 import numpy as np
 
 from k2_analysis import icc_single
-from k2_v2_rules import ALLOWED, MANIPULATED, NUMBER, QUESTIONS, VOID, checks
+from k2_v2_rules import ALLOWED, DERIVED, MANIPULATED, NUMBER, QUESTIONS, VOID, checks
 
 CHECKS = ["A1", "A2", "A3", "A4"]
 
@@ -44,7 +44,7 @@ def compare(A: dict, B: dict, units: list) -> dict:
     res = {"n": len(both), "questions": {}, "checks": {}}
     if not both:
         return res
-    for q in QUESTIONS:
+    for q in QUESTIONS + DERIVED:
         # Q4 is asked only of manipulated designs: compared where both coders say there was one
         on = [u for u in both if not q.startswith("Q4.")
               or (A[u]["answers"]["Q1.1"] in MANIPULATED and B[u]["answers"]["Q1.1"] in MANIPULATED)]
@@ -53,7 +53,7 @@ def compare(A: dict, B: dict, units: list) -> dict:
             res["questions"][q] = {"n": 0}
             continue
         row = {"n": len(pairs), "agree": round(sum(a == b for a, b in pairs) / len(pairs), 3)}
-        if NUMBER not in ALLOWED[q]:
+        if q not in ALLOWED or NUMBER not in ALLOWED[q]:
             row["kappa"] = kappa(pairs)
         res["questions"][q] = row
     for c in CHECKS:
@@ -72,7 +72,7 @@ def majority(codings: list[dict]) -> dict | None:
     if len(codings) < 2:
         return None
     ans = {}
-    for q in QUESTIONS:
+    for q in QUESTIONS + DERIVED:
         (v, k), = Counter(c["answers"][q] for c in codings).most_common(1)
         ans[q] = v if 2 * k > len(codings) else VOID
     return {"answers": ans, "scored": checks(ans), "n_codings": len(codings)}
