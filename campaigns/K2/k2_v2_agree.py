@@ -9,6 +9,8 @@ replication outcome are dropped and counted (RUBRIC-v2 Section 0). Reported for 
               kappa for the categorical questions; numbers are equal only if identical
   checks      share equal (na kept: an na/0 split is a disagreement about applicability)
   gate        ICC(2,1) (k2_analysis.icc_single, the I1 statistic) and exact agreement
+With three or more codings per unit, also between families for each rep and for each family's majority
+answer per question (option (b), owner 2026-10-27).
 
     python3 k2_v2_agree.py /archive/experiments/k2/v2dev_r1 out.json
 """
@@ -23,7 +25,7 @@ from pathlib import Path
 import numpy as np
 
 from k2_analysis import icc_single
-from k2_v2_rules import ALLOWED, MANIPULATED, NUMBER, QUESTIONS
+from k2_v2_rules import ALLOWED, MANIPULATED, NUMBER, QUESTIONS, VOID, checks
 
 CHECKS = ["A1", "A2", "A3", "A4"]
 
@@ -63,6 +65,19 @@ def compare(A: dict, B: dict, units: list) -> dict:
     return res
 
 
+def majority(codings: list[dict]) -> dict | None:
+    """Option (b), owner 2026-10-27: a family's answer per question is the value given by more than half of
+    its codings (VOID counts as a value); with no majority the answer is VOID. Checks are then computed from
+    these answers by the frozen rules. Needs at least 2 codings."""
+    if len(codings) < 2:
+        return None
+    ans = {}
+    for q in QUESTIONS:
+        (v, k), = Counter(c["answers"][q] for c in codings).most_common(1)
+        ans[q] = v if 2 * k > len(codings) else VOID
+    return {"answers": ans, "scored": checks(ans), "n_codings": len(codings)}
+
+
 def main() -> int:
     run, out = Path(sys.argv[1]), sys.argv[2]
     S, dropped, failed, ops = {}, Counter(), Counter(), {}
@@ -93,10 +108,24 @@ def main() -> int:
     def stream(m, rep):
         return {u: r for (mm, rr, u), r in S.items() if mm == m and rr == rep}
 
+    reps = sorted({rr for (_, rr, _) in S})
+    MAJ = {}
+    if len(reps) >= 3:
+        for m in models:
+            for u in sets:
+                v = majority([r for (mm, rr, uu), r in S.items() if mm == m and uu == u])
+                if v:
+                    MAJ[(m, u)] = v
+
     rel = {}
     for g, units in groups.items():
         for m1, m2 in combinations(models, 2):
             rel[f"between {m1} and {m2} (rep 1) [{g}]"] = compare(stream(m1, 1), stream(m2, 1), units)
+            for rep in reps[1:]:
+                rel[f"between {m1} and {m2} (rep {rep}) [{g}]"] = compare(stream(m1, rep), stream(m2, rep), units)
+            if MAJ:
+                rel[f"between {m1} and {m2} (majority of {len(reps)}) [{g}]"] = compare(
+                    {u: v for (mm, u), v in MAJ.items() if mm == m1}, {u: v for (mm, u), v in MAJ.items() if mm == m2}, units)
         for m in models:
             rel[f"within {m} (rep 1 vs 2) [{g}]"] = compare(stream(m, 1), stream(m, 2), units)
     dist = {}

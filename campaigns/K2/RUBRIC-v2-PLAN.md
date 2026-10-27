@@ -319,3 +319,18 @@ alternative is to measure the instrument's reliability and correct the
 estimate for it rather than gate on 0.80; a change to the registration's
 design. (d) More held-out-shaped development units, which need the browser
 fetch the owner found too laborious. The held-out 18 stay unread and uncoded.
+
+**Option (b) tried (owner, 2026-10-27: "try (b), three codings per family").**
+A third coding per family on round 3's 28 units, rubric and rules unchanged
+(hashes checked against round 3's plan); each family's answer per question is
+the value more than half its codings give, else void (`k2_v2_agree.majority`;
+`k2_v2_dev_r3_maj_agree.json`). Gate ICC between families: single codings 0.43,
+0.47, 0.39 (passes 1 to 3, 25 to 26 units); majority of 3: **0.34**. Exact gate
+agreement 50 to 56% single, 42% majority. The majority does not help: the
+families' disagreement is systematic (each reads some questions its own way,
+consistently), not noise that voting cancels; questions with no majority turn
+void and push checks to U. Q2.1 is the clearest case (κ 0.03 between the
+majorities). (b) is not adopted. What would settle the systematic splits is
+knowing which reading is right on each disputed question: a read of the
+development units' evidence on the disputed answers, then a rule that says
+which reading the rubric means.
