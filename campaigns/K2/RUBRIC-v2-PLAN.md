@@ -171,3 +171,151 @@ other, and the derivation rules are frozen with the rubric.
 - The contamination probe (7.3) and the I1 bar itself (0.80, from 7.2), which
   this plan takes as given.
 - Ethics and compute sizing, which stay owner decisions.
+
+## 5. Extraction design (2026-10-26)
+
+Owner, 2026-10-26: "Research v2, and proceed with a new design more likely to
+make actual progress." This section is that design. It answers D5 (extraction
+before judgment) by making it the whole instrument, and it leaves D3 open with
+a recommendation.
+
+### 5.1 What the evidence says
+
+Collected 2026-10-26 by a literature search; sources opened and numbers read
+from them, except where marked.
+
+- **Holistic quality judgments are unreliable for humans too.** Cochrane RoB 2,
+  4 experienced raters on 70 trials: overall Fleiss κ 0.16, domains 0.04 to
+  0.45 (Minozzi et al. 2020, J Clin Epidemiol 126:37,
+  doi:10.1016/j.jclinepi.2020.06.015). ROBINS-I: overall 0.06 (Minozzi et al.
+  2019, doi:10.1016/j.jclinepi.2019.04.001). Newcastle-Ottawa: from 0.68 on a
+  factual item (follow-up length) to −0.06 on judgment items, total score 0.29
+  (Hartling et al. 2013, doi:10.1016/j.jclinepi.2013.03.003). RoB 1: "agreement
+  was poorer for those items that required more judgment" (Hartling et al.
+  2009, BMJ 339:b4012). K2's 0.80 bar on a holistic gate is above what expert
+  humans reach with these tools.
+- **Rules raise agreement.** RoB 2 with a written rule for every signalling
+  question: overall κ from −0.15 to 0.42 (Minozzi et al. 2022,
+  doi:10.1016/j.jclinepi.2021.09.021). LLM judges: replacing Likert scores with
+  yes/no checklist items raised Krippendorff's α across 12 judges from 0.09 to
+  0.48 and 0.06 to 0.45 on two benchmarks (CheckEval, Lee et al., EMNLP 2025,
+  arXiv:2403.18771). Counter-evidence: older LLMs answering RoB 2's signalling
+  questions and applying its algorithm did no better than direct prediction
+  (Šuster et al. 2024, doi:10.1002/jrsm.1749); decomposition helps only when
+  the sub-questions are themselves low-inference.
+- **LLMs extract facts well and judge quality poorly.** Data extraction: 96.3%
+  accuracy on 160 elements, about 96% on two reruns (Gartlehner et al. 2024,
+  doi:10.1002/jrsm.1710). RoB 2 judgments by an LLM: overall κ 0.22 against
+  Cochrane authors, identical across 3 runs for 68 of 100 trials (Eisele-Metzger
+  et al. 2025, doi:10.1017/rsm.2025.12). Explicit variables 92 to 93%, derived
+  categories 64 to 80% (Schroeder et al., arXiv:2501.11840, a pilot on 8
+  sources).
+- **Agreement between two model families marks the reliable fields.** Fields
+  where two LLMs agreed (87% of fields) were 0.94 accurate; fields where they
+  disagreed, 0.41 to 0.50 (Khan et al. 2025, JAMIA, doi:10.1093/jamia/ocae325).
+- **The gates' variance in SCORE's period.** Preregistration in social-science
+  articles of 2014 to 2017: 0 of 156 (Hardwicke et al. 2020,
+  doi:10.1098/rsos.190806). Manipulation checks: 33% of 614 psychology
+  articles, 15 to 63% by journal (Hauser et al. 2018,
+  doi:10.3389/fpsyg.2018.00998). 106 of SCORE's 164 replicated papers are
+  outside psychology (Abatayo et al., SCORE credibility preprint,
+  osf.io/preprints/metaarxiv/7u58q_v1, Table 2). So A1 will vary little, and A3
+  will be not applicable for most claims.
+- **The baselines are weak on SCORE.** In the same preprint (Table 3), original
+  p-value correlates with replication at r = −.11 [−.26, .04] and original
+  effect size at .01 [−.19, .18]. Registration 7.5 simulated power with a
+  baseline AUC near 0.75. If B1 is that weak on SCORE, the simulated world is
+  wrong about M0, and the power statement (7.5, I5) has to be redone; this
+  design does not settle it.
+
+### 5.2 The design
+
+1. **Coders extract facts; code applies the rules.** [`RUBRIC-v2.md`](RUBRIC-v2.md)
+   asks 17 factual questions (design, where the prediction is stated,
+   registration, the outcome's type and source and reliability, manipulation
+   check, sample flow, tests of the claim), each with a fixed answer set.
+   [`k2_v2_rules.py`](k2_v2_rules.py) computes A1 to A4 from the answers; it is
+   frozen and hashed with the rubric and tested case by case against the
+   rubric's table ([`k2_v2_rules_test.py`](k2_v2_rules_test.py): 35 rule cases
+   and 13 quote cases, PASS on Atlas 2026-10-26).
+2. **Every positive answer carries an exact quote, checked in code.** A quote not
+   found in the text the coder saw (after layout normalization) voids its
+   answer, and a check that needs a void answer is U. This replaces "the
+   adjudicator recodes a 1 without evidence" with a test anyone can rerun.
+3. **Applicability is a coded fact.** Q1.1 decides whether A3 applies; Q3.1
+   decides whether A2 applies. An observational economics claim is na on A3 by
+   rule, not by a coder's reading.
+4. **Reliability is measured per question first, then on the gate.** Between
+   families, rep 1 ([`k2_v2_agree.py`](k2_v2_agree.py)). A question that two
+   families do not answer alike on development units is rewritten or dropped
+   before the commit; the gate ICC on the held-out set stays the go criterion
+   (D2, 7.1.1: ICC ≥ 0.81 on the 18).
+5. **The judgment items leave the gate** and are reported as out of scope
+   (RUBRIC-v2 Section 3; registration Section 12 must say so).
+6. **Development material.** The spent 22 psychology units, the 3 v2
+   development papers, and, if more are needed, papers from the 235 undrawn
+   eligible papers (165 published versions, 70 accepted manuscripts, 135 with a
+   PDF link). The undrawn papers were never replicated, so no outcome can leak
+   from them; the 22 have outcomes, and nothing here reads them.
+
+### 5.3 Coders (D3, Owner)
+
+The hosted aliases moved under the pilots: `minimax-m2` served
+`MiniMaxAI/MiniMax-M2.7` through 2026-10-19 and `MiniMaxAI/MiniMax-M3.1-Flash`
+on 2026-10-26 (7.4.2). Registration 4.3 rule 5 needs pinned revisions, which a
+hosted alias cannot give. Two ways:
+
+| Option | Pinned | Cost |
+|---|---|---|
+| Gateway families (gpt-oss plus one more), `model_returned` checked on every call and the run voided if it changes | No: recorded, not pinned | None; fast |
+| Open-weight GGUF files on Atlas (Qwen3-32B Q5_K_M, gemma-4-31B Q5_K_M, Qwen2.5-72B Q5_K_M are on disk), run by llama.cpp with the file hash recorded | Yes, by sha256 | A GPU: GPU 1 had 24 of 32 GB in use on 2026-10-26, so a 32B model needs that load to move, or an NRP GPU Job |
+
+Development rounds use the gateway (cheap, reversible). The held-out coding
+should use the pinned option if it can be had; the owner decides.
+
+### 5.4 Development rounds (2026-10-27)
+
+Coders: gpt-oss (`openai/gpt-oss-120b`) and qwen3-small (`Qwen/Qwen3.8-27B-FP8`,
+thinking off: 6 s a coding against 520 to 780 s with thinking, answers
+otherwise alike). A trial on 2 units ruled out gemma (no answer on the
+gateway, each try ended at 20 minutes), glm-5 (token limit), kimi (3 to 15
+minutes a coding) and minimax-m2 (now MiniMax-M3.1-Flash, 1 to 4 minutes).
+Every round: both families, two codings per unit, `k2_v2_agree.py`; codings
+whose coder says it knows the replication outcome dropped (gpt-oss 4, qwen 1
+in round 3, all psychology units).
+
+| Between families, rep 1 | v2.0 (r1) | v2.1 (r2) | v2.2 (r3) |
+|---|---:|---:|---:|
+| Units | 24 | 23 | 25 |
+| Gate ICC(2,1) | 0.51 | 0.51 | 0.43 |
+| Exact gate agreement | 38% | 65% | 56% |
+| Check agreement A1 / A2 / A3 / A4 | 63/50/38/63% | 78/65/48/65% | 76/76/72/68% |
+| Within gpt-oss / within qwen3-small, gate ICC | 0.67 / 0.89 | 0.67 / 0.92 | 0.74 / 0.84 |
+
+v0 and v1 on comparable units: 0.11 and −0.31 between families (7.4, 7.4.1).
+In round 3 the factual questions agree at κ 0.66 to 0.84 (design 0.68, data
+source 0.84, cited measure 0.66, manipulation check reported 0.67); the two
+weak questions are Q2.1, where the prediction is first stated (κ 0.19; the
+psychology units are cut to Method and Results, so the introduction is often
+missing) and Q5.3, exclusions (κ 0.27).
+
+**Reading.** Question-level agreement is now in the range the extraction
+literature reports, and check-level agreement roughly doubled from v0, but the
+gate ICC has not moved past about 0.5, against a go bar of 0.81 on the
+held-out 18. Three things hold it down: residual splits on four checks compound
+in the gate; most units score 0 or 1, and ICC is harsh when the true variance is
+small; and gpt-oss is noisy against itself (0.67 to 0.74). These are 25
+development units, most of them psychology units unlike the held-out set; only
+6 are shaped like it (3 + 3 from the seeded draw of 60, of which 3 could be
+fetched by script). The rounds were scored on the units they were revised on,
+so they overstate what the held-out set would show.
+
+**Options (owner).** (a) Keep revising Q2.1 and Q5.3 on development units. (b)
+Each family codes three times and its answer per question is the majority,
+which cuts gpt-oss's own noise; the between-family ICC is still what I1
+measures. (c) Revisit the I1 bar: expert humans reach κ 0.16 overall on RoB 2
+(5.1), and the 0.80 bar came from the 7.2 attenuation simulation, so an
+alternative is to measure the instrument's reliability and correct the
+estimate for it rather than gate on 0.80; a change to the registration's
+design. (d) More held-out-shaped development units, which need the browser
+fetch the owner found too laborious. The held-out 18 stay unread and uncoded.
