@@ -28,6 +28,12 @@ KEEP = ("publishedVersion", "acceptedVersion")
 UA_HEAD = {"User-Agent": "pe-k2-devset/0.1 (philosophy-engineering)"}
 
 
+def is_ssrn(loc: dict) -> bool:
+    """SSRN copies are excluded (owner, 2026-10-24); added before the development fetch of 2026-10-27."""
+    urls = " ".join(str(loc.get(k) or "") for k in ("pdf_url", "landing_page_url"))
+    return "ssrn" in urls.lower() or "ssrn" in str((loc.get("source") or {}).get("display_name", "")).lower()
+
+
 def locations(doi: str) -> list[dict]:
     url = ("https://api.openalex.org/works/doi:" + urllib.parse.quote(doi)
            + "?select=open_access,best_oa_location,locations")
@@ -35,7 +41,8 @@ def locations(doi: str) -> list[dict]:
         try:
             body, _ = get(url)
             w = json.loads(body)
-            locs = [l for l in (w.get("locations") or []) if l.get("is_oa") and l.get("version") in KEEP]
+            locs = [l for l in (w.get("locations") or []) if l.get("is_oa") and l.get("version") in KEEP
+                    and not is_ssrn(l)]
             locs.sort(key=lambda l: (KEEP.index(l["version"]), not l.get("pdf_url")))
             return locs
         except Exception:  # noqa: BLE001 - retried, then recorded as no locations
